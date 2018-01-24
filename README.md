@@ -42,20 +42,20 @@ Briefly describe your proposed solution.  How does it work and what does it do?
 
 ## Strategy
 
-Development Strategy for MVP:
+### Development Strategy for MVP:
 Build out onboarding and sign-in features
 Develop one tab/page for entering weekly game and submitting ‘lineups’
 Create a display tab for users to monitor their portfolio throughout the week, as well as their standing and the leaderboard
 Integration of payments for the winners, from the app’s account to the winners’ accounts (either PayPal or Venmo)
 Link in news, financial data/charts, and other analysis about the particular stocks for a given week from a variety of sources
 	
-Possible extension features:
+### Possible extension features:
 Ability for a user to create private leagues with other users, with customizable rules and time periods
 Community forums for people to discuss strategy and the best lineup for the week
 Integration with Robinhood / Acorn / other apps for users to learn even more and be more active/aware in their financial planning
 
-Testing:
-	After testing the MVP app in our six-person group, we plan to further test our product by inviting a number of our friends to download the beta version and play the weekly games, and to let us know of any bugs or confusions in UI/usage that arise. We also plan to ask them to fill out a form for suggestions for improvements and new features.
+### Testing:
+After testing the MVP app in our six-person group, we plan to further test our product by inviting a number of our friends to download the beta version and play the weekly games, and to let us know of any bugs or confusions in UI/usage that arise. We also plan to ask them to fill out a form for suggestions for improvements and new features.
 
 ## Implementation Challenges
 
