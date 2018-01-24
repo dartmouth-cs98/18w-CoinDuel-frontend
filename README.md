@@ -33,12 +33,12 @@ Briefly describe your proposed solution.  How does it work and what does it do?
 
 ## Team
 
-Kooshul Jhaveri - product management & design, can do both front and back end; can create/assign modules; prefer to be working on distinct features/modules to code alone
-Josh Kerber - lead developer, can crank out large features quickly and learn new technologies easily
-Rajiv Ramaiah - code solo or pair program, iOS experience, design, UI/UX
-Henry Wilson - knowledgeable about backend development and working with various APIs
-Mitch Revers - experience with mobile apps, work alone towards specific goals
-Anish Chadalavada - front-end design, feature idea generation, code together
+- Kooshul Jhaveri - product management & design, can do both front and back end; can create/assign modules; prefer to be working on distinct features/modules to code alone
+- Josh Kerber - lead developer, can crank out large features quickly and learn new technologies easily
+- Rajiv Ramaiah - code solo or pair program, iOS experience, design, UI/UX
+- Henry Wilson - knowledgeable about backend development and working with various APIs
+- Mitch Revers - experience with mobile apps, work alone towards specific goals
+- Anish Chadalavada - front-end design, feature idea generation, code together
 
 ## Strategy
 
