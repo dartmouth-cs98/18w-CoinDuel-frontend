@@ -16,14 +16,14 @@ This project simultaneously teaches users to invest money in the US stock market
 
 
 
-FanDuel
-DraftKings
-iPoll
-SwagBucks
-Stash
-Robinhood
-Motif
-HQ
+- FanDuel
+- DraftKings
+- iPoll
+- SwagBucks
+- Stash
+- Robinhood
+- Motif
+- HQ
 
 Our product is different from sites like FanDuel and DraftKings in that it is free to play. It is different from iPoll, SwagBucks and HQ, sites that let users earn money for free, in that our app is a financial literacy-focused game where users can learn useful information instead of having to view product advertisements or answer trivia questions. Lastly, though Motif and Robinhood are also apps centered on stock market investing, with those applications you have to commit real money.
 
