@@ -4,9 +4,9 @@ print "Content-Type: text/html\n\n"
 """
 Get Cryptocurrency Prices
 
-Author:			Josh Kerber
-Date:			24 January 2018
-Description:	Get prices of all cryptocurrencies on Binance exchange
+Author:		Josh Kerber
+Date:		24 January 2018
+Description:	Get prices of all cryptocurrencies on CoinMarketCap exchange
 """
 
 import os
