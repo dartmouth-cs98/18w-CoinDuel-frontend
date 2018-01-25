@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504C2201A7B8700BB76AA /* AppDelegate.swift */; };
+		1EB504C5201A7B8700BB76AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504C4201A7B8700BB76AA /* ViewController.swift */; };
+		1EB504C8201A7B8700BB76AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504C6201A7B8700BB76AA /* Main.storyboard */; };
+		1EB504CA201A7B8700BB76AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504C9201A7B8700BB76AA /* Assets.xcassets */; };
+		1EB504CD201A7B8700BB76AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */; };
+		1EB504D8201A7B8700BB76AA /* CoinDuelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504D7201A7B8700BB76AA /* CoinDuelTests.swift */; };
+		1EB504E3201A7B8700BB76AA /* CoinDuelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1EB504D4201A7B8700BB76AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EB504B7201A7B8700BB76AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EB504BE201A7B8700BB76AA;
+			remoteInfo = CoinDuel;
+		};
+		1EB504DF201A7B8700BB76AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EB504B7201A7B8700BB76AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EB504BE201A7B8700BB76AA;
+			remoteInfo = CoinDuel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1EB504BF201A7B8700BB76AA /* CoinDuel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinDuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EB504C2201A7B8700BB76AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1EB504C4201A7B8700BB76AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1EB504C7201A7B8700BB76AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1EB504C9201A7B8700BB76AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1EB504CC201A7B8700BB76AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1EB504CE201A7B8700BB76AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EB504D3201A7B8700BB76AA /* CoinDuelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinDuelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EB504D7201A7B8700BB76AA /* CoinDuelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDuelTests.swift; sourceTree = "<group>"; };
+		1EB504D9201A7B8700BB76AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EB504DE201A7B8700BB76AA /* CoinDuelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinDuelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDuelUITests.swift; sourceTree = "<group>"; };
+		1EB504E4201A7B8700BB76AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1EB504BC201A7B8700BB76AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EB504D0201A7B8700BB76AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EB504DB201A7B8700BB76AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EB504B6201A7B8700BB76AA = {
+			isa = PBXGroup;
+			children = (
+				1EB504C1201A7B8700BB76AA /* CoinDuel */,
+				1EB504D6201A7B8700BB76AA /* CoinDuelTests */,
+				1EB504E1201A7B8700BB76AA /* CoinDuelUITests */,
+				1EB504C0201A7B8700BB76AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1EB504C0201A7B8700BB76AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1EB504BF201A7B8700BB76AA /* CoinDuel.app */,
+				1EB504D3201A7B8700BB76AA /* CoinDuelTests.xctest */,
+				1EB504DE201A7B8700BB76AA /* CoinDuelUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1EB504C1201A7B8700BB76AA /* CoinDuel */ = {
+			isa = PBXGroup;
+			children = (
+				1EB504C2201A7B8700BB76AA /* AppDelegate.swift */,
+				1EB504C4201A7B8700BB76AA /* ViewController.swift */,
+				1EB504C6201A7B8700BB76AA /* Main.storyboard */,
+				1EB504C9201A7B8700BB76AA /* Assets.xcassets */,
+				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
+				1EB504CE201A7B8700BB76AA /* Info.plist */,
+			);
+			path = CoinDuel;
+			sourceTree = "<group>";
+		};
+		1EB504D6201A7B8700BB76AA /* CoinDuelTests */ = {
+			isa = PBXGroup;
+			children = (
+				1EB504D7201A7B8700BB76AA /* CoinDuelTests.swift */,
+				1EB504D9201A7B8700BB76AA /* Info.plist */,
+			);
+			path = CoinDuelTests;
+			sourceTree = "<group>";
+		};
+		1EB504E1201A7B8700BB76AA /* CoinDuelUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */,
+				1EB504E4201A7B8700BB76AA /* Info.plist */,
+			);
+			path = CoinDuelUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1EB504BE201A7B8700BB76AA /* CoinDuel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EB504E7201A7B8700BB76AA /* Build configuration list for PBXNativeTarget "CoinDuel" */;
+			buildPhases = (
+				1EB504BB201A7B8700BB76AA /* Sources */,
+				1EB504BC201A7B8700BB76AA /* Frameworks */,
+				1EB504BD201A7B8700BB76AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoinDuel;
+			productName = CoinDuel;
+			productReference = 1EB504BF201A7B8700BB76AA /* CoinDuel.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1EB504D2201A7B8700BB76AA /* CoinDuelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EB504EA201A7B8700BB76AA /* Build configuration list for PBXNativeTarget "CoinDuelTests" */;
+			buildPhases = (
+				1EB504CF201A7B8700BB76AA /* Sources */,
+				1EB504D0201A7B8700BB76AA /* Frameworks */,
+				1EB504D1201A7B8700BB76AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EB504D5201A7B8700BB76AA /* PBXTargetDependency */,
+			);
+			name = CoinDuelTests;
+			productName = CoinDuelTests;
+			productReference = 1EB504D3201A7B8700BB76AA /* CoinDuelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1EB504DD201A7B8700BB76AA /* CoinDuelUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EB504ED201A7B8700BB76AA /* Build configuration list for PBXNativeTarget "CoinDuelUITests" */;
+			buildPhases = (
+				1EB504DA201A7B8700BB76AA /* Sources */,
+				1EB504DB201A7B8700BB76AA /* Frameworks */,
+				1EB504DC201A7B8700BB76AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EB504E0201A7B8700BB76AA /* PBXTargetDependency */,
+			);
+			name = CoinDuelUITests;
+			productName = CoinDuelUITests;
+			productReference = 1EB504DE201A7B8700BB76AA /* CoinDuelUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1EB504B7201A7B8700BB76AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Capitalize;
+				TargetAttributes = {
+					1EB504BE201A7B8700BB76AA = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					1EB504D2201A7B8700BB76AA = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1EB504BE201A7B8700BB76AA;
+					};
+					1EB504DD201A7B8700BB76AA = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 1EB504BE201A7B8700BB76AA;
+					};
+				};
+			};
+			buildConfigurationList = 1EB504BA201A7B8700BB76AA /* Build configuration list for PBXProject "CoinDuel" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1EB504B6201A7B8700BB76AA;
+			productRefGroup = 1EB504C0201A7B8700BB76AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1EB504BE201A7B8700BB76AA /* CoinDuel */,
+				1EB504D2201A7B8700BB76AA /* CoinDuelTests */,
+				1EB504DD201A7B8700BB76AA /* CoinDuelUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1EB504BD201A7B8700BB76AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EB504CD201A7B8700BB76AA /* LaunchScreen.storyboard in Resources */,
+				1EB504CA201A7B8700BB76AA /* Assets.xcassets in Resources */,
+				1EB504C8201A7B8700BB76AA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EB504D1201A7B8700BB76AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EB504DC201A7B8700BB76AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1EB504BB201A7B8700BB76AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EB504C5201A7B8700BB76AA /* ViewController.swift in Sources */,
+				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EB504CF201A7B8700BB76AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EB504D8201A7B8700BB76AA /* CoinDuelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EB504DA201A7B8700BB76AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EB504E3201A7B8700BB76AA /* CoinDuelUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1EB504D5201A7B8700BB76AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EB504BE201A7B8700BB76AA /* CoinDuel */;
+			targetProxy = 1EB504D4201A7B8700BB76AA /* PBXContainerItemProxy */;
+		};
+		1EB504E0201A7B8700BB76AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EB504BE201A7B8700BB76AA /* CoinDuel */;
+			targetProxy = 1EB504DF201A7B8700BB76AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1EB504C6201A7B8700BB76AA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EB504C7201A7B8700BB76AA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EB504CC201A7B8700BB76AA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1EB504E5201A7B8700BB76AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1EB504E6201A7B8700BB76AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1EB504E8201A7B8700BB76AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5CQB749FM;
+				INFOPLIST_FILE = CoinDuel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1EB504E9201A7B8700BB76AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5CQB749FM;
+				INFOPLIST_FILE = CoinDuel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1EB504EB201A7B8700BB76AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5CQB749FM;
+				INFOPLIST_FILE = CoinDuelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinDuel.app/CoinDuel";
+			};
+			name = Debug;
+		};
+		1EB504EC201A7B8700BB76AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5CQB749FM;
+				INFOPLIST_FILE = CoinDuelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinDuel.app/CoinDuel";
+			};
+			name = Release;
+		};
+		1EB504EE201A7B8700BB76AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5CQB749FM;
+				INFOPLIST_FILE = CoinDuelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CoinDuel;
+			};
+			name = Debug;
+		};
+		1EB504EF201A7B8700BB76AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5CQB749FM;
+				INFOPLIST_FILE = CoinDuelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CoinDuel;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1EB504BA201A7B8700BB76AA /* Build configuration list for PBXProject "CoinDuel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EB504E5201A7B8700BB76AA /* Debug */,
+				1EB504E6201A7B8700BB76AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EB504E7201A7B8700BB76AA /* Build configuration list for PBXNativeTarget "CoinDuel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EB504E8201A7B8700BB76AA /* Debug */,
+				1EB504E9201A7B8700BB76AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EB504EA201A7B8700BB76AA /* Build configuration list for PBXNativeTarget "CoinDuelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EB504EB201A7B8700BB76AA /* Debug */,
+				1EB504EC201A7B8700BB76AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EB504ED201A7B8700BB76AA /* Build configuration list for PBXNativeTarget "CoinDuelUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EB504EE201A7B8700BB76AA /* Debug */,
+				1EB504EF201A7B8700BB76AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1EB504B7201A7B8700BB76AA /* Project object */;
+}
