@@ -12,7 +12,7 @@ Swift, Xcode
 
 ## Setup
 
-Coming soon
+Download the latest versions of Switch and Xcode
 
 ## Deployment
 
@@ -20,7 +20,7 @@ Xcode build
 
 ## Authors
 
-Kooshul Jhaveri, Anish Chadalavada, Mitchell Revers, Rajiv Ramaiah, Henry Wilson, Josh Kerber.
+Kooshul Jhaveri, Anish Chadalavada, Mitchell Revers, Rajiv Ramaiah, Henry Wilson, Josh Kerber
 
 ## Acknowledgments
 
