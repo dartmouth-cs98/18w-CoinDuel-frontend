@@ -12,7 +12,7 @@ Swift, Xcode
 
 ## Setup
 
-Download the latest versions of Switch and Xcode
+Run workspace in Xcode
 
 ## Deployment
 
