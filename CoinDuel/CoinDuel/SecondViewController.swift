@@ -14,8 +14,26 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ViewLabel.text = "Hello world"
-        // Do any additional setup after loading the view.
+        var serverMessage: String?
+        let apiUrl = NSURL(string:"https://api.thingspeak.com/channels/1417/last_entry_id.txt");  // replace this url with our own endpoint
+        
+        let request = NSMutableURLRequest(url:apiUrl! as URL);
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            
+            if error != nil {
+                print("error connecting to server")
+                return
+            }
+            
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            serverMessage = "\(responseString!)"
+            DispatchQueue.main.async() {
+                self.ViewLabel.text = serverMessage
+            }
+        }
+        
+        task.resume()
     }
 
     override func didReceiveMemoryWarning() {
