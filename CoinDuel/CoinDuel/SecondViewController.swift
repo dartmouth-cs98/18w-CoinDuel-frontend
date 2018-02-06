@@ -15,7 +15,7 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var serverMessage: String?
-        let apiUrl = NSURL(string:"https://api.thingspeak.com/channels/1417/last_entry_id.txt");  // replace this url with our own endpoint
+        let apiUrl = NSURL(string:"https://coinduel-cs98.herokuapp.com/");
         
         let request = NSMutableURLRequest(url:apiUrl! as URL);
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
