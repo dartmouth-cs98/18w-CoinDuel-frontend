@@ -8,9 +8,28 @@
 
 import UIKit
 
-class LeaderboardViewController: UIViewController {
+class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var ViewLabel: UILabel!
+    @IBOutlet weak var viewLabel: UILabel!
+    let users = ["Mitch", "Koosh", "Henry"]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "UserTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of UserTableViewCell.")
+        }
+        
+        let user = users[indexPath.row]
+        cell.nameLabel.text = user
+        cell.scoreLabel.text = "1000"
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +48,7 @@ class LeaderboardViewController: UIViewController {
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
             serverMessage = "\(responseString!)"
             DispatchQueue.main.async() {
-                self.ViewLabel.text = serverMessage
+                self.viewLabel.text = serverMessage
             }
         }
         
