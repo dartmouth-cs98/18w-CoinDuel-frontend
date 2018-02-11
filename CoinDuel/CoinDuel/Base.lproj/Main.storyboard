@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--GameViewController-->
         <scene sceneID="vBP-Km-ENc">
             <objects>
-                <viewController id="FKk-Hh-yoa" sceneMemberID="viewController">
+                <viewController title="GameViewController" id="FKk-Hh-yoa" customClass="GameViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lYA-Lq-gpg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,13 @@
                                     <segue destination="AVM-ur-vaX" kind="show" id="kWp-ih-x70"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAG-I8-O8l">
+                                <rect key="frame" x="84" y="151" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -121,16 +128,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="heS-RT-K7Y"/>
                     </view>
+                    <connections>
+                        <outlet property="ViewLabel" destination="SAG-I8-O8l" id="nTs-iU-moD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2165.5999999999999" y="-296.40179910044981"/>
         </scene>
-        <!--Second View Controller-->
+        <!--LeaderboardViewController-->
         <scene sceneID="sKs-tj-yXP">
             <objects>
-                <viewController id="UBg-rn-yG4" customClass="SecondViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bEC-1n-FFo" customClass="Sec">
+                <viewController title="LeaderboardViewController" id="UBg-rn-yG4" customClass="LeaderboardViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bEC-1n-FFo" userLabel="View" customClass="Sec">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -180,7 +190,7 @@
                         <viewLayoutGuide key="safeArea" id="XFT-NL-vh0"/>
                     </view>
                     <connections>
-                        <outlet property="ViewLabel" destination="lzo-he-NnC" id="pRu-vK-A6a"/>
+                        <outlet property="ViewLabel" destination="lzo-he-NnC" id="yus-3a-pd0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-dc-2mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,8 +250,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aOP-oD-hoC"/>
-        <segue reference="aYU-J5-Vf2"/>
+        <segue reference="EqC-30-p0W"/>
+        <segue reference="6iU-Z3-zfk"/>
         <segue reference="qjp-dc-ajf"/>
     </inferredMetricsTieBreakers>
 </document>
