@@ -15,6 +15,7 @@
 		1EB504CD201A7B8700BB76AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */; };
 		1EB504D8201A7B8700BB76AA /* CoinDuelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504D7201A7B8700BB76AA /* CoinDuelTests.swift */; };
 		1EB504E3201A7B8700BB76AA /* CoinDuelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */; };
+		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		1EB504DE201A7B8700BB76AA /* CoinDuelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinDuelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDuelUITests.swift; sourceTree = "<group>"; };
 		1EB504E4201A7B8700BB76AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		509BC41C2030DF7B00702226 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
 				1EB504CE201A7B8700BB76AA /* Info.plist */,
 				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
+				509BC41C2030DF7B00702226 /* UserTableViewCell.swift */,
 			);
 			path = CoinDuel;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
 				1E8592ED2030D0910063CE63 /* ProfileViewController.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
+				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
