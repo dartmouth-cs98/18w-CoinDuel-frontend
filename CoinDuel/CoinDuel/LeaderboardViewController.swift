@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  LeaderboardViewController.swift
 //  CoinDuel
 //
 //  Created by Mitchell Revers on 2/1/18.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-
+class LeaderboardViewController: UIViewController {
+    
     @IBOutlet weak var ViewLabel: UILabel!
     
     override func viewDidLoad() {
