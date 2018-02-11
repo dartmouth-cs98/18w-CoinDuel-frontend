@@ -200,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="2165.5999999999999" y="402.54872563718146"/>
         </scene>
-        <!--View Controller-->
+        <!--ProfileViewController-->
         <scene sceneID="qx1-no-XUD">
             <objects>
-                <viewController id="AVM-ur-vaX" sceneMemberID="viewController">
+                <viewController title="ProfileViewController" id="AVM-ur-vaX" customClass="ProfileViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SFO-Cp-AVb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,7 +253,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Lyi-dQ-fmc"/>
+        <segue reference="kWp-ih-x70"/>
         <segue reference="aYU-J5-Vf2"/>
         <segue reference="twY-Ad-LcJ"/>
     </inferredMetricsTieBreakers>
