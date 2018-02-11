@@ -36,7 +36,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="AVM-ur-vaX" kind="show" id="EqC-30-p0W"/>
+                                    <segue destination="FKk-Hh-yoa" kind="show" id="SGv-YW-jAi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBv-ca-q7Z">
@@ -48,6 +48,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="AVM-ur-vaX" kind="show" id="Lyi-dQ-fmc"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoinDuel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-Jy-AvJ">
                                 <rect key="frame" x="124.5" y="49" width="126" height="56"/>
@@ -250,8 +253,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EqC-30-p0W"/>
-        <segue reference="6iU-Z3-zfk"/>
-        <segue reference="qjp-dc-ajf"/>
+        <segue reference="Lyi-dQ-fmc"/>
+        <segue reference="aYU-J5-Vf2"/>
+        <segue reference="twY-Ad-LcJ"/>
     </inferredMetricsTieBreakers>
 </document>
