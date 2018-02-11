@@ -86,12 +86,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VV8-pq-nHY">
-                                <rect key="frame" x="174.66666666666666" y="80" width="65" height="30"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ps4-7y-zkq">
                                 <rect key="frame" x="30" y="40" width="96" height="34"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
@@ -112,9 +106,18 @@
                                     <segue destination="AVM-ur-vaX" kind="show" id="kWp-ih-x70"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAG-I8-O8l">
-                                <rect key="frame" x="84" y="151" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4n-1HR">
+                                <rect key="frame" x="0.0" y="269" width="375" height="398"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tomorrow, 9AM EST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwe-rj-qlY">
+                                <rect key="frame" x="77" y="180" width="219" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Next Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VV8-pq-nHY">
+                                <rect key="frame" x="145" y="127" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,15 +128,19 @@
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="9ES-IZ-aHQ"/>
                             <constraint firstItem="e8k-Tz-9I9" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="EMd-4Z-p0J"/>
                             <constraint firstItem="Ps4-7y-zkq" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="Umd-p1-jNP"/>
+                            <constraint firstItem="4Mq-4n-1HR" firstAttribute="top" secondItem="Iwe-rj-qlY" secondAttribute="bottom" constant="68" id="Wll-u6-ToO"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="60" id="c51-3q-cOU"/>
+                            <constraint firstItem="4Mq-4n-1HR" firstAttribute="leading" secondItem="lYA-Lq-gpg" secondAttribute="leading" id="guS-bY-WSW"/>
+                            <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="32" id="km5-Oh-Ef1"/>
+                            <constraint firstItem="4Mq-4n-1HR" firstAttribute="centerX" secondItem="VV8-pq-nHY" secondAttribute="centerX" id="r4T-JL-TVI" userLabel="Table View.centerX = centerX"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="e8k-Tz-9I9" secondAttribute="trailing" constant="30" id="rlY-8T-CkY"/>
+                            <constraint firstItem="Iwe-rj-qlY" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="77" id="sIN-oG-wn0" userLabel="Tomorrow, 9AM EST.centerX = centerX"/>
+                            <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="Iwe-rj-qlY" secondAttribute="trailing" constant="79" id="svv-OZ-G22"/>
                             <constraint firstItem="Ps4-7y-zkq" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="30" id="tvf-tO-OGQ"/>
+                            <constraint firstItem="4Mq-4n-1HR" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="uov-Fo-MeG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="heS-RT-K7Y"/>
                     </view>
-                    <connections>
-                        <outlet property="ViewLabel" destination="SAG-I8-O8l" id="nTs-iU-moD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -292,8 +299,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aOP-oD-hoC"/>
-        <segue reference="aYU-J5-Vf2"/>
-        <segue reference="qjp-dc-ajf"/>
+        <segue reference="kWp-ih-x70"/>
+        <segue reference="6iU-Z3-zfk"/>
+        <segue reference="twY-Ad-LcJ"/>
     </inferredMetricsTieBreakers>
 </document>
