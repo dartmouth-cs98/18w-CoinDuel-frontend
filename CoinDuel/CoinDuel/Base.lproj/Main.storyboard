@@ -123,7 +123,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-fl-1ej">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-fl-1ej">
                                                     <rect key="frame" x="350" y="7" width="49" height="31"/>
                                                 </switch>
                                             </subviews>
@@ -179,6 +179,9 @@
                                 <state key="normal" title="SUBMIT">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitButtonPress:" destination="FKk-Hh-yoa" eventType="touchUpInside" id="gTA-Dg-3sH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -195,12 +198,17 @@
                             <constraint firstItem="Iwe-rj-qlY" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="gfn-Vl-8n7"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="leading" secondItem="lYA-Lq-gpg" secondAttribute="leading" id="guS-bY-WSW"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="r4T-JL-TVI" userLabel="Table View.centerX = centerX"/>
-                            <constraint firstItem="9Rn-65-6gk" firstAttribute="top" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="rkK-Vr-fiB" userLabel="SUBMIT &gt;&gt;&gt;.top = Table View.bottom"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="top" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="rkK-Vr-fiB" userLabel="Table View.bottom = SUBMIT &gt;&gt;&gt;.top"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="100" id="sta-pP-tS3"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="top" secondItem="Iwe-rj-qlY" secondAttribute="bottom" constant="30" id="ymm-OB-zYQ" userLabel="Table View.top = Tomorrow, 9AM EST.bottom + 30"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="heS-RT-K7Y"/>
                     </view>
+                    <connections>
+                        <outlet property="gameTableView" destination="4Mq-4n-1HR" id="5N1-0g-ehv"/>
+                        <outlet property="submitButton" destination="9Rn-65-6gk" id="HNT-BN-YBv"/>
+                        <outlet property="tableViewConstraint" destination="rkK-Vr-fiB" id="u70-3F-5c8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
