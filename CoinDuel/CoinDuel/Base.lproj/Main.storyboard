@@ -40,15 +40,6 @@
                                     <segue destination="FKk-Hh-yoa" kind="show" id="SGv-YW-jAi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoinDuel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-Jy-AvJ">
-                                <rect key="frame" x="116.33333333333333" y="49" width="181.33333333333337" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="mOR-VV-7YN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="48"/>
-                                <color key="textColor" red="0.34901960784313724" green="0.92156862745098034" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBv-ca-q7Z">
                                 <rect key="frame" x="161" y="551" width="93" height="54"/>
                                 <constraints>
@@ -58,10 +49,16 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="AVM-ur-vaX" kind="show" id="Lyi-dQ-fmc"/>
-                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CoinDuel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8f-Jy-AvJ">
+                                <rect key="frame" x="116" y="50" width="181.33333333333337" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="mOR-VV-7YN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="48"/>
+                                <color key="textColor" red="0.34901960784313724" green="0.92156862745098034" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.3827322345890411" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -88,8 +85,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ps4-7y-zkq">
-                                <rect key="frame" x="30" y="40" width="96" height="34"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
+                                <rect key="frame" x="296" y="40" width="98" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Leaderboard">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -97,22 +94,63 @@
                                     <segue destination="UBg-rn-yG4" kind="show" id="6iU-Z3-zfk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8k-Tz-9I9">
-                                <rect key="frame" x="332" y="40" width="52" height="34"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
-                                <state key="normal" title="Profile">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="AVM-ur-vaX" kind="show" id="kWp-ih-x70"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4n-1HR">
-                                <rect key="frame" x="0.0" y="222" width="414" height="514"/>
+                                <rect key="frame" x="0.0" y="202" width="414" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameTableViewCell" id="buj-xw-9U8" customClass="GameTableViewCell" customModule="CoinDuel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="buj-xw-9U8" id="TDC-UD-S6b">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-JY-yqH">
+                                                    <rect key="frame" x="15" y="13" width="150" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="JFe-1y-kGV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-GQ-9ry">
+                                                    <rect key="frame" x="309" y="12" width="90" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="fbY-kk-hSc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-fl-1ej">
+                                                    <rect key="frame" x="350" y="7" width="49" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ud5-GQ-9ry" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="P3K-nR-6d5"/>
+                                                <constraint firstItem="dyd-fl-1ej" firstAttribute="centerY" secondItem="ud5-GQ-9ry" secondAttribute="centerY" id="SZs-yj-Aqb"/>
+                                                <constraint firstItem="Uz0-JY-yqH" firstAttribute="leading" secondItem="TDC-UD-S6b" secondAttribute="leadingMargin" id="pIO-gN-FWF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Uz0-JY-yqH" secondAttribute="bottom" id="qBy-eC-d9d" userLabel="Coin Name Label.bottom = bottomMargin"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ud5-GQ-9ry" secondAttribute="trailing" constant="-5" id="qLS-en-NL3"/>
+                                                <constraint firstItem="dyd-fl-1ej" firstAttribute="trailing" secondItem="ud5-GQ-9ry" secondAttribute="trailing" id="wfZ-XS-ebJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="choiceSwitch" destination="dyd-fl-1ej" id="mUS-uR-SVG"/>
+                                            <outlet property="coinNameLabel" destination="Uz0-JY-yqH" id="wnE-kt-5kd"/>
+                                            <outlet property="coinPriceLabel" destination="ud5-GQ-9ry" id="Jcb-Ut-ddI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FKk-Hh-yoa" id="jKg-8r-AkN"/>
+                                    <outlet property="delegate" destination="FKk-Hh-yoa" id="Asq-rv-F48"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tomorrow, 9AM EST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwe-rj-qlY">
-                                <rect key="frame" x="124" y="191" width="166" height="21"/>
+                                <rect key="frame" x="124" y="151" width="166" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -123,30 +161,50 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpZ-PS-Om2" userLabel="0.0 CapCoin">
+                                <rect key="frame" x="20" y="40" width="98" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="0.0 CapCoin">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rn-65-6gk">
+                                <rect key="frame" x="0.0" y="656" width="414" height="80"/>
+                                <color key="backgroundColor" red="0.34901960780000002" green="0.92156862750000001" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="xhe-Di-cFf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="SUBMIT">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="e8k-Tz-9I9" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="EMd-4Z-p0J"/>
-                            <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="50" id="G9G-2R-gjh"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="top" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="7PR-oB-0gK"/>
+                            <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="Ps4-7y-zkq" secondAttribute="trailing" constant="20" id="FhF-Ky-Gm6"/>
+                            <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="10" id="G9G-2R-gjh" userLabel="Tomorrow, 9AM EST.top = Next Game.bottom + 10"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="4Mq-4n-1HR" secondAttribute="trailing" id="Jtv-z0-L73"/>
-                            <constraint firstItem="heS-RT-K7Y" firstAttribute="bottom" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="MGk-1A-qmV"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="MKD-FP-mjk"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="SvU-Eo-oQW"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" id="TWl-mo-VnL"/>
                             <constraint firstItem="Ps4-7y-zkq" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="Umd-p1-jNP"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="trailing" secondItem="heS-RT-K7Y" secondAttribute="trailing" id="gCa-Fp-wjq"/>
                             <constraint firstItem="Iwe-rj-qlY" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="gfn-Vl-8n7"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="leading" secondItem="lYA-Lq-gpg" secondAttribute="leading" id="guS-bY-WSW"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="r4T-JL-TVI" userLabel="Table View.centerX = centerX"/>
-                            <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="e8k-Tz-9I9" secondAttribute="trailing" constant="30" id="rlY-8T-CkY"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="top" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="rkK-Vr-fiB" userLabel="SUBMIT &gt;&gt;&gt;.top = Table View.bottom"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="100" id="sta-pP-tS3"/>
-                            <constraint firstItem="Ps4-7y-zkq" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="30" id="tvf-tO-OGQ"/>
-                            <constraint firstItem="4Mq-4n-1HR" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="uov-Fo-MeG"/>
-                            <constraint firstItem="4Mq-4n-1HR" firstAttribute="top" secondItem="Iwe-rj-qlY" secondAttribute="bottom" constant="10" id="ymm-OB-zYQ"/>
+                            <constraint firstItem="4Mq-4n-1HR" firstAttribute="top" secondItem="Iwe-rj-qlY" secondAttribute="bottom" constant="30" id="ymm-OB-zYQ" userLabel="Table View.top = Tomorrow, 9AM EST.bottom + 30"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="heS-RT-K7Y"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2165.5999999999999" y="-296.40179910044981"/>
+            <point key="canvasLocation" x="2165.217391304348" y="-296.73913043478262"/>
         </scene>
         <!--LeaderboardViewController-->
         <scene sceneID="sKs-tj-yXP">
@@ -176,16 +234,6 @@
                                 </state>
                                 <connections>
                                     <segue destination="FKk-Hh-yoa" kind="show" id="qjp-dc-ajf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gN-HN-vQ8">
-                                <rect key="frame" x="332" y="40" width="52" height="34"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
-                                <state key="normal" title="Profile">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="AVM-ur-vaX" kind="show" id="aOP-oD-hoC"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kwd-75-WdK">
@@ -240,10 +288,8 @@
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="trailing" secondItem="Kwd-75-WdK" secondAttribute="trailing" id="1iY-hg-v8Q"/>
                             <constraint firstItem="lzo-he-NnC" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="top" constant="-20" id="2Z8-gk-e7x"/>
                             <constraint firstItem="lzo-he-NnC" firstAttribute="top" secondItem="LRP-I3-2zG" secondAttribute="bottom" constant="20" id="EOA-MR-CKR"/>
-                            <constraint firstItem="0gN-HN-vQ8" firstAttribute="top" secondItem="XFT-NL-vh0" secondAttribute="top" constant="20" id="Ns6-42-pdO"/>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="bottom" id="P3R-Da-E4L"/>
                             <constraint firstItem="Kwd-75-WdK" firstAttribute="leading" secondItem="bEC-1n-FFo" secondAttribute="leading" id="Uv5-U6-r8l"/>
-                            <constraint firstItem="XFT-NL-vh0" firstAttribute="trailing" secondItem="0gN-HN-vQ8" secondAttribute="trailing" constant="30" id="WmA-zS-gH7"/>
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="leading" secondItem="XFT-NL-vh0" secondAttribute="leading" constant="30" id="Yeg-12-Iix"/>
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="top" secondItem="XFT-NL-vh0" secondAttribute="top" constant="20" id="c4w-Ew-dpz"/>
                             <constraint firstItem="LRP-I3-2zG" firstAttribute="top" secondItem="XFT-NL-vh0" secondAttribute="top" constant="60" id="o5X-iK-0BH"/>
@@ -259,61 +305,8 @@
             </objects>
             <point key="canvasLocation" x="2165.5999999999999" y="402.54872563718146"/>
         </scene>
-        <!--ProfileViewController-->
-        <scene sceneID="qx1-no-XUD">
-            <objects>
-                <viewController title="ProfileViewController" id="AVM-ur-vaX" customClass="ProfileViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SFO-Cp-AVb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2a-bv-Gi5">
-                                <rect key="frame" x="338" y="40" width="46" height="34"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
-                                <state key="normal" title="Game">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="FKk-Hh-yoa" kind="show" id="twY-Ad-LcJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBN-TU-Dyp">
-                                <rect key="frame" x="30" y="40" width="96" height="34"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
-                                <state key="normal" title="Leaderboard">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="UBg-rn-yG4" kind="show" id="aYU-J5-Vf2"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmd-sj-TRD">
-                                <rect key="frame" x="170" y="80" width="74" height="30"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="eBN-TU-Dyp" firstAttribute="leading" secondItem="O5n-Oq-3Am" secondAttribute="leading" constant="30" id="7Bn-Sz-CmV"/>
-                            <constraint firstItem="d2a-bv-Gi5" firstAttribute="top" secondItem="O5n-Oq-3Am" secondAttribute="top" constant="20" id="DC2-3f-XvV"/>
-                            <constraint firstItem="gmd-sj-TRD" firstAttribute="centerX" secondItem="SFO-Cp-AVb" secondAttribute="centerX" id="IGR-9l-iRx"/>
-                            <constraint firstItem="gmd-sj-TRD" firstAttribute="top" secondItem="O5n-Oq-3Am" secondAttribute="top" constant="60" id="WYS-Ug-lea"/>
-                            <constraint firstItem="O5n-Oq-3Am" firstAttribute="trailing" secondItem="d2a-bv-Gi5" secondAttribute="trailing" constant="30" id="k7O-wj-UF7"/>
-                            <constraint firstItem="eBN-TU-Dyp" firstAttribute="top" secondItem="O5n-Oq-3Am" secondAttribute="top" constant="20" id="mQH-md-xeG"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="O5n-Oq-3Am"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Clv-aW-Xzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1137.68115942029" y="132.88043478260872"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Lyi-dQ-fmc"/>
-        <segue reference="6iU-Z3-zfk"/>
         <segue reference="SGv-YW-jAi"/>
     </inferredMetricsTieBreakers>
 </document>
