@@ -12,18 +12,20 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var gameTableView: UITableView!
     
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
-    let coins = ["Bitcoin", "Litecoin", "Ethereum", "Monero", "Ripple", "Bitcoin Cash"]
-    var selections = [false, false, false, false, false, false]
-    var prices = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    var coins:Array< String > = Array < String >()
+    var selections:[Bool] = []
+    var prices:[Double] = []
+
     
     var gameRunning = false
+    
+    var TableData:Array< String > = Array < String >()
 
     @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var serverMessage: String?
         let apiUrl = NSURL(string: Constants.API + "game/");
         
         let request = NSMutableURLRequest(url:apiUrl! as URL);
@@ -34,15 +36,30 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 print("error connecting to server")
                 return
             }
-            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
-            print("Json")
-            print(json)
+            
+            if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
+                if let response = json as? NSArray {
+                    for key in response {
+                        if let dict = key as? NSDictionary {
+                            print(dict)
+                            if let currencies = dict.value(forKey: "currency_list") as? NSArray {
+                                print(currencies)
+                                for currency in currencies {
+                                    self.coins.append(String(describing: currency))
+                                    self.prices.append(0.0)
+                                    self.selections.append(false)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
        
 //            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
 //            serverMessage = "\(responseString!)"
             DispatchQueue.main.async() {
     
-                
+                self.gameTableView.reloadData()
 //                self.viewLabel.text = serverMessage
             }
         }
