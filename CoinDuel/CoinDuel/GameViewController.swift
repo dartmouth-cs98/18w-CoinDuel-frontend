@@ -9,62 +9,19 @@
 import UIKit
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     @IBOutlet weak var gameTableView: UITableView!
-    
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
-    var coins:Array< String > = Array < String >()
-    var selections:[Bool] = []
-    var prices:[Double] = []
-
-    
-    var gameRunning = false
-    
-    var TableData:Array< String > = Array < String >()
-
     @IBOutlet weak var submitButton: UIButton!
+    
+    var game: Game = Game()
+    var gameRunning: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let apiUrl = NSURL(string: Constants.API + "game/");
-        
-        let request = NSMutableURLRequest(url:apiUrl! as URL);
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            data, response, error in
-            
-            if error != nil {
-                print("error connecting to server")
-                return
-            }
-            
-            if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
-                if let response = json as? NSArray {
-                    for key in response {
-                        if let dict = key as? NSDictionary {
-                            print(dict)
-                            if let currencies = dict.value(forKey: "currency_list") as? NSArray {
-                                print(currencies)
-                                for currency in currencies {
-                                    self.coins.append(String(describing: currency))
-                                    self.prices.append(0.0)
-                                    self.selections.append(false)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-       
-//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-//            serverMessage = "\(responseString!)"
-            DispatchQueue.main.async() {
-    
-                self.gameTableView.reloadData()
-//                self.viewLabel.text = serverMessage
-            }
-        }
-        
-        task.resume()
+        self.gameRunning = false
+        self.game.getCurrentGame(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +30,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coins.count;
+        return self.game.coins.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,8 +40,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
         
-        cell.coinNameLabel.text = coins[indexPath.row]
-        cell.coinPriceLabel.text = String(prices[indexPath.row])
+        cell.coinNameLabel.text = self.game.coins[indexPath.row]
+        cell.coinPriceLabel.text = String(self.game.prices[indexPath.row])
+        
+        // Display varies depending on whether game is active
     
         if gameRunning {
             cell.coinPriceLabel.isHidden = false
@@ -92,10 +51,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             // Hide the cell completely if not selected
             if !cell.choiceSwitch.isOn {
-                selections[indexPath.row] = false
+                self.game.selections[indexPath.row] = false
                 cell.isHidden = true
             } else {
-                selections[indexPath.row] = true
+                self.game.selections[indexPath.row] = true
                 cell.isHidden = false
             }
         } else {
@@ -111,11 +70,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    // Got this idea for hiding cells from:
+    // Got this idea for hiding cells from: (used for hiding ones not chosen for game)
     // https://stackoverflow.com/questions/29886642/hide-uitableview-cell/29888552
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if gameRunning && !selections[indexPath.row] {
+        if gameRunning && !self.game.selections[indexPath.row] {
             return 0.0
         } else {
             return tableView.rowHeight
