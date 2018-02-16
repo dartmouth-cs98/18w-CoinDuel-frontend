@@ -87,7 +87,6 @@
 		1EB504B6201A7B8700BB76AA = {
 			isa = PBXGroup;
 			children = (
-				F824B1B620364ADE008D1F14 /* Supporting Files */,
 				F824B1B520363F96008D1F14 /* Login */,
 				1EB504C1201A7B8700BB76AA /* CoinDuel */,
 				1EB504D6201A7B8700BB76AA /* CoinDuelTests */,
@@ -147,13 +146,6 @@
 				F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		F824B1B620364ADE008D1F14 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
