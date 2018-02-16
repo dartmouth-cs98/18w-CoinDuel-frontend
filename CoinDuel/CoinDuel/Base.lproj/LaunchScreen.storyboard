@@ -126,7 +126,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="btn.layer.cornerRadius" value="10"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="XcW-6Q-WBD" kind="modal" id="mmz-1N-UKM"/>
+                                    <segue destination="XcW-6Q-WBD" kind="modal" identifier="registerView" id="mmz-1N-UKM"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USERNAME" minimumFontSize="17" id="rdk-a9-DUp">

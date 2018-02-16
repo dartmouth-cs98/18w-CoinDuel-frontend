@@ -22,7 +22,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="BYZ-38-t0r" customClass="ViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,7 +313,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Lyi-dQ-fmc"/>
-        <segue reference="6iU-Z3-zfk"/>
+        <segue reference="aYU-J5-Vf2"/>
         <segue reference="SGv-YW-jAi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Capitalize. All rights reserved.
 //
 
+
 import UIKit
 
 @UIApplicationMain
@@ -16,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Source: https://stackoverflow.com/questions/26753925/set-initial-viewcontroller-in-appdelegate-swift
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
+        
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "initial")
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
+    
         return true
     }
 
