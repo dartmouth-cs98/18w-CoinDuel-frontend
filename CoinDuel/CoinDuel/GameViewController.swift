@@ -44,10 +44,19 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.coinNameLabel.text = coins[indexPath.row]
         cell.coinPriceLabel.text = String(prices[indexPath.row])
-        
+    
         if gameRunning {
             cell.coinPriceLabel.isHidden = false
             cell.choiceSwitch.isHidden = true
+            
+            // Hide the cell completely if not selected
+            if !cell.choiceSwitch.isOn {
+                selections[indexPath.row] = false
+                cell.isHidden = true
+            } else {
+                selections[indexPath.row] = true
+                cell.isHidden = false
+            }
         } else {
             cell.coinPriceLabel.isHidden = true
             cell.choiceSwitch.isHidden = false
@@ -59,6 +68,17 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         return cell
+    }
+    
+    // Got this idea for hiding cells from:
+    // https://stackoverflow.com/questions/29886642/hide-uitableview-cell/29888552
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if gameRunning && !selections[indexPath.row] {
+            return 0.0
+        } else {
+            return tableView.rowHeight
+        }
     }
     
     @IBAction func toggleCoin(_ sender: UISwitch) {
