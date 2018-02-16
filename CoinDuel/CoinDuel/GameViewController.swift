@@ -17,13 +17,37 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var prices = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     
     var gameRunning = false
-    
+
     @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        scoreLabel.isHidden = true
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        var serverMessage: String?
+        let apiUrl = NSURL(string: Constants.API + "game/");
+        
+        let request = NSMutableURLRequest(url:apiUrl! as URL);
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            
+            if error != nil {
+                print("error connecting to server")
+                return
+            }
+            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+            print("Json")
+            print(json)
+       
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//            serverMessage = "\(responseString!)"
+            DispatchQueue.main.async() {
+    
+                
+//                self.viewLabel.text = serverMessage
+            }
+        }
+        
+        task.resume()
     }
 
     override func didReceiveMemoryWarning() {

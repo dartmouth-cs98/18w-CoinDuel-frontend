@@ -9,7 +9,11 @@
 import Foundation
 
 struct Constants {
-    static let API = "https://coinduel-cs98.herokuapp.com/"
+//    static let API = "https://coinduel-cs98.herokuapp.com/api/"
+    static let API = "http://localhost:9000/api/"
 }
 
-
+enum ServerError: Error {
+    case urlError(reason: String)
+    case objectSerialization(reason: String)
+}
