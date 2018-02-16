@@ -13,6 +13,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     let coins = ["Bitcoin", "Litecoin", "Ethereum", "Monero", "Ripple", "Bitcoin Cash"]
+    var selections = [false, false, false, false, false, false]
     var prices = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     
     var gameRunning = false
@@ -50,9 +51,18 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             cell.coinPriceLabel.isHidden = true
             cell.choiceSwitch.isHidden = false
+            
+            // Check to see which coins are toggled
+            if cell.choiceSwitch.isOn {
+                print("Here")
+            }
         }
         
         return cell
+    }
+    
+    @IBAction func toggleCoin(_ sender: UISwitch) {
+        gameTableView.reloadData()
     }
     
     @IBAction func submitButtonPress(_ sender: UIButton) {

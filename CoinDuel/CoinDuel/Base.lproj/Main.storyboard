@@ -125,6 +125,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-fl-1ej">
                                                     <rect key="frame" x="350" y="7" width="49" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggleCoin:" destination="FKk-Hh-yoa" eventType="valueChanged" id="ERA-U6-8MN"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

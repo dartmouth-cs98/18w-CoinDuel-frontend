@@ -12,7 +12,7 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var choiceSwitch: UISwitch!
     @IBOutlet weak var coinNameLabel: UILabel!
     @IBOutlet weak var coinPriceLabel: UILabel!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
