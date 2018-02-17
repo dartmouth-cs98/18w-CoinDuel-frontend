@@ -9,10 +9,10 @@
 import UIKit
 
 class GameTableViewCell: UITableViewCell {
-    @IBOutlet weak var choiceSwitch: UISwitch!
     @IBOutlet weak var coinNameLabel: UILabel!
-    @IBOutlet weak var coinPriceLabel: UILabel!
-        
+    @IBOutlet weak var coinAmountLabel: UILabel!
+    @IBOutlet weak var coinAmountStepper: UIStepper!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

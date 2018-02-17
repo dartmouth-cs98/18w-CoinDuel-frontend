@@ -21,7 +21,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         self.gameRunning = false
-        self.game.getCurrentGame(self)
+        self.game.retrieveCurrentGame(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,56 +39,50 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GameTableViewCell  else {
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
-        
-        cell.coinNameLabel.text = self.game.coins[indexPath.row]
-        cell.coinPriceLabel.text = String(self.game.prices[indexPath.row])
-        
+
         // Display varies depending on whether game is active
     
         if gameRunning {
-            cell.coinPriceLabel.isHidden = false
-            cell.choiceSwitch.isHidden = true
-            
-            // Hide the cell completely if not selected
-            if !cell.choiceSwitch.isOn {
-                self.game.selections[indexPath.row] = false
-                cell.isHidden = true
-            } else {
-                self.game.selections[indexPath.row] = true
-                cell.isHidden = false
-            }
+            cell.coinAmountStepper.isHidden = true
         } else {
-            cell.coinPriceLabel.isHidden = true
-            cell.choiceSwitch.isHidden = false
+            cell.coinAmountStepper.isHidden = false
+            self.game.amounts[indexPath.row] = cell.coinAmountStepper.value
             
-            // Check to see which coins are toggled
-            if cell.choiceSwitch.isOn {
-                print("Here")
+            let remaining = 10.0 - self.game.totalAmount()
+            if remaining > 0.0 {
+                self.submitButton.setTitle("Allocate " + String(Int(remaining)) + " additional CapCoin", for: UIControlState .normal)
+                self.submitButton.isEnabled = false
+            } else {
+                self.submitButton.setTitle("Submit", for: UIControlState .normal)
+                self.submitButton.isEnabled = true
             }
         }
+        
+        cell.coinNameLabel.text = self.game.coins[indexPath.row]
+        cell.coinAmountLabel.text = String(Int(self.game.amounts[indexPath.row]))
         
         return cell
     }
     
-    // Got this idea for hiding cells from: (used for hiding ones not chosen for game)
-    // https://stackoverflow.com/questions/29886642/hide-uitableview-cell/29888552
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if gameRunning && !self.game.selections[indexPath.row] {
-            return 0.0
-        } else {
-            return tableView.rowHeight
-        }
-    }
-    
-    @IBAction func toggleCoin(_ sender: UISwitch) {
+    @IBAction func changeCoinAmount(_ sender: UIStepper, forEvent event: UIEvent) {
         gameTableView.reloadData()
     }
     
     @IBAction func submitButtonPress(_ sender: UIButton) {
+        // Make necessary UI changes
         submitButton.isHidden = true
         gameRunning = true
-//        tableViewConstraint.firstItem = SafeArea
-        gameTableView.reloadData()
+        
+        // Submit the entry to the server
+        if !self.game.submitEntry() {
+            print("Error")
+        } else {
+            self.game.updateGame(self)
+        }
+
+        // To-Do: Change constraints programatically so submit button area doesn't cover up Table View
+        // tableViewConstraint.firstItem = SafeArea
+
     }
 
 
