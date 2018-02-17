@@ -10,8 +10,7 @@ import UIKit
 
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var viewLabel: UILabel!
-    let users = ["Mitch", "Koosh", "Henry"]
+    var users = [User]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count;
@@ -25,16 +24,15 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         let user = users[indexPath.row]
-        cell.nameLabel.text = user
-        cell.scoreLabel.text = "1000"
+        cell.nameLabel.text = user.username
+        cell.scoreLabel.text = String(user.coinBalance)
         
         return cell
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var serverMessage: String?
-        let apiUrl = NSURL(string:"https://coinduel-cs98.herokuapp.com/");
+        let apiUrl = NSURL(string:Constants.API + "user");
         
         let request = NSMutableURLRequest(url:apiUrl! as URL);
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
@@ -45,10 +43,18 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                 return
             }
             
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            serverMessage = "\(responseString!)"
-            DispatchQueue.main.async() {
-                self.viewLabel.text = serverMessage
+            if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
+                if let response = json as? NSArray {
+                    for key in response {
+                        if let dict = key as? NSDictionary {
+                            if let name = dict.value(forKey: "username") as? String {
+                                if let coins = dict.value(forKey: "coinBalance") as? Int {
+                                    self.users.append(User(username: name, coinBalance: coins))
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         
