@@ -37,17 +37,49 @@ class Game {
         self.getCurrentGameApi(gameVC, Constants.API + "game/")
     }
     
-    func submitEntry() -> Bool {
+    func submitEntry(_ gameVC:GameViewController) {
         // Submits the entry to the server
+        /*
+        var choices = [Array<String>]()
+        var x = 0
+        for choice in self.coins {
+            if self.amounts[x] > 0 {
+                let thisChoice = [String(choice), String(self.amounts[x])]
+                choices.append(thisChoice)
+            }
+            x += 1
+        }
         
-        return true
+        // Credit for following API technique: https://stackoverflow.com/questions/31937686/how-to-make-http-post-request-with-json-body-in-swift
+        let json: [String: [Array<String>]] = ["choices": choices]
+
+        if let jsonData = try? JSONSerialization.data(withJSONObject: json) {
+            let url = URL(string: Constants.API + "game/" + Constants.TEMP_USER_ID + "/" + self.id)!
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = jsonData
+            
+            let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+                if let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: []) {
+                    print(jsonResponse)
+                    DispatchQueue.main.async() {
+                        self.updateGame(gameVC)
+                    }
+                }
+            }
+            
+            task.resume()
+        } else {
+            print("Failed conversion to JSON")
+        }*/
+        self.updateGame(gameVC)
     }
     
     func getCurrentGameApi(_ gameVC:GameViewController, _ api:String) {
         let apiUrl = NSURL(string: api)
         let request = NSMutableURLRequest(url:apiUrl! as URL);
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            data, response, error in
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             
             if error != nil {
                 print("error connecting to server")

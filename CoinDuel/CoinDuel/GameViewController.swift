@@ -74,11 +74,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         gameRunning = true
         
         // Submit the entry to the server
-        if !self.game.submitEntry() {
-            print("Error")
-        } else {
-            self.game.updateGame(self)
-        }
+        self.game.submitEntry(self)
 
         // To-Do: Change constraints programatically so submit button area doesn't cover up Table View
         // tableViewConstraint.firstItem = SafeArea
