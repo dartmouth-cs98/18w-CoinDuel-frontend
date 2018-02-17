@@ -31,6 +31,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         gameReturnLabel.isHidden = true
         gameStatusLabel.isHidden = true
         gameStatusSubheaderLabel.isHidden = true
+        
+        self.submitButton.setTitle("Allocate 10 additional CapCoin", for: UIControlState .normal)
+        self.submitButton.isEnabled = false
+        
         self.game.retrieveCurrentGame(self)
     }
 
@@ -57,7 +61,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinAmountLabel.isHidden = true
             cell.coinPriceLabel.isHidden = false
             cell.coinReturnLabel.isHidden = false
-            
+            cell.coinNameLabel.text = self.game.coins[indexPath.row] + " (" + String(Int(self.game.amounts[indexPath.row])) + ")"
         } else {
             cell.coinAmountStepper.isHidden = false
             cell.coinAmountLabel.isHidden = false
@@ -74,12 +78,20 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.submitButton.setTitle("Submit", for: UIControlState .normal)
                 self.submitButton.isEnabled = true
             }
+            cell.coinNameLabel.text = self.game.coins[indexPath.row]
+            cell.coinAmountLabel.text = String(Int(self.game.amounts[indexPath.row]))
         }
         
-        cell.coinNameLabel.text = self.game.coins[indexPath.row]
-        cell.coinAmountLabel.text = String(Int(self.game.amounts[indexPath.row]))
         
         return cell
+    }
+    
+    func networkError() {
+        // from: https://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
+        
+        let alert = UIAlertController(title: "Network Error", message: "We could not connect to the server.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func changeCoinAmount(_ sender: UIStepper, forEvent event: UIEvent) {
