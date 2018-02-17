@@ -85,49 +85,30 @@ class Game {
     }
     
     func getEntryApi(_ gameVC:GameViewController, _ api:String) {
-        print("Getting entry api")
         let apiUrl = NSURL(string: api)
-        print(apiUrl)
         let request = NSMutableURLRequest(url:apiUrl! as URL);
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             data, response, error in
-            
-            print("About to retrieve data")
             
             if error != nil {
                 print("error connecting to server")
                 return
             }
             
-            print("About to read JSON")
-            
             // Parse the JSON response, we only care about the choices here
             
             if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
-                print("Json:")
-                print(json)
-//                if let response = json as? NSArray {
-//                    for key in response {
-//                        print("Key: ")
-//                        print(key)
-                        if let dict = json as? NSDictionary {
-                            print("Dict: ")
-                            print(dict)
-                            if let choices = dict.value(forKey: "choices") as? NSArray {
-                                print("Choices: ")
-                                print(choices)
-                                for choice in choices {
-                                    if let selection = choice as? NSArray {
-                                        let coin = selection[0] as! String
-                                        let amount = 0.0 // selection[1] as! String
-                                        
-                                        self.coins.append(coin)
-                                        self.amounts.append(amount)
-                                    }
-                                }
-//                            }
+                if let dict = json as? NSDictionary {
+                    if let choices = dict.value(forKey: "choices") as? NSArray {
+                        for choice in choices {
+                            if let selection = choice as? NSArray {
+                                let coin = selection[0] as! String
+                                let amount = Double(selection[1] as! String)
+                                self.coins.append(coin)
+                                self.amounts.append(amount!)
+                            }
                         }
-//                    }
+                    }
                 }
             }
             
