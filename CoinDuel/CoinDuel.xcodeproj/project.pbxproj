@@ -19,6 +19,7 @@
 		1EB504E3201A7B8700BB76AA /* CoinDuelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */; };
 		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
+		50E499402038B64500DBCC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4993F2038B64500DBCC42 /* User.swift */; };
 		F824B1B220363D95008D1F14 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		1EB504E4201A7B8700BB76AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		509BC41C2030DF7B00702226 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		50E4993F2038B64500DBCC42 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
 				509BC41C2030DF7B00702226 /* UserTableViewCell.swift */,
 				1E331688203637BD00BEE349 /* GameTableViewCell.swift */,
+				50E4993F2038B64500DBCC42 /* User.swift */,
 			);
 			path = CoinDuel;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
 				1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */,
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
+				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
 				1E56321920378D310043ECF9 /* Game.swift in Sources */,

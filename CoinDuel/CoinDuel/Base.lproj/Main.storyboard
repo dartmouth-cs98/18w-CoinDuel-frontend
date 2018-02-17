@@ -285,12 +285,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="API Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzo-he-NnC">
-                                <rect key="frame" x="20" y="130" width="297" height="21"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-I3-2zG">
                                 <rect key="frame" x="138.66666666666666" y="80" width="136.99999999999997" height="30"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="27"/>
@@ -308,7 +302,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kwd-75-WdK">
-                                <rect key="frame" x="0.0" y="171.66666666666669" width="414" height="564.33333333333326"/>
+                                <rect key="frame" x="0.0" y="170" width="414" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" id="sEL-Cx-GXA" customClass="UserTableViewCell" customModule="CoinDuel" customModuleProvider="target">
@@ -357,8 +351,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="trailing" secondItem="Kwd-75-WdK" secondAttribute="trailing" id="1iY-hg-v8Q"/>
-                            <constraint firstItem="lzo-he-NnC" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="top" constant="-20" id="2Z8-gk-e7x"/>
-                            <constraint firstItem="lzo-he-NnC" firstAttribute="top" secondItem="LRP-I3-2zG" secondAttribute="bottom" constant="20" id="EOA-MR-CKR"/>
+                            <constraint firstItem="Kwd-75-WdK" firstAttribute="top" secondItem="LRP-I3-2zG" secondAttribute="bottom" constant="60" id="BFO-Qa-Xg2"/>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="bottom" id="P3R-Da-E4L"/>
                             <constraint firstItem="Kwd-75-WdK" firstAttribute="leading" secondItem="bEC-1n-FFo" secondAttribute="leading" id="Uv5-U6-r8l"/>
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="leading" secondItem="XFT-NL-vh0" secondAttribute="leading" constant="30" id="Yeg-12-Iix"/>
@@ -368,9 +361,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XFT-NL-vh0"/>
                     </view>
-                    <connections>
-                        <outlet property="ViewLabel" destination="lzo-he-NnC" id="yus-3a-pd0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-dc-2mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -378,6 +368,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SGv-YW-jAi"/>
+        <segue reference="qjp-dc-ajf"/>
     </inferredMetricsTieBreakers>
 </document>
