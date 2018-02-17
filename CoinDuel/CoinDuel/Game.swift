@@ -39,7 +39,7 @@ class Game {
     
     func submitEntry(_ gameVC:GameViewController) {
         // Submits the entry to the server
-        /*
+
         var choices = [Array<String>]()
         var x = 0
         for choice in self.coins {
@@ -58,7 +58,9 @@ class Game {
 
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             request.httpBody = jsonData
+            print(request)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: []) {
@@ -72,8 +74,7 @@ class Game {
             task.resume()
         } else {
             print("Failed conversion to JSON")
-        }*/
-        self.updateGame(gameVC)
+        }
     }
     
     func getCurrentGameApi(_ gameVC:GameViewController, _ api:String) {
