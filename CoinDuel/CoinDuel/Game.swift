@@ -63,6 +63,12 @@ class Game {
             print(request)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+                // Error checking
+                guard error == nil else {
+                    gameVC.networkError()
+                    return
+                }
+                
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: []) {
                     print(jsonResponse)
                     DispatchQueue.main.async() {
@@ -82,8 +88,9 @@ class Game {
         let request = NSMutableURLRequest(url:apiUrl! as URL);
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             
-            if error != nil {
-                print("error connecting to server")
+            // Error checking
+            guard error == nil else {
+                gameVC.networkError()
                 return
             }
             
@@ -123,8 +130,9 @@ class Game {
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             data, response, error in
             
-            if error != nil {
-                print("error connecting to server")
+            // Error checking
+            guard error == nil else {
+                gameVC.networkError()
                 return
             }
             
