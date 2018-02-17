@@ -10,6 +10,11 @@ import UIKit
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var gameReturnLabel: UILabel!
+    @IBOutlet weak var gameStatusSubheaderLabel: UILabel!
+    @IBOutlet weak var gameStatusLabel: UILabel!
+    @IBOutlet weak var nextGameLabel: UILabel!
+    @IBOutlet weak var gameTimeLabel: UILabel!
     @IBOutlet weak var gameTableView: UITableView!
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var submitButton: UIButton!
@@ -21,6 +26,11 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         self.gameRunning = false
+        nextGameLabel.isHidden = false
+        gameTimeLabel.isHidden = false
+        gameReturnLabel.isHidden = true
+        gameStatusLabel.isHidden = true
+        gameStatusSubheaderLabel.isHidden = true
         self.game.retrieveCurrentGame(self)
     }
 
@@ -44,8 +54,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
         if gameRunning {
             cell.coinAmountStepper.isHidden = true
+            cell.coinAmountLabel.isHidden = true
+            cell.coinPriceLabel.isHidden = false
+            cell.coinReturnLabel.isHidden = false
+            
         } else {
             cell.coinAmountStepper.isHidden = false
+            cell.coinAmountLabel.isHidden = false
+            cell.coinPriceLabel.isHidden = true
+            cell.coinReturnLabel.isHidden = true
+            
             self.game.amounts[indexPath.row] = cell.coinAmountStepper.value
             
             let remaining = 10.0 - self.game.totalAmount()
@@ -72,6 +90,11 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Make necessary UI changes
         submitButton.isHidden = true
         gameRunning = true
+        nextGameLabel.isHidden = true
+        gameTimeLabel.isHidden = true
+        gameReturnLabel.isHidden = false
+        gameStatusLabel.isHidden = false
+        gameStatusSubheaderLabel.isHidden = false
         
         // Submit the entry to the server
         self.game.submitEntry(self)

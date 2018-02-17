@@ -12,7 +12,9 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var coinNameLabel: UILabel!
     @IBOutlet weak var coinAmountLabel: UILabel!
     @IBOutlet weak var coinAmountStepper: UIStepper!
+    @IBOutlet weak var coinReturnLabel: UILabel!
     
+    @IBOutlet weak var coinPriceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
