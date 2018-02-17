@@ -114,8 +114,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-GQ-9ry">
-                                                    <rect key="frame" x="309" y="12" width="90" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-GQ-9ry" userLabel="Coin Amount Label">
+                                                    <rect key="frame" x="162" y="12" width="90" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="fbY-kk-hSc"/>
                                                     </constraints>
@@ -123,27 +123,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-fl-1ej">
-                                                    <rect key="frame" x="350" y="7" width="49" height="31"/>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="wiH-Pa-Dq7">
+                                                    <rect key="frame" x="300" y="8" width="94" height="29"/>
                                                     <connections>
-                                                        <action selector="toggleCoin:" destination="FKk-Hh-yoa" eventType="valueChanged" id="ERA-U6-8MN"/>
+                                                        <action selector="changeCoinAmount:forEvent:" destination="FKk-Hh-yoa" eventType="valueChanged" id="sy4-sE-P3w"/>
                                                     </connections>
-                                                </switch>
+                                                </stepper>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ud5-GQ-9ry" firstAttribute="centerX" secondItem="TDC-UD-S6b" secondAttribute="centerX" id="LVc-KH-XID"/>
+                                                <constraint firstAttribute="trailing" secondItem="wiH-Pa-Dq7" secondAttribute="trailing" constant="20" id="Moo-HX-zMy"/>
                                                 <constraint firstItem="ud5-GQ-9ry" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="P3K-nR-6d5"/>
-                                                <constraint firstItem="dyd-fl-1ej" firstAttribute="centerY" secondItem="ud5-GQ-9ry" secondAttribute="centerY" id="SZs-yj-Aqb"/>
                                                 <constraint firstItem="Uz0-JY-yqH" firstAttribute="leading" secondItem="TDC-UD-S6b" secondAttribute="leadingMargin" id="pIO-gN-FWF"/>
+                                                <constraint firstItem="wiH-Pa-Dq7" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="pbK-tN-g6o"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Uz0-JY-yqH" secondAttribute="bottom" id="qBy-eC-d9d" userLabel="Coin Name Label.bottom = bottomMargin"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ud5-GQ-9ry" secondAttribute="trailing" constant="-5" id="qLS-en-NL3"/>
-                                                <constraint firstItem="dyd-fl-1ej" firstAttribute="trailing" secondItem="ud5-GQ-9ry" secondAttribute="trailing" id="wfZ-XS-ebJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="choiceSwitch" destination="dyd-fl-1ej" id="mUS-uR-SVG"/>
+                                            <outlet property="coinAmountLabel" destination="ud5-GQ-9ry" id="Jcb-Ut-ddI"/>
+                                            <outlet property="coinAmountStepper" destination="wiH-Pa-Dq7" id="iCZ-X3-oni"/>
                                             <outlet property="coinNameLabel" destination="Uz0-JY-yqH" id="wnE-kt-5kd"/>
-                                            <outlet property="coinPriceLabel" destination="ud5-GQ-9ry" id="Jcb-Ut-ddI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
