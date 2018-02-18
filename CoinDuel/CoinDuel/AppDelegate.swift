@@ -21,13 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
+        let storyName = UserDefaults.standard.string(forKey:"username") != nil ? "Main" : "LoginStoryboard"
+        let controllerName = UserDefaults.standard.string(forKey:"username") != nil ? "GameViewController" : "InitialLoginNavController"
         
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialLoginNavController")
+        let storyboard = UIStoryboard(name: storyName, bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: controllerName)
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        
     
         return true
     }
