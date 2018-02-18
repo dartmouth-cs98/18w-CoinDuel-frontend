@@ -96,7 +96,7 @@
                                 <rect key="frame" x="160" y="387" width="55" height="30"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="onSIgnUpPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="B3u-0V-BJr"/>
+                                    <action selector="onSignUpPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="Hd1-ZW-T1X"/>
                                 </connections>
                             </button>
                         </subviews>
