@@ -28,7 +28,9 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onSignUpPressed(_ sender: Any) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
+        present(vc, animated: true, completion: nil)
     }
 
     /*

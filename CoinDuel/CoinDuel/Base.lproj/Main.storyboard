@@ -77,7 +77,7 @@
         <!--GameViewController-->
         <scene sceneID="vBP-Km-ENc">
             <objects>
-                <viewController title="GameViewController" id="FKk-Hh-yoa" customClass="GameViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" title="GameViewController" id="FKk-Hh-yoa" customClass="GameViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lYA-Lq-gpg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
