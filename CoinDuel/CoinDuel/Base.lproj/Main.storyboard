@@ -400,6 +400,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGP-UP-RD8">
+                                <rect key="frame" x="291" y="40" width="54" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="UBg-rn-yG4" eventType="touchUpInside" id="POD-TX-xpj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.1960784314" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -410,6 +420,7 @@
                             <constraint firstItem="BPm-Qz-A6J" firstAttribute="top" secondItem="LRP-I3-2zG" secondAttribute="bottom" constant="40" id="9Jz-4y-tOm"/>
                             <constraint firstItem="zV3-pp-8PO" firstAttribute="leading" secondItem="BPm-Qz-A6J" secondAttribute="trailing" constant="40" id="DBo-cc-Lir"/>
                             <constraint firstItem="Kwd-75-WdK" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="bottom" constant="60" id="GdU-id-lyv"/>
+                            <constraint firstItem="XFT-NL-vh0" firstAttribute="trailing" secondItem="gGP-UP-RD8" secondAttribute="trailing" constant="30" id="Obg-oS-8Ar"/>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="bottom" id="P3R-Da-E4L"/>
                             <constraint firstItem="LeA-qF-opa" firstAttribute="centerX" secondItem="sEn-Nv-VbL" secondAttribute="centerX" id="PAH-Fd-Coh"/>
                             <constraint firstItem="etA-Ia-1eZ" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="bottom" constant="4" id="SWw-d9-vp5"/>
@@ -418,6 +429,7 @@
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="leading" secondItem="XFT-NL-vh0" secondAttribute="leading" constant="30" id="Yeg-12-Iix"/>
                             <constraint firstItem="Uud-Af-qRi" firstAttribute="top" secondItem="BPm-Qz-A6J" secondAttribute="bottom" constant="5" id="Zg9-7m-BbI"/>
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="top" secondItem="XFT-NL-vh0" secondAttribute="top" constant="20" id="c4w-Ew-dpz"/>
+                            <constraint firstItem="gGP-UP-RD8" firstAttribute="top" secondItem="XFT-NL-vh0" secondAttribute="top" constant="20" id="lmx-A9-nC0"/>
                             <constraint firstItem="zV3-pp-8PO" firstAttribute="centerX" secondItem="bEC-1n-FFo" secondAttribute="centerX" id="nwh-Eb-ma6"/>
                             <constraint firstItem="LRP-I3-2zG" firstAttribute="top" secondItem="8vz-ip-5LW" secondAttribute="bottom" id="o5X-iK-0BH"/>
                             <constraint firstItem="LRP-I3-2zG" firstAttribute="centerX" secondItem="bEC-1n-FFo" secondAttribute="centerX" id="q18-lo-Woi"/>
