@@ -10,6 +10,8 @@ import UIKit
 
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var leaderboardTable: UITableView!
+    
     var users = [User]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +57,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                         }
                     }
                 }
+            }
+            
+            DispatchQueue.main.async() {
+                self.leaderboardTable.reloadData()
             }
         }
         
