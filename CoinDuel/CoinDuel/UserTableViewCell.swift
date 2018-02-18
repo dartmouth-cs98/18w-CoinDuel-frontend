@@ -12,6 +12,7 @@ class UserTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
