@@ -361,6 +361,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XFT-NL-vh0"/>
                     </view>
+                    <connections>
+                        <outlet property="leaderboardTable" destination="Kwd-75-WdK" id="h3P-iG-4On"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-dc-2mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,7 +371,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6iU-Z3-zfk"/>
         <segue reference="qjp-dc-ajf"/>
     </inferredMetricsTieBreakers>
 </document>
