@@ -11,6 +11,7 @@ import UIKit
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var leaderboardTable: UITableView!
+    @IBOutlet weak var firstImage: UIImageView!
     
     var users = [User]()
     
@@ -35,8 +36,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let apiUrl = NSURL(string:Constants.API + "user");
         
+        let apiUrl = NSURL(string:Constants.API + "user");
         let request = NSMutableURLRequest(url:apiUrl! as URL);
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             data, response, error in

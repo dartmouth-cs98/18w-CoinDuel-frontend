@@ -232,7 +232,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.12051394492063358" green="0.19649911133211467" blue="0.52885072969543145" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.19607843137254902" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WLo-dE-vaq" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="20" id="0ic-MV-at0"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="top" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="7PR-oB-0gK"/>
@@ -283,23 +283,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-I3-2zG">
-                                <rect key="frame" x="119" y="134" width="137" height="30"/>
+                                <rect key="frame" x="119" y="84" width="137" height="30"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="27"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vz-ip-5LW">
                                 <rect key="frame" x="30" y="40" width="46" height="34"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="19"/>
                                 <state key="normal" title="Game">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="FKk-Hh-yoa" kind="show" id="qjp-dc-ajf"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kwd-75-WdK">
-                                <rect key="frame" x="0.0" y="224" width="375" height="443"/>
+                                <rect key="frame" x="0.0" y="284" width="375" height="383"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" id="sEL-Cx-GXA" customClass="UserTableViewCell" customModule="CoinDuel" customModuleProvider="target">
@@ -355,27 +355,40 @@
                                     <outlet property="delegate" destination="UBg-rn-yG4" id="jYE-T3-Thy"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="B8a-H8-PtZ">
+                                <rect key="frame" x="162.5" y="154" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="IQo-yi-Nwb"/>
+                                    <constraint firstAttribute="height" constant="50" id="Wqf-91-WBl"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.1960784314" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="trailing" secondItem="Kwd-75-WdK" secondAttribute="trailing" id="1iY-hg-v8Q"/>
-                            <constraint firstItem="Kwd-75-WdK" firstAttribute="top" secondItem="LRP-I3-2zG" secondAttribute="bottom" constant="60" id="BFO-Qa-Xg2"/>
+                            <constraint firstItem="B8a-H8-PtZ" firstAttribute="centerX" secondItem="bEC-1n-FFo" secondAttribute="centerX" id="E1d-nO-lEV"/>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="bottom" id="P3R-Da-E4L"/>
                             <constraint firstItem="Kwd-75-WdK" firstAttribute="leading" secondItem="bEC-1n-FFo" secondAttribute="leading" id="Uv5-U6-r8l"/>
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="leading" secondItem="XFT-NL-vh0" secondAttribute="leading" constant="30" id="Yeg-12-Iix"/>
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="top" secondItem="XFT-NL-vh0" secondAttribute="top" constant="20" id="c4w-Ew-dpz"/>
-                            <constraint firstItem="LRP-I3-2zG" firstAttribute="top" secondItem="8vz-ip-5LW" secondAttribute="bottom" constant="60" id="o5X-iK-0BH"/>
+                            <constraint firstItem="B8a-H8-PtZ" firstAttribute="top" secondItem="LRP-I3-2zG" secondAttribute="bottom" constant="40" id="dvM-0R-LdP"/>
+                            <constraint firstItem="LRP-I3-2zG" firstAttribute="top" secondItem="8vz-ip-5LW" secondAttribute="bottom" constant="10" id="o5X-iK-0BH"/>
                             <constraint firstItem="LRP-I3-2zG" firstAttribute="centerX" secondItem="bEC-1n-FFo" secondAttribute="centerX" id="q18-lo-Woi"/>
+                            <constraint firstItem="Kwd-75-WdK" firstAttribute="top" secondItem="B8a-H8-PtZ" secondAttribute="bottom" constant="80" id="ynG-W0-mq7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XFT-NL-vh0"/>
                     </view>
                     <connections>
+                        <outlet property="FirstLeader" destination="B8a-H8-PtZ" id="LsV-8V-cMd"/>
                         <outlet property="leaderboardTable" destination="Kwd-75-WdK" id="h3P-iG-4On"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-dc-2mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2151" y="134"/>
+            <point key="canvasLocation" x="2149.5999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profile" width="225" height="225"/>
+    </resources>
 </document>
