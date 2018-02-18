@@ -11,7 +11,6 @@ import UIKit
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var leaderboardTable: UITableView!
-    @IBOutlet weak var firstImage: UIImageView!
     
     var users = [User]()
     
