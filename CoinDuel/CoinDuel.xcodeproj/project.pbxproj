@@ -20,6 +20,8 @@
 		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
 		50E499402038B64500DBCC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4993F2038B64500DBCC42 /* User.swift */; };
+		A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */; };
+		A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */; };
 		F824B1B220363D95008D1F14 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		509BC41C2030DF7B00702226 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		50E4993F2038B64500DBCC42 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +157,8 @@
 			children = (
 				F824B1B320363F88008D1F14 /* LoginViewController.swift */,
 				F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */,
+				A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */,
+				A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */,
 				1E33168B203672BF00BEE349 /* Constant.swift in Sources */,
 				F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */,
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
@@ -300,6 +307,7 @@
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
+				A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */,
 				1E56321920378D310043ECF9 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
