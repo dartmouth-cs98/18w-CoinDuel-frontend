@@ -18,9 +18,9 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func onEnterPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
-        present(vc, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+//        present(vc, animated: true, completion: nil)
     }
    
 }
