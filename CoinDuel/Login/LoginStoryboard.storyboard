@@ -37,6 +37,12 @@
                                     <action selector="onLoginPressed:" destination="x3h-7b-ihK" eventType="touchUpInside" id="D3Z-Bk-iSn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wrong password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptd-q9-f0L">
+                                <rect key="frame" x="148" y="288" width="79" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.87401439794873093" green="0.59076066531690119" blue="0.038684402464350551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -46,12 +52,15 @@
                             <constraint firstItem="EjS-wj-C7s" firstAttribute="top" secondItem="krH-z4-7Jw" secondAttribute="bottom" constant="14" id="7qZ-lN-4U5"/>
                             <constraint firstItem="krH-z4-7Jw" firstAttribute="leading" secondItem="EjS-wj-C7s" secondAttribute="leading" id="Gtz-rw-0th"/>
                             <constraint firstItem="krH-z4-7Jw" firstAttribute="trailing" secondItem="EjS-wj-C7s" secondAttribute="trailing" id="Ouv-hA-82R"/>
+                            <constraint firstItem="ptd-q9-f0L" firstAttribute="centerX" secondItem="8pv-Dd-nT3" secondAttribute="centerX" id="U9F-K4-wY5"/>
                             <constraint firstItem="krH-z4-7Jw" firstAttribute="top" secondItem="Zom-oC-h91" secondAttribute="top" constant="140" id="XxX-0y-0vQ"/>
+                            <constraint firstItem="ptd-q9-f0L" firstAttribute="top" secondItem="EjS-wj-C7s" secondAttribute="bottom" constant="10" id="iai-s7-x6C"/>
                             <constraint firstItem="0ca-p2-SYk" firstAttribute="centerX" secondItem="8pv-Dd-nT3" secondAttribute="centerX" id="jYW-rF-otp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zom-oC-h91"/>
                     </view>
                     <connections>
+                        <outlet property="failedLogin" destination="ptd-q9-f0L" id="6VH-PM-gUy"/>
                         <outlet property="password" destination="EjS-wj-C7s" id="CAV-e7-MMS"/>
                         <outlet property="username" destination="krH-z4-7Jw" id="P9F-ss-GuH"/>
                     </connections>
