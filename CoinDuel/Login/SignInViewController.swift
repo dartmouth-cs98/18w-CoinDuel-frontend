@@ -55,6 +55,9 @@ class SignInViewController: UIViewController {
                 
                 DispatchQueue.main.async() {
                     if (self.validated) {
+                        let defaults = UserDefaults.standard
+                        defaults.set(user, forKey: "username")
+                        
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
                         self.present(vc, animated: true, completion: nil)
