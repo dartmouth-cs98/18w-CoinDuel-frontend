@@ -11,6 +11,9 @@ import UIKit
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var leaderboardTable: UITableView!
+    @IBOutlet weak var firstPlaceLabel: UILabel!
+    @IBOutlet weak var secondPlaceLabel: UILabel!
+    @IBOutlet weak var thirdPlaceLabel: UILabel!
     
     var users = [User]()
     
@@ -29,6 +32,12 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         cell.placeLabel.text = String(indexPath.row + 1) + "."
         cell.nameLabel.text = user.username
         cell.scoreLabel.text = String(user.coinBalance)
+    
+        if user.username == UserDefaults.standard.string(forKey:"username") {
+            cell.placeLabel.textColor = UIColor.red
+            cell.nameLabel.textColor = UIColor.red
+            cell.scoreLabel.textColor = UIColor.red
+        }
         
         return cell
     }
@@ -50,18 +59,20 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                 if let response = json as? NSArray {
                     for key in response {
                         if let dict = key as? NSDictionary {
-                            if let name = dict.value(forKey: "username") as? String {
-                                if let coins = dict.value(forKey: "coinBalance") as? Int {
-                                    self.users.append(User(username: name, coinBalance: coins))
-                                }
+                            if let name = dict.value(forKey: "username") as? String, let coins = dict.value(forKey: "coinBalance") as? Int {
+                                self.users.append(User(username: name, coinBalance: coins))
                             }
                         }
                     }
+                    self.users = self.users.sorted(by: { $0.coinBalance > $1.coinBalance })
                 }
             }
             
             DispatchQueue.main.async() {
                 self.leaderboardTable.reloadData()
+                self.firstPlaceLabel.text = self.users[0].username
+                self.secondPlaceLabel.text = self.users[1].username
+                self.thirdPlaceLabel.text = self.users[2].username
             }
         }
         
