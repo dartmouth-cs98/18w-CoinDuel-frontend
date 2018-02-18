@@ -26,6 +26,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         let user = users[indexPath.row]
+        cell.placeLabel.text = String(indexPath.row + 1) + "."
         cell.nameLabel.text = user.username
         cell.scoreLabel.text = String(user.coinBalance)
         
