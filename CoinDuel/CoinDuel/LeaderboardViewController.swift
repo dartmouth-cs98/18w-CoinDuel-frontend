@@ -17,18 +17,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     var users = [User]()
     
-    @IBAction func logoutPressed(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
-        }
-        
-        let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
-        self.present(vc, animated: true, completion: nil)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count;
     }
