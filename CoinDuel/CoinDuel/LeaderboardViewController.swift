@@ -15,10 +15,15 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var secondPlaceLabel: UILabel!
     @IBOutlet weak var thirdPlaceLabel: UILabel!
     
-    var users = [User]()
+    var leaderboard: Leaderboard = Leaderboard()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.leaderboard.getCurrentLeaderboard(self)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count;
+        return self.leaderboard.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -28,7 +33,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             fatalError("The dequeued cell is not an instance of UserTableViewCell.")
         }
         
-        let user = users[indexPath.row]
+        let user = self.leaderboard.users[indexPath.row]
         cell.placeLabel.text = String(indexPath.row + 1) + "."
         cell.nameLabel.text = user.username
         cell.scoreLabel.text = String(user.coinBalance)
@@ -40,43 +45,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         return cell
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let apiUrl = NSURL(string:Constants.API + "user");
-        let request = NSMutableURLRequest(url:apiUrl! as URL);
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            data, response, error in
-            
-            if error != nil {
-                print("error connecting to server")
-                return
-            }
-            
-            if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
-                if let response = json as? NSArray {
-                    for key in response {
-                        if let dict = key as? NSDictionary {
-                            if let name = dict.value(forKey: "username") as? String, let coins = dict.value(forKey: "coinBalance") as? Int {
-                                self.users.append(User(username: name, coinBalance: coins))
-                            }
-                        }
-                    }
-                    self.users = self.users.sorted(by: { $0.coinBalance > $1.coinBalance })
-                }
-            }
-            
-            DispatchQueue.main.async() {
-                self.leaderboardTable.reloadData()
-                self.firstPlaceLabel.text = self.users[0].username
-                self.secondPlaceLabel.text = self.users[1].username
-                self.thirdPlaceLabel.text = self.users[2].username
-            }
-        }
-        
-        task.resume()
     }
 
     override func didReceiveMemoryWarning() {
