@@ -35,7 +35,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.submitButton.setTitle("Allocate 10 additional CapCoin", for: UIControlState .normal)
         self.submitButton.isEnabled = false
         
-        self.game.retrieveCurrentGame(self)
+        print("Updating")
+        self.game.retrieveUpdatedGame(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +54,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GameTableViewCell  else {
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
+        
+        cell.gameVC = self
+        cell.game = game // Give the cell access to the game so it can increment coinAmount
+        cell.indexPath = indexPath.row
 
         // Display varies depending on whether game is active
     
@@ -68,7 +73,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinPriceLabel.isHidden = true
             cell.coinReturnLabel.isHidden = true
             
-            self.game.amounts[indexPath.row] = cell.coinAmountStepper.value
+            cell.coinAmountStepper.value = self.game.amounts[indexPath.row]
             
             let remaining = 10.0 - self.game.totalAmount()
             if remaining > 0.0 {
@@ -92,10 +97,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let alert = UIAlertController(title: "Network Error", message: "We could not connect to the server.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func changeCoinAmount(_ sender: UIStepper, forEvent event: UIEvent) {
-        gameTableView.reloadData()
     }
     
     @IBAction func submitButtonPress(_ sender: UIButton) {
