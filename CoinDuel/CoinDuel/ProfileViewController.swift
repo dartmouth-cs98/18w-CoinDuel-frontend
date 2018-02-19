@@ -12,8 +12,10 @@ import UIKit
 class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserLabel.text = UserDefaults.standard.string(forKey:"username")
     }
     
+    @IBOutlet weak var UserLabel: UILabel!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,4 +32,5 @@ class ProfileViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
         self.present(vc, animated: true, completion: nil)
     }
+
 }
