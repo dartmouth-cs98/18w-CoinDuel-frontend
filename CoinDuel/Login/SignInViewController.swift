@@ -18,7 +18,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        failedLogin.isHidden = true
+
         // Do any additional setup after loading the view.
     }
 
@@ -70,16 +70,14 @@ class SignInViewController: UIViewController {
             
             task.resume()
         }
+        else{
+            let alert = UIAlertController(title: "Invalid Parameters", message: "Enter your username and password!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+                print("You've pressed default");
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
