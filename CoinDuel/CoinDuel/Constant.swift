@@ -10,9 +10,8 @@ import Foundation
 
 struct Constants {
     static let API = "https://coinduel-cs98.herokuapp.com/api/"
-//    static let API = "http://localhost:9000/api/"
-    static let TEMP_USER_ID = "5a8607d4971c50fbf29726a2" // Get rid of this once authentication enabled
-}   
+//  static let API = "http://localhost:9000/api/"
+}
 
 enum ServerError: Error {
     case urlError(reason: String)
