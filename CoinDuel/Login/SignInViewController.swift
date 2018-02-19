@@ -28,6 +28,8 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func onLoginPressed(_ sender: Any) {
+        var user_id = ""
+        
         if let user = username.text, !user.isEmpty, let pass = password.text, !pass.isEmpty {
             let apiUrl = NSURL(string:Constants.API + "user");
             let request = NSMutableURLRequest(url:apiUrl! as URL);
@@ -43,9 +45,11 @@ class SignInViewController: UIViewController {
                     if let response = json as? NSArray {
                         for key in response {
                             if let dict = key as? NSDictionary {
-                                if let name = dict.value(forKey: "username") as? String, let pw = dict.value(forKey: "password") as? String {
+                                print(dict)
+                                if let name = dict.value(forKey: "username") as? String, let pw = dict.value(forKey: "password") as? String, let id = dict.value(forKey: "id") as? String {
                                     if user == name, pass == pw {
                                         self.validated = true
+                                        user_id = id
                                     }
                                 }
                             }
@@ -57,6 +61,7 @@ class SignInViewController: UIViewController {
                     if (self.validated) {
                         let defaults = UserDefaults.standard
                         defaults.set(user, forKey: "username")
+                        defaults.set(user_id, forKey: "id")
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController

@@ -30,7 +30,7 @@ class Game {
     func updateGame(_ gameVC:GameViewController) {
         self.coins = [String]()
         self.amounts = []
-        self.getEntryApi(gameVC, Constants.API + "game/" + Constants.TEMP_USER_ID + "/" + self.id)
+        self.getEntryApi(gameVC, Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)
     }
     
     func retrieveCurrentGame(_ gameVC:GameViewController) {
@@ -54,7 +54,7 @@ class Game {
         let json: [String: [Array<String>]] = ["choices": choices]
 
         if let jsonData = try? JSONSerialization.data(withJSONObject: json) {
-            let url = URL(string: Constants.API + "game/" + Constants.TEMP_USER_ID + "/" + self.id)!
+            let url = URL(string: Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
 
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
