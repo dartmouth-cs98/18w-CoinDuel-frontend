@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    
+    @IBOutlet weak var OldPassword: UITextField!
+    @IBOutlet weak var NewPassword: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
