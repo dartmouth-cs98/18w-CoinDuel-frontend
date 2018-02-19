@@ -100,11 +100,15 @@ class Game {
             if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
                 if let response = json as? NSArray {
                     for key in response {
-                        if let dict = key as? NSDictionary {
-                            if let currencies = dict.value(forKey: "currency_list") as? NSArray {
+                        if let dict = key as? NSDictionary {j
+                            if let currencies = dict.value(forKey: "coins") as? NSArray {
                                 for currency in currencies {
-                                    self.coins.append(String(describing: currency))
-                                    self.amounts.append(0.0)
+                                    if let currencyEntry = currency as? NSDictionary {
+                                        if let currencyName = currencyEntry.value(forKey: "name") {
+                                            self.coins.append(String(describing: currencyName))
+                                            self.amounts.append(0.0)
+                                        }
+                                    }
                                 }
                             }
                             if let gameId = dict.value(forKey: "_id") as? String {
