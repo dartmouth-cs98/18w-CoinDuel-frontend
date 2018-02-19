@@ -114,7 +114,7 @@
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="wiH-Pa-Dq7">
                                                     <rect key="frame" x="271" y="8" width="94" height="29"/>
                                                     <connections>
-                                                        <action selector="changeCoinAmount:forEvent:" destination="FKk-Hh-yoa" eventType="valueChanged" id="sy4-sE-P3w"/>
+                                                        <action selector="coinAmountChanged:" destination="buj-xw-9U8" eventType="valueChanged" id="VBi-IB-zfE"/>
                                                     </connections>
                                                 </stepper>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 10.00%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="70" translatesAutoresizingMaskIntoConstraints="NO" id="aGt-mZ-Oo5">

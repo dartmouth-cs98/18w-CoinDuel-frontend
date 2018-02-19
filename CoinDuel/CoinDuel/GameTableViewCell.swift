@@ -13,8 +13,12 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var coinAmountLabel: UILabel!
     @IBOutlet weak var coinAmountStepper: UIStepper!
     @IBOutlet weak var coinReturnLabel: UILabel!
-    
     @IBOutlet weak var coinPriceLabel: UILabel!
+    
+    var indexPath = 0
+    var game: Game = Game()
+    var gameVC: GameViewController = GameViewController()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +28,10 @@ class GameTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    @IBAction func coinAmountChanged(_ sender: UIStepper) {
+        self.game.amounts[self.indexPath] = sender.value
+        self.gameVC.gameTableView.reloadData()
     }
     
 }
