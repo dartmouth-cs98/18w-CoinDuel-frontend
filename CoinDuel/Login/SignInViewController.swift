@@ -45,7 +45,6 @@ class SignInViewController: UIViewController {
                     if let response = json as? NSArray {
                         for key in response {
                             if let dict = key as? NSDictionary {
-                                print(dict)
                                 if let name = dict.value(forKey: "username") as? String, let pw = dict.value(forKey: "password") as? String, let id = dict.value(forKey: "id") as? String {
                                     if user == name, pass == pw {
                                         self.validated = true
