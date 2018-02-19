@@ -83,7 +83,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4n-1HR">
-                                <rect key="frame" x="0.0" y="212" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="212" width="375" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="GameTableViewCell" id="buj-xw-9U8" customClass="GameTableViewCell" customModule="CoinDuel" customModuleProvider="target">
@@ -193,7 +193,7 @@
                                     <constraint firstAttribute="height" constant="80" id="xhe-Di-cFf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="SUBMIT">
+                                <state key="normal" title="Submit">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -226,13 +226,13 @@
                         <color key="backgroundColor" red="0.12156862745098039" green="0.19607843137254902" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WLo-dE-vaq" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="20" id="0ic-MV-at0"/>
-                            <constraint firstItem="9Rn-65-6gk" firstAttribute="top" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="7PR-oB-0gK"/>
                             <constraint firstItem="Tva-js-y7R" firstAttribute="bottom" secondItem="uic-rp-aTm" secondAttribute="bottom" id="F9o-m5-yRc"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="Ps4-7y-zkq" secondAttribute="trailing" constant="30" id="FhF-Ky-Gm6"/>
                             <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="10" id="G9G-2R-gjh" userLabel="Tomorrow, 9AM EST.top = Next Game.bottom + 10"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="4Mq-4n-1HR" secondAttribute="trailing" id="Jtv-z0-L73"/>
                             <constraint firstItem="XpZ-PS-Om2" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="KAb-jY-t6K"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="MKD-FP-mjk"/>
+                            <constraint firstAttribute="bottom" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="OSs-63-DC4"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="SvU-Eo-oQW"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" id="TWl-mo-VnL"/>
                             <constraint firstItem="Ps4-7y-zkq" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="Umd-p1-jNP"/>
@@ -244,7 +244,6 @@
                             <constraint firstItem="Tva-js-y7R" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="20" id="nFH-Em-Kpi"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="uic-rp-aTm" secondAttribute="trailing" constant="10" id="pS3-Zx-rgu"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="r4T-JL-TVI" userLabel="Table View.centerX = centerX"/>
-                            <constraint firstItem="9Rn-65-6gk" firstAttribute="top" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="rkK-Vr-fiB" userLabel="Table View.bottom = SUBMIT &gt;&gt;&gt;.top"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="90" id="sta-pP-tS3"/>
                             <constraint firstItem="WLo-dE-vaq" firstAttribute="centerY" secondItem="VV8-pq-nHY" secondAttribute="centerY" id="uCf-Tx-6vz"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="top" secondItem="Iwe-rj-qlY" secondAttribute="bottom" constant="50" id="ymm-OB-zYQ" userLabel="Table View.top = Tomorrow, 9AM EST.bottom + 30"/>
@@ -260,12 +259,11 @@
                         <outlet property="gameTimeLabel" destination="Iwe-rj-qlY" id="Xf8-6e-fsb"/>
                         <outlet property="nextGameLabel" destination="VV8-pq-nHY" id="O8f-vt-AkB"/>
                         <outlet property="submitButton" destination="9Rn-65-6gk" id="HNT-BN-YBv"/>
-                        <outlet property="tableViewConstraint" destination="rkK-Vr-fiB" id="u70-3F-5c8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="134"/>
+            <point key="canvasLocation" x="1120.8" y="133.5832083958021"/>
         </scene>
         <!--LeaderboardViewController-->
         <scene sceneID="sKs-tj-yXP">
