@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C26799B7B63DAD4A25210BD /* Pods_CoinDuel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */; };
 		1E2CA8B3203AF78D0099193D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */; };
 		1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E331688203637BD00BEE349 /* GameTableViewCell.swift */; };
 		1E33168B203672BF00BEE349 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E33168A203672BF00BEE349 /* Constant.swift */; };
@@ -67,8 +68,11 @@
 		509BC41C2030DF7B00702226 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		50E4993F2038B64500DBCC42 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		69879681FD0E4D4187C6C5A9 /* Pods-CoinDuel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.release.xcconfig"; sourceTree = "<group>"; };
+		6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinDuel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.debug.xcconfig"; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C26799B7B63DAD4A25210BD /* Pods_CoinDuel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B688D068A9ADE3CFECF7C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */,
+				69879681FD0E4D4187C6C5A9 /* Pods-CoinDuel.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		1EB504B6201A7B8700BB76AA = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +120,8 @@
 				1EB504D6201A7B8700BB76AA /* CoinDuelTests */,
 				1EB504E1201A7B8700BB76AA /* CoinDuelUITests */,
 				1EB504C0201A7B8700BB76AA /* Products */,
+				01B688D068A9ADE3CFECF7C5 /* Pods */,
+				3774B588075064FE356E593C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +174,14 @@
 			path = CoinDuelUITests;
 			sourceTree = "<group>";
 		};
+		3774B588075064FE356E593C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F824B1B520363F96008D1F14 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,9 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1EB504E7201A7B8700BB76AA /* Build configuration list for PBXNativeTarget "CoinDuel" */;
 			buildPhases = (
+				4380D4264A4C593C8CC793E9 /* [CP] Check Pods Manifest.lock */,
 				1EB504BB201A7B8700BB76AA /* Sources */,
 				1EB504BC201A7B8700BB76AA /* Frameworks */,
 				1EB504BD201A7B8700BB76AA /* Resources */,
+				A7891779FB54B95880422EEB /* [CP] Embed Pods Frameworks */,
+				414D9392C0530507963206AB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,6 +325,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		414D9392C0530507963206AB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4380D4264A4C593C8CC793E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinDuel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7891779FB54B95880422EEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1EB504BB201A7B8700BB76AA /* Sources */ = {
@@ -480,6 +563,7 @@
 		};
 		1EB504E8201A7B8700BB76AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -495,6 +579,7 @@
 		};
 		1EB504E9201A7B8700BB76AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69879681FD0E4D4187C6C5A9 /* Pods-CoinDuel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

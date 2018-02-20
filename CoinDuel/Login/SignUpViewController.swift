@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignUpViewController: UIViewController {
 
@@ -56,39 +57,64 @@ class SignUpViewController: UIViewController {
         else{
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+
             let params = ["username": username.text, "email": email.text, "password": password.text]
+            let headers: HTTPHeaders = [
+                "Accept": "application/json"
+            ]
 
+            print(params, headers)
             let apiUrl = URL(string: Constants.API + "signup")
-            var request = URLRequest(url:apiUrl! as URL);
 
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            let parameters = ["username": username.text, "email": email.text, "password": password.text]
 
-            guard let body = try? JSONSerialization.data(withJSONObject: params, options: []) else{
-                print("error making body"); return
-            }
-
-            request.httpBody = body
-
-            let session = URLSession.shared
-            session.dataTask(with: request, completionHandler: { (data, response, error) in
-                if let httpResponse = response as? HTTPURLResponse {
-                    if (httpResponse.statusCode == 200){
-                        self.validated = true
-                        DispatchQueue.main.async {
-                            self.activityIndicator.isHidden = true
-                            self.activityIndicator.stopAnimating()
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
-                            self.present(vc, animated: true, completion: nil)
-                        }
+            // Both calls are equivalent
+            Alamofire.request(apiUrl!, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { (response) in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    DispatchQueue.main.async {
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
+                        self.present(vc, animated: true, completion: nil)
                     }
-                }
-
-                if let error = error {
+                case .failure(let error):
                     print(error)
                 }
-            }).resume()
+            })
+
+//            var request = URLRequest(url:apiUrl! as URL);
+//
+//            request.httpMethod = "POST"
+//            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//            guard let body = try? JSONSerialization.data(withJSONObject: params, options: []) else{
+//                print("error making body"); return
+//            }
+//
+//            request.httpBody = body
+//
+//            let session = URLSession.shared
+//            session.dataTask(with: request, completionHandler: { (data, response, error) in
+//                if let httpResponse = response as? HTTPURLResponse {
+//                    if (httpResponse.statusCode == 200){
+//                        self.validated = true
+//                        DispatchQueue.main.async {
+//                            self.activityIndicator.isHidden = true
+//                            self.activityIndicator.stopAnimating()
+//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                            let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
+//                            self.present(vc, animated: true, completion: nil)
+//                        }
+//                    }
+//                }
+//
+//                if let error = error {
+//                    print(error)
+//                }
+//            }).resume()
         }
 
     }

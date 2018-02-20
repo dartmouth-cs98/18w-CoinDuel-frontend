@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
 
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -20,6 +23,18 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.leaderboard.getCurrentLeaderboard(self)
+
+//        sample alamo call
+        let apiURL = String(Constants.API + "user")
+        Alamofire.request(apiURL).responseJSON { (response) in
+            do{
+                let json = try JSON(data: response.data!)
+                print(json.array!.count)
+            } catch{
+                print("error loading json")
+            }
+        }
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
