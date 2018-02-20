@@ -42,17 +42,20 @@ class Game {
     
     func submitEntry(_ gameVC:GameViewController) {
         // Submits the entry to the server
-
-        var choices = [Array<String>]()
+        var choices = [[String: String]]()
         var x = 0
         for choice in self.coins {
-            let thisChoice = [String(choice), String(self.amounts[x])]
+            var thisChoice = [String: String]()
+            thisChoice["symbol"] = String(describing: choice)
+            thisChoice["allocation"] = String(self.amounts[x])
             choices.append(thisChoice)
             x += 1
         }
         
+        var json = ["choices": choices]
+        
         // Credit for following API technique: https://stackoverflow.com/questions/31937686/how-to-make-http-post-request-with-json-body-in-swift
-        let json: [String: [Array<String>]] = ["choices": choices]
+//        let json: [String: [Array<String>]] = ["choices": choices]
 
         if let jsonData = try? JSONSerialization.data(withJSONObject: json) {
             let url = URL(string: Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
@@ -157,12 +160,13 @@ class Game {
                 
                 if let dict = json as? NSDictionary {
                     if let choices = dict.value(forKey: "choices") as? NSArray {
-                        for choice in choices {
-                            if let selection = choice as? NSArray {
-                                let coin = selection[0] as! String
-                                let amount = Double(selection[1] as! String)
+                        for choiceDict in choices {
+                            if let choice = choiceDict as? NSDictionary {
+                                print(choice)
+                                let coin = choice.value(forKey: "symbol") as! String
+                                let amount = choice.value(forKey: "allocation") as! Double
                                 self.coins.append(coin)
-                                self.amounts.append(amount!)
+                                self.amounts.append(amount)
                             }
                         }
                     }
