@@ -36,7 +36,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.submitButton.isEnabled = false
         
         print("Updating")
-        self.game.retrieveUpdatedGame(self)
+        self.game.getCurrentGame(self)
     }
 
     override func didReceiveMemoryWarning() {

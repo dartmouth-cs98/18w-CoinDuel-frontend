@@ -7,18 +7,23 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 class Game {
     var id:String
     var coins:[String] = [String]()
     var amounts:[Double] = []
+    var gameStarted:Bool
     
     init() {
         self.id = ""
         self.coins = [String]()
         self.amounts = []
+        self.gameStarted = false
     }
     
+    // Returns total CapCoin allocated so far
     func totalAmount() -> Double {
         var total = 0.0
         for amount in amounts {
@@ -27,17 +32,71 @@ class Game {
         return total
     }
     
+    // Makes request and parses JSON
+    // Followed tutorial from https://github.com/SwiftyJSON/SwiftyJSON for all Alamofire requests
+    func getCurrentGame(_ gameVC:GameViewController) {
+        let url = Constants.API + "game/"
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    // Get game ID
+                    self.id = json[0]["_id"].stringValue
+
+                    // Get all coin names, default CapCoin allocation to 0
+                    for coin in json[0]["coins"] {
+                        self.coins.append(coin.1["name"].stringValue)
+                        self.amounts.append(0.0)
+                    }
+                    
+                    // Update game (get entry if have one)
+                    self.updateGame(gameVC)
+                case .failure(let error):
+                    gameVC.networkError()
+                    print(error)
+            }
+        }
+    }
+    
     func updateGame(_ gameVC:GameViewController) {
-        print("Getting entry")
-        self.getEntryApi(gameVC, Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)
-    }
-    
-    func retrieveCurrentGame(_ gameVC:GameViewController) {
-        self.getCurrentGameApi(gameVC, Constants.API + "game/", false)
-    }
-    
-    func retrieveUpdatedGame(_ gameVC:GameViewController) {
-        self.getCurrentGameApi(gameVC, Constants.API + "game/", true)
+        let url = Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    print("Json:")
+                    print(json)
+                    print(".")
+                    
+                    // Reset coins and amounts since we have an entry
+                    self.coins = [String]()
+                    self.amounts = []
+                
+                    // Get all coin names, default CapCoin allocation to 0
+                    for coin in json["choices"] {
+                        self.coins.append(coin.1["symbol"].stringValue)
+                        self.amounts.append(coin.1["allocation"].doubleValue)
+                    }
+                
+                    // Reload tableview
+                    DispatchQueue.main.async() {
+                        gameVC.gameTableView.reloadData()
+                    }
+                case .failure(let error):
+                    if String(describing: error) == Constants.MissingEntryError {
+                        // All OK, just no entry yet. Reload tableview
+                        DispatchQueue.main.async() {
+                            gameVC.gameTableView.reloadData()
+                        }
+                    } else {
+                        gameVC.networkError()
+                        print(error)
+                    }
+            }
+        }
     }
     
     func submitEntry(_ gameVC:GameViewController) {
@@ -85,98 +144,5 @@ class Game {
         } else {
             print("Failed conversion to JSON")
         }
-    }
-    
-    func getCurrentGameApi(_ gameVC:GameViewController, _ api:String, _ update:Bool) {
-        let apiUrl = NSURL(string: api)
-        let request = NSMutableURLRequest(url:apiUrl! as URL);
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            
-            // Error checking
-            guard error == nil else {
-                gameVC.networkError()
-                return
-            }
-            
-            // Parse the JSON response, we only care about the currency_list here
-            
-            if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
-                if let response = json as? NSArray {
-                    for key in response {
-                        if let dict = key as? NSDictionary {
-                            if let currencies = dict.value(forKey: "coins") as? NSArray {
-                                for currency in currencies {
-                                    if let currencyEntry = currency as? NSDictionary {
-                                        if let currencyName = currencyEntry.value(forKey: "name") {
-                                            self.coins.append(String(describing: currencyName))
-                                            self.amounts.append(0.0)
-                                        }
-                                    }
-                                }
-                            }
-                            if let gameId = dict.value(forKey: "_id") as? String {
-                                print("Setting id")
-                                print(gameId)
-                                self.id = gameId
-                            }
-                        }
-                    }
-                }
-            }
-            
-            DispatchQueue.main.async() {
-                if update {
-                    self.updateGame(gameVC)
-                } else {
-                    gameVC.gameTableView.reloadData()
-                }
-            }
-        }
-        
-        task.resume()
-    }
-    
-    func getEntryApi(_ gameVC:GameViewController, _ api:String) {
-        let apiUrl = NSURL(string: api)
-        let request = NSMutableURLRequest(url:apiUrl! as URL);
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            data, response, error in
-            
-            // Error checking
-            guard error == nil else {
-                print("Here")
-                gameVC.networkError()
-                return
-            }
-            
-            // Parse the JSON response, we only care about the choices here
-            
-            if let json = try? JSONSerialization.jsonObject(with: data!, options: []) {
-                self.coins = [String]()
-                self.amounts = []
-                print("Coins and amounts after getCurrent before getEntry")
-                print(self.coins)
-                print(self.amounts)
-                
-                if let dict = json as? NSDictionary {
-                    if let choices = dict.value(forKey: "choices") as? NSArray {
-                        for choiceDict in choices {
-                            if let choice = choiceDict as? NSDictionary {
-                                print(choice)
-                                let coin = choice.value(forKey: "symbol") as! String
-                                let amount = choice.value(forKey: "allocation") as! Double
-                                self.coins.append(coin)
-                                self.amounts.append(amount)
-                            }
-                        }
-                    }
-                }
-            }
-            
-            DispatchQueue.main.async() {
-                gameVC.gameTableView.reloadData()
-            }
-        }
-        task.resume()
     }
 }
