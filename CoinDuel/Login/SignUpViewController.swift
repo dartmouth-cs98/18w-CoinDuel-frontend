@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class SignUpViewController: UIViewController {
 
@@ -26,6 +27,7 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.activityIndicator.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -57,33 +59,56 @@ class SignUpViewController: UIViewController {
         else{
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+            var user_id: String = ""
 
-            let params = ["username": username.text, "email": email.text, "password": password.text]
-            let headers: HTTPHeaders = [
-                "Accept": "application/json"
-            ]
 
-            print(params, headers)
             let apiUrl = URL(string: Constants.API + "signup")
 
-            let parameters = ["username": username.text, "email": email.text, "password": password.text]
+            let params = ["username": self.username.text!, "email": self.email.text!, "password": self.password.text!]
+            Alamofire.request(apiUrl!, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
 
-            // Both calls are equivalent
-            Alamofire.request(apiUrl!, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { (response) in
-                switch response.result {
-                case .success:
-                    print("Validation Successful")
-                    DispatchQueue.main.async {
-                        self.activityIndicator.isHidden = true
-                        self.activityIndicator.stopAnimating()
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
-                        self.present(vc, animated: true, completion: nil)
+
+                if let statusCode = response.response?.statusCode {
+                    if (statusCode == 200){
+                        do{
+                            var jsonArray = try JSON(data: response.data!)
+                            user_id = jsonArray["_id"].description
+                        } catch{
+                            print("error loading json")
+                        }
+                        DispatchQueue.main.async {
+                            let defaults = UserDefaults.standard
+                            defaults.set(self.username.text!, forKey: "username")
+                            defaults.set(user_id, forKey: "id")
+                            self.activityIndicator.isHidden = true
+                            self.activityIndicator.stopAnimating()
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
+                            self.present(vc, animated: true, completion: nil)
+                        }
+                    } else {
+                        let alert = UIAlertController(title: "Error Signing Up", message: "Please try again", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
                     }
-                case .failure(let error):
-                    print(error)
+
                 }
             })
+
+
+//            guard let body = try? JSONSerialization.data(withJSONObject: parameters, options: []) else{
+//                print("error making body"); return
+//            }
+//
+//            var request = URLRequest(url: apiUrl!)
+//            request.httpMethod = HTTPMethod.post.rawValue
+//            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//            request.httpBody = body
+//
+//            Alamofire.request(request).responseData(queue: DispatchQueue?, completionHandler: { (data) in
+//                print(data)
+//            })
 
 //            var request = URLRequest(url:apiUrl! as URL);
 //
