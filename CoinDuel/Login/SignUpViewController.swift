@@ -80,67 +80,32 @@ class SignUpViewController: UIViewController {
                             let defaults = UserDefaults.standard
                             defaults.set(self.username.text!, forKey: "username")
                             defaults.set(user_id, forKey: "id")
-                            self.activityIndicator.isHidden = true
-                            self.activityIndicator.stopAnimating()
+                            self.hideSpinner()
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
                             self.present(vc, animated: true, completion: nil)
                         }
-                    } else {
-                        let alert = UIAlertController(title: "Error Signing Up", message: "Please try again", preferredStyle: .alert)
+                    } else if(statusCode == 422) {
+                        let alert = UIAlertController(title: "Please Try Again!", message: "That username has been taken!", preferredStyle: .alert)
                         let action = UIAlertAction(title: "Ok", style: .default)
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)
+                        self.hideSpinner()
+                    } else{
+                        let alert = UIAlertController(title: "Error!", message: "Something went wrong.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "Ok", style: .default)
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                        self.hideSpinner()
                     }
 
                 }
             })
-
-
-//            guard let body = try? JSONSerialization.data(withJSONObject: parameters, options: []) else{
-//                print("error making body"); return
-//            }
-//
-//            var request = URLRequest(url: apiUrl!)
-//            request.httpMethod = HTTPMethod.post.rawValue
-//            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//            request.httpBody = body
-//
-//            Alamofire.request(request).responseData(queue: DispatchQueue?, completionHandler: { (data) in
-//                print(data)
-//            })
-
-//            var request = URLRequest(url:apiUrl! as URL);
-//
-//            request.httpMethod = "POST"
-//            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//            guard let body = try? JSONSerialization.data(withJSONObject: params, options: []) else{
-//                print("error making body"); return
-//            }
-//
-//            request.httpBody = body
-//
-//            let session = URLSession.shared
-//            session.dataTask(with: request, completionHandler: { (data, response, error) in
-//                if let httpResponse = response as? HTTPURLResponse {
-//                    if (httpResponse.statusCode == 200){
-//                        self.validated = true
-//                        DispatchQueue.main.async {
-//                            self.activityIndicator.isHidden = true
-//                            self.activityIndicator.stopAnimating()
-//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                            let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
-//                            self.present(vc, animated: true, completion: nil)
-//                        }
-//                    }
-//                }
-//
-//                if let error = error {
-//                    print(error)
-//                }
-//            }).resume()
         }
 
+    }
+    func hideSpinner() ->  Void{
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
     }
 }
