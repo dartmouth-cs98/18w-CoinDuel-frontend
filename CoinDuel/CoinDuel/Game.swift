@@ -42,8 +42,9 @@ class Game {
                 case .success(let value):
                     let json = JSON(value)
                     
-                    // Get game ID
+                    // Get game ID and whether it has started
                     self.id = json[0]["_id"].stringValue
+                    self.gameStarted = json[0]["started"].boolValue
 
                     // Get all coin names, default CapCoin allocation to 0
                     for coin in json[0]["coins"] {
@@ -111,10 +112,9 @@ class Game {
             x += 1
         }
         
-        var json = ["choices": choices]
+        let json = ["choices": choices]
         
         // Credit for following API technique: https://stackoverflow.com/questions/31937686/how-to-make-http-post-request-with-json-body-in-swift
-//        let json: [String: [Array<String>]] = ["choices": choices]
 
         if let jsonData = try? JSONSerialization.data(withJSONObject: json) {
             let url = URL(string: Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
