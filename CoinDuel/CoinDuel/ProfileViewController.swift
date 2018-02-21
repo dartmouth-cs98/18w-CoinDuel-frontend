@@ -11,19 +11,27 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmPassword: UITextField!
+    @IBOutlet weak var instructionText: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var OldPassword: UITextField!
-    @IBOutlet weak var NewPassword: UITextField!
+    @IBOutlet weak var UserLabel: UILabel!
     
-    @IBOutlet weak var Username: UITextField!
-    @IBOutlet weak var NewUsername: UITextField!
+    @IBAction func submitClicked(_ sender: Any) {
+        submitButton.isHidden = true
+        OldPassword.text = ""
+        OldPassword.placeholder = "new password"
+        instructionText.text = "Enter new password"
+        confirmPassword.isHidden = false
+        confirmButton.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
     }
     
-    @IBOutlet weak var UserLabel: UILabel!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
