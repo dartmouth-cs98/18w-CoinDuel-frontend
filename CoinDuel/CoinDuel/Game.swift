@@ -30,6 +30,15 @@ class Game {
         return total
     }
     
+    // Returns total CapCoin return so far
+    func totalReturn() -> Double {
+        var total = 0.0
+        for coin in coins {
+            total += coin.capCoinReturn
+        }
+        return total
+    }
+    
     // Makes request and parses JSON
     // Followed tutorial from https://github.com/SwiftyJSON/SwiftyJSON for all Alamofire requests
     func getCurrentGame(_ gameVC:GameViewController) {

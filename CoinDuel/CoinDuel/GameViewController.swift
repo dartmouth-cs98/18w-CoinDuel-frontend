@@ -70,6 +70,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinNameLabel.text = self.game.coins[indexPath.row].ticker + " (" + String(Int(self.game.coins[indexPath.row].allocation)) + ")"
             cell.coinPriceLabel.text = "$" + String(Double(Int(self.game.coins[indexPath.row].currentPrice * 100)) / 100.00)
             cell.coinReturnLabel.text = String(Double(Int(self.game.coins[indexPath.row].percentReturn * 100)) / 100.00) + "%"
+            gameReturnLabel.text = "+ " + String(Double(Int(self.game.totalReturn() * 100)) / 100.00) + " CC"
         } else {
             cell.coinAmountStepper.isHidden = false
             cell.coinAmountLabel.isHidden = false
