@@ -30,7 +30,7 @@ class GameTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func coinAmountChanged(_ sender: UIStepper) {
-        self.game.amounts[self.indexPath] = sender.value
+        self.game.coins[self.indexPath].allocation = sender.value
         self.gameVC.gameTableView.reloadData()
     }
     
