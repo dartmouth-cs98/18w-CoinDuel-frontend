@@ -80,6 +80,9 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitClicked:" destination="2va-lX-zsX" eventType="touchUpInside" id="Edv-LA-2qB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1059823246" green="0.17280516879999999" blue="0.46508169420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,6 +108,8 @@
                     <connections>
                         <outlet property="OldPassword" destination="Eqr-zF-g94" id="1EV-oV-W6M"/>
                         <outlet property="UserLabel" destination="0xp-4k-DFT" id="hFN-WM-34H"/>
+                        <outlet property="instructionText" destination="BX5-3u-lAm" id="DVY-ll-SaJ"/>
+                        <outlet property="submitButton" destination="Dfv-Oz-V5G" id="b9b-Kz-qLC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npx-Kz-6eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
