@@ -12,6 +12,7 @@
 		1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E331688203637BD00BEE349 /* GameTableViewCell.swift */; };
 		1E33168B203672BF00BEE349 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E33168A203672BF00BEE349 /* Constant.swift */; };
 		1E56321920378D310043ECF9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E56321820378D310043ECF9 /* Game.swift */; };
+		1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E93AE45203CEACB006CE5E5 /* Coin.swift */; };
 		1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504C2201A7B8700BB76AA /* AppDelegate.swift */; };
 		1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504C4201A7B8700BB76AA /* GameViewController.swift */; };
 		1EB504C8201A7B8700BB76AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504C6201A7B8700BB76AA /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		1E331688203637BD00BEE349 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		1E33168A203672BF00BEE349 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1E56321820378D310043ECF9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		1E93AE45203CEACB006CE5E5 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		1EB504BF201A7B8700BB76AA /* CoinDuel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinDuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB504C2201A7B8700BB76AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EB504C4201A7B8700BB76AA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
 				1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */,
 				1E56321820378D310043ECF9 /* Game.swift */,
+				1E93AE45203CEACB006CE5E5 /* Coin.swift */,
 				1E33168A203672BF00BEE349 /* Constant.swift */,
 				1EB504C6201A7B8700BB76AA /* Main.storyboard */,
 				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
@@ -393,6 +396,7 @@
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
 				1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */,
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
+				1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */,
 				1E2CA8B3203AF78D0099193D /* ProfileViewController.swift in Sources */,
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,

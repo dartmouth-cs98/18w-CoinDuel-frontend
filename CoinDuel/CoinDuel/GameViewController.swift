@@ -36,7 +36,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.submitButton.isEnabled = false
         
         print("Updating")
-        self.game.retrieveUpdatedGame(self)
+        self.game.getCurrentGame(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,14 +66,18 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinAmountLabel.isHidden = true
             cell.coinPriceLabel.isHidden = false
             cell.coinReturnLabel.isHidden = false
-            cell.coinNameLabel.text = self.game.coins[indexPath.row] + " (" + String(Int(self.game.amounts[indexPath.row])) + ")"
+            
+            cell.coinNameLabel.text = self.game.coins[indexPath.row].ticker + " (" + String(Int(self.game.coins[indexPath.row].allocation)) + ")"
+            cell.coinPriceLabel.text = "$" + String(Double(Int(self.game.coins[indexPath.row].currentPrice * 100)) / 100.00)
+            cell.coinReturnLabel.text = String(Double(Int(self.game.coins[indexPath.row].percentReturn * 100)) / 100.00) + "%"
+            gameReturnLabel.text = "+ " + String(Double(Int(self.game.totalReturn() * 100)) / 100.00) + " CC"
         } else {
             cell.coinAmountStepper.isHidden = false
             cell.coinAmountLabel.isHidden = false
             cell.coinPriceLabel.isHidden = true
             cell.coinReturnLabel.isHidden = true
             
-            cell.coinAmountStepper.value = self.game.amounts[indexPath.row]
+            cell.coinAmountStepper.value = self.game.coins[indexPath.row].allocation
             
             let remaining = 10.0 - self.game.totalAmount()
             if remaining > 0.0 {
@@ -83,8 +87,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.submitButton.setTitle("Submit", for: UIControlState .normal)
                 self.submitButton.isEnabled = true
             }
-            cell.coinNameLabel.text = self.game.coins[indexPath.row]
-            cell.coinAmountLabel.text = String(Int(self.game.amounts[indexPath.row]))
+            cell.coinNameLabel.text = self.game.coins[indexPath.row].ticker
+            cell.coinAmountLabel.text = String(Int(self.game.coins[indexPath.row].allocation))
         }
         
         

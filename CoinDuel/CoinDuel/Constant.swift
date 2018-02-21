@@ -10,7 +10,9 @@ import Foundation
 
 struct Constants {
     static let API = "https://coinduel-cs98.herokuapp.com/api/"
-//  static let API = "http://localhost:9000/api/"
+//    static let API = "http://localhost:9000/api/"
+    
+    static let MissingEntryError = "responseValidationFailed(Alamofire.AFError.ResponseValidationFailureReason.unacceptableStatusCode(422))"
 }
 
 enum ServerError: Error {
