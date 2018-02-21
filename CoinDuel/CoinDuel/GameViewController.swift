@@ -22,7 +22,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var game: Game = Game()
     var isGameDisplayMode: Bool = false
-    var isPercentReturnMode: Bool = false
+    var isPercentReturnMode: Bool = true
     let refreshControl = UIRefreshControl()
     let numberFormatter = NumberFormatter()
 
@@ -137,6 +137,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.networkError()
                 }
             }
+        } else {
+            self.refreshControl.endRefreshing()
+            self.loadingActivityIndicatorView.stopAnimating()
         }
     }
 
