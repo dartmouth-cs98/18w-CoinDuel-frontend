@@ -18,25 +18,126 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var gameTableView: UITableView!
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     var game: Game = Game()
-    var gameRunning: Bool = false
+    var isGameDisplayMode: Bool = false
+    var isPercentReturnMode: Bool = false
+    let refreshControl = UIRefreshControl()
+    let numberFormatter = NumberFormatter()
+
     
+    // Completion blocks from https://stackoverflow.com/questions/35357807/running-one-function-after-another-completes
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.gameRunning = false
+        // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
+        if #available(iOS 10.0, *) {
+            self.gameTableView.refreshControl = refreshControl
+        } else {
+            self.gameTableView.addSubview(refreshControl)
+        }
+        
+        // Add refresh control function
+        refreshControl.addTarget(self, action: #selector(refreshPriceData(_:)), for: .valueChanged)
+        
+        // Number format
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        
+        self.game.getCurrentGame() { (success) -> Void in
+            if success {
+                self.game.updateGame() { (entryStatus) -> Void in
+                    if entryStatus == "entry" {
+                        // Already has an entry for this game, check if it's started already
+                        if self.game.isActive {
+                            // Update prices
+                            self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                                if coinSuccess {
+                                    // Show price page with returns
+                                    self.displayGameMode()
+                                } else {
+                                    self.networkError()
+                                }
+                            }
+                        } else {
+                            // Show the entry view
+                            self.displayEntryMode()
+                        }
+                    } else if entryStatus == "none" {
+                        // No entry yet, show the entry view
+                        self.displayEntryMode()
+                    } else {
+                        self.networkError()
+                    }
+                }
+            } else {
+                self.networkError()
+            }
+        }
+        
+    }
+    
+    func displayEntryMode() {
+        self.isGameDisplayMode = false
+        
         nextGameLabel.isHidden = false
         gameTimeLabel.isHidden = false
+
         gameReturnLabel.isHidden = true
         gameStatusLabel.isHidden = true
         gameStatusSubheaderLabel.isHidden = true
         
         self.submitButton.setTitle("Allocate 10 additional CapCoin", for: UIControlState .normal)
         self.submitButton.isEnabled = false
+        self.submitButton.isHidden = false
         
-        print("Updating")
-        self.game.getCurrentGame(self)
+        DispatchQueue.main.async() {
+            self.gameTableView.reloadData()
+        }
+    }
+    
+    func displayGameMode() {
+        self.isGameDisplayMode = true
+        
+        gameReturnLabel.text = "+ " + String(Double(Int(self.game.totalReturn() * 100)) / 100.00) + " CC"
+
+        if (self.game.totalReturn() > 0) {
+            gameReturnLabel.backgroundColor = Constants.greenColor
+        } else {
+            gameReturnLabel.backgroundColor = Constants.redColor
+        }
+        
+        gameReturnLabel.isHidden = false
+        gameStatusLabel.isHidden = false
+        gameStatusSubheaderLabel.isHidden = false
+        
+        nextGameLabel.isHidden = true
+        gameTimeLabel.isHidden = true
+        self.submitButton.isHidden = true
+        
+        DispatchQueue.main.async() {
+            self.gameTableView.reloadData()
+        }
+    }
+    
+    @objc func refreshPriceData(_ sender:Any) {
+        if self.isGameDisplayMode && self.game.isActive {
+            self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                if coinSuccess {
+                    // Show price page with returns
+                    DispatchQueue.main.async() {
+                        self.gameTableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                        self.loadingActivityIndicatorView.stopAnimating()
+//                        self.loadingActivityIndicatorView.isHidden = true
+                    }
+                } else {
+                    self.networkError()
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +146,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.game.coins.count;
+        return self.game.coins.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,24 +161,38 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.indexPath = indexPath.row
 
         // Display varies depending on whether game is active
+        
+        let coin = self.game.coins[indexPath.row]
     
-        if gameRunning {
+        if isGameDisplayMode {
             cell.coinAmountStepper.isHidden = true
             cell.coinAmountLabel.isHidden = true
             cell.coinPriceLabel.isHidden = false
             cell.coinReturnLabel.isHidden = false
             
-            cell.coinNameLabel.text = self.game.coins[indexPath.row].ticker + " (" + String(Int(self.game.coins[indexPath.row].allocation)) + ")"
-            cell.coinPriceLabel.text = "$" + String(Double(Int(self.game.coins[indexPath.row].currentPrice * 100)) / 100.00)
-            cell.coinReturnLabel.text = String(Double(Int(self.game.coins[indexPath.row].percentReturn * 100)) / 100.00) + "%"
-            gameReturnLabel.text = "+ " + String(Double(Int(self.game.totalReturn() * 100)) / 100.00) + " CC"
+            cell.coinNameLabel.text = coin.ticker + " (" + String(Int(coin.allocation)) + " CC)"
+            cell.coinPriceLabel.text = "$" + numberFormatter.string(from: NSNumber(value: coin.currentPrice))!
+            
+            if self.isPercentReturnMode {
+                cell.coinReturnLabel.text = numberFormatter.string(from: NSNumber(value: coin.percentReturn))! + "%"
+            } else {
+                cell.coinReturnLabel.text = numberFormatter.string(from: NSNumber(value: coin.capCoinReturn))! + " CC"
+            }
+
+            if (coin.percentReturn > 0) {
+                cell.coinReturnLabel.backgroundColor = Constants.greenColor
+            } else {
+                print("Red")
+                cell.coinReturnLabel.backgroundColor = Constants.redColor
+            }
+            
         } else {
             cell.coinAmountStepper.isHidden = false
             cell.coinAmountLabel.isHidden = false
             cell.coinPriceLabel.isHidden = true
             cell.coinReturnLabel.isHidden = true
             
-            cell.coinAmountStepper.value = self.game.coins[indexPath.row].allocation
+            cell.coinAmountStepper.value = coin.allocation
             
             let remaining = 10.0 - self.game.totalAmount()
             if remaining > 0.0 {
@@ -87,8 +202,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.submitButton.setTitle("Submit", for: UIControlState .normal)
                 self.submitButton.isEnabled = true
             }
-            cell.coinNameLabel.text = self.game.coins[indexPath.row].ticker
-            cell.coinAmountLabel.text = String(Int(self.game.coins[indexPath.row].allocation))
+            cell.coinNameLabel.text = coin.ticker
+            cell.coinAmountLabel.text = String(Int(coin.allocation))
         }
         
         
@@ -104,17 +219,28 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func submitButtonPress(_ sender: UIButton) {
-        // Make necessary UI changes
-        submitButton.isHidden = true
-        gameRunning = true
-        nextGameLabel.isHidden = true
-        gameTimeLabel.isHidden = true
-        gameReturnLabel.isHidden = false
-        gameStatusLabel.isHidden = false
-        gameStatusSubheaderLabel.isHidden = false
-        
         // Submit the entry to the server
-        self.game.submitEntry(self)
+        self.game.submitEntry() { (success) -> Void in
+            if success {
+                self.game.updateGame(completion: { (entryUpdate) in
+                    if entryUpdate == "entry" && self.game.isActive {
+                        // Update prices
+                        self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                            if coinSuccess {
+                                // Show price page with returns
+                                self.displayGameMode()
+                            } else {
+                                self.networkError()
+                            }
+                        }
+                    } else if !self.game.isActive {
+                        self.submitButton.setTitle("Update choices", for: UIControlState .normal)
+                    } else {
+                        self.networkError()
+                    }
+                })
+            }
+        }
 
         // To-Do: Change constraints programatically so submit button area doesn't cover up Table View
         // tableViewConstraint.firstItem = SafeArea
