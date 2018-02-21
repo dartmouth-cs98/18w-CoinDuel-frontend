@@ -160,7 +160,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4n-1HR">
-                                <rect key="frame" x="0.0" y="202" width="414" height="534"/>
+                                <rect key="frame" x="0.0" y="191" width="414" height="545"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="GameTableViewCell" id="buj-xw-9U8" customClass="GameTableViewCell" customModule="CoinDuel" customModuleProvider="target">
@@ -240,9 +240,9 @@
                                     <outlet property="delegate" destination="FKk-Hh-yoa" id="Asq-rv-F48"/>
                                 </connections>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tomorrow, 9AM EST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwe-rj-qlY">
-                                <rect key="frame" x="129.33333333333331" y="141" width="155.33333333333331" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwe-rj-qlY">
+                                <rect key="frame" x="207" y="151" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -300,7 +300,7 @@
                         <constraints>
                             <constraint firstItem="cEc-9g-Dpw" firstAttribute="centerY" secondItem="lYA-Lq-gpg" secondAttribute="centerY" id="80c-Xv-hXG"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="Ps4-7y-zkq" secondAttribute="trailing" constant="30" id="FhF-Ky-Gm6"/>
-                            <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="10" id="G9G-2R-gjh" userLabel="Tomorrow, 9AM EST.top = Next Game.bottom + 10"/>
+                            <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="20" id="G9G-2R-gjh" userLabel="Tomorrow, 9AM EST.top = Next Game.bottom + 10"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="4Mq-4n-1HR" secondAttribute="trailing" id="Jtv-z0-L73"/>
                             <constraint firstItem="XpZ-PS-Om2" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="KAb-jY-t6K"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="MKD-FP-mjk"/>

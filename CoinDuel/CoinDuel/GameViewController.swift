@@ -112,7 +112,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         gameStatusLabel.isHidden = false
         
         nextGameLabel.isHidden = true
-        gameTimeLabel.isHidden = true
+        gameTimeLabel.isHidden = false
         self.submitButton.isHidden = true
         
         DispatchQueue.main.async() {
@@ -129,6 +129,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             gameStatusLabel.textColor = Constants.redColor
         }
+        
+        gameTimeLabel.text = "Game ends " + self.game.finishDate
     }
     
     @objc func refreshPriceData(_ sender:Any) {
@@ -183,7 +185,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinPriceLabel.isHidden = false
             cell.coinReturnLabel.isHidden = false
             
-            cell.coinNameLabel.text = coin.ticker + " (" + String(Int(coin.allocation)) + " CC)"
+            cell.coinNameLabel.text = coin.ticker
+            
+            if coin.allocation > 0 {
+                cell.coinNameLabel.text = coin.ticker + " (" + String(Int(coin.allocation)) + " CC)"
+            }
+            
             cell.coinPriceLabel.text = "$" + numberFormatter.string(from: NSNumber(value: coin.currentPrice))!
             
             if self.isPercentReturnMode {
