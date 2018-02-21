@@ -11,7 +11,6 @@ import UIKit
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var gameReturnLabel: UILabel!
-    @IBOutlet weak var gameStatusSubheaderLabel: UILabel!
     @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var nextGameLabel: UILabel!
     @IBOutlet weak var gameTimeLabel: UILabel!
@@ -23,6 +22,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var game: Game = Game()
     var isGameDisplayMode: Bool = false
     var isPercentReturnMode: Bool = true
+    var isLateEntry: Bool = false
     let refreshControl = UIRefreshControl()
     let numberFormatter = NumberFormatter()
 
@@ -66,6 +66,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             self.displayEntryMode()
                         }
                     } else if entryStatus == "none" {
+                        if self.game.isActive {
+                            self.isLateEntry = true
+                        }
                         // No entry yet, show the entry view
                         self.displayEntryMode()
                     } else {
@@ -82,12 +85,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func displayEntryMode() {
         self.isGameDisplayMode = false
         
+        nextGameLabel.text = "Late Entry"
+        gameTimeLabel.text = "Game ends " + self.game.finishDate
+        
         nextGameLabel.isHidden = false
         gameTimeLabel.isHidden = false
 
         gameReturnLabel.isHidden = true
         gameStatusLabel.isHidden = true
-        gameStatusSubheaderLabel.isHidden = true
         
         self.submitButton.setTitle("Allocate 10 additional CapCoin", for: UIControlState .normal)
         self.submitButton.isEnabled = false
@@ -101,17 +106,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func displayGameMode() {
         self.isGameDisplayMode = true
         
-        gameReturnLabel.text = "+ " + String(Double(Int(self.game.totalReturn() * 100)) / 100.00) + " CC"
-
-        if (self.game.totalReturn() > 0) {
-            gameReturnLabel.backgroundColor = Constants.greenColor
-        } else {
-            gameReturnLabel.backgroundColor = Constants.redColor
-        }
+        self.updateGameModeLabels()
         
-        gameReturnLabel.isHidden = false
+        gameReturnLabel.isHidden = true
         gameStatusLabel.isHidden = false
-        gameStatusSubheaderLabel.isHidden = false
         
         nextGameLabel.isHidden = true
         gameTimeLabel.isHidden = true
@@ -122,12 +120,24 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func updateGameModeLabels() {
+        gameStatusLabel.text = "↑ " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
+        gameReturnLabel.text = numberFormatter.string(from: NSNumber(value: self.game.totalPercentageReturn()))! + "%"
+        
+        if (self.game.totalPercentageReturn() > 0) {
+            gameStatusLabel.textColor = Constants.greenColor
+        } else {
+            gameStatusLabel.textColor = Constants.redColor
+        }
+    }
+    
     @objc func refreshPriceData(_ sender:Any) {
         if self.isGameDisplayMode && self.game.isActive {
             self.game.updateCoinPrices() { (coinSuccess) -> Void in
                 if coinSuccess {
                     // Show price page with returns
                     DispatchQueue.main.async() {
+                        self.updateGameModeLabels()
                         self.gameTableView.reloadData()
                         self.refreshControl.endRefreshing()
                         self.loadingActivityIndicatorView.stopAnimating()

@@ -14,11 +14,13 @@ class Game {
     var id:String
     var coins:[Coin] = [Coin]()
     var isActive:Bool
+    var finishDate:String
     
     init() {
         self.id = ""
         self.coins = [Coin]()
         self.isActive = false
+        self.finishDate = ""
     }
     
     // Returns total CapCoin allocated so far
@@ -39,6 +41,11 @@ class Game {
         return total
     }
     
+    // Returns total % return so far
+    func totalPercentageReturn() -> Double {
+        return (self.totalReturn() - 10.0) * 100.0
+    }
+    
     // Makes request and parses JSON
     // Followed tutorial from https://github.com/SwiftyJSON/SwiftyJSON for all Alamofire requests
     func getCurrentGame(completion: @escaping (_ success: Bool) -> Void) {
@@ -53,7 +60,18 @@ class Game {
                     // Get game ID and whether it has started
                     self.id = json[0]["_id"].stringValue
                     self.isActive = json[0]["is_active"].boolValue
+                    
+                    // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                    guard let date = dateFormatter.date(from: json[0]["finish_date"].stringValue) else {
+                        completion(false)
+                        return
+                    }
 
+                    dateFormatter.dateFormat = "EEEE h:mm a"
+                    self.finishDate = dateFormatter.string(from: date)
+                    
                     // Get all coins (retrieving only the name for now)
                     for coin in json[0]["coins"] {
                         self.coins.append(Coin(coin.1["name"].stringValue, 0.0))
