@@ -13,12 +13,12 @@ import SwiftyJSON
 class Game {
     var id:String
     var coins:[Coin] = [Coin]()
-    var gameStarted:Bool
+    var isActive:Bool
     
     init() {
         self.id = ""
         self.coins = [Coin]()
-        self.gameStarted = false
+        self.isActive = false
     }
     
     // Returns total CapCoin allocated so far
@@ -41,7 +41,7 @@ class Game {
     
     // Makes request and parses JSON
     // Followed tutorial from https://github.com/SwiftyJSON/SwiftyJSON for all Alamofire requests
-    func getCurrentGame(_ gameVC:GameViewController) {
+    func getCurrentGame(completion: @escaping (_ success: Bool) -> Void) {
         self.coins = [Coin]()
         let url = Constants.API + "game/"
         
@@ -52,7 +52,7 @@ class Game {
                     
                     // Get game ID and whether it has started
                     self.id = json[0]["_id"].stringValue
-                    self.gameStarted = json[0]["started"].boolValue
+                    self.isActive = json[0]["is_active"].boolValue
 
                     // Get all coins (retrieving only the name for now)
                     for coin in json[0]["coins"] {
@@ -60,25 +60,22 @@ class Game {
                     }
                     
                     // Update game (get entry if have one)
-                    self.updateGame(gameVC)
+                    completion(true)
                 case .failure(let error):
-                    gameVC.networkError()
                     print(error)
+                    completion(false)
             }
         }
     }
     
     // Retrieves an entry by this user for this game, if it exists
-    func updateGame(_ gameVC:GameViewController) {
+    func updateGame(completion: @escaping (_ entryStatus: String) -> Void) {
         let url = Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    print("Json:")
-                    print(json)
-                    print(".")
                     
                     // Reset coins since we have an entry
                     self.coins = [Coin]()
@@ -88,24 +85,21 @@ class Game {
                         self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue))
                     }
                 
-                    // Get prices
-                    self.updateCoinPrices(gameVC)
+                    completion("entry")
                 case .failure(let error):
                     if String(describing: error) == Constants.MissingEntryError {
                         // All OK, just no entry yet. Reload tableview
-                        DispatchQueue.main.async() {
-                            gameVC.gameTableView.reloadData()
-                        }
+                        completion("none")
                     } else {
-                        gameVC.networkError()
                         print(error)
+                        completion("error")
                     }
             }
         }
     }
     
     // Submits an entry to the server for this game
-    func submitEntry(_ gameVC:GameViewController) {
+    func submitEntry(completion: @escaping (_ success: Bool) -> Void) {
         var choices = [[String: String]]()
         for coin in self.coins {
             var thisChoice = [String: String]()
@@ -130,25 +124,25 @@ class Game {
             let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
                 // Error checking
                 guard error == nil else {
-                    gameVC.networkError()
+                    completion(false)
                     return
                 }
                 
-                if let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: []) {
-                    print(jsonResponse)
-                    DispatchQueue.main.async() {
-                        self.updateGame(gameVC)
-                    }
+                if (try? JSONSerialization.jsonObject(with: data!, options: [])) != nil {
+                    completion(true)
+                } else {
+                    completion(false)
                 }
             }
             
             task.resume()
         } else {
             print("Failed conversion to JSON")
+            completion(false)
         }
     }
-    
-    func updateCoinPrices(_ gameVC:GameViewController) {
+
+    func updateCoinPrices(completion: @escaping (_ success: Bool) -> Void) {
         let url = URL(string: Constants.API + "return/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
 
         Alamofire.request(url, method: .get).validate().responseJSON { response in
@@ -170,14 +164,11 @@ class Game {
                         let percent = coin.1["percent"].doubleValue
                         self.coins.append(Coin(ticker, initialPrice, currentPrice, allocation, capCoin, percent))
                     }
-                    
-                    // Reload table view
-                    DispatchQueue.main.async() {
-                        gameVC.gameTableView.reloadData()
-                    }
+                
+                    completion(true)
                 case .failure(let error):
-                    gameVC.networkError()
                     print(error)
+                    completion(false)
                 }
         }
     }
