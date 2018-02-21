@@ -11,6 +11,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var instructionText: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var OldPassword: UITextField!
@@ -21,6 +23,8 @@ class ProfileViewController: UIViewController {
         OldPassword.text = ""
         OldPassword.placeholder = "new password"
         instructionText.text = "Enter new password"
+        confirmPassword.isHidden = false
+        confirmButton.isHidden = false
     }
     
     override func viewDidLoad() {
