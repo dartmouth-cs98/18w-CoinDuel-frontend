@@ -13,6 +13,12 @@ import SwiftyJSON
 
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var firstNumberLabel: UILabel!
+    @IBOutlet weak var secondNumberLabel: UILabel!
+    @IBOutlet weak var thirdNumberLabel: UILabel!
+    @IBOutlet weak var firstPlaceImage: UIImageView!
+    @IBOutlet weak var secondPlaceImage: UIImageView!
+    @IBOutlet weak var thirdPlaceImage: UIImageView!
     @IBOutlet weak var leaderboardTable: UITableView!
     @IBOutlet weak var firstPlaceLabel: UILabel!
     @IBOutlet weak var secondPlaceLabel: UILabel!
@@ -23,6 +29,16 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.leaderboard.getCurrentLeaderboard(self)
+        let imageViews = [firstPlaceImage, secondPlaceImage, thirdPlaceImage]
+        for image in imageViews {
+            image!.layer.cornerRadius = image!.frame.height/2;
+            image!.clipsToBounds = true;
+        }
+        let numberLabels = [firstNumberLabel, secondNumberLabel, thirdNumberLabel]
+        for label in numberLabels {
+            label!.layer.masksToBounds = true
+            label!.layer.cornerRadius = 11
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
