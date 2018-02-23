@@ -13,6 +13,8 @@ import SwiftyJSON
 
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var allTimeButton: UIButton!
+    @IBOutlet weak var currentButton: UIButton!
     @IBOutlet weak var firstNumberLabel: UILabel!
     @IBOutlet weak var secondNumberLabel: UILabel!
     @IBOutlet weak var thirdNumberLabel: UILabel!
@@ -39,6 +41,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             label!.layer.masksToBounds = true
             label!.layer.cornerRadius = 11
         }
+        allTimeButton.layer.masksToBounds = true
+        allTimeButton.layer.cornerRadius = 5
+        currentButton.layer.masksToBounds = true
+        currentButton.layer.cornerRadius = 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
