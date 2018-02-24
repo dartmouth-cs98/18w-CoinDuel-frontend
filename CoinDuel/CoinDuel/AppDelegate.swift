@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let storyName = UserDefaults.standard.string(forKey:"username") != nil ? "Main" : "LoginStoryboard"
-        let controllerName = UserDefaults.standard.string(forKey:"username") != nil ? "GameViewController" : "InitialLoginNavController"
+        let controllerName = UserDefaults.standard.string(forKey:"username") != nil ? "GameViewController" : "LoginViewController"
         
         let storyboard = UIStoryboard(name: storyName, bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: controllerName)
