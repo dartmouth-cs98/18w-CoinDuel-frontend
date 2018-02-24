@@ -51,7 +51,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.game.updateGame() { (entryStatus) -> Void in
                     if entryStatus == "entry" {
                         // Already has an entry for this game, check if it's started already
-                        if self.game.isActive {
+                        if self.game.isActive && !self.game.isFinished {
                             // Update prices
                             self.game.updateCoinPrices() { (coinSuccess) -> Void in
                                 if coinSuccess {
@@ -61,6 +61,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     self.networkError()
                                 }
                             }
+                        // If the game is finished, display the results popup (since we had an entry)
+                        } else if self.game.isFinished {
+                            self.performSegue(withIdentifier: "DisplayResultsPopup", sender: self)
                         } else {
                             // Show the entry view
                             self.displayEntryMode()
@@ -143,7 +146,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.gameTableView.reloadData()
                         self.refreshControl.endRefreshing()
                         self.loadingActivityIndicatorView.stopAnimating()
-//                        self.loadingActivityIndicatorView.isHidden = true
                     }
                 } else {
                     self.networkError()
@@ -265,6 +267,18 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // To-Do: Change constraints programatically so submit button area doesn't cover up Table View
         // tableViewConstraint.firstItem = SafeArea
 
+    }
+    
+    @IBAction func unwindResultsView(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
+    // From: http://matteomanferdini.com/how-ios-view-controllers-communicate-with-each-other/
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let data = Data()
+        if let resultsVC = segue.destination as? ResultsViewController {
+            resultsVC.game = self.game
+        }
     }
 
 

@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1584.8" y="-550.07496251874068"/>
         </scene>
-        <!--View Controller-->
+        <!--ResultsViewController-->
         <scene sceneID="jPl-cY-jxi">
             <objects>
-                <viewController id="U7L-Ui-nyi" sceneMemberID="viewController">
+                <viewController title="ResultsViewController" id="U7L-Ui-nyi" customClass="ResultsViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCT-uX-XSm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,14 +202,19 @@
                                 </state>
                                 <connections>
                                     <action selector="submitButtonPress:" destination="FKk-Hh-yoa" eventType="touchUpInside" id="8R5-S2-rkV"/>
+                                    <segue destination="lX2-26-7c7" kind="unwind" unwindAction="unwindResultsViewWithUnwindSegue:" id="Ilo-dF-66w"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1205139449" green="0.1964991113" blue="0.52885072970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="LdU-vJ-11N"/>
                     </view>
+                    <connections>
+                        <outlet property="capcoinResultLabel" destination="cBa-xz-9qZ" id="xJW-03-jYp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ci-T3-jAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lX2-26-7c7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="288.80000000000001" y="-81.409295352323838"/>
         </scene>
@@ -404,6 +409,9 @@
                         <outlet property="loadingActivityIndicatorView" destination="cEc-9g-Dpw" id="QSr-qf-062"/>
                         <outlet property="nextGameLabel" destination="VV8-pq-nHY" id="O8f-vt-AkB"/>
                         <outlet property="submitButton" destination="9Rn-65-6gk" id="HNT-BN-YBv"/>
+                        <segue destination="U7L-Ui-nyi" kind="popoverPresentation" identifier="DisplayResultsPopup" popoverAnchorView="lYA-Lq-gpg" id="d6T-21-E9c">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>

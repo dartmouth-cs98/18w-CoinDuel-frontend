@@ -14,12 +14,14 @@ class Game {
     var id:String
     var coins:[Coin] = [Coin]()
     var isActive:Bool
+    var isFinished:Bool
     var finishDate:String
     
     init() {
         self.id = ""
         self.coins = [Coin]()
         self.isActive = false
+        self.isFinished = false
         self.finishDate = ""
     }
     
@@ -60,6 +62,7 @@ class Game {
                     // Get game ID and whether it has started
                     self.id = json[0]["_id"].stringValue
                     self.isActive = json[0]["is_active"].boolValue
+                    self.isFinished = json[0]["game_finished"].boolValue
                     
                     // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
                     let dateFormatter = DateFormatter()
