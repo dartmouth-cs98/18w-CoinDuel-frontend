@@ -155,42 +155,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwl-rQ-dga">
-                                <rect key="frame" x="54" y="71" width="267" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwl-rQ-dga">
+                                <rect key="frame" x="154" y="70" width="67" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbo-Dl-jwh">
-                                <rect key="frame" x="67" y="265" width="240" height="230"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbo-Dl-jwh">
+                                <rect key="frame" x="67" y="262" width="240" height="233"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Graph View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-gd-xYT">
-                                        <rect key="frame" x="76" y="105" width="89" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-gd-xYT">
+                                        <rect key="frame" x="-44.5" y="106" width="89" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="Krg-gd-xYT" firstAttribute="centerY" secondItem="Xbo-Dl-jwh" secondAttribute="centerY" id="Nvy-Qg-xat"/>
+                                    <constraint firstItem="Krg-gd-xYT" firstAttribute="centerX" secondItem="Xbo-Dl-jwh" secondAttribute="centerX" id="VGz-m2-Tto"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You received X CapCoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-xz-9qZ">
-                                <rect key="frame" x="35" y="157" width="305" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You received X CapCoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-xz-9qZ">
+                                <rect key="frame" x="95.5" y="165.5" width="184" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="And placed 1 out of 25 participants" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ip0-Ja-oPX">
-                                <rect key="frame" x="35" y="209" width="305" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="And placed 1 out of 25 participants" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ip0-Ja-oPX">
+                                <rect key="frame" x="54" y="211" width="267.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KQ-h7-dYW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KQ-h7-dYW">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                                 <color key="backgroundColor" red="0.3326749101" green="0.87576437620000003" blue="0.52071353620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -207,6 +206,22 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1205139449" green="0.1964991113" blue="0.52885072970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cBa-xz-9qZ" firstAttribute="top" secondItem="rwl-rQ-dga" secondAttribute="bottom" constant="70" id="5bO-fo-2Ch"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="Xbo-Dl-jwh" secondAttribute="centerX" id="7Zs-Ln-yq3"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="ip0-Ja-oPX" secondAttribute="centerX" id="ALM-P0-veY"/>
+                            <constraint firstAttribute="trailing" secondItem="8KQ-h7-dYW" secondAttribute="trailing" id="IdT-ur-Tpk"/>
+                            <constraint firstItem="ip0-Ja-oPX" firstAttribute="top" secondItem="cBa-xz-9qZ" secondAttribute="bottom" constant="25" id="Ids-rk-mWe"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="cBa-xz-9qZ" secondAttribute="centerX" id="K80-M3-vxM"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="bottom" secondItem="LdU-vJ-11N" secondAttribute="bottom" id="LpT-c3-rP9"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="top" secondItem="Xbo-Dl-jwh" secondAttribute="bottom" constant="92" id="Ned-nQ-cjA"/>
+                            <constraint firstItem="rwl-rQ-dga" firstAttribute="top" secondItem="LdU-vJ-11N" secondAttribute="top" constant="50" id="OKp-sI-Yyb"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="Xbo-Dl-jwh" secondAttribute="centerX" id="aX7-ki-lKT"/>
+                            <constraint firstItem="Xbo-Dl-jwh" firstAttribute="centerX" secondItem="mCT-uX-XSm" secondAttribute="centerX" id="b0O-Vo-CfY"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="leading" secondItem="mCT-uX-XSm" secondAttribute="leading" id="b8k-YF-Ivw"/>
+                            <constraint firstItem="rwl-rQ-dga" firstAttribute="centerX" secondItem="mCT-uX-XSm" secondAttribute="centerX" id="dZW-0M-fl1"/>
+                            <constraint firstItem="Xbo-Dl-jwh" firstAttribute="top" secondItem="ip0-Ja-oPX" secondAttribute="bottom" constant="30" id="hxE-6D-otC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LdU-vJ-11N"/>
                     </view>
                     <connections>
@@ -258,7 +273,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-GQ-9ry" userLabel="Coin Amount Label">
-                                                    <rect key="frame" x="162" y="12" width="90" height="20"/>
+                                                    <rect key="frame" x="142.5" y="12" width="90" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="fbY-kk-hSc"/>
                                                     </constraints>
@@ -267,13 +282,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="wiH-Pa-Dq7">
-                                                    <rect key="frame" x="310" y="8" width="94" height="29"/>
+                                                    <rect key="frame" x="271" y="8" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="coinAmountChanged:" destination="buj-xw-9U8" eventType="valueChanged" id="VBi-IB-zfE"/>
                                                     </connections>
                                                 </stepper>
                                                 <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 10.00%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="70" translatesAutoresizingMaskIntoConstraints="NO" id="aGt-mZ-Oo5">
-                                                    <rect key="frame" x="319" y="6.5" width="85" height="30"/>
+                                                    <rect key="frame" x="280" y="6.5" width="85" height="30"/>
                                                     <color key="backgroundColor" red="0.3326749101" green="0.87576437620000003" blue="0.52071353620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="fAh-8C-Ol5"/>
@@ -284,7 +299,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcH-zj-7sR">
-                                                    <rect key="frame" x="246" y="12" width="63" height="21"/>
+                                                    <rect key="frame" x="207" y="12" width="63" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

@@ -15,6 +15,7 @@ class Game {
     var coins:[Coin] = [Coin]()
     var isActive:Bool
     var isFinished:Bool
+    var resultsViewed:Bool
     var finishDate:String
     
     init() {
@@ -22,6 +23,7 @@ class Game {
         self.coins = [Coin]()
         self.isActive = false
         self.isFinished = false
+        self.resultsViewed = false
         self.finishDate = ""
     }
     
@@ -97,6 +99,8 @@ class Game {
             switch response.result {
                 case .success(let value):
                     let json = JSON(value)
+                    
+                    self.resultsViewed = json["results_viewed"].boolValue
                     
                     // Reset coins since we have an entry
                     self.coins = [Coin]()
@@ -193,4 +197,23 @@ class Game {
                 }
         }
     }
+    
+    
+    // Sets the results as viewed for a game
+    func resultsViewed(completion: @escaping (_ status: Bool) -> Void) {
+        let url = Constants.API + "results/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+                case .success(let value):
+                    print(value)
+                    self.resultsViewed = true
+                    completion(true)
+                case .failure(let error):
+                    print(error)
+                    completion(false)
+            }
+        }
+    }
+    
 }

@@ -19,6 +19,12 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         
         self.capcoinResultLabel.text = "You received " + String(self.game.totalReturn()) + " CapCoin"
+        
+        self.game.resultsViewed() { (completion) -> Void in
+            if !completion {
+                print("Error")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

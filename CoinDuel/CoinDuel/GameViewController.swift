@@ -62,8 +62,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 }
                             }
                         // If the game is finished, display the results popup (since we had an entry)
-                        } else if self.game.isFinished {
+                        } else if self.game.isFinished && !self.game.resultsViewed {
                             self.performSegue(withIdentifier: "DisplayResultsPopup", sender: self)
+                        } else if self.game.isFinished {
+                            self.displayEntryMode()
                         } else {
                             // Show the entry view
                             self.displayEntryMode()
