@@ -67,6 +67,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             cell.placeLabel.textColor = UIColor.red
             cell.nameLabel.textColor = UIColor.red
             cell.scoreLabel.textColor = UIColor.red
+        } else {
+            cell.placeLabel.textColor = UIColor.black
+            cell.nameLabel.textColor = UIColor.black
+            cell.scoreLabel.textColor = UIColor.black
         }
         
         return cell
