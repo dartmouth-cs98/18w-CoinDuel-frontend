@@ -24,6 +24,7 @@
 		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
 		50E499402038B64500DBCC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4993F2038B64500DBCC42 /* User.swift */; };
+		A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F1E08204376640070D305 /* CoinDetailViewController.swift */; };
 		A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */; };
 		A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */; };
 		F824B1B220363D95008D1F14 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */; };
@@ -72,6 +73,7 @@
 		50E4993F2038B64500DBCC42 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		69879681FD0E4D4187C6C5A9 /* Pods-CoinDuel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.release.xcconfig"; sourceTree = "<group>"; };
 		6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinDuel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A06F1E08204376640070D305 /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
 		A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				1E93AE45203CEACB006CE5E5 /* Coin.swift */,
 				1E33168A203672BF00BEE349 /* Constant.swift */,
 				1EB504C6201A7B8700BB76AA /* Main.storyboard */,
+				A06F1E08204376640070D305 /* CoinDetailViewController.swift */,
 				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
 				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
 				509BC41C2030DF7B00702226 /* UserTableViewCell.swift */,
@@ -371,11 +374,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +399,7 @@
 				1E33168B203672BF00BEE349 /* Constant.swift in Sources */,
 				F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */,
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
+				A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */,
 				1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */,
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
 				1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */,
