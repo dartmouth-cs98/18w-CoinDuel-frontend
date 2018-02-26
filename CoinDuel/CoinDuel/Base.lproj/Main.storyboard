@@ -147,6 +147,92 @@
             </objects>
             <point key="canvasLocation" x="1449" y="-381"/>
         </scene>
+        <!--ResultsViewController-->
+        <scene sceneID="jPl-cY-jxi">
+            <objects>
+                <viewController title="ResultsViewController" id="U7L-Ui-nyi" customClass="ResultsViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mCT-uX-XSm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwl-rQ-dga">
+                                <rect key="frame" x="154" y="70" width="67" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbo-Dl-jwh">
+                                <rect key="frame" x="67" y="262" width="240" height="233"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-gd-xYT">
+                                        <rect key="frame" x="-44.5" y="106" width="89" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="Krg-gd-xYT" firstAttribute="centerY" secondItem="Xbo-Dl-jwh" secondAttribute="centerY" id="Nvy-Qg-xat"/>
+                                    <constraint firstItem="Krg-gd-xYT" firstAttribute="centerX" secondItem="Xbo-Dl-jwh" secondAttribute="centerX" id="VGz-m2-Tto"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You received X CapCoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-xz-9qZ">
+                                <rect key="frame" x="95.5" y="165.5" width="184" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="And placed 1 out of 25 participants" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ip0-Ja-oPX">
+                                <rect key="frame" x="54" y="211" width="267.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KQ-h7-dYW">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <color key="backgroundColor" red="0.3326749101" green="0.87576437620000003" blue="0.52071353620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="mIF-Vf-3VJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Next Round">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonPress:" destination="FKk-Hh-yoa" eventType="touchUpInside" id="8R5-S2-rkV"/>
+                                    <segue destination="lX2-26-7c7" kind="unwind" unwindAction="unwindResultsViewWithUnwindSegue:" id="Ilo-dF-66w"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1205139449" green="0.1964991113" blue="0.52885072970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cBa-xz-9qZ" firstAttribute="top" secondItem="rwl-rQ-dga" secondAttribute="bottom" constant="70" id="5bO-fo-2Ch"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="Xbo-Dl-jwh" secondAttribute="centerX" id="7Zs-Ln-yq3"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="ip0-Ja-oPX" secondAttribute="centerX" id="ALM-P0-veY"/>
+                            <constraint firstAttribute="trailing" secondItem="8KQ-h7-dYW" secondAttribute="trailing" id="IdT-ur-Tpk"/>
+                            <constraint firstItem="ip0-Ja-oPX" firstAttribute="top" secondItem="cBa-xz-9qZ" secondAttribute="bottom" constant="25" id="Ids-rk-mWe"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="cBa-xz-9qZ" secondAttribute="centerX" id="K80-M3-vxM"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="bottom" secondItem="LdU-vJ-11N" secondAttribute="bottom" id="LpT-c3-rP9"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="top" secondItem="Xbo-Dl-jwh" secondAttribute="bottom" constant="92" id="Ned-nQ-cjA"/>
+                            <constraint firstItem="rwl-rQ-dga" firstAttribute="top" secondItem="LdU-vJ-11N" secondAttribute="top" constant="50" id="OKp-sI-Yyb"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="centerX" secondItem="Xbo-Dl-jwh" secondAttribute="centerX" id="aX7-ki-lKT"/>
+                            <constraint firstItem="Xbo-Dl-jwh" firstAttribute="centerX" secondItem="mCT-uX-XSm" secondAttribute="centerX" id="b0O-Vo-CfY"/>
+                            <constraint firstItem="8KQ-h7-dYW" firstAttribute="leading" secondItem="mCT-uX-XSm" secondAttribute="leading" id="b8k-YF-Ivw"/>
+                            <constraint firstItem="rwl-rQ-dga" firstAttribute="centerX" secondItem="mCT-uX-XSm" secondAttribute="centerX" id="dZW-0M-fl1"/>
+                            <constraint firstItem="Xbo-Dl-jwh" firstAttribute="top" secondItem="ip0-Ja-oPX" secondAttribute="bottom" constant="30" id="hxE-6D-otC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LdU-vJ-11N"/>
+                    </view>
+                    <connections>
+                        <outlet property="capcoinResultLabel" destination="cBa-xz-9qZ" id="xJW-03-jYp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ci-T3-jAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lX2-26-7c7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="288.80000000000001" y="-81.409295352323838"/>
+        </scene>
         <!--GameViewController-->
         <scene sceneID="vBP-Km-ENc">
             <objects>
@@ -178,16 +264,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-JY-yqH">
-                                                    <rect key="frame" x="15" y="12" width="150" height="20"/>
+                                                    <rect key="frame" x="15" y="12" width="45" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="JFe-1y-kGV"/>
+                                                        <constraint firstAttribute="width" constant="45" id="JFe-1y-kGV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-GQ-9ry" userLabel="Coin Amount Label">
-                                                    <rect key="frame" x="142.5" y="12" width="90" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud5-GQ-9ry" userLabel="Coin Amount Label">
+                                                    <rect key="frame" x="156" y="12" width="90" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="fbY-kk-hSc"/>
                                                     </constraints>
@@ -218,14 +304,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKO-Ad-qX4">
+                                                    <rect key="frame" x="80" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aGt-mZ-Oo5" firstAttribute="leading" secondItem="tcH-zj-7sR" secondAttribute="trailing" constant="10" id="8Co-vi-586"/>
-                                                <constraint firstItem="ud5-GQ-9ry" firstAttribute="centerX" secondItem="TDC-UD-S6b" secondAttribute="centerX" id="LVc-KH-XID"/>
+                                                <constraint firstItem="iKO-Ad-qX4" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="Cm3-ln-htg"/>
+                                                <constraint firstItem="ud5-GQ-9ry" firstAttribute="trailing" secondItem="wiH-Pa-Dq7" secondAttribute="leading" constant="-25" id="LVc-KH-XID"/>
                                                 <constraint firstAttribute="trailing" secondItem="wiH-Pa-Dq7" secondAttribute="trailing" constant="10" id="Moo-HX-zMy"/>
                                                 <constraint firstItem="aGt-mZ-Oo5" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="MtY-Sk-2fu"/>
                                                 <constraint firstItem="ud5-GQ-9ry" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="P3K-nR-6d5"/>
                                                 <constraint firstItem="tcH-zj-7sR" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="WyN-IT-BaO"/>
+                                                <constraint firstItem="iKO-Ad-qX4" firstAttribute="leading" secondItem="Uz0-JY-yqH" secondAttribute="trailing" constant="20" id="dwA-2J-Y2P"/>
                                                 <constraint firstItem="Uz0-JY-yqH" firstAttribute="leading" secondItem="TDC-UD-S6b" secondAttribute="leadingMargin" id="pIO-gN-FWF"/>
                                                 <constraint firstItem="wiH-Pa-Dq7" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="pbK-tN-g6o"/>
                                                 <constraint firstAttribute="centerYWithinMargins" secondItem="Uz0-JY-yqH" secondAttribute="centerY" id="qBy-eC-d9d" userLabel="Coin Name Label.bottom = bottomMargin"/>
@@ -238,6 +332,7 @@
                                             <outlet property="coinAmountStepper" destination="wiH-Pa-Dq7" id="iCZ-X3-oni"/>
                                             <outlet property="coinNameLabel" destination="Uz0-JY-yqH" id="wnE-kt-5kd"/>
                                             <outlet property="coinPriceLabel" destination="tcH-zj-7sR" id="i1s-P9-LdA"/>
+                                            <outlet property="coinPricePreviewLabel" destination="iKO-Ad-qX4" id="1qd-fF-guC"/>
                                             <outlet property="coinReturnLabel" destination="aGt-mZ-Oo5" id="7XF-pR-6DO"/>
                                             <segue destination="l9x-2G-Aak" kind="presentation" identifier="coinDetailSegue" id="Ogg-4m-Hf2"/>
                                         </connections>
@@ -339,11 +434,14 @@
                         <outlet property="loadingActivityIndicatorView" destination="cEc-9g-Dpw" id="QSr-qf-062"/>
                         <outlet property="nextGameLabel" destination="VV8-pq-nHY" id="O8f-vt-AkB"/>
                         <outlet property="submitButton" destination="9Rn-65-6gk" id="HNT-BN-YBv"/>
+                        <segue destination="U7L-Ui-nyi" kind="popoverPresentation" identifier="DisplayResultsPopup" popoverAnchorView="lYA-Lq-gpg" id="d6T-21-E9c">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="134"/>
+            <point key="canvasLocation" x="1117.5999999999999" y="132.68365817091455"/>
         </scene>
         <!--LeaderboardViewController-->
         <scene sceneID="sKs-tj-yXP">
