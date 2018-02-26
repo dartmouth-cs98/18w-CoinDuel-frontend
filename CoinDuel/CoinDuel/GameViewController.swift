@@ -322,18 +322,22 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let segID = segue.identifier {
-            if (segID == "coinDetailSegue"){
-                let cell: GameTableViewCell = sender as! GameTableViewCell
-
-                let destinationVC: CoinDetailViewController = segue.destination as! CoinDetailViewController
-                destinationVC.coinSymbol = cell.coinNameLabel.text!
-                destinationVC.game = self.game
-                
-                print("showing coinDetail")
+        if let resultsVC = segue.destination as? ResultsViewController {
+            resultsVC.game = self.game
+        } else {
+            if let segID = segue.identifier {
+                if (segID == "coinDetailSegue"){
+                    let cell: GameTableViewCell = sender as! GameTableViewCell
+                    
+                    let destinationVC: CoinDetailViewController = segue.destination as! CoinDetailViewController
+                    destinationVC.coinSymbol = cell.coinNameLabel.text!
+                    destinationVC.game = self.game
+                    
+                    print("showing coinDetail")
+                }
             }
-        }
 
+        }
     }
     
     func networkError(_ errorMessage:String) {
@@ -392,14 +396,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UserDefaults.standard.set(nil, forKey: "gameId")
         self.viewDidLoad()
     }
-    
-    // From: http://matteomanferdini.com/how-ios-view-controllers-communicate-with-each-other/
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let resultsVC = segue.destination as? ResultsViewController {
-            resultsVC.game = self.game
-        }
-    }
-
 
 }
 
