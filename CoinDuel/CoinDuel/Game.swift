@@ -14,12 +14,16 @@ class Game {
     var id:String
     var coins:[Coin] = [Coin]()
     var isActive:Bool
+    var hasFinished:Bool
+    var startDate:String
     var finishDate:String
     
     init() {
         self.id = ""
         self.coins = [Coin]()
         self.isActive = false
+        self.hasFinished = false
+        self.startDate = ""
         self.finishDate = ""
     }
     
@@ -60,17 +64,22 @@ class Game {
                     // Get game ID and whether it has started
                     self.id = json[0]["_id"].stringValue
                     self.isActive = json[0]["is_active"].boolValue
+                    self.hasFinished = json[0]["game_finished"].boolValue
                     
                     // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                    guard let date = dateFormatter.date(from: json[0]["finish_date"].stringValue) else {
+                    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                    
+                    guard let startDate = dateFormatter.date(from: json[0]["start_date"].stringValue), let finishDate = dateFormatter.date(from: json[0]["finish_date"].stringValue) else {
                         completion(false)
                         return
                     }
-
-                    dateFormatter.dateFormat = "EEEE h:mm a"
-                    self.finishDate = dateFormatter.string(from: date)
+                    
+                    dateFormatter.dateFormat = "EEEE h:mm a z"
+                    dateFormatter.timeZone = TimeZone.current
+                    self.startDate = dateFormatter.string(from: startDate)
+                    self.finishDate = dateFormatter.string(from: finishDate)
                     
                     // Get all coins (retrieving only the name for now)
                     for coin in json[0]["coins"] {
@@ -87,14 +96,14 @@ class Game {
     }
     
     // Retrieves an entry by this user for this game, if it exists
-    func updateGame(completion: @escaping (_ entryStatus: String) -> Void) {
+    func getEntry(completion: @escaping (_ entryStatus: String) -> Void) {
         let url = Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    
+                                        
                     // Reset coins since we have an entry
                     self.coins = [Coin]()
                 
@@ -160,7 +169,7 @@ class Game {
         }
     }
 
-    func updateCoinPrices(completion: @escaping (_ success: Bool) -> Void) {
+    func updateCoinPricesAndReturns(completion: @escaping (_ success: Bool) -> Void) {
         let url = URL(string: Constants.API + "return/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
 
         Alamofire.request(url, method: .get).validate().responseJSON { response in
@@ -190,4 +199,36 @@ class Game {
                 }
         }
     }
+    
+    
+    func updateCoinPrices(completion: @escaping (_ success: Bool) -> Void) {
+        let url = URL(string: Constants.API + "game/prices/" + self.id)!
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                // Get all coin prices, default CapCoin allocation to 0
+                for coin in json["prices"] {
+                    let ticker = coin.0
+                    let currentPrice = coin.1.doubleValue
+                    var x = 0
+                    for storedCoin in self.coins {
+                        if ticker == storedCoin.ticker {
+                            self.coins[x].currentPrice = currentPrice
+                            break
+                        }
+                        x += 1
+                    }
+                }
+                
+                completion(true)
+            case .failure(let error):
+                print(error)
+                completion(false)
+            }
+        }
+    }
+    
 }

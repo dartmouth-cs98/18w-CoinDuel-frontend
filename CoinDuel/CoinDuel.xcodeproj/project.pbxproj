@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C26799B7B63DAD4A25210BD /* Pods_CoinDuel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */; };
+		1E17A6332040A801007A341C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17A6322040A801007A341C /* ResultsViewController.swift */; };
 		1E2CA8B3203AF78D0099193D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */; };
 		1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E331688203637BD00BEE349 /* GameTableViewCell.swift */; };
 		1E33168B203672BF00BEE349 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E33168A203672BF00BEE349 /* Constant.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E17A6322040A801007A341C /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1E331688203637BD00BEE349 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		1E33168A203672BF00BEE349 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				1EB504C9201A7B8700BB76AA /* Assets.xcassets */,
 				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
 				1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */,
+				1E17A6322040A801007A341C /* ResultsViewController.swift */,
 				1E56321820378D310043ECF9 /* Game.swift */,
 				1E93AE45203CEACB006CE5E5 /* Coin.swift */,
 				1E33168A203672BF00BEE349 /* Constant.swift */,
@@ -404,6 +407,7 @@
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
 				1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */,
 				1E2CA8B3203AF78D0099193D /* ProfileViewController.swift in Sources */,
+				1E17A6332040A801007A341C /* ResultsViewController.swift in Sources */,
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
@@ -577,7 +581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M3Q3EV9NXA;
+				DEVELOPMENT_TEAM = E5CQB749FM;
 				INFOPLIST_FILE = CoinDuel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuel;
@@ -593,7 +597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M3Q3EV9NXA;
+				DEVELOPMENT_TEAM = E5CQB749FM;
 				INFOPLIST_FILE = CoinDuel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuel;
