@@ -265,9 +265,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-JY-yqH">
-                                                    <rect key="frame" x="15" y="12" width="45" height="20"/>
+                                                    <rect key="frame" x="15" y="12" width="81" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="45" id="JFe-1y-kGV"/>
+                                                        <constraint firstAttribute="width" constant="81" id="JFe-1y-kGV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -306,7 +306,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKO-Ad-qX4">
-                                                    <rect key="frame" x="80" y="12" width="42" height="21"/>
+                                                    <rect key="frame" x="104" y="12" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -320,7 +320,7 @@
                                                 <constraint firstItem="aGt-mZ-Oo5" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="MtY-Sk-2fu"/>
                                                 <constraint firstItem="ud5-GQ-9ry" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="P3K-nR-6d5"/>
                                                 <constraint firstItem="tcH-zj-7sR" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="WyN-IT-BaO"/>
-                                                <constraint firstItem="iKO-Ad-qX4" firstAttribute="leading" secondItem="Uz0-JY-yqH" secondAttribute="trailing" constant="20" id="dwA-2J-Y2P"/>
+                                                <constraint firstItem="iKO-Ad-qX4" firstAttribute="leading" secondItem="Uz0-JY-yqH" secondAttribute="trailing" constant="8" id="dwA-2J-Y2P"/>
                                                 <constraint firstItem="Uz0-JY-yqH" firstAttribute="leading" secondItem="TDC-UD-S6b" secondAttribute="leadingMargin" id="pIO-gN-FWF"/>
                                                 <constraint firstItem="wiH-Pa-Dq7" firstAttribute="centerY" secondItem="TDC-UD-S6b" secondAttribute="centerY" id="pbK-tN-g6o"/>
                                                 <constraint firstAttribute="centerYWithinMargins" secondItem="Uz0-JY-yqH" secondAttribute="centerY" id="qBy-eC-d9d" userLabel="Coin Name Label.bottom = bottomMargin"/>
@@ -442,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="319" y="-27"/>
+            <point key="canvasLocation" x="317.60000000000002" y="-27.436281859070466"/>
         </scene>
         <!--LeaderboardViewController-->
         <scene sceneID="sKs-tj-yXP">

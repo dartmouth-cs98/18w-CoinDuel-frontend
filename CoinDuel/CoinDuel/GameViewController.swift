@@ -316,8 +316,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinAmountLabel.text = String(Int(coin.allocation))
             cell.coinPricePreviewLabel.text = "$" + numberFormatter.string(from: NSNumber(value: coin.currentPrice))!
         }
-        
-        
         return cell
     }
 
@@ -332,13 +330,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             if let segID = segue.identifier {
                 if (segID == "coinDetailSegue"){
-                    let cell: GameTableViewCell = sender as! GameTableViewCell
-                    let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
-                    if let destinationVC = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController") as? CoinDetailViewController {
-                        destinationVC.coinSymbol = cell.coinNameLabel.text!
-                        destinationVC.game = self.game
-                        self.present(destinationVC, animated: true, completion: nil)
-                        print("showing coinDetail")
+                    if let indexPath = gameTableView.indexPathForSelectedRow{
+                        let coin = self.game.coins[indexPath.row]
+                        let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
+                        if let destinationVC = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController") as? CoinDetailViewController {
+                            destinationVC.coinSymbol = coin.ticker
+                            destinationVC.game = self.game
+                            self.present(destinationVC, animated: true, completion: nil)
+                            print("showing coinDetail")
+                        }
                     }
                 }
             }
