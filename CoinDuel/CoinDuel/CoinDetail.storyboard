@@ -48,17 +48,17 @@
                                     <constraint firstItem="ntR-V5-bE0" firstAttribute="centerY" secondItem="n9w-xQ-I1d" secondAttribute="centerY" id="p95-bo-gc7"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-tQ-g9N">
-                                <rect key="frame" x="29" y="198" width="317" height="270"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-tQ-g9N" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XIP-tQ-g9N" firstAttribute="centerY" secondItem="Vsi-9D-uT6" secondAttribute="centerY" id="55g-Iw-Qbh"/>
+                            <constraint firstItem="XIP-tQ-g9N" firstAttribute="centerY" secondItem="Vsi-9D-uT6" secondAttribute="centerY" constant="47" id="55g-Iw-Qbh"/>
                             <constraint firstItem="n9w-xQ-I1d" firstAttribute="leading" secondItem="Vsi-9D-uT6" secondAttribute="leading" id="6J1-lw-b9f"/>
-                            <constraint firstItem="tfH-1B-EXf" firstAttribute="bottom" secondItem="XIP-tQ-g9N" secondAttribute="bottom" constant="199" id="9bC-oN-DHO"/>
-                            <constraint firstItem="XIP-tQ-g9N" firstAttribute="leading" secondItem="tfH-1B-EXf" secondAttribute="leading" constant="29" id="FqZ-Xg-iTH"/>
+                            <constraint firstItem="tfH-1B-EXf" firstAttribute="bottom" secondItem="XIP-tQ-g9N" secondAttribute="bottom" id="9bC-oN-DHO"/>
+                            <constraint firstItem="XIP-tQ-g9N" firstAttribute="leading" secondItem="tfH-1B-EXf" secondAttribute="leading" id="FqZ-Xg-iTH"/>
                             <constraint firstAttribute="bottom" secondItem="n9w-xQ-I1d" secondAttribute="bottom" constant="605" id="XR7-SE-egw"/>
                             <constraint firstItem="n9w-xQ-I1d" firstAttribute="centerX" secondItem="XIP-tQ-g9N" secondAttribute="centerX" id="ggY-po-pgY"/>
                             <constraint firstAttribute="trailing" secondItem="n9w-xQ-I1d" secondAttribute="trailing" id="yWO-WN-IDV"/>
@@ -67,6 +67,7 @@
                         <viewLayoutGuide key="safeArea" id="tfH-1B-EXf"/>
                     </view>
                     <connections>
+                        <outlet property="chartView" destination="XIP-tQ-g9N" id="91K-NV-P7W"/>
                         <outlet property="nameHeaderLabel" destination="ntR-V5-bE0" id="lqZ-ca-VeY"/>
                     </connections>
                 </viewController>

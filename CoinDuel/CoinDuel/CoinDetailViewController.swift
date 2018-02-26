@@ -8,16 +8,27 @@
 
 import UIKit
 import Charts
+import Alamofire
+import SwiftyJSON
+
 
 class CoinDetailViewController: UIViewController {
     @IBOutlet weak var nameHeaderLabel: UILabel!
-
+    @IBOutlet weak var chartView: LineChartView!
+    
     var game: Game = Game()
     var coinSymbol: String = ""
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         nameHeaderLabel.text = coinSymbol
+
+        chartView.chartDescription?.enabled = false
+        chartView.dragEnabled = true
+        chartView.setScaleEnabled(true)
+        chartView.pinchZoomEnabled = true
 
     }
 
