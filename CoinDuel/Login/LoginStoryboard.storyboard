@@ -125,7 +125,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1A-NQ-cjs">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1A-NQ-cjs">
                                 <rect key="frame" x="94.666666666666686" y="160" width="225" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gMP-hz-6FV"/>
@@ -343,6 +343,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mkH-uc-JAS"/>
-        <segue reference="pLi-uy-4wB"/>
+        <segue reference="Sum-gf-KeX"/>
     </inferredMetricsTieBreakers>
 </document>
