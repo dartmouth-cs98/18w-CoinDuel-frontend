@@ -96,4 +96,9 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         allTimeButton.layer.borderWidth = 2.0;
         currentButton.layer.borderWidth = 0;
     }
+    @IBAction func onXPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("leaving leaderboard VC")
+        }
+    }
 }
