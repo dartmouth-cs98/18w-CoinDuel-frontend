@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Coin Detail View Controller-->
+        <scene sceneID="8BR-4b-vuS">
+            <objects>
+                <viewController storyboardIdentifier="CoinDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7gg-YM-4Fw" customClass="CoinDetailViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vsi-9D-uT6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9w-xQ-I1d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uU-Vr-QeG">
+                                        <rect key="frame" x="26" y="26" width="34" height="30"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBackPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="wXL-1F-xGZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COIN NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntR-V5-bE0">
+                                        <rect key="frame" x="136" y="20" width="114" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1215686275" green="0.1960784314" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ntR-V5-bE0" firstAttribute="leading" secondItem="1uU-Vr-QeG" secondAttribute="trailing" constant="76" id="06C-Ef-UOW"/>
+                                    <constraint firstAttribute="trailing" secondItem="ntR-V5-bE0" secondAttribute="trailing" constant="125" id="CrD-vn-hDY"/>
+                                    <constraint firstAttribute="bottom" secondItem="1uU-Vr-QeG" secondAttribute="bottom" constant="27" id="OcV-ew-Aq4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ntR-V5-bE0" secondAttribute="bottom" constant="21" id="bsg-9r-rIt"/>
+                                    <constraint firstItem="ntR-V5-bE0" firstAttribute="top" secondItem="n9w-xQ-I1d" secondAttribute="top" constant="20" id="hb7-iG-ddS"/>
+                                    <constraint firstItem="1uU-Vr-QeG" firstAttribute="top" secondItem="n9w-xQ-I1d" secondAttribute="top" constant="26" id="vRq-aA-aVN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="n9w-xQ-I1d" firstAttribute="top" secondItem="Vsi-9D-uT6" secondAttribute="top" id="dKO-zB-oFT"/>
+                            <constraint firstAttribute="trailing" secondItem="n9w-xQ-I1d" secondAttribute="trailing" id="fMS-Nf-9O2"/>
+                            <constraint firstItem="n9w-xQ-I1d" firstAttribute="leading" secondItem="Vsi-9D-uT6" secondAttribute="leading" id="gMa-5M-iJ5"/>
+                            <constraint firstItem="tfH-1B-EXf" firstAttribute="bottom" secondItem="n9w-xQ-I1d" secondAttribute="bottom" constant="584" id="wf0-sN-eVu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tfH-1B-EXf"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameHeaderLabel" destination="ntR-V5-bE0" id="lqZ-ca-VeY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tu6-b1-Y36" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="644" y="881"/>
+        </scene>
+    </scenes>
+</document>

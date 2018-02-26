@@ -24,6 +24,10 @@ class CoinDetailViewController: UIViewController {
         self.dismiss(animated: true) {
             print("going back")
         }
+
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
+//        self.present(vc, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -318,6 +318,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: "coinDetailSegue", sender: self.tableView(tableView, cellForRowAt: indexPath) as! GameTableViewCell)
     }
 
@@ -328,12 +329,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let segID = segue.identifier {
                 if (segID == "coinDetailSegue"){
                     let cell: GameTableViewCell = sender as! GameTableViewCell
-                    
-                    let destinationVC: CoinDetailViewController = segue.destination as! CoinDetailViewController
-                    destinationVC.coinSymbol = cell.coinNameLabel.text!
-                    destinationVC.game = self.game
-                    
-                    print("showing coinDetail")
+                    let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
+                    if let destinationVC = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController") as? CoinDetailViewController {
+                        destinationVC.coinSymbol = cell.coinNameLabel.text!
+                        destinationVC.game = self.game
+                        self.present(destinationVC, animated: true, completion: nil)
+                        print("showing coinDetail")
+                    }
                 }
             }
 
