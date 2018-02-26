@@ -79,10 +79,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="9hT-Xu-D4g">
-                                <rect key="frame" x="112.5" y="80" width="150" height="100"/>
+                                <rect key="frame" x="117.5" y="80" width="140" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Jhi-0X-3Za"/>
-                                    <constraint firstAttribute="width" constant="150" id="MzG-Uk-I7E"/>
+                                    <constraint firstAttribute="width" constant="140" id="MzG-Uk-I7E"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -302,9 +302,9 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="cCR-h9-z1Y">
-                                <rect key="frame" x="112.5" y="130" width="150" height="100"/>
+                                <rect key="frame" x="117.5" y="130" width="140" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="HVw-jn-nVb"/>
+                                    <constraint firstAttribute="width" constant="140" id="HVw-jn-nVb"/>
                                     <constraint firstAttribute="height" constant="100" id="bax-Su-JPh"/>
                                 </constraints>
                             </imageView>
