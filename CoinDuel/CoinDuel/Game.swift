@@ -14,16 +14,16 @@ class Game {
     var id:String
     var coins:[Coin] = [Coin]()
     var isActive:Bool
-    var isFinished:Bool
-    var resultsViewed:Bool
+    var hasFinished:Bool
+    var startDate:String
     var finishDate:String
     
     init() {
         self.id = ""
         self.coins = [Coin]()
         self.isActive = false
-        self.isFinished = false
-        self.resultsViewed = false
+        self.hasFinished = false
+        self.startDate = ""
         self.finishDate = ""
     }
     
@@ -64,18 +64,22 @@ class Game {
                     // Get game ID and whether it has started
                     self.id = json[0]["_id"].stringValue
                     self.isActive = json[0]["is_active"].boolValue
-                    self.isFinished = json[0]["game_finished"].boolValue
+                    self.hasFinished = json[0]["game_finished"].boolValue
                     
                     // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                    guard let date = dateFormatter.date(from: json[0]["finish_date"].stringValue) else {
+                    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                    
+                    guard let startDate = dateFormatter.date(from: json[0]["start_date"].stringValue), let finishDate = dateFormatter.date(from: json[0]["finish_date"].stringValue) else {
                         completion(false)
                         return
                     }
-
-                    dateFormatter.dateFormat = "EEEE h:mm a"
-                    self.finishDate = dateFormatter.string(from: date)
+                    
+                    dateFormatter.dateFormat = "EEEE h:mm a z"
+                    dateFormatter.timeZone = TimeZone.current
+                    self.startDate = dateFormatter.string(from: startDate)
+                    self.finishDate = dateFormatter.string(from: finishDate)
                     
                     // Get all coins (retrieving only the name for now)
                     for coin in json[0]["coins"] {
@@ -92,16 +96,14 @@ class Game {
     }
     
     // Retrieves an entry by this user for this game, if it exists
-    func updateGame(completion: @escaping (_ entryStatus: String) -> Void) {
+    func getEntry(completion: @escaping (_ entryStatus: String) -> Void) {
         let url = Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    
-                    self.resultsViewed = json["results_viewed"].boolValue
-                    
+                                        
                     // Reset coins since we have an entry
                     self.coins = [Coin]()
                 
@@ -195,24 +197,6 @@ class Game {
                     print(error)
                     completion(false)
                 }
-        }
-    }
-    
-    
-    // Sets the results as viewed for a game
-    func resultsViewed(completion: @escaping (_ status: Bool) -> Void) {
-        let url = Constants.API + "results/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
-        
-        Alamofire.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-                case .success(let value):
-                    print(value)
-                    self.resultsViewed = true
-                    completion(true)
-                case .failure(let error):
-                    print(error)
-                    completion(false)
-            }
         }
     }
     

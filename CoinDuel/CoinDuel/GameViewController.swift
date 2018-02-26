@@ -31,6 +31,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Loading GameView")
+        
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
             self.gameTableView.refreshControl = refreshControl
@@ -46,34 +48,59 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
         
+        // Retrieve gameId (if we already have it)
+        let storedGameId = UserDefaults.standard.string(forKey: "gameId")
+        
+        // Try and get the current game from the database
         self.game.getCurrentGame() { (success) -> Void in
             if success {
-                self.game.updateGame() { (entryStatus) -> Void in
+                // See if we have an entry
+                self.game.getEntry() { (entryStatus) -> Void in
                     if entryStatus == "entry" {
                         // Already has an entry for this game, check if it's started already
-                        if self.game.isActive && !self.game.isFinished {
+                        if self.game.isActive && (self.game.id == storedGameId || storedGameId == nil) {
                             // Update prices
                             self.game.updateCoinPrices() { (coinSuccess) -> Void in
                                 if coinSuccess {
-                                    // Show price page with returns
+                                    // Store the current game ID (for showing results later)
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(self.game.id, forKey: "gameId")
+                                    
+                                    // Show game mode (with prices/returns for coins)
                                     self.displayGameMode()
                                 } else {
                                     self.networkError()
                                 }
                             }
                         // If the game is finished, display the results popup (since we had an entry)
-                        } else if self.game.isFinished && !self.game.resultsViewed {
-                            self.performSegue(withIdentifier: "DisplayResultsPopup", sender: self)
-                        } else if self.game.isFinished {
-                            self.displayEntryMode()
-                        } else {
-                            // Show the entry view
+                        } else if storedGameId != nil {
+                            self.game = Game()
+                            self.game.id = storedGameId!
+                            self.game.getEntry() { (entryStatus) -> Void in
+                                if entryStatus == "entry" {
+                                    self.performSegue(withIdentifier: "DisplayResultsPopup", sender: self)
+                                } else {
+                                    // Could not get results for this game
+                                    print("No results available")
+                                    self.networkError()
+                                }
+                            }
+                        // No games to load
+                        } else if !self.game.isActive && self.game.hasFinished {
+                            self.game = Game()
+                            self.displayNoGameMode()
+                        } else if !self.game.hasFinished {
                             self.displayEntryMode()
                         }
                     } else if entryStatus == "none" {
-                        if self.game.isActive {
+                        if self.game.hasFinished {
+                            self.game = Game()
+                            self.displayNoGameMode()
+                            return
+                        } else if self.game.isActive {
                             self.isLateEntry = true
                         }
+
                         // No entry yet, show the entry view
                         self.displayEntryMode()
                     } else {
@@ -90,8 +117,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func displayEntryMode() {
         self.isGameDisplayMode = false
         
-        nextGameLabel.text = "Late Entry"
-        gameTimeLabel.text = "Game ends " + self.game.finishDate
+        if self.isLateEntry {
+            nextGameLabel.text = "Late Entry"
+            gameTimeLabel.text = "Game ends " + self.game.finishDate
+        } else {
+            nextGameLabel.text = "Allocate CapCoin among the cryptos"
+            gameTimeLabel.text = "Game starts " + self.game.startDate
+        }
         
         nextGameLabel.isHidden = false
         gameTimeLabel.isHidden = false
@@ -119,6 +151,22 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         nextGameLabel.isHidden = true
         gameTimeLabel.isHidden = false
         self.submitButton.isHidden = true
+        
+        DispatchQueue.main.async() {
+            self.gameTableView.reloadData()
+        }
+    }
+    
+    // When there are no active games, display this
+    func displayNoGameMode() {
+        nextGameLabel.text = "No Games Scheduled"
+        gameTimeLabel.text = "Check back soon!"
+        
+        nextGameLabel.isHidden = false
+        gameTimeLabel.isHidden = false
+        gameStatusLabel.isHidden = true
+        gameReturnLabel.isHidden = true
+        submitButton.isHidden = true
         
         DispatchQueue.main.async() {
             self.gameTableView.reloadData()
@@ -246,7 +294,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Submit the entry to the server
         self.game.submitEntry() { (success) -> Void in
             if success {
-                self.game.updateGame(completion: { (entryUpdate) in
+                self.game.getEntry(completion: { (entryUpdate) in
                     if entryUpdate == "entry" && self.game.isActive {
                         // Update prices
                         self.game.updateCoinPrices() { (coinSuccess) -> Void in
@@ -272,12 +320,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func unwindResultsView(unwindSegue: UIStoryboardSegue) {
-        
+        print("Unwind")
+        UserDefaults.standard.set(nil, forKey: "gameId")
     }
     
     // From: http://matteomanferdini.com/how-ios-view-controllers-communicate-with-each-other/
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let data = Data()
         if let resultsVC = segue.destination as? ResultsViewController {
             resultsVC.game = self.game
         }
