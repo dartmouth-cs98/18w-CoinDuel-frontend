@@ -203,10 +203,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if (self.game.totalPercentageReturn() > 0) {
             gameStatusLabel.text = "↑ " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
-            gameStatusLabel.textColor = Constants.greenColor
+            gameStatusLabel.textColor = UIColor.white
         } else {
             gameStatusLabel.text = "↓ " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
-            gameStatusLabel.textColor = Constants.redColor
+            gameStatusLabel.textColor = UIColor.white
         }
         
         gameTimeLabel.text = "Game ends " + self.game.finishDate
@@ -263,7 +263,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinPricePreviewLabel.isHidden = true
             cell.coinPriceLabel.isHidden = false
             cell.coinReturnLabel.isHidden = false
-            
+
             cell.coinNameLabel.text = coin.ticker
             
             if coin.allocation > 0 {

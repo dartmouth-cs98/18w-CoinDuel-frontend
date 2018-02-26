@@ -45,9 +45,11 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         allTimeButton.layer.cornerRadius = 10
         currentButton.layer.masksToBounds = true
         currentButton.layer.cornerRadius = 10
+        
         allTimeButton.layer.borderWidth = 2.0;
-        allTimeButton.layer.borderColor = (UIColor.lightGray).cgColor;
-        currentButton.layer.borderColor = (UIColor.lightGray).cgColor;
+        
+        allTimeButton.layer.borderColor = (UIColor.white).cgColor;
+        currentButton.layer.borderColor = (UIColor.white).cgColor;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,17 +86,17 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     @IBAction func allTimeClick(_ sender: Any) {
-        allTimeButton.backgroundColor = UIColor.red
-        currentButton.backgroundColor = UIColor(red: 0.1216, green: 0.1961, blue: 0.5294, alpha: 1.0)
-        allTimeButton.layer.borderWidth = 0;
+        allTimeButton.backgroundColor = Constants.greenColor
+        currentButton.backgroundColor = Constants.lightBlueColor
+        allTimeButton.layer.borderWidth = 0.0;
         currentButton.layer.borderWidth = 2.0;
     }
     
     @IBAction func currentClick(_ sender: Any) {
-        allTimeButton.backgroundColor = UIColor(red: 0.1216, green: 0.1961, blue: 0.5294, alpha: 1.0)
-        currentButton.backgroundColor = UIColor.red
+        allTimeButton.backgroundColor = Constants.lightBlueColor
+        currentButton.backgroundColor = Constants.greenColor
         allTimeButton.layer.borderWidth = 2.0;
-        currentButton.layer.borderWidth = 0;
+        currentButton.layer.borderWidth = 0.0;
     }
     @IBAction func onXPressed(_ sender: Any) {
         self.dismiss(animated: true) {
