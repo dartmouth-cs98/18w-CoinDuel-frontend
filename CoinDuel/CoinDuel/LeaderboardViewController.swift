@@ -42,9 +42,12 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             label!.layer.cornerRadius = 11
         }
         allTimeButton.layer.masksToBounds = true
-        allTimeButton.layer.cornerRadius = 5
+        allTimeButton.layer.cornerRadius = 10
         currentButton.layer.masksToBounds = true
-        currentButton.layer.cornerRadius = 5
+        currentButton.layer.cornerRadius = 10
+        allTimeButton.layer.borderWidth = 2.0;
+        allTimeButton.layer.borderColor = (UIColor.lightGray).cgColor;
+        currentButton.layer.borderColor = (UIColor.lightGray).cgColor;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +62,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         let user = self.leaderboard.users[indexPath.row]
-        cell.placeLabel.text = String(indexPath.row + 1) + "."
+        cell.placeLabel.text = String(indexPath.row + 1)
         cell.nameLabel.text = user.username
         cell.scoreLabel.text = String(user.coinBalance)
     
@@ -80,4 +83,22 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func allTimeClick(_ sender: Any) {
+        allTimeButton.backgroundColor = UIColor.red
+        currentButton.backgroundColor = UIColor(red: 0.1216, green: 0.1961, blue: 0.5294, alpha: 1.0)
+        allTimeButton.layer.borderWidth = 0;
+        currentButton.layer.borderWidth = 2.0;
+    }
+    
+    @IBAction func currentClick(_ sender: Any) {
+        allTimeButton.backgroundColor = UIColor(red: 0.1216, green: 0.1961, blue: 0.5294, alpha: 1.0)
+        currentButton.backgroundColor = UIColor.red
+        allTimeButton.layer.borderWidth = 2.0;
+        currentButton.layer.borderWidth = 0;
+    }
+    @IBAction func onXPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("leaving leaderboard VC")
+        }
+    }
 }

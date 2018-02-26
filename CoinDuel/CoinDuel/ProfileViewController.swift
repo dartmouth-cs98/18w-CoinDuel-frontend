@@ -48,5 +48,12 @@ class ProfileViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
         self.present(vc, animated: true, completion: nil)
     }
+    @IBAction func onXPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("leaving profile screen")
+        }
+    }
+
+
 
 }

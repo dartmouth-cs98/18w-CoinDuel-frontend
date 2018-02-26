@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SwiftyJSON
+import Alamofire
 
 struct Coin {
     var ticker:String
