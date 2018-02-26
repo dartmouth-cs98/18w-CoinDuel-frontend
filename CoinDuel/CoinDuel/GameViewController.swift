@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var gameReturnLabel: UILabel!
@@ -228,6 +229,25 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "coinDetailSegue", sender: self.tableView(tableView, cellForRowAt: indexPath) as! GameTableViewCell)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let segID = segue.identifier {
+            if (segID == "coinDetailSegue"){
+                let cell: GameTableViewCell = sender as! GameTableViewCell
+
+                let destinationVC: CoinDetailViewController = segue.destination as! CoinDetailViewController
+                destinationVC.coinSymbol = cell.coinNameLabel.text!
+                destinationVC.game = self.game
+                
+                print("showing coinDetail")
+            }
+        }
+
     }
     
     func networkError() {

@@ -9,11 +9,21 @@
 import UIKit
 
 class CoinDetailViewController: UIViewController {
+    @IBOutlet weak var nameHeaderLabel: UILabel!
+
+    var game: Game = Game()
+    var coinSymbol: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameHeaderLabel.text = coinSymbol
 
-        // Do any additional setup after loading the view.
+    }
+
+    @IBAction func onBackPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("going back")
+        }
     }
 
     override func didReceiveMemoryWarning() {
