@@ -5,4 +5,5 @@ use_frameworks!
 target 'CoinDuel' do
     pod 'Alamofire', '~> 4.6'
 	pod 'SwiftyJSON'
+	pod 'Charts'
 end
