@@ -23,11 +23,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var noUsernameLabel: UILabel!
     @IBOutlet weak var noEmailLabel: UILabel!
 
+    @IBOutlet weak var signupButton: UIButton!
+    
     var validated = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
+        signupButton.layer.masksToBounds = true
+        signupButton.layer.cornerRadius = 5
         // Do any additional setup after loading the view.
     }
 
