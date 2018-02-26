@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class CoinDetailViewController: UIViewController {
     @IBOutlet weak var nameHeaderLabel: UILabel!
