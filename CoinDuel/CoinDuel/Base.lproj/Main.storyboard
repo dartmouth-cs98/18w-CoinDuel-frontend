@@ -232,7 +232,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ci-T3-jAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lX2-26-7c7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="288.80000000000001" y="-81.409295352323838"/>
+            <point key="canvasLocation" x="-783" y="-186"/>
         </scene>
         <!--GameViewController-->
         <scene sceneID="vBP-Km-ENc">
@@ -442,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117.5999999999999" y="132.68365817091455"/>
+            <point key="canvasLocation" x="319" y="-27"/>
         </scene>
         <!--LeaderboardViewController-->
         <scene sceneID="sKs-tj-yXP">

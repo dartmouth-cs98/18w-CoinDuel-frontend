@@ -295,10 +295,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             let remaining = 10.0 - self.game.totalAmount()
             if remaining > 0.0 {
+                cell.coinAmountStepper.maximumValue = 10.0
+                
                 self.submitButton.backgroundColor = Constants.orangeColor
                 self.submitButton.setTitle("Allocate " + String(Int(remaining)) + " additional CapCoin", for: UIControlState .normal)
                 self.submitButton.isEnabled = false
             } else {
+                cell.coinAmountStepper.maximumValue = coin.allocation
+                
                 if self.hasEntry {
                     self.submitButton.setTitle("Update choices", for: UIControlState .normal)
                 } else {
