@@ -169,7 +169,7 @@ class Game {
         }
     }
 
-    func updateCoinPrices(completion: @escaping (_ success: Bool) -> Void) {
+    func updateCoinPricesAndReturns(completion: @escaping (_ success: Bool) -> Void) {
         let url = URL(string: Constants.API + "return/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
 
         Alamofire.request(url, method: .get).validate().responseJSON { response in
@@ -197,6 +197,37 @@ class Game {
                     print(error)
                     completion(false)
                 }
+        }
+    }
+    
+    
+    func updateCoinPrices(completion: @escaping (_ success: Bool) -> Void) {
+        let url = URL(string: Constants.API + "game/prices/" + self.id)!
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                // Get all coin prices, default CapCoin allocation to 0
+                for coin in json["prices"] {
+                    let ticker = coin.0
+                    let currentPrice = coin.1.doubleValue
+                    var x = 0
+                    for storedCoin in self.coins {
+                        if ticker == storedCoin.ticker {
+                            self.coins[x].currentPrice = currentPrice
+                            break
+                        }
+                        x += 1
+                    }
+                }
+                
+                completion(true)
+            case .failure(let error):
+                print(error)
+                completion(false)
+            }
         }
     }
     

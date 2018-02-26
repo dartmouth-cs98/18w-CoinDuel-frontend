@@ -14,6 +14,7 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var coinAmountStepper: UIStepper!
     @IBOutlet weak var coinReturnLabel: UILabel!
     @IBOutlet weak var coinPriceLabel: UILabel!
+    @IBOutlet weak var coinPricePreviewLabel: UILabel!
     
     var indexPath = 0
     var game: Game = Game()
@@ -31,6 +32,7 @@ class GameTableViewCell: UITableViewCell {
     }
     @IBAction func coinAmountChanged(_ sender: UIStepper) {
         self.game.coins[self.indexPath].allocation = sender.value
+        self.gameVC.submitButton.isHidden = false
         self.gameVC.gameTableView.reloadData()
     }
     
