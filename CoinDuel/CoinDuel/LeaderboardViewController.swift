@@ -27,6 +27,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var thirdPlaceLabel: UILabel!
     
     var leaderboard: Leaderboard = Leaderboard()
+    var numberFormatter: NumberFormatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         
         allTimeButton.layer.borderColor = (UIColor.white).cgColor;
         currentButton.layer.borderColor = (UIColor.white).cgColor;
+        
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,7 +71,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         let user = self.leaderboard.users[indexPath.row]
         cell.placeLabel.text = String(indexPath.row + 1)
         cell.nameLabel.text = user.username
-        cell.scoreLabel.text = String(user.coinBalance)
+        cell.scoreLabel.text = numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC"
     
         if user.username == UserDefaults.standard.string(forKey:"username") {
             cell.placeLabel.textColor = UIColor.red
