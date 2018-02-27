@@ -477,10 +477,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwT-FF-cHh">
-                                                    <rect key="frame" x="330" y="11" width="30" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwT-FF-cHh">
+                                                    <rect key="frame" x="280" y="11" width="80" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="ZUl-xD-mf3"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="cK1-ku-GXh"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -676,7 +676,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-dc-2mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="360"/>
+            <point key="canvasLocation" x="1448.8" y="359.37031484257875"/>
         </scene>
         <!--CoinDetailViewController-->
         <scene sceneID="ags-Hf-TUR">
