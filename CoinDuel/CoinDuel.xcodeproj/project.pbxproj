@@ -25,6 +25,7 @@
 		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
 		50E499402038B64500DBCC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4993F2038B64500DBCC42 /* User.swift */; };
+		A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050E8482048B4310009A96E /* DateValueFormatter.swift */; };
 		A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F1E08204376640070D305 /* CoinDetailViewController.swift */; };
 		A06F1E0B2043C6B10070D305 /* CoinDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */; };
 		A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */; };
@@ -76,6 +77,7 @@
 		50E4993F2038B64500DBCC42 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		69879681FD0E4D4187C6C5A9 /* Pods-CoinDuel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.release.xcconfig"; sourceTree = "<group>"; };
 		6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinDuel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A050E8482048B4310009A96E /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		A06F1E08204376640070D305 /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
 		A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoinDetail.storyboard; sourceTree = "<group>"; };
 		A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				50E4993F2038B64500DBCC42 /* User.swift */,
 				504A1B88203B798E004819F1 /* Leaderboard.swift */,
 				A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */,
+				A050E8482048B4310009A96E /* DateValueFormatter.swift */,
 			);
 			path = CoinDuel;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
+				A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */,
 				504A1B89203B798E004819F1 /* Leaderboard.swift in Sources */,
 				A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */,
 				1E56321920378D310043ECF9 /* Game.swift in Sources */,
@@ -585,7 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E5CQB749FM;
+				DEVELOPMENT_TEAM = M3Q3EV9NXA;
 				INFOPLIST_FILE = CoinDuel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -602,7 +606,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E5CQB749FM;
+				DEVELOPMENT_TEAM = M3Q3EV9NXA;
 				INFOPLIST_FILE = CoinDuel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

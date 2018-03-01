@@ -14,11 +14,19 @@ import Charts
 import Alamofire
 import SwiftyJSON
 
+//the below class was from the demo project from to format line dates https://github.com/danielgindi/Charts
+private class CubicLineSampleFillFormatter: IFillFormatter {
+    func getFillLinePosition(dataSet: ILineChartDataSet, dataProvider: LineChartDataProvider) -> CGFloat {
+        return -10
+    }
+}
 
 class CoinDetailViewController: UIViewController {
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
-    
+    @IBOutlet weak var coinPriceLabel: UILabel!
+    @IBOutlet weak var capCoinAllocationLabel: UILabel!
+
     var game: Game = Game()
     var coinSymbol: String = ""
     var priceData : [Double] = []
@@ -35,6 +43,19 @@ class CoinDetailViewController: UIViewController {
         chartView.setScaleEnabled(true)
         chartView.pinchZoomEnabled = true
 
+//        modified xAxis for time line with help from https://github.com/danielgindi/Charts/blob/master/ChartsDemo/Swift/Demos/LineChartTimeViewController.swift
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .topInside
+        xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
+        xAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
+        xAxis.drawAxisLineEnabled = true
+        xAxis.drawGridLinesEnabled = false
+        xAxis.centerAxisLabelsEnabled = false
+        xAxis.granularity = 3600
+        xAxis.valueFormatter = DateValueFormatter()
+
+        
+
         let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbol + "&tsym=USD&limit=24"
 
 //        source: https://github.com/SwiftyJSON/SwiftyJSON
@@ -45,11 +66,16 @@ class CoinDetailViewController: UIViewController {
                 print(json["Data"].arrayValue.count)
                 var x = 0
                 for coin in json["Data"] {
-                    let time = coin.1["time"]
+                    let time = coin.1["time"].description
+                    print(time)
+
+                    let date = NSDate(timeIntervalSince1970: Double(time)!)
+                    print(date)
+
                     let price = Double(coin.1["high"].description)
 
 
-                    let value = ChartDataEntry(x: Double(x), y: price!) // here we set the X and Y status in a data chart entry
+                    let value = ChartDataEntry(x: Double(time)!, y: price!) // here we set the X and Y status in a data chart entry
 
                     self.lineChartEntry.append(value) // here we add it to the data set
                     x = x + 1
@@ -62,18 +88,23 @@ class CoinDetailViewController: UIViewController {
     }
 
     func updateLineGraph (){
-        let line1 = LineChartDataSet(values: lineChartEntry, label: "Number") //Here we convert lineChartEntry to a LineChartDataSet
+        let set1 = LineChartDataSet(values: lineChartEntry, label: coinSymbol) //Here we convert lineChartEntry to a LineChartDataSet
 
-        line1.colors = [NSUIColor.blue] //Sets the colour to blue
+        set1.mode = .cubicBezier
+        set1.drawCirclesEnabled = false
+        set1.lineWidth = 1.8
+        set1.circleRadius = 4
+        set1.setCircleColor(.black)
+        set1.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
+        set1.fillColor = .white
+        set1.fillAlpha = 1
+        set1.drawHorizontalHighlightIndicatorEnabled = false
+        set1.fillFormatter = CubicLineSampleFillFormatter()
 
-
+        set1.colors = [NSUIColor.blue] //Sets the colour to blue
         let data = LineChartData() //This is the object that will be added to the chart
-
-        data.addDataSet(line1) //Adds the line to the dataSet
-
-
+        data.addDataSet(set1) //Adds the line to the dataSet
         chartView.data = data //finally - it adds the chart data to the chart and causes an update
-
         chartView.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
 
     }
@@ -92,7 +123,18 @@ class CoinDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    @IBAction func currentGameChart(_ sender: Any) {
+    }
+
+    @IBAction func oneDayChart(_ sender: Any) {
+    }
+    @IBAction func oneWeekChart(_ sender: Any) {
+    }
+    @IBAction func oneMonthChart(_ sender: Any) {
+    }
+    @IBAction func oneYearChart(_ sender: Any) {
+    }
 
     /*
     // MARK: - Navigation
