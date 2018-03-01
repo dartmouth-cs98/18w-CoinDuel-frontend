@@ -25,12 +25,26 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var firstPlaceLabel: UILabel!
     @IBOutlet weak var secondPlaceLabel: UILabel!
     @IBOutlet weak var thirdPlaceLabel: UILabel!
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     var leaderboard: Leaderboard = Leaderboard()
     var numberFormatter: NumberFormatter = NumberFormatter()
-    
+    let refreshControl = UIRefreshControl()
+    var isCurrent = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
+        if #available(iOS 10.0, *) {
+            self.leaderboardTable.refreshControl = refreshControl
+        } else {
+            self.leaderboardTable.addSubview(refreshControl)
+        }
+        
+        // Add refresh control function
+        refreshControl.addTarget(self, action: #selector(refreshLeaderboardData(_:)), for: .valueChanged)
+        
         self.leaderboard.getCurrentLeaderboard(self)
         let imageViews = [firstPlaceImage, secondPlaceImage, thirdPlaceImage]
         for image in imageViews {
@@ -89,23 +103,48 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @objc func refreshLeaderboardData(_ sender:Any) {
+        if self.isCurrent {
+            self.leaderboard.getCurrentLeaderboard(self)
+        } else {
+            self.leaderboard.getAllTimeLeaderboard(self)
+        }
+    }
+
 
     @IBAction func allTimeClick(_ sender: Any) {
-        allTimeButton.backgroundColor = Constants.greenColor
-        currentButton.backgroundColor = Constants.lightBlueColor
-        allTimeButton.layer.borderWidth = 0.0;
-        currentButton.layer.borderWidth = 2.0;
+        if self.isCurrent {
+            allTimeButton.backgroundColor = Constants.greenColor
+            currentButton.backgroundColor = Constants.lightBlueColor
+            allTimeButton.layer.borderWidth = 0.0;
+            currentButton.layer.borderWidth = 2.0;
+            self.leaderboard.getAllTimeLeaderboard(self)
+            self.isCurrent = false
+        }
     }
     
     @IBAction func currentClick(_ sender: Any) {
-        allTimeButton.backgroundColor = Constants.lightBlueColor
-        currentButton.backgroundColor = Constants.greenColor
-        allTimeButton.layer.borderWidth = 2.0;
-        currentButton.layer.borderWidth = 0.0;
+        if !self.isCurrent {
+            allTimeButton.backgroundColor = Constants.lightBlueColor
+            currentButton.backgroundColor = Constants.greenColor
+            allTimeButton.layer.borderWidth = 2.0;
+            currentButton.layer.borderWidth = 0.0;
+            self.leaderboard.getCurrentLeaderboard(self)
+            self.isCurrent = true
+        }
     }
     @IBAction func onXPressed(_ sender: Any) {
         self.dismiss(animated: true) {
             print("leaving leaderboard VC")
         }
+    }
+    
+    func networkError(_ errorMessage:String) {
+        // from: https://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
+        
+        let alert = UIAlertController(title: "Uh oh!", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

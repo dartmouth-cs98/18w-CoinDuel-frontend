@@ -625,6 +625,9 @@
                                     <action selector="currentClick:" destination="UBg-rn-yG4" eventType="touchUpInside" id="O7x-mZ-CbF"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="xz0-Dm-U72">
+                                <rect key="frame" x="177" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.22063425189999999" green="0.55939980830000002" blue="0.7871473605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -632,6 +635,7 @@
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="trailing" secondItem="Kwd-75-WdK" secondAttribute="trailing" id="1iY-hg-v8Q"/>
                             <constraint firstItem="pl9-hq-uC8" firstAttribute="top" secondItem="sEn-Nv-VbL" secondAttribute="top" constant="-5" id="7fC-Ze-eNz"/>
                             <constraint firstItem="sEn-Nv-VbL" firstAttribute="leading" secondItem="zV3-pp-8PO" secondAttribute="trailing" constant="40" id="8RC-ne-S9s"/>
+                            <constraint firstItem="xz0-Dm-U72" firstAttribute="centerX" secondItem="bEC-1n-FFo" secondAttribute="centerX" id="8ck-gq-ZHo"/>
                             <constraint firstItem="BPm-Qz-A6J" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="top" constant="30" id="9Jz-4y-tOm"/>
                             <constraint firstItem="qFR-Ap-aNq" firstAttribute="trailing" secondItem="bEC-1n-FFo" secondAttribute="centerX" constant="-10" id="9Xb-Ne-stJ"/>
                             <constraint firstItem="zV3-pp-8PO" firstAttribute="leading" secondItem="BPm-Qz-A6J" secondAttribute="trailing" constant="40" id="DBo-cc-Lir"/>
@@ -641,6 +645,7 @@
                             <constraint firstItem="fkK-4N-zeC" firstAttribute="top" secondItem="BPm-Qz-A6J" secondAttribute="top" constant="-5" id="OhA-zU-kEh"/>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="bottom" id="P3R-Da-E4L"/>
                             <constraint firstItem="LeA-qF-opa" firstAttribute="centerX" secondItem="sEn-Nv-VbL" secondAttribute="centerX" id="PAH-Fd-Coh"/>
+                            <constraint firstItem="xz0-Dm-U72" firstAttribute="centerY" secondItem="bEC-1n-FFo" secondAttribute="centerY" id="PFE-yV-uTq"/>
                             <constraint firstItem="etA-Ia-1eZ" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="bottom" constant="4" id="SWw-d9-vp5"/>
                             <constraint firstItem="etA-Ia-1eZ" firstAttribute="centerX" secondItem="bEC-1n-FFo" secondAttribute="centerX" id="SaI-sT-T1b"/>
                             <constraint firstItem="Kwd-75-WdK" firstAttribute="leading" secondItem="bEC-1n-FFo" secondAttribute="leading" id="Uv5-U6-r8l"/>
@@ -666,6 +671,7 @@
                         <outlet property="firstPlaceImage" destination="zV3-pp-8PO" id="OGG-UC-vND"/>
                         <outlet property="firstPlaceLabel" destination="etA-Ia-1eZ" id="hVe-9n-WnM"/>
                         <outlet property="leaderboardTable" destination="Kwd-75-WdK" id="h3P-iG-4On"/>
+                        <outlet property="loadingActivityIndicatorView" destination="xz0-Dm-U72" id="9zz-mX-DoH"/>
                         <outlet property="secondNumberLabel" destination="fkK-4N-zeC" id="9fI-ai-8Ic"/>
                         <outlet property="secondPlaceImage" destination="BPm-Qz-A6J" id="AcP-u7-6ms"/>
                         <outlet property="secondPlaceLabel" destination="Uud-Af-qRi" id="ZBR-Rf-ajE"/>
