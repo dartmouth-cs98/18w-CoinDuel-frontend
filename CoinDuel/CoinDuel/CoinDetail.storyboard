@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,25 +19,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-tQ-g9N" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="25" y="271" width="324" height="344"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-tQ-g9N" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="12" y="124" width="350" height="420"/>
                                 <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.22210570469798657" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n9w-xQ-I1d">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9w-xQ-I1d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="COIN NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntR-V5-bE0">
-                                        <rect key="frame" x="130" y="2" width="114" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COIN NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntR-V5-bE0">
+                                        <rect key="frame" x="130" y="8" width="114" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uU-Vr-QeG">
-                                        <rect key="frame" x="8" y="8" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uU-Vr-QeG">
+                                        <rect key="frame" x="8" y="14" width="30" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <state key="normal" title="×">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,21 +42,35 @@
                                             <action selector="onBackPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="06Y-uT-k4y"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CapCoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rp1-QJ-YGh">
-                                        <rect key="frame" x="301" y="13" width="66" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CapCoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rp1-QJ-YGh">
+                                        <rect key="frame" x="301" y="19" width="66" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.57647058823529407" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="1uU-Vr-QeG" firstAttribute="centerY" secondItem="n9w-xQ-I1d" secondAttribute="centerY" id="06F-Gq-i5t"/>
+                                    <constraint firstItem="ntR-V5-bE0" firstAttribute="centerY" secondItem="rp1-QJ-YGh" secondAttribute="centerY" id="0N7-9w-TMg"/>
+                                    <constraint firstItem="1uU-Vr-QeG" firstAttribute="leading" secondItem="n9w-xQ-I1d" secondAttribute="leadingMargin" id="0UV-bf-PgK"/>
+                                    <constraint firstItem="ntR-V5-bE0" firstAttribute="bottom" secondItem="n9w-xQ-I1d" secondAttribute="bottomMargin" id="FFZ-n5-uuC"/>
+                                    <constraint firstItem="1uU-Vr-QeG" firstAttribute="top" secondItem="n9w-xQ-I1d" secondAttribute="top" constant="14" id="Xyx-Zd-b0y"/>
+                                    <constraint firstItem="1uU-Vr-QeG" firstAttribute="centerY" secondItem="ntR-V5-bE0" secondAttribute="centerY" id="bbh-PX-WOO"/>
+                                    <constraint firstItem="ntR-V5-bE0" firstAttribute="centerX" secondItem="n9w-xQ-I1d" secondAttribute="centerX" id="l5d-tq-mm3"/>
+                                    <constraint firstItem="rp1-QJ-YGh" firstAttribute="trailing" secondItem="n9w-xQ-I1d" secondAttribute="trailingMargin" id="udM-tj-0Yx"/>
+                                </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-E8-wgV">
-                                <rect key="frame" x="25" y="623" width="324" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$Coin Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABb-ja-HlS">
+                                <rect key="frame" x="143" y="70" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-E8-wgV">
+                                <rect key="frame" x="16" y="552" width="352" height="24"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qs-1y-TNN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qs-1y-TNN">
                                         <rect key="frame" x="0.0" y="0.0" width="68" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="Current Game"/>
@@ -67,32 +78,32 @@
                                             <action selector="currentGameChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="ZQu-ju-0VX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-Ay-6cg">
-                                        <rect key="frame" x="102" y="0.0" width="30" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-Ay-6cg">
+                                        <rect key="frame" x="109" y="0.0" width="30" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="1D"/>
                                         <connections>
                                             <action selector="oneDayChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="bZA-Mf-wBJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blk-jn-m3o">
-                                        <rect key="frame" x="166" y="0.0" width="30" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blk-jn-m3o">
+                                        <rect key="frame" x="180" y="0.0" width="30" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="1W"/>
                                         <connections>
                                             <action selector="oneWeekChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="TY1-yg-DUb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4o-TF-JDp">
-                                        <rect key="frame" x="230" y="0.0" width="30" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4o-TF-JDp">
+                                        <rect key="frame" x="251" y="0.0" width="30" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="1M"/>
                                         <connections>
                                             <action selector="oneMonthChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="pEm-Qc-e6A"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFX-W2-kWd">
-                                        <rect key="frame" x="294" y="0.0" width="30" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFX-W2-kWd">
+                                        <rect key="frame" x="322" y="0.0" width="30" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="1Y"/>
                                         <connections>
@@ -101,15 +112,22 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$Coin Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABb-ja-HlS">
-                                <rect key="frame" x="143" y="70" width="89" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="n9w-xQ-I1d" firstAttribute="top" secondItem="Vsi-9D-uT6" secondAttribute="top" id="0dG-Fb-wLY"/>
+                            <constraint firstItem="XIP-tQ-g9N" firstAttribute="top" secondItem="ABb-ja-HlS" secondAttribute="bottom" constant="33" id="3Jm-zY-O9J"/>
+                            <constraint firstItem="ABb-ja-HlS" firstAttribute="top" secondItem="n9w-xQ-I1d" secondAttribute="bottom" constant="12" id="CSL-af-gNH"/>
+                            <constraint firstAttribute="trailing" secondItem="n9w-xQ-I1d" secondAttribute="trailing" id="GYE-Yn-HRe"/>
+                            <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="XIP-tQ-g9N" secondAttribute="centerX" id="Gve-jY-qYY"/>
+                            <constraint firstItem="ABb-ja-HlS" firstAttribute="top" secondItem="Vsi-9D-uT6" secondAttribute="top" constant="70" id="KQU-KI-Wch"/>
+                            <constraint firstItem="n9w-xQ-I1d" firstAttribute="leading" secondItem="Vsi-9D-uT6" secondAttribute="leading" id="Qc3-6k-uLg"/>
+                            <constraint firstItem="hTA-E8-wgV" firstAttribute="leading" secondItem="Vsi-9D-uT6" secondAttribute="leadingMargin" id="glB-Ud-MUj"/>
+                            <constraint firstItem="XIP-tQ-g9N" firstAttribute="leading" secondItem="tfH-1B-EXf" secondAttribute="leading" constant="12" id="mIF-C6-OeG"/>
+                            <constraint firstItem="hTA-E8-wgV" firstAttribute="top" secondItem="XIP-tQ-g9N" secondAttribute="bottom" constant="8" symbolic="YES" id="t1e-2j-YVR"/>
+                            <constraint firstItem="XIP-tQ-g9N" firstAttribute="centerY" secondItem="Vsi-9D-uT6" secondAttribute="centerY" id="w6j-3V-EYt"/>
+                            <constraint firstItem="n9w-xQ-I1d" firstAttribute="centerX" secondItem="ABb-ja-HlS" secondAttribute="centerX" id="zSu-QU-Pqh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tfH-1B-EXf"/>
                     </view>
                     <connections>
