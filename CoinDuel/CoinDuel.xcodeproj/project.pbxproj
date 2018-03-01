@@ -587,6 +587,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E5CQB749FM;
 				INFOPLIST_FILE = CoinDuel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -603,6 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E5CQB749FM;
 				INFOPLIST_FILE = CoinDuel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Capitalize.CoinDuel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
