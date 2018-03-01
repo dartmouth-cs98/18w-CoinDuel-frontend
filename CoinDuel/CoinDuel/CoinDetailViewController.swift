@@ -54,37 +54,8 @@ class CoinDetailViewController: UIViewController {
         xAxis.granularity = 3600
         xAxis.valueFormatter = DateValueFormatter()
 
-        
+        self.oneDayChart((Any).self)
 
-        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbol + "&tsym=USD&limit=24"
-
-//        source: https://github.com/SwiftyJSON/SwiftyJSON
-        Alamofire.request(apiURL, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print(json["Data"].arrayValue.count)
-                var x = 0
-                for coin in json["Data"] {
-                    let time = coin.1["time"].description
-                    print(time)
-
-                    let date = NSDate(timeIntervalSince1970: Double(time)!)
-                    print(date)
-
-                    let price = Double(coin.1["high"].description)
-
-
-                    let value = ChartDataEntry(x: Double(time)!, y: price!) // here we set the X and Y status in a data chart entry
-
-                    self.lineChartEntry.append(value) // here we add it to the data set
-                    x = x + 1
-                }
-                self.updateLineGraph()
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 
     func updateLineGraph (){
@@ -113,10 +84,6 @@ class CoinDetailViewController: UIViewController {
         self.dismiss(animated: true) {
             print("going back")
         }
-
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
-//        self.present(vc, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,15 +92,60 @@ class CoinDetailViewController: UIViewController {
     }
 
     @IBAction func currentGameChart(_ sender: Any) {
+
     }
 
     @IBAction func oneDayChart(_ sender: Any) {
+//        api for one days data, 24 hours
+        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbol + "&tsym=USD&limit=24"
+        self.setChartData(apiURL: apiURL)
     }
     @IBAction func oneWeekChart(_ sender: Any) {
+//        api for past 7 days data
+        let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbol + "&tsym=USD&limit=7"
+        self.setChartData(apiURL: apiURL)
+
     }
     @IBAction func oneMonthChart(_ sender: Any) {
+//        api for past 30 days data
+        let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbol + "&tsym=USD&limit=30"
+        self.setChartData(apiURL: apiURL)
+
     }
     @IBAction func oneYearChart(_ sender: Any) {
+        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbol + "&tsym=USD&limit=24"
+        self.setChartData(apiURL: apiURL)
+
+    }
+
+    func setChartData(apiURL: String) -> Void {
+
+        self.lineChartEntry.removeAll()
+        //        source: https://github.com/SwiftyJSON/SwiftyJSON
+        Alamofire.request(apiURL, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print(json["Data"].arrayValue.count)
+                for coin in json["Data"] {
+                    let time = coin.1["time"].description
+                    print(time)
+
+                    let date = NSDate(timeIntervalSince1970: Double(time)!)
+                    print(date)
+
+                    let price = Double(coin.1["high"].description)
+
+
+                    let value = ChartDataEntry(x: Double(time)!, y: price!) // here we set the X and Y status in a data chart entry
+
+                    self.lineChartEntry.append(value) // here we add it to the data set
+                }
+                self.updateLineGraph()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     /*
