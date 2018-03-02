@@ -32,7 +32,9 @@ class SignUpViewController: UIViewController {
         self.activityIndicator.isHidden = true
         signupButton.layer.masksToBounds = true
         signupButton.layer.cornerRadius = 5
-        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {

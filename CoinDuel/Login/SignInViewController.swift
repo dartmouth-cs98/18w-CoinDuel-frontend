@@ -21,7 +21,9 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = 5
-        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
