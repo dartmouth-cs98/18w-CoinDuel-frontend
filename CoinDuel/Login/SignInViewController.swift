@@ -13,13 +13,17 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var failedLogin: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
     
     var validated = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loginButton.layer.masksToBounds = true
+        loginButton.layer.cornerRadius = 5
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {

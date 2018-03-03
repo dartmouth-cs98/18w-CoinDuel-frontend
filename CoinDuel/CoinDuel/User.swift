@@ -10,9 +10,9 @@ import Foundation
 
 class User {
     var username: String
-    var coinBalance: Int
+    var coinBalance: Double
     
-    init(username: String?, coinBalance: Int) {
+    init(username: String?, coinBalance: Double) {
         self.username = username ?? ""
         self.coinBalance = coinBalance
     }

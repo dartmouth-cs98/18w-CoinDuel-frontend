@@ -11,16 +11,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
+    
     override func viewDidAppear(_ animated: Bool) {
-//        self.performSegue(withIdentifier: "loginView", sender: self);
-        
-        
+        signinButton.layer.masksToBounds = true
+        signinButton.layer.cornerRadius = 5
+        signupButton.layer.masksToBounds = true
+        signupButton.layer.cornerRadius = 5
     }
-
-    @IBAction func onEnterPressed(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
-//        present(vc, animated: true, completion: nil)
-    }
-   
 }

@@ -23,12 +23,18 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var noUsernameLabel: UILabel!
     @IBOutlet weak var noEmailLabel: UILabel!
 
+    @IBOutlet weak var signupButton: UIButton!
+    
     var validated = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
-        // Do any additional setup after loading the view.
+        signupButton.layer.masksToBounds = true
+        signupButton.layer.cornerRadius = 5
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {

@@ -203,10 +203,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if (self.game.totalPercentageReturn() > 0) {
             gameStatusLabel.text = "↑ " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
-            gameStatusLabel.textColor = Constants.greenColor
+            gameStatusLabel.textColor = UIColor.white
         } else {
             gameStatusLabel.text = "↓ " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
-            gameStatusLabel.textColor = Constants.redColor
+            gameStatusLabel.textColor = UIColor.white
         }
         
         gameTimeLabel.text = "Game ends " + self.game.finishDate
@@ -263,7 +263,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinPricePreviewLabel.isHidden = true
             cell.coinPriceLabel.isHidden = false
             cell.coinReturnLabel.isHidden = false
-            
+
             cell.coinNameLabel.text = coin.ticker
             
             if coin.allocation > 0 {
@@ -295,10 +295,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             let remaining = 10.0 - self.game.totalAmount()
             if remaining > 0.0 {
+                cell.coinAmountStepper.maximumValue = 10.0
+                
                 self.submitButton.backgroundColor = Constants.orangeColor
                 self.submitButton.setTitle("Allocate " + String(Int(remaining)) + " additional CapCoin", for: UIControlState .normal)
                 self.submitButton.isEnabled = false
             } else {
+                cell.coinAmountStepper.maximumValue = coin.allocation
+                
                 if self.hasEntry {
                     self.submitButton.setTitle("Update choices", for: UIControlState .normal)
                 } else {
@@ -312,28 +316,34 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinAmountLabel.text = String(Int(coin.allocation))
             cell.coinPricePreviewLabel.text = "$" + numberFormatter.string(from: NSNumber(value: coin.currentPrice))!
         }
-        
-        
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: "coinDetailSegue", sender: self.tableView(tableView, cellForRowAt: indexPath) as! GameTableViewCell)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let segID = segue.identifier {
-            if (segID == "coinDetailSegue"){
-                let cell: GameTableViewCell = sender as! GameTableViewCell
-
-                let destinationVC: CoinDetailViewController = segue.destination as! CoinDetailViewController
-                destinationVC.coinSymbol = cell.coinNameLabel.text!
-                destinationVC.game = self.game
-                
-                print("showing coinDetail")
+        if let resultsVC = segue.destination as? ResultsViewController {
+            resultsVC.game = self.game
+        } else {
+            if let segID = segue.identifier {
+                if (segID == "coinDetailSegue"){
+                    if let indexPath = gameTableView.indexPathForSelectedRow{
+                        let coin = self.game.coins[indexPath.row]
+                        let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
+                        if let destinationVC = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController") as? CoinDetailViewController {
+                            destinationVC.coinSymbol = coin.ticker
+                            destinationVC.game = self.game
+                            self.present(destinationVC, animated: true, completion: nil)
+                            print("showing coinDetail")
+                        }
+                    }
+                }
             }
-        }
 
+        }
     }
     
     func networkError(_ errorMessage:String) {
@@ -392,14 +402,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UserDefaults.standard.set(nil, forKey: "gameId")
         self.viewDidLoad()
     }
-    
-    // From: http://matteomanferdini.com/how-ios-view-controllers-communicate-with-each-other/
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let resultsVC = segue.destination as? ResultsViewController {
-            resultsVC.game = self.game
-        }
-    }
-
 
 }
 
