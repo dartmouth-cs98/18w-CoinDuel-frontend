@@ -36,14 +36,14 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
-//        if #available(iOS 10.0, *) {
-//            self.leaderboardTable.refreshControl = refreshControl
-//        } else {
-//            self.leaderboardTable.addSubview(refreshControl)
-//        }
-//
+        if #available(iOS 10.0, *) {
+            self.leaderboardTable.refreshControl = refreshControl
+        } else {
+            self.leaderboardTable.addSubview(refreshControl)
+        }
+
         // Add refresh control function
-        // refreshControl.addTarget(self, action: #selector(refreshLeaderboardData(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshLeaderboardData(_:)), for: .valueChanged)
         
         let imageViews = [firstPlaceImage, secondPlaceImage, thirdPlaceImage]
         for image in imageViews {
@@ -94,6 +94,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         if self.isCurrent {
             user = self.leaderboard.currentUsers[indexPath.row]
         } else {
+            print("table index")
+            print(indexPath.row)
+            print("users count")
+            print(self.leaderboard.allTimeUsers.count)
             user = self.leaderboard.allTimeUsers[indexPath.row]
         }
         
