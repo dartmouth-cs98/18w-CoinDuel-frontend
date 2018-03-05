@@ -94,10 +94,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         if self.isCurrent {
             user = self.leaderboard.currentUsers[indexPath.row]
         } else {
-            print("table index")
-            print(indexPath.row)
-            print("users count")
-            print(self.leaderboard.allTimeUsers.count)
             user = self.leaderboard.allTimeUsers[indexPath.row]
         }
         
@@ -183,21 +179,39 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     if (self.leaderboard.currentUsers.count > 0) {
                         self.firstPlaceLabel.text = self.leaderboard.currentUsers[0].username
                     }
+                    else {
+                        self.firstPlaceLabel.text = ""
+                    }
                     if (self.leaderboard.currentUsers.count > 1) {
                         self.secondPlaceLabel.text = self.leaderboard.currentUsers[1].username
                     }
+                    else {
+                        self.secondPlaceLabel.text = ""
+                    }
                     if (self.leaderboard.currentUsers.count > 2) {
                         self.thirdPlaceLabel.text = self.leaderboard.currentUsers[2].username
+                    }
+                    else {
+                        self.thirdPlaceLabel.text = ""
                     }
                 } else {
                     if (self.leaderboard.allTimeUsers.count > 0) {
                         self.firstPlaceLabel.text = self.leaderboard.allTimeUsers[0].username
                     }
+                    else {
+                        self.firstPlaceLabel.text = ""
+                    }
                     if (self.leaderboard.allTimeUsers.count > 1) {
                         self.secondPlaceLabel.text = self.leaderboard.allTimeUsers[1].username
                     }
+                    else {
+                        self.secondPlaceLabel.text = ""
+                    }
                     if (self.leaderboard.allTimeUsers.count > 2) {
                         self.thirdPlaceLabel.text = self.leaderboard.allTimeUsers[2].username
+                    }
+                    else {
+                        self.thirdPlaceLabel.text = ""
                     }
                 }
                 
