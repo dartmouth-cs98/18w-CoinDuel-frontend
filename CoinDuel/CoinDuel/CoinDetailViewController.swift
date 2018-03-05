@@ -26,9 +26,11 @@ class CoinDetailViewController: UIViewController {
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
-
+    @IBOutlet weak var coinPercentChangeLabel: UILabel!
+    
     var game: Game = Game()
-    var coinSymbol: String = ""
+    var coinSymbolLabel: String = ""
+    var coinPrice: Double = 0.0
     var priceData : [Double] = []
     var lineChartEntry  = [ChartDataEntry]()
 
@@ -36,18 +38,20 @@ class CoinDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameHeaderLabel.text = coinSymbol
-
+        nameHeaderLabel.text = coinSymbolLabel
+        coinPriceLabel.text = "$" + coinPrice.description
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
+        chartView.animate(xAxisDuration: 2.5)
         chartView.pinchZoomEnabled = true
+        chartView.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
 
-//        modified xAxis for time line with help from https://github.com/danielgindi/Charts/blob/master/ChartsDemo/Swift/Demos/LineChartTimeViewController.swift
+        //        modified xAxis for time line with help from https://github.com/danielgindi/Charts/blob/master/ChartsDemo/Swift/Demos/LineChartTimeViewController.swift
         let xAxis = chartView.xAxis
-        xAxis.labelPosition = .topInside
+        xAxis.labelPosition = .bottom
         xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
-        xAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
+        xAxis.labelTextColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
         xAxis.drawAxisLineEnabled = true
         xAxis.drawGridLinesEnabled = false
         xAxis.centerAxisLabelsEnabled = false
@@ -56,23 +60,45 @@ class CoinDetailViewController: UIViewController {
 
         self.oneDayChart((Any).self)
 
-    }
+        let rightYAxis = chartView.rightAxis
+        rightYAxis.drawGridLinesEnabled = false
+        rightYAxis.drawLabelsEnabled = false
+        rightYAxis.drawAxisLineEnabled = false
 
+        let leftYAxis = chartView.leftAxis
+        leftYAxis.drawGridLinesEnabled = false
+        leftYAxis.drawLabelsEnabled = true
+        leftYAxis.drawAxisLineEnabled = false
+
+
+
+
+    }
+    // draws graph with data
     func updateLineGraph (){
-        let set1 = LineChartDataSet(values: lineChartEntry, label: coinSymbol) //Here we convert lineChartEntry to a LineChartDataSet
+        let set1 = LineChartDataSet(values: lineChartEntry, label: coinSymbolLabel) //Here we convert lineChartEntry to a LineChartDataSet
 
         set1.mode = .cubicBezier
         set1.drawCirclesEnabled = false
-        set1.lineWidth = 1.8
+        set1.lineWidth = 1
         set1.circleRadius = 4
         set1.setCircleColor(.black)
-        set1.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
+//        set1.highlightColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         set1.fillColor = .white
         set1.fillAlpha = 1
         set1.drawHorizontalHighlightIndicatorEnabled = false
         set1.fillFormatter = CubicLineSampleFillFormatter()
 
-        set1.colors = [NSUIColor.blue] //Sets the colour to blue
+        set1.colors = [NSUIColor.black] //Sets the colour to blue
+        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
+                              ChartColorTemplates.colorFromString("#ffff0000").cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+
+        set1.fillAlpha = 1
+        set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
+        set1.drawFilledEnabled = true
+
+
         let data = LineChartData() //This is the object that will be added to the chart
         data.addDataSet(set1) //Adds the line to the dataSet
         chartView.data = data //finally - it adds the chart data to the chart and causes an update
@@ -97,23 +123,23 @@ class CoinDetailViewController: UIViewController {
 
     @IBAction func oneDayChart(_ sender: Any) {
 //        api for one days data, 24 hours
-        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbol + "&tsym=USD&limit=24"
+        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
         self.setChartData(apiURL: apiURL)
     }
     @IBAction func oneWeekChart(_ sender: Any) {
 //        api for past 7 days data
-        let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbol + "&tsym=USD&limit=7"
+        let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=7"
         self.setChartData(apiURL: apiURL)
 
     }
     @IBAction func oneMonthChart(_ sender: Any) {
 //        api for past 30 days data
-        let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbol + "&tsym=USD&limit=30"
+        let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=30"
         self.setChartData(apiURL: apiURL)
 
     }
     @IBAction func oneYearChart(_ sender: Any) {
-        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbol + "&tsym=USD&limit=24"
+        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
         self.setChartData(apiURL: apiURL)
 
     }
@@ -126,16 +152,14 @@ class CoinDetailViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json["Data"].arrayValue.count)
+
                 for coin in json["Data"] {
                     let time = coin.1["time"].description
-                    print(time)
 
                     let date = NSDate(timeIntervalSince1970: Double(time)!)
-                    print(date)
 
                     let price = Double(coin.1["high"].description)
-
+                    
 
                     let value = ChartDataEntry(x: Double(time)!, y: price!) // here we set the X and Y status in a data chart entry
 

@@ -380,8 +380,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         let coin = self.game.coins[indexPath.row]
                         let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
                         if let destinationVC = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController") as? CoinDetailViewController {
-                            destinationVC.coinSymbol = coin.ticker
+                            destinationVC.coinSymbolLabel = coin.ticker
                             destinationVC.game = self.game
+                            destinationVC.coinPrice = coin.currentPrice
                             self.present(destinationVC, animated: true, completion: nil)
                             print("showing coinDetail")
                         }
