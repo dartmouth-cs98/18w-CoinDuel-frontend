@@ -36,43 +36,51 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
-        if #available(iOS 10.0, *) {
-            self.leaderboardTable.refreshControl = refreshControl
-        } else {
-            self.leaderboardTable.addSubview(refreshControl)
-        }
-        
+//        if #available(iOS 10.0, *) {
+//            self.leaderboardTable.refreshControl = refreshControl
+//        } else {
+//            self.leaderboardTable.addSubview(refreshControl)
+//        }
+//
         // Add refresh control function
-        refreshControl.addTarget(self, action: #selector(refreshLeaderboardData(_:)), for: .valueChanged)
+        // refreshControl.addTarget(self, action: #selector(refreshLeaderboardData(_:)), for: .valueChanged)
         
-        self.leaderboard.getCurrentLeaderboard(self)
         let imageViews = [firstPlaceImage, secondPlaceImage, thirdPlaceImage]
         for image in imageViews {
             image!.layer.cornerRadius = image!.frame.height/2;
             image!.clipsToBounds = true;
         }
+        
         let numberLabels = [firstNumberLabel, secondNumberLabel, thirdNumberLabel]
         for label in numberLabels {
             label!.layer.masksToBounds = true
             label!.layer.cornerRadius = 11
         }
+        
         allTimeButton.layer.masksToBounds = true
         allTimeButton.layer.cornerRadius = 10
         currentButton.layer.masksToBounds = true
         currentButton.layer.cornerRadius = 10
         
         allTimeButton.layer.borderWidth = 2.0;
-        
         allTimeButton.layer.borderColor = (UIColor.white).cgColor;
         currentButton.layer.borderColor = (UIColor.white).cgColor;
         
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
+        
+        self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
+            self.getLeaderBoardHelper(success: success)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.leaderboard.users.count
+        if self.isCurrent {
+            return self.leaderboard.currentUsers.count
+        } else {
+            return self.leaderboard.allTimeUsers.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,7 +90,13 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             fatalError("The dequeued cell is not an instance of UserTableViewCell.")
         }
         
-        let user = self.leaderboard.users[indexPath.row]
+        var user = User(username: "", coinBalance: 0.0)
+        if self.isCurrent {
+            user = self.leaderboard.currentUsers[indexPath.row]
+        } else {
+            user = self.leaderboard.allTimeUsers[indexPath.row]
+        }
+        
         cell.placeLabel.text = String(indexPath.row + 1)
         cell.nameLabel.text = user.username
         cell.scoreLabel.text = numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC"
@@ -106,9 +120,13 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     @objc func refreshLeaderboardData(_ sender:Any) {
         if self.isCurrent {
-            self.leaderboard.getCurrentLeaderboard(self)
+            self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
+                self.getLeaderBoardHelper(success: success)
+            }
         } else {
-            self.leaderboard.getAllTimeLeaderboard(self)
+            self.leaderboard.getAllTimeLeaderboard() { (success) -> Void in
+                self.getLeaderBoardHelper(success: success)
+            }
         }
     }
 
@@ -119,7 +137,9 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             currentButton.backgroundColor = Constants.lightBlueColor
             allTimeButton.layer.borderWidth = 0.0;
             currentButton.layer.borderWidth = 2.0;
-            self.leaderboard.getAllTimeLeaderboard(self)
+            self.leaderboard.getAllTimeLeaderboard() { (success) -> Void in
+                self.getLeaderBoardHelper(success: success)
+            }
             self.isCurrent = false
         }
     }
@@ -130,21 +150,67 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             currentButton.backgroundColor = Constants.greenColor
             allTimeButton.layer.borderWidth = 2.0;
             currentButton.layer.borderWidth = 0.0;
-            self.leaderboard.getCurrentLeaderboard(self)
+            self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
+                self.getLeaderBoardHelper(success: success)
+            }
             self.isCurrent = true
         }
     }
+
     @IBAction func onXPressed(_ sender: Any) {
         self.dismiss(animated: true) {
             print("leaving leaderboard VC")
         }
     }
-    
+
     func networkError(_ errorMessage:String) {
         // from: https://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
         
         let alert = UIAlertController(title: "Uh oh!", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func getLeaderBoardHelper(success:Bool) {
+        if (success) {
+            DispatchQueue.main.async() {
+                self.leaderboardTable.reloadData()
+                if self.isCurrent {
+                    if (self.leaderboard.currentUsers.count > 0) {
+                        self.firstPlaceLabel.text = self.leaderboard.currentUsers[0].username
+                    }
+                    if (self.leaderboard.currentUsers.count > 1) {
+                        self.secondPlaceLabel.text = self.leaderboard.currentUsers[1].username
+                    }
+                    if (self.leaderboard.currentUsers.count > 2) {
+                        self.thirdPlaceLabel.text = self.leaderboard.currentUsers[2].username
+                    }
+                } else {
+                    if (self.leaderboard.allTimeUsers.count > 0) {
+                        self.firstPlaceLabel.text = self.leaderboard.allTimeUsers[0].username
+                    }
+                    if (self.leaderboard.allTimeUsers.count > 1) {
+                        self.secondPlaceLabel.text = self.leaderboard.allTimeUsers[1].username
+                    }
+                    if (self.leaderboard.allTimeUsers.count > 2) {
+                        self.thirdPlaceLabel.text = self.leaderboard.allTimeUsers[2].username
+                    }
+                }
+                
+                self.refreshControl.endRefreshing()
+                self.loadingActivityIndicatorView.stopAnimating()
+            }
+        }
+        else {
+            DispatchQueue.main.async() {
+                self.leaderboardTable.reloadData()
+                self.firstPlaceLabel.text = ""
+                self.secondPlaceLabel.text = ""
+                self.thirdPlaceLabel.text = ""
+                
+                self.refreshControl.endRefreshing()
+                self.loadingActivityIndicatorView.stopAnimating()
+            }
+        }
     }
 }
