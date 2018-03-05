@@ -23,13 +23,12 @@ class Leaderboard {
     }
         
     func getCurrentLeaderboard(completion: @escaping (_ success: Bool) -> Void) {
-        self.currentUsers = [User]()
-        
         self.game.getCurrentGame() { (success) -> Void in
             let url = URL(string: Constants.API + "leaderboard/" + self.game.id)!
             Alamofire.request(url, method: .get).validate().responseJSON { response in
                 switch response.result {
                 case .success(let value):
+                    self.currentUsers.removeAll()
                     let jsonArray = JSON(value).arrayValue
                     for obj in jsonArray {
                         let name = obj["userId"]["username"].stringValue
@@ -47,12 +46,11 @@ class Leaderboard {
     }
     
     func getAllTimeLeaderboard(completion: @escaping (_ success: Bool) -> Void) {
-        self.allTimeUsers = [User]()
-        
         let url = URL(string: Constants.API + "leaderboard")!
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
                 case .success(let value):
+                    self.allTimeUsers.removeAll()
                     let jsonArray = JSON(value).arrayValue
                     for obj in jsonArray {
                         let name = obj["username"].stringValue
