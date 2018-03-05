@@ -30,16 +30,18 @@ class CoinDetailViewController: UIViewController {
     
     var game: Game = Game()
     var coinSymbolLabel: String = ""
-    var coinPrice: Double = 0.0
+    var currentCoinPrice: Double = 0.0
+    var initialCoinPrice: Double = 0.0
     var priceData : [Double] = []
     var lineChartEntry  = [ChartDataEntry]()
+
 
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         nameHeaderLabel.text = coinSymbolLabel
-        coinPriceLabel.text = "$" + coinPrice.description
+        coinPriceLabel.text = "$" + currentCoinPrice.description
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
@@ -66,9 +68,9 @@ class CoinDetailViewController: UIViewController {
         rightYAxis.drawAxisLineEnabled = false
 
         let leftYAxis = chartView.leftAxis
-        leftYAxis.drawGridLinesEnabled = false
+        leftYAxis.drawGridLinesEnabled = true
         leftYAxis.drawLabelsEnabled = true
-        leftYAxis.drawAxisLineEnabled = false
+        leftYAxis.drawAxisLineEnabled = true
 
 
 
@@ -82,27 +84,39 @@ class CoinDetailViewController: UIViewController {
         set1.drawCirclesEnabled = false
         set1.lineWidth = 1
         set1.circleRadius = 4
+        set1.setColor(.black)
         set1.setCircleColor(.black)
-//        set1.highlightColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        set1.highlightColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         set1.fillColor = .white
         set1.fillAlpha = 1
         set1.drawHorizontalHighlightIndicatorEnabled = false
         set1.fillFormatter = CubicLineSampleFillFormatter()
 
-        set1.colors = [NSUIColor.black] //Sets the colour to blue
-        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
-                              ChartColorTemplates.colorFromString("#ffff0000").cgColor]
-        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
 
-        set1.fillAlpha = 1
-        set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
-        set1.drawFilledEnabled = true
 
 
         let data = LineChartData() //This is the object that will be added to the chart
+        data.setValueTextColor(.red)
+        //get rid of data point labels
+        data.setValueFont(.systemFont(ofSize: 0))
         data.addDataSet(set1) //Adds the line to the dataSet
-        chartView.data = data //finally - it adds the chart data to the chart and causes an update
-        chartView.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
+        //finally - it adds the chart data to the chart and causes an update
+        chartView.data = data
+
+
+//        round the Double https://stackoverflow.com/questions/27338573/rounding-a-double-value-to-x-number-of-decimal-places-in-swift
+        let x = (currentCoinPrice - initialCoinPrice)/initialCoinPrice * 100
+        let percentChange = Double(round(100*x)/100)
+
+        let y = currentCoinPrice - initialCoinPrice
+        let totalChange = Double(round(100*y)/100)
+
+        if (totalChange >= 0 && percentChange >= 0){
+            self.coinPercentChangeLabel.text = "+" + String(totalChange) + "(" + String(percentChange) + "%)"
+        } else{
+            self.coinPercentChangeLabel.text = "" + String(totalChange) + "(" + String(percentChange) + "%)"
+        }
+
 
     }
 
@@ -153,7 +167,12 @@ class CoinDetailViewController: UIViewController {
             case .success(let value):
                 let json = JSON(value)
 
+                var collectPrice = 1
                 for coin in json["Data"] {
+                    if collectPrice == 1{
+                        self.initialCoinPrice = Double(coin.1["high"].description)!
+                        collectPrice = 0
+                    }
                     let time = coin.1["time"].description
 
                     let date = NSDate(timeIntervalSince1970: Double(time)!)
