@@ -17,6 +17,7 @@ class Game {
     var hasFinished:Bool
     var startDate:String
     var finishDate:String
+    var coinBalance:Double
     
     init() {
         self.id = ""
@@ -25,6 +26,7 @@ class Game {
         self.hasFinished = false
         self.startDate = ""
         self.finishDate = ""
+        self.coinBalance = 0.0
     }
     
     // Returns total CapCoin allocated so far
@@ -111,6 +113,8 @@ class Game {
                     for coin in json["choices"] {
                         self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue))
                     }
+                    
+                    self.coinBalance = json["coin_balance"].doubleValue
                 
                     completion("entry")
                 case .failure(let error):
