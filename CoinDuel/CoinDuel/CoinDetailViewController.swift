@@ -31,13 +31,12 @@ class CoinDetailViewController: UIViewController {
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
     @IBOutlet weak var coinPercentChangeLabel: UILabel!
     @IBOutlet weak var inactiveChartButtons: UIStackView!
-    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     
     var game: Game = Game()
     var coinSymbolLabel: String = ""
     var currentCoinPrice: Double = 0.0
-    var allocatoin: String = ""
+    var allocation: String = ""
     var initialCoinPrice: Double = Double()
     var tempInitialPrice: Double = 0.0
     var priceData : [Double] = []
@@ -46,9 +45,10 @@ class CoinDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.chartView.isHidden = true
-        self.activityIndicator.startAnimating()
-        self.capCoinAllocationLabel.text = allocatoin + " CC"
+        self.coinPercentChangeLabel.text = ""
+        self.nameHeaderLabel.text = coinSymbolLabel
+        self.coinPriceLabel.text = "$" + currentCoinPrice.description
+        self.capCoinAllocationLabel.text = allocation + " CC"
 
 //        toggle buttons if game is active or not
         if(self.game.isActive){
@@ -158,12 +158,8 @@ class CoinDetailViewController: UIViewController {
 
                     self.lineChartEntry.append(value) // here we add it to the data set
                 }
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.chartView.isHidden = false
-                    self.setChartParameters()
-                    self.updateLineGraph()
-                }
+                self.setChartParameters()
+                self.updateLineGraph()
             case .failure(let error):
                 print(error)
             }
@@ -217,9 +213,6 @@ class CoinDetailViewController: UIViewController {
 
     func setChartParameters(){
         // Set all chart attributes
-        self.coinPercentChangeLabel.text = ""
-        nameHeaderLabel.text = coinSymbolLabel
-        coinPriceLabel.text = "$" + currentCoinPrice.description
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
