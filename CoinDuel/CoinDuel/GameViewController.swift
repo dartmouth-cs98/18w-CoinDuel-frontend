@@ -391,9 +391,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             print("showing coinDetail")
                         }
                     }
+                } else if (segID == "leaderboardSegue") {
+                    if let leaderboardVC = segue.destination as? LeaderboardViewController {
+                        leaderboardVC.game = self.game
+                    }
                 }
             }
-
         }
     }
     
