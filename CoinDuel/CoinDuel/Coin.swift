@@ -18,9 +18,9 @@ struct Coin {
     var capCoinReturn:Double = 0.0
     var percentReturn:Double = 0.0
     
-    init(_ ticker:String, _ allocation:Double) {
+    init(_ ticker:String, _ allocation:Double, _ initialPrice:Double) {
         self.ticker = ticker
-        self.initialPrice = 0.0
+        self.initialPrice = initialPrice
         self.currentPrice = 0.0
         self.allocation = allocation
         self.capCoinReturn = 0.0
