@@ -30,16 +30,18 @@ class CoinDetailViewController: UIViewController {
     
     var game: Game = Game()
     var coinSymbolLabel: String = ""
-    var coinPrice: Double = 0.0
+    var currentCoinPrice: Double = 0.0
+    var initialCoinPrice: Double = 0.0
     var priceData : [Double] = []
     var lineChartEntry  = [ChartDataEntry]()
+
 
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         nameHeaderLabel.text = coinSymbolLabel
-        coinPriceLabel.text = "$" + coinPrice.description
+        coinPriceLabel.text = "$" + currentCoinPrice.description
         chartView.chartDescription?.enabled = false
         chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
@@ -66,9 +68,10 @@ class CoinDetailViewController: UIViewController {
         rightYAxis.drawAxisLineEnabled = false
 
         let leftYAxis = chartView.leftAxis
-        leftYAxis.drawGridLinesEnabled = false
+        leftYAxis.drawGridLinesEnabled = true
         leftYAxis.drawLabelsEnabled = true
-        leftYAxis.drawAxisLineEnabled = false
+        leftYAxis.drawAxisLineEnabled = true
+        leftYAxis.labelFont = .systemFont(ofSize: 14)
 
 
 
@@ -82,27 +85,39 @@ class CoinDetailViewController: UIViewController {
         set1.drawCirclesEnabled = false
         set1.lineWidth = 1
         set1.circleRadius = 4
+        set1.setColor(.black)
         set1.setCircleColor(.black)
-//        set1.highlightColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        set1.highlightColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         set1.fillColor = .white
         set1.fillAlpha = 1
         set1.drawHorizontalHighlightIndicatorEnabled = false
         set1.fillFormatter = CubicLineSampleFillFormatter()
+        set1.drawValuesEnabled = false
 
-        set1.colors = [NSUIColor.black] //Sets the colour to blue
-        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
-                              ChartColorTemplates.colorFromString("#ffff0000").cgColor]
-        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
 
-        set1.fillAlpha = 1
-        set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
-        set1.drawFilledEnabled = true
 
 
         let data = LineChartData() //This is the object that will be added to the chart
+        data.setValueTextColor(.red)
+
         data.addDataSet(set1) //Adds the line to the dataSet
-        chartView.data = data //finally - it adds the chart data to the chart and causes an update
-        chartView.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
+        //finally - it adds the chart data to the chart and causes an update
+        chartView.data = data
+
+
+//        round the Double https://stackoverflow.com/questions/27338573/rounding-a-double-value-to-x-number-of-decimal-places-in-swift
+        let x = (currentCoinPrice - initialCoinPrice)/initialCoinPrice * 100
+        let percentChange = Double(round(100*x)/100)
+
+        let y = currentCoinPrice - initialCoinPrice
+        let totalChange = Double(round(100*y)/100)
+
+        if (totalChange >= 0 && percentChange >= 0){
+            self.coinPercentChangeLabel.text = "+" + String(totalChange) + "(" + String(percentChange) + "%)"
+        } else{
+            self.coinPercentChangeLabel.text = "" + String(totalChange) + "(" + String(percentChange) + "%)"
+        }
+
 
     }
 
@@ -118,33 +133,62 @@ class CoinDetailViewController: UIViewController {
     }
 
     @IBAction func currentGameChart(_ sender: Any) {
+        // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
 
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let initialDate = dateFormatter.date(from: self.game.rawStartDate)
+        let currentDate = dateFormatter.date(from: Date().description)
+
+
+        print(self.game.rawStartDate)
+
+        
+        dateFormatter.dateFormat = "EEEE h:mm a z"
+        dateFormatter.timeZone = TimeZone.current
+        print(dateFormatter.string(from: initialDate!))
+        
+        // calulate days between dates https://stackoverflow.com/questions/40075850/swift-3-find-number-of-calendar-days-between-two-dates
+        let diffInDays = Calendar.current.dateComponents([.day], from: initialDate!, to: currentDate!).day
+        // if the game hasn't started yet, display the same graph as daily chart
+        if diffInDays! < 0{
+            let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
+            self.setChartData(apiURL: apiURL, collectPrice: 1)
+        } else {
+            // if game has started display the hourly data of the coin since start
+            let hours = 24 * Int(diffInDays!)
+            let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=" + String(hours)
+            self.setChartData(apiURL: apiURL, collectPrice: 0)
+        }
+
+//        self.setChartData(apiURL: apiURL, collectPrice: 0)
     }
 
     @IBAction func oneDayChart(_ sender: Any) {
 //        api for one days data, 24 hours
         let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
-        self.setChartData(apiURL: apiURL)
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
     }
     @IBAction func oneWeekChart(_ sender: Any) {
 //        api for past 7 days data
         let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=7"
-        self.setChartData(apiURL: apiURL)
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
 
     }
     @IBAction func oneMonthChart(_ sender: Any) {
 //        api for past 30 days data
         let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=30"
-        self.setChartData(apiURL: apiURL)
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
 
     }
     @IBAction func oneYearChart(_ sender: Any) {
         let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
-        self.setChartData(apiURL: apiURL)
-
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
     }
 
-    func setChartData(apiURL: String) -> Void {
+    func setChartData(apiURL: String, collectPrice: Int) -> Void {
 
         self.lineChartEntry.removeAll()
         //        source: https://github.com/SwiftyJSON/SwiftyJSON
@@ -152,8 +196,10 @@ class CoinDetailViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-
                 for coin in json["Data"] {
+                    if collectPrice == 1{
+                        self.initialCoinPrice = Double(coin.1["high"].description)!
+                    }
                     let time = coin.1["time"].description
 
                     let date = NSDate(timeIntervalSince1970: Double(time)!)

@@ -17,6 +17,7 @@ class Game {
     var hasFinished:Bool
     var startDate:String
     var finishDate:String
+    var rawStartDate:String
     var coinBalance:Double
     
     init() {
@@ -26,6 +27,7 @@ class Game {
         self.hasFinished = false
         self.startDate = ""
         self.finishDate = ""
+        self.rawStartDate = ""
         self.coinBalance = 0.0
     }
     
@@ -77,7 +79,7 @@ class Game {
                         completion(false)
                         return
                     }
-                    
+                    self.rawStartDate = startDate.description
                     dateFormatter.dateFormat = "EEEE h:mm a z"
                     dateFormatter.timeZone = TimeZone.current
                     self.startDate = dateFormatter.string(from: startDate)
