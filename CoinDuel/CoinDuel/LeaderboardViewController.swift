@@ -35,10 +35,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (!self.game.isActive) {
-            self.coverViewInactiveGame.isHidden = false
-        } else{
+        if (self.game.isActive) {
             self.coverViewInactiveGame.isHidden = true
+        } else{
+            self.coverViewInactiveGame.isHidden = false
         }
         
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
@@ -84,6 +84,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isCurrent {
             if (self.game.isActive){
+                self.coverViewInactiveGame.isHidden = false
                 return self.leaderboard.currentUsers.count
             } else{
                 return 0
@@ -142,6 +143,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
 
     @IBAction func allTimeClick(_ sender: Any) {
+        self.coverViewInactiveGame.isHidden = true
         if self.isCurrent {
             allTimeButton.backgroundColor = Constants.greenColor
             currentButton.backgroundColor = Constants.lightBlueColor
@@ -155,6 +157,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func currentClick(_ sender: Any) {
+
         if !self.isCurrent {
             allTimeButton.backgroundColor = Constants.lightBlueColor
             currentButton.backgroundColor = Constants.greenColor
@@ -164,6 +167,11 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                 self.getLeaderBoardHelper(success: success)
             }
             self.isCurrent = true
+        }
+        if (!self.game.isActive) {
+            self.coverViewInactiveGame.isHidden = false
+        } else {
+            self.coverViewInactiveGame.isHidden = true
         }
     }
 

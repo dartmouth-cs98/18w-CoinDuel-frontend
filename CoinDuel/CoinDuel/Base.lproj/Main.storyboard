@@ -468,7 +468,7 @@
                                     <action selector="onXPressed:" destination="UBg-rn-yG4" eventType="touchUpInside" id="PS0-FZ-OHF"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kwd-75-WdK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kwd-75-WdK">
                                 <rect key="frame" x="0.0" y="275" width="375" height="414"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -599,9 +599,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-x3-k1F">
-                                <rect key="frame" x="0.0" y="248" width="375" height="419"/>
+                                <rect key="frame" x="0.0" y="275" width="375" height="392"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Current Games In Progress!!!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GCQ-FP-c87">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Current Games In Progress!!!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GCQ-FP-c87">
                                         <rect key="frame" x="75" y="0.0" width="225" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -665,10 +665,10 @@
                             <constraint firstItem="zV3-pp-8PO" firstAttribute="leading" secondItem="BPm-Qz-A6J" secondAttribute="trailing" constant="40" id="DBo-cc-Lir"/>
                             <constraint firstItem="HGF-1q-tCH" firstAttribute="top" secondItem="XFT-NL-vh0" secondAttribute="top" constant="60" id="ES8-sb-Kdc"/>
                             <constraint firstItem="Kwd-75-WdK" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="bottom" constant="70" id="GdU-id-lyv"/>
-                            <constraint firstItem="S1M-x3-k1F" firstAttribute="top" secondItem="Uud-Af-qRi" secondAttribute="bottom" constant="8" symbolic="YES" id="L1C-rN-nkX"/>
+                            <constraint firstItem="S1M-x3-k1F" firstAttribute="top" secondItem="Uud-Af-qRi" secondAttribute="bottom" constant="35" id="L1C-rN-nkX"/>
                             <constraint firstItem="qFR-Ap-aNq" firstAttribute="centerY" secondItem="HGF-1q-tCH" secondAttribute="centerY" id="Mjq-iV-NB0"/>
                             <constraint firstItem="fkK-4N-zeC" firstAttribute="top" secondItem="BPm-Qz-A6J" secondAttribute="top" constant="-5" id="OhA-zU-kEh"/>
-                            <constraint firstItem="XFT-NL-vh0" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="bottom" id="P3R-Da-E4L"/>
+                            <constraint firstItem="XFT-NL-vh0" firstAttribute="bottom" secondItem="Kwd-75-WdK" secondAttribute="bottom" constant="-22" id="P3R-Da-E4L"/>
                             <constraint firstItem="LeA-qF-opa" firstAttribute="centerX" secondItem="sEn-Nv-VbL" secondAttribute="centerX" id="PAH-Fd-Coh"/>
                             <constraint firstItem="xz0-Dm-U72" firstAttribute="centerY" secondItem="bEC-1n-FFo" secondAttribute="centerY" id="PFE-yV-uTq"/>
                             <constraint firstItem="etA-Ia-1eZ" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="bottom" constant="4" id="SWw-d9-vp5"/>
