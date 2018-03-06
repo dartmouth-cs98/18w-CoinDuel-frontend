@@ -24,7 +24,7 @@ class Leaderboard {
         
     func getCurrentLeaderboard(completion: @escaping (_ success: Bool) -> Void) {
         self.game.getCurrentGame() { (success) -> Void in
-            let url = URL(string: Constants.API + "leaderboard/" + self.game.id)!
+            let url = URL(string: Constants.API + "leaderboard/" + "5a9def78e400e200258e6969")!
             Alamofire.request(url, method: .get).validate().responseJSON { response in
                 switch response.result {
                 case .success(let value):
