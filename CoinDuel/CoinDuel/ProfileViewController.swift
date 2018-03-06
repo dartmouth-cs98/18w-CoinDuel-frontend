@@ -30,6 +30,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
+        
+        confirmButton.layer.masksToBounds = true
+        confirmButton.layer.cornerRadius = 5
+        submitButton.layer.masksToBounds = true
+        submitButton.layer.cornerRadius = 5
     }
     
     override func didReceiveMemoryWarning() {
