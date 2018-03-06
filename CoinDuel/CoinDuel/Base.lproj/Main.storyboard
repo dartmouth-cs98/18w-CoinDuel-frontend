@@ -455,26 +455,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-x3-k1F">
-                                <rect key="frame" x="0.0" y="248" width="375" height="419"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Current Games In Progress!!!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GCQ-FP-c87">
-                                        <rect key="frame" x="75" y="0.0" width="225" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="k7t-pN-vDm"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="GCQ-FP-c87" firstAttribute="leading" secondItem="S1M-x3-k1F" secondAttribute="leading" constant="75" id="YB0-wo-FDP"/>
-                                    <constraint firstItem="GCQ-FP-c87" firstAttribute="centerX" secondItem="S1M-x3-k1F" secondAttribute="centerX" id="Zub-cn-cR8"/>
-                                    <constraint firstItem="GCQ-FP-c87" firstAttribute="top" secondItem="S1M-x3-k1F" secondAttribute="top" id="bF5-Xw-CsO"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vz-ip-5LW">
                                 <rect key="frame" x="30" y="40" width="30" height="33"/>
                                 <constraints>
@@ -618,6 +598,26 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-x3-k1F">
+                                <rect key="frame" x="0.0" y="248" width="375" height="419"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Current Games In Progress!!!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GCQ-FP-c87">
+                                        <rect key="frame" x="75" y="0.0" width="225" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="k7t-pN-vDm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="GCQ-FP-c87" firstAttribute="leading" secondItem="S1M-x3-k1F" secondAttribute="leading" constant="75" id="YB0-wo-FDP"/>
+                                    <constraint firstItem="GCQ-FP-c87" firstAttribute="centerX" secondItem="S1M-x3-k1F" secondAttribute="centerX" id="Zub-cn-cR8"/>
+                                    <constraint firstItem="GCQ-FP-c87" firstAttribute="top" secondItem="S1M-x3-k1F" secondAttribute="top" id="bF5-Xw-CsO"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGF-1q-tCH">
                                 <rect key="frame" x="198" y="80" width="120" height="35"/>
                                 <color key="backgroundColor" red="0.22063425189999999" green="0.55939980830000002" blue="0.7871473605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
