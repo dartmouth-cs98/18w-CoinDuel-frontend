@@ -87,7 +87,8 @@ class Game {
                     
                     // Get all coins (retrieving only the name for now)
                     for coin in json[0]["coins"] {
-                        self.coins.append(Coin(coin.1["name"].stringValue, 0.0))
+                        
+                        self.coins.append(Coin(coin.1["name"].stringValue, 0.0, coin.1["startPrice"].doubleValue))
                     }
                     
                     // Update game (get entry if have one)
@@ -113,7 +114,7 @@ class Game {
                 
                     // Get all coin names, default CapCoin allocation to 0
                     for coin in json["choices"] {
-                        self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue))
+                        self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue, coin.1["startPrice"].doubleValue))
                     }
                     
                     self.coinBalance = json["coin_balance"].doubleValue
@@ -152,7 +153,7 @@ class Game {
                 print(json)
                 // Get all coin names, default CapCoin allocation to 0
                 for coin in json["choices"] {
-                    self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue))
+                    self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue, coin.1["startPrice"].doubleValue))
                 }
                 completion(true)
 
