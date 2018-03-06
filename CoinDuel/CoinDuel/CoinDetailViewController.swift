@@ -35,6 +35,7 @@ class CoinDetailViewController: UIViewController {
     var game: Game = Game()
     var coinSymbolLabel: String = ""
     var currentCoinPrice: Double = 0.0
+    var allocatoin: String = ""
     var initialCoinPrice: Double = Double()
     var tempInitialPrice: Double = 0.0
     var priceData : [Double] = []
@@ -43,7 +44,9 @@ class CoinDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.game.isActive = false
+        self.capCoinAllocationLabel.text = allocatoin + " CC"
+
+//        toggle buttons if game is active or not
         if(self.game.isActive){
             self.activeChartButtons.isHidden = false
             self.inactiveChartButtons.isHidden = true
@@ -51,6 +54,8 @@ class CoinDetailViewController: UIViewController {
             self.activeChartButtons.isHidden = true
             self.inactiveChartButtons.isHidden = false
         }
+
+//        setup chart and call it for one day values
         self.setChartParameters()
         self.oneDayChart((Any).self)
     }
