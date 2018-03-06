@@ -12,13 +12,19 @@ import UIKit
 class ResultsViewController: UIViewController {
     
     var game: Game = Game()
-    
+    let numberFormatter = NumberFormatter()
+
     @IBOutlet weak var capcoinResultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.capcoinResultLabel.text = "You received " + String(self.game.totalReturn()) + " CapCoin"
+        // Number format
+        self.numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        self.numberFormatter.minimumFractionDigits = 2
+        self.numberFormatter.maximumFractionDigits = 2
+        
+        self.capcoinResultLabel.text = "You received " + self.numberFormatter.string(from: NSNumber(value: game.coinBalance))! + " CC"
     }
     
     override func didReceiveMemoryWarning() {

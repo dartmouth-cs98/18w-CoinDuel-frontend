@@ -21,17 +21,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoinDuel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXU-vF-Gu0">
-                                <rect key="frame" x="110" y="220" width="154" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <color key="textColor" red="0.34901960784313724" green="1" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="DV8-Ib-gTl">
+                                <rect key="frame" x="117.5" y="130" width="140" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="6W6-Q0-Oge"/>
+                                    <constraint firstAttribute="width" constant="140" id="Yd1-OB-iIb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cryptocurrency Investing for a New Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxQ-Yp-Nhp">
+                                <rect key="frame" x="35" y="320" width="305" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8nY-P1-B7j"/>
+                                    <constraint firstAttribute="width" constant="305" id="SAS-qa-Fya"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="xXU-vF-Gu0" firstAttribute="top" secondItem="ftl-JP-Wvu" secondAttribute="bottom" constant="200" id="dTt-xv-aGX"/>
-                            <constraint firstItem="xXU-vF-Gu0" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="mtU-WJ-o2l"/>
+                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="top" secondItem="ftl-JP-Wvu" secondAttribute="bottom" constant="110" id="61J-JN-HKS"/>
+                            <constraint firstItem="ZxQ-Yp-Nhp" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="Epi-r3-8vb"/>
+                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="RUs-Ay-tir"/>
+                            <constraint firstItem="ZxQ-Yp-Nhp" firstAttribute="top" secondItem="DV8-Ib-gTl" secondAttribute="bottom" constant="90" id="vkv-2Z-dPb"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +53,7 @@
             <point key="canvasLocation" x="-149.5" y="-159.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo3" width="638" height="460"/>
+    </resources>
 </document>

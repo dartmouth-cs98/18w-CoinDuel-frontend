@@ -12,95 +12,57 @@ import SwiftyJSON
 
 class Leaderboard {
     
-    var users:[User] = [User]()
+    var currentUsers:[User] = [User]()
+    var allTimeUsers:[User] = [User]()
     var game: Game = Game()
     
     init() {
-        self.users = [User]()
+        self.currentUsers = [User]()
+        self.allTimeUsers = [User]()
         self.game = Game()
     }
         
-    func getCurrentLeaderboard(_ leaderboardVC:LeaderboardViewController) {
-        self.users = []
-        
+    func getCurrentLeaderboard(completion: @escaping (_ success: Bool) -> Void) {
         self.game.getCurrentGame() { (success) -> Void in
-            if success {
-                let url = URL(string: Constants.API + "leaderboard/" + self.game.id)!
-                Alamofire.request(url, method: .get).validate().responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        let jsonArray = JSON(value).arrayValue
-                        for obj in jsonArray {
-                            let name = obj["userId"]["username"].stringValue
-                            let coins = obj["coin_balance"].doubleValue
-                            self.users.append(User(username: name, coinBalance: coins))
-                        }
-                        self.users = self.users.sorted(by: { $0.coinBalance > $1.coinBalance })
-                        
-                        DispatchQueue.main.async() {
-                            leaderboardVC.leaderboardTable.reloadData()
-                            leaderboardVC.firstPlaceLabel.text = self.users[0].username
-                            leaderboardVC.secondPlaceLabel.text = self.users[1].username
-                            leaderboardVC.thirdPlaceLabel.text = self.users[2].username
-                            
-                            leaderboardVC.refreshControl.endRefreshing()
-                            leaderboardVC.loadingActivityIndicatorView.stopAnimating()
-                        }
-                    case .failure(let error):
-                        leaderboardVC.leaderboardTable.reloadData()
-                        leaderboardVC.firstPlaceLabel.text = ""
-                        leaderboardVC.secondPlaceLabel.text = ""
-                        leaderboardVC.thirdPlaceLabel.text = ""
-                        
-                        leaderboardVC.refreshControl.endRefreshing()
-                        leaderboardVC.loadingActivityIndicatorView.stopAnimating()
-                        
-                        print(error)
-                        leaderboardVC.networkError("Could not retrieve the leaderboard for this game")
+            let url = URL(string: Constants.API + "leaderboard/" + self.game.id)!
+            Alamofire.request(url, method: .get).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    self.currentUsers.removeAll()
+                    let jsonArray = JSON(value).arrayValue
+                    for obj in jsonArray {
+                        let name = obj["userId"]["username"].stringValue
+                        let coins = obj["coin_balance"].doubleValue
+                        self.currentUsers.append(User(username: name, coinBalance: coins))
                     }
+                    self.currentUsers = self.currentUsers.sorted(by: { $0.coinBalance > $1.coinBalance })
+                    completion(true)
+                case .failure(let error):
+                    completion(false)
+                    print(error)
                 }
-            } else {
-                leaderboardVC.allTimeClick(self)
             }
         }
     }
     
-    func getAllTimeLeaderboard(_ leaderboardVC:LeaderboardViewController) {
-        self.getCurrentLeaderboard(leaderboardVC)
-//        self.users = []
-//        
-//        let url = URL(string: Constants.API + "leaderboard")!
-//        Alamofire.request(url, method: .get).validate().responseJSON { response in
-//            switch response.result {
-//                case .success(let value):
-//                    let jsonArray = JSON(value).arrayValue
-//                    for obj in jsonArray {
-//                        let name = obj["userId"]["username"].stringValue
-//                        let coins = obj["coin_balance"].doubleValue
-//                        self.users.append(User(username: name, coinBalance: coins))
-//                    }
-//                    self.users = self.users.sorted(by: { $0.coinBalance > $1.coinBalance })
-//                    
-//                    DispatchQueue.main.async() {
-//                        leaderboardVC.leaderboardTable.reloadData()
-//                        leaderboardVC.firstPlaceLabel.text = self.users[0].username
-//                        leaderboardVC.secondPlaceLabel.text = self.users[1].username
-//                        leaderboardVC.thirdPlaceLabel.text = self.users[2].username
-//                        
-//                        leaderboardVC.refreshControl.endRefreshing()
-//                        leaderboardVC.loadingActivityIndicatorView.stopAnimating()
-//                    }
-//                case .failure(let error):
-//                    leaderboardVC.leaderboardTable.reloadData()
-//                    leaderboardVC.firstPlaceLabel.text = ""
-//                    leaderboardVC.secondPlaceLabel.text = ""
-//                    leaderboardVC.thirdPlaceLabel.text = ""
-//                    
-//                    leaderboardVC.refreshControl.endRefreshing()
-//                    leaderboardVC.loadingActivityIndicatorView.stopAnimating()
-//                    print(error)
-//                    leaderboardVC.networkError("Could not retrieve the leaderboard for all time")
-//                }
-//        }
+    func getAllTimeLeaderboard(completion: @escaping (_ success: Bool) -> Void) {
+        let url = URL(string: Constants.API + "leaderboard")!
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+                case .success(let value):
+                    self.allTimeUsers.removeAll()
+                    let jsonArray = JSON(value).arrayValue
+                    for obj in jsonArray {
+                        let name = obj["username"].stringValue
+                        let coins = obj["coin_balance"].doubleValue
+                        self.allTimeUsers.append(User(username: name, coinBalance: coins))
+                    }
+                    self.allTimeUsers = self.allTimeUsers.sorted(by: { $0.coinBalance > $1.coinBalance })
+                    completion(true)
+                case .failure(let error):
+                    completion(false)
+                    print(error)
+            }
+        }
     }
 }

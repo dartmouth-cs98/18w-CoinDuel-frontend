@@ -11,6 +11,7 @@ import UIKit
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var gameReturnLabel: UILabel!
     @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var nextGameLabel: UILabel!
@@ -49,89 +50,133 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
         
-        // Retrieve gameId (if we already have it)
-        let storedGameId = UserDefaults.standard.string(forKey: "gameId")
-        
-        // Try and get the current game from the database
-        self.game.getCurrentGame() { (success) -> Void in
-            if success {
-                // See if we need to display results
-                if storedGameId != nil && self.game.id != storedGameId {
-                    print("Should display results popup")
-                    self.game = Game()
-                    self.game.id = storedGameId!
-                    self.game.getEntry() { (entryStatus) -> Void in
-                        if entryStatus == "entry" {
-                            self.performSegue(withIdentifier: "DisplayResultsPopup", sender: self)
-                        } else {
-                            // Could not get results for this game
-                            print("No results available")
-                            self.networkError("Could not retrieve game results")
-                        }
-                    }
-                } else {
-                    // See if we have an entry
-                    self.game.getEntry() { (entryStatus) -> Void in
-                        if entryStatus == "entry" {
-                            self.hasEntry = true
-                            // Already has an entry for this game, check if it's started already
-                            if self.game.isActive {
-                                // Update prices
-                                self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
-                                    if coinSuccess {
-                                        // Store the current game ID (for showing results later)
-                                        let defaults = UserDefaults.standard
-                                        defaults.set(self.game.id, forKey: "gameId")
-                                        
-                                        // Show game mode (with prices/returns for coins)
-                                        self.displayGameMode()
-                                    } else {
-                                        self.networkError("Unable to update coin prices")
+        self.startup()
+    }
+    
+    func startup() {
+        // Retrieve user balance
+        let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
+        user.updateCoinBalance() { (completion) -> Void in
+            if completion {
+                DispatchQueue.main.async() {
+                    self.profileButton.setTitle(self.numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC", for: UIControlState .normal)
+                }
+                // Retrieve gameId (if we already have it)
+                let storedGameId = UserDefaults.standard.string(forKey: "gameId")
+                
+                // Try and get the current game from the database
+                self.game.getCurrentGame() { (success) -> Void in
+                    if success {
+                        // See if we need to display results
+                        if storedGameId != nil && self.game.id != storedGameId {
+                            print("Should display results popup")
+                            self.game = Game()
+                            self.game.id = storedGameId!
+                            self.game.getEntry() { (entryStatus) -> Void in
+                                if entryStatus == "entry" {
+                                    self.performSegue(withIdentifier: "DisplayResultsPopup", sender: self)
+                                    DispatchQueue.main.async() {
+                                        self.refreshControl.endRefreshing()
+                                        self.loadingActivityIndicatorView.stopAnimating()
                                     }
-                                }
-                                // If the game is finished, display the results popup (since we had an entry)
-                            } else if !self.game.isActive && self.game.hasFinished {
-                                self.game = Game()
-                                self.displayNoGameMode()
-                            } else if !self.game.hasFinished {
-                                // Update prices
-                                self.game.updateCoinPrices() { (coinSuccess) -> Void in
-                                    if coinSuccess {
-                                        // Show game mode (with prices/returns for coins)
-                                        self.displayEntryMode()
-                                    } else {
-                                        self.networkError("Unable to update coin prices")
-                                    }
-                                }
-                            }
-                        } else if entryStatus == "none" {
-                            if self.game.hasFinished {
-                                self.game = Game()
-                                self.displayNoGameMode()
-                                return
-                            } else if self.game.isActive {
-                                self.isLateEntry = true
-                            }
-                            
-                            // No entry yet, show the entry view
-                            // Update prices
-                            self.game.updateCoinPrices() { (coinSuccess) -> Void in
-                                if coinSuccess {
-                                    // Show game mode (with prices/returns for coins)
-                                    self.displayEntryMode()
                                 } else {
-                                    self.networkError("Unable to update coin prices")
+                                    // Could not get results for this game
+                                    print("No results available")
+                                    self.networkError("Could not retrieve game results"
+                                    )
                                 }
-                            }                        } else {
-                            self.networkError("Could not retrieve entry")
+                            }
+                        } else {
+                            // See if we have an entry
+                            self.game.getEntry() { (entryStatus) -> Void in
+                                if entryStatus == "entry" {
+                                    self.hasEntry = true
+                                    // Already has an entry for this game, check if it's started already
+                                    if self.game.isActive {
+                                        // Update prices
+                                        self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
+                                            if coinSuccess {
+                                                // Store the current game ID (for showing results later)
+                                                let defaults = UserDefaults.standard
+                                                defaults.set(self.game.id, forKey: "gameId")
+                                                
+                                                // Show game mode (with prices/returns for coins)
+                                                self.displayGameMode()
+                                                DispatchQueue.main.async() {
+                                                    self.refreshControl.endRefreshing()
+                                                    self.loadingActivityIndicatorView.stopAnimating()
+                                                }
+                                            } else {
+                                                self.networkError("Unable to update coin prices")
+                                            }
+                                        }
+                                        // If the game is finished, display the results popup (since we had an entry)
+                                    } else if !self.game.isActive && self.game.hasFinished {
+                                        self.game = Game()
+                                        self.displayNoGameMode()
+                                        DispatchQueue.main.async() {
+                                            self.refreshControl.endRefreshing()
+                                            self.loadingActivityIndicatorView.stopAnimating()
+                                        }
+                                    } else if !self.game.hasFinished {
+                                        // Update prices
+                                        self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                                            if coinSuccess {
+                                                // Show game mode (with prices/returns for coins)
+                                                self.displayEntryMode()
+                                                DispatchQueue.main.async() {
+                                                    self.refreshControl.endRefreshing()
+                                                    self.loadingActivityIndicatorView.stopAnimating()
+                                                }
+                                            } else {
+                                                self.networkError("Unable to update coin prices")
+                                            }
+                                        }
+                                    }
+                                } else if entryStatus == "none" {
+                                    if self.game.hasFinished {
+                                        self.game = Game()
+                                        self.displayNoGameMode()
+                                        DispatchQueue.main.async() {
+                                            self.refreshControl.endRefreshing()
+                                            self.loadingActivityIndicatorView.stopAnimating()
+                                        }
+                                        return
+                                    } else if self.game.isActive {
+                                        self.isLateEntry = true
+                                        DispatchQueue.main.async() {
+                                            self.refreshControl.endRefreshing()
+                                            self.loadingActivityIndicatorView.stopAnimating()
+                                        }
+                                    }
+                                    
+                                    // No entry yet, show the entry view
+                                    // Update prices
+                                    self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                                        if coinSuccess {
+                                            // Show game mode (with prices/returns for coins)
+                                            self.displayEntryMode()
+                                            DispatchQueue.main.async() {
+                                                self.refreshControl.endRefreshing()
+                                                self.loadingActivityIndicatorView.stopAnimating()
+                                            }
+                                        } else {
+                                            self.networkError("Unable to update coin prices")
+                                        }
+                                    }                        } else {
+                                    self.networkError("Could not retrieve entry")
+                                }
+                            }
                         }
+                    } else {
+                        self.displayNoGameMode()
                     }
                 }
             } else {
                 self.displayNoGameMode()
+                self.networkError("Could not retrieve user's coin balance")
             }
         }
-        
     }
     
     func displayEntryMode() {
@@ -213,24 +258,25 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func refreshPriceData(_ sender:Any) {
-        if self.isGameDisplayMode && self.game.isActive {
-            self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
-                if coinSuccess {
-                    // Show price page with returns
-                    DispatchQueue.main.async() {
-                        self.updateGameModeLabels()
-                        self.gameTableView.reloadData()
-                        self.refreshControl.endRefreshing()
-                        self.loadingActivityIndicatorView.stopAnimating()
-                    }
-                } else {
-                    self.networkError("Unable to update coin prices")
-                }
-            }
-        } else {
-            self.refreshControl.endRefreshing()
-            self.loadingActivityIndicatorView.stopAnimating()
-        }
+//        if self.isGameDisplayMode && self.game.isActive {
+//            self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
+//                if coinSuccess {
+//                    // Show price page with returns
+//                    DispatchQueue.main.async() {
+//                        self.updateGameModeLabels()
+//                        self.gameTableView.reloadData()
+//                        self.refreshControl.endRefreshing()
+//                        self.loadingActivityIndicatorView.stopAnimating()
+//                    }
+//                } else {
+//                    self.networkError("Unable to update coin prices")
+//                }
+//            }
+//        } else {
+//            self.refreshControl.endRefreshing()
+//            self.loadingActivityIndicatorView.stopAnimating()
+//        }
+        self.startup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -354,6 +400,11 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let alert = UIAlertController(title: "Uh oh!", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        
+        DispatchQueue.main.async() {
+            self.refreshControl.endRefreshing()
+            self.loadingActivityIndicatorView.stopAnimating()
+        }
     }
     
     @IBAction func submitButtonPress(_ sender: UIButton) {
