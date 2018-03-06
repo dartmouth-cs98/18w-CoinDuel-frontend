@@ -324,7 +324,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.coinReturnLabel.text = numberFormatter.string(from: NSNumber(value: coin.capCoinReturn))! + " CC"
             }
 
-            if (coin.percentReturn > 0) {
+            if (coin.percentReturn == 0) {
+                cell.coinReturnLabel.backgroundColor = Constants.lightGrayColor
+            } else if (coin.percentReturn > 0){
                 cell.coinReturnLabel.backgroundColor = Constants.greenColor
             } else {
                 cell.coinReturnLabel.backgroundColor = Constants.redColor
