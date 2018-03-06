@@ -142,36 +142,32 @@ class Game {
         }
         
         let json = ["choices": choices]
-        
-        // Credit for following API technique: https://stackoverflow.com/questions/31937686/how-to-make-http-post-request-with-json-body-in-swift
 
-        if let jsonData = try? JSONSerialization.data(withJSONObject: json) {
-            let url = URL(string: Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
+        let url = URL(string: Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
 
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
-            print(request)
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-                // Error checking
-                guard error == nil else {
-                    completion(false)
-                    return
+        Alamofire.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print(json)
+                // Get all coin names, default CapCoin allocation to 0
+                for coin in json["choices"] {
+                    self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue))
                 }
-                
-                if (try? JSONSerialization.jsonObject(with: data!, options: [])) != nil {
-                    completion(true)
+                completion(true)
+
+            case .failure(let error):
+                if String(describing: error) == Constants.MissingEntryError {
+                    // All OK, just no entry yet. Reload tableview
                 } else {
-                    completion(false)
+                    print(error)
                 }
+                completion(false)
             }
-            
-            task.resume()
-        } else {
-            print("Failed conversion to JSON")
-            completion(false)
+
+
+
+            print(response.response?.statusCode)
         }
     }
 

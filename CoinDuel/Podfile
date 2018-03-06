@@ -6,4 +6,6 @@ target 'CoinDuel' do
     pod 'Alamofire', '~> 4.6'
 	pod 'SwiftyJSON'
 	pod 'Charts'
+	pod 'FeedbackEffect'
+	pod 'NVActivityIndicatorView'
 end

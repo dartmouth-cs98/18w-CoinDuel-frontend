@@ -47,7 +47,7 @@ class CoinDetailViewController: UIViewController {
         chartView.setScaleEnabled(true)
         chartView.animate(xAxisDuration: 2.5)
         chartView.pinchZoomEnabled = true
-        chartView.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+//        chartView.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
 
         //        modified xAxis for time line with help from https://github.com/danielgindi/Charts/blob/master/ChartsDemo/Swift/Demos/LineChartTimeViewController.swift
         let xAxis = chartView.xAxis
@@ -57,7 +57,7 @@ class CoinDetailViewController: UIViewController {
         xAxis.drawAxisLineEnabled = true
         xAxis.drawGridLinesEnabled = false
         xAxis.centerAxisLabelsEnabled = false
-        xAxis.granularity = 3600
+        xAxis.granularity = 400000
         xAxis.valueFormatter = DateValueFormatter()
 
         self.oneDayChart((Any).self)
@@ -184,7 +184,7 @@ class CoinDetailViewController: UIViewController {
 
     }
     @IBAction func oneYearChart(_ sender: Any) {
-        let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
+        let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=365"
         self.setChartData(apiURL: apiURL, collectPrice: 1)
     }
 
