@@ -175,45 +175,16 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         if (success) {
             DispatchQueue.main.async() {
                 self.leaderboardTable.reloadData()
+                var users:[User] = [User]()
                 if self.isCurrent {
-                    if (self.leaderboard.currentUsers.count > 0) {
-                        self.firstPlaceLabel.text = self.leaderboard.currentUsers[0].username
-                    }
-                    else {
-                        self.firstPlaceLabel.text = ""
-                    }
-                    if (self.leaderboard.currentUsers.count > 1) {
-                        self.secondPlaceLabel.text = self.leaderboard.currentUsers[1].username
-                    }
-                    else {
-                        self.secondPlaceLabel.text = ""
-                    }
-                    if (self.leaderboard.currentUsers.count > 2) {
-                        self.thirdPlaceLabel.text = self.leaderboard.currentUsers[2].username
-                    }
-                    else {
-                        self.thirdPlaceLabel.text = ""
-                    }
+                    users = self.leaderboard.currentUsers
                 } else {
-                    if (self.leaderboard.allTimeUsers.count > 0) {
-                        self.firstPlaceLabel.text = self.leaderboard.allTimeUsers[0].username
-                    }
-                    else {
-                        self.firstPlaceLabel.text = ""
-                    }
-                    if (self.leaderboard.allTimeUsers.count > 1) {
-                        self.secondPlaceLabel.text = self.leaderboard.allTimeUsers[1].username
-                    }
-                    else {
-                        self.secondPlaceLabel.text = ""
-                    }
-                    if (self.leaderboard.allTimeUsers.count > 2) {
-                        self.thirdPlaceLabel.text = self.leaderboard.allTimeUsers[2].username
-                    }
-                    else {
-                        self.thirdPlaceLabel.text = ""
-                    }
+                    users = self.leaderboard.allTimeUsers
                 }
+                
+                self.firstPlaceLabel.text = users.count > 0 ? users[0].username : ""
+                self.secondPlaceLabel.text = users.count > 1 ? users[1].username : ""
+                self.thirdPlaceLabel.text = users.count > 2 ? users[2].username : ""
                 
                 self.refreshControl.endRefreshing()
                 self.loadingActivityIndicatorView.stopAnimating()
