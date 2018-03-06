@@ -71,6 +71,7 @@ class CoinDetailViewController: UIViewController {
         leftYAxis.drawGridLinesEnabled = true
         leftYAxis.drawLabelsEnabled = true
         leftYAxis.drawAxisLineEnabled = true
+        leftYAxis.labelFont = .systemFont(ofSize: 14)
 
 
 
@@ -91,14 +92,14 @@ class CoinDetailViewController: UIViewController {
         set1.fillAlpha = 1
         set1.drawHorizontalHighlightIndicatorEnabled = false
         set1.fillFormatter = CubicLineSampleFillFormatter()
+        set1.drawValuesEnabled = false
 
 
 
 
         let data = LineChartData() //This is the object that will be added to the chart
         data.setValueTextColor(.red)
-        //get rid of data point labels
-        data.setValueFont(.systemFont(ofSize: 0))
+
         data.addDataSet(set1) //Adds the line to the dataSet
         //finally - it adds the chart data to the chart and causes an update
         chartView.data = data
@@ -132,33 +133,62 @@ class CoinDetailViewController: UIViewController {
     }
 
     @IBAction func currentGameChart(_ sender: Any) {
+        // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
 
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let initialDate = dateFormatter.date(from: self.game.rawStartDate)
+        let currentDate = dateFormatter.date(from: Date().description)
+
+
+        print(self.game.rawStartDate)
+
+        
+        dateFormatter.dateFormat = "EEEE h:mm a z"
+        dateFormatter.timeZone = TimeZone.current
+        print(dateFormatter.string(from: initialDate!))
+        
+        // calulate days between dates https://stackoverflow.com/questions/40075850/swift-3-find-number-of-calendar-days-between-two-dates
+        let diffInDays = Calendar.current.dateComponents([.day], from: initialDate!, to: currentDate!).day
+        // if the game hasn't started yet, display the same graph as daily chart
+        if diffInDays! < 0{
+            let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
+            self.setChartData(apiURL: apiURL, collectPrice: 1)
+        } else {
+            // if game has started display the hourly data of the coin since start
+            let hours = 24 * Int(diffInDays!)
+            let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=" + String(hours)
+            self.setChartData(apiURL: apiURL, collectPrice: 0)
+        }
+
+//        self.setChartData(apiURL: apiURL, collectPrice: 0)
     }
 
     @IBAction func oneDayChart(_ sender: Any) {
 //        api for one days data, 24 hours
         let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
-        self.setChartData(apiURL: apiURL)
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
     }
     @IBAction func oneWeekChart(_ sender: Any) {
 //        api for past 7 days data
         let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=7"
-        self.setChartData(apiURL: apiURL)
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
 
     }
     @IBAction func oneMonthChart(_ sender: Any) {
 //        api for past 30 days data
         let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=30"
-        self.setChartData(apiURL: apiURL)
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
 
     }
     @IBAction func oneYearChart(_ sender: Any) {
         let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=24"
-        self.setChartData(apiURL: apiURL)
-
+        self.setChartData(apiURL: apiURL, collectPrice: 1)
     }
 
-    func setChartData(apiURL: String) -> Void {
+    func setChartData(apiURL: String, collectPrice: Int) -> Void {
 
         self.lineChartEntry.removeAll()
         //        source: https://github.com/SwiftyJSON/SwiftyJSON
@@ -166,12 +196,9 @@ class CoinDetailViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-
-                var collectPrice = 1
                 for coin in json["Data"] {
                     if collectPrice == 1{
                         self.initialCoinPrice = Double(coin.1["high"].description)!
-                        collectPrice = 0
                     }
                     let time = coin.1["time"].description
 

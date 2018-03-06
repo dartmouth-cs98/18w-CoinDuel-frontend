@@ -337,6 +337,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             destinationVC.coinSymbolLabel = coin.ticker
                             destinationVC.game = self.game
                             destinationVC.currentCoinPrice = coin.currentPrice
+                            destinationVC.initialCoinPrice = coin.initialPrice
                             self.present(destinationVC, animated: true, completion: nil)
                             print("showing coinDetail")
                         }
