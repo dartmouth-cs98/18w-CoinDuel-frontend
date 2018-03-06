@@ -13,6 +13,7 @@ import UIKit
 import Charts
 import Alamofire
 import SwiftyJSON
+import NVActivityIndicatorView
 
 //the below class was from the demo project from to format line dates https://github.com/danielgindi/Charts
 private class CubicLineSampleFillFormatter: IFillFormatter {
@@ -30,7 +31,8 @@ class CoinDetailViewController: UIViewController {
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
     @IBOutlet weak var coinPercentChangeLabel: UILabel!
     @IBOutlet weak var inactiveChartButtons: UIStackView!
-
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    
     
     var game: Game = Game()
     var coinSymbolLabel: String = ""
@@ -44,6 +46,8 @@ class CoinDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.chartView.isHidden = true
+        self.activityIndicator.startAnimating()
         self.capCoinAllocationLabel.text = allocatoin + " CC"
 
 //        toggle buttons if game is active or not
@@ -56,7 +60,6 @@ class CoinDetailViewController: UIViewController {
         }
 
 //        setup chart and call it for one day values
-        self.setChartParameters()
         self.oneDayChart((Any).self)
     }
 
@@ -155,8 +158,12 @@ class CoinDetailViewController: UIViewController {
 
                     self.lineChartEntry.append(value) // here we add it to the data set
                 }
-                self.setChartParameters()
-                self.updateLineGraph()
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.chartView.isHidden = false
+                    self.setChartParameters()
+                    self.updateLineGraph()
+                }
             case .failure(let error):
                 print(error)
             }
