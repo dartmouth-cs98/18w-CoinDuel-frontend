@@ -17,13 +17,17 @@ Swift, Xcode
 ## Setup
 
 Run workspace in Xcode
-Be sure to open 'CoinDuel.xcworkspace' from terminal
+Be sure to 'open CoinDuel.xcworkspace' from terminal
 This is the workspace that contains cocoa pods functionality
 
 ## Deployment
 
 Xcode build
 The above runs the simulator for the application
+
+## GIFs of App in Action
+
+![Mockup](img/CoinDuel.gif)
 
 ## Authors
 
