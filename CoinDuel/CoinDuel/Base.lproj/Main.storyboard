@@ -140,6 +140,7 @@
                         <outlet property="confirmButton" destination="jUt-Jp-rN9" id="Zfm-DY-RU1"/>
                         <outlet property="confirmPassword" destination="Gne-Gx-pT0" id="F03-88-Y0n"/>
                         <outlet property="instructionText" destination="BX5-3u-lAm" id="DVY-ll-SaJ"/>
+                        <outlet property="profileImage" destination="AyK-FK-hoz" id="09W-C8-5fE"/>
                         <outlet property="submitButton" destination="Dfv-Oz-V5G" id="b9b-Kz-qLC"/>
                     </connections>
                 </viewController>
