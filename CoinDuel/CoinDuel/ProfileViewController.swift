@@ -17,7 +17,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var OldPassword: UITextField!
     @IBOutlet weak var UserLabel: UILabel!
-    
+    @IBOutlet weak var profileImage: UIImageView!
+
     @IBAction func submitClicked(_ sender: Any) {
         submitButton.isHidden = true
         OldPassword.text = ""
@@ -30,11 +31,13 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
+        let profImage = UserDefaults.standard.string(forKey:"profileImage")
         
         confirmButton.layer.masksToBounds = true
         confirmButton.layer.cornerRadius = 5
         submitButton.layer.masksToBounds = true
         submitButton.layer.cornerRadius = 5
+        profileImage.image = UIImage(named: profImage!)
     }
     
     override func didReceiveMemoryWarning() {

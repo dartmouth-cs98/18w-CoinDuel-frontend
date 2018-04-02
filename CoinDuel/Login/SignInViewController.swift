@@ -65,6 +65,7 @@ class SignInViewController: UIViewController {
                         let defaults = UserDefaults.standard
                         defaults.set(user, forKey: "username")
                         defaults.set(user_id, forKey: "id")
+                        defaults.set("girl", forKey: "profileImage")
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController

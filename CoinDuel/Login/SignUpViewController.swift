@@ -86,6 +86,7 @@ class SignUpViewController: UIViewController {
                             let defaults = UserDefaults.standard
                             defaults.set(self.username.text!, forKey: "username")
                             defaults.set(user_id, forKey: "id")
+                            defaults.set("boy", forKey: "profileImage")
                             self.hideSpinner()
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
