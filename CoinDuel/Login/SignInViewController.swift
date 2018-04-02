@@ -33,6 +33,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func onLoginPressed(_ sender: Any) {
         var user_id = ""
+        var profileUrl = ""
         
         if let user = username.text, !user.isEmpty, let pass = password.text, !pass.isEmpty {
             let apiUrl = NSURL(string:Constants.API + "user");
@@ -53,6 +54,7 @@ class SignInViewController: UIViewController {
                                     if user == name, pass == pw {
                                         self.validated = true
                                         user_id = id
+                                        profileUrl = dict.value(forKey: "profile_url") as! String
                                     }
                                 }
                             }
@@ -65,7 +67,7 @@ class SignInViewController: UIViewController {
                         let defaults = UserDefaults.standard
                         defaults.set(user, forKey: "username")
                         defaults.set(user_id, forKey: "id")
-                        defaults.set("girl", forKey: "profileImage")
+                        defaults.set(profileUrl, forKey: "profileImage")
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController

@@ -70,7 +70,8 @@ class SignUpViewController: UIViewController {
 
             let apiUrl = URL(string: Constants.API + "signup")
 
-            let params = ["username": self.username.text!, "email": self.email.text!, "password": self.password.text!]
+            let profileImage = arc4random_uniform(2) == 0 ? "boy" : "girl"
+            let params = ["username": self.username.text!, "email": self.email.text!, "password": self.password.text!, "profile_url": profileImage]
             Alamofire.request(apiUrl!, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
 
 
@@ -86,7 +87,7 @@ class SignUpViewController: UIViewController {
                             let defaults = UserDefaults.standard
                             defaults.set(self.username.text!, forKey: "username")
                             defaults.set(user_id, forKey: "id")
-                            defaults.set("boy", forKey: "profileImage")
+                            defaults.set(profileImage, forKey: "profileImage")
                             self.hideSpinner()
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
