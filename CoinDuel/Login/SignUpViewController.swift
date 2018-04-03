@@ -27,7 +27,9 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var boyButton: UIButton!
     @IBOutlet weak var girlButton: UIButton!
-    var boyPressed = true
+    @IBOutlet weak var dogButton: UIButton!
+    @IBOutlet weak var catButton: UIButton!
+    var buttonPressed = "boy"
     
     var validated = false
 
@@ -44,9 +46,15 @@ class SignUpViewController: UIViewController {
         boyButton.layer.borderColor = UIColor.red.cgColor
         girlButton.layer.borderWidth = 1
         girlButton.layer.borderColor = UIColor.black.cgColor
+        dogButton.layer.borderWidth = 1
+        dogButton.layer.borderColor = UIColor.red.cgColor
+        catButton.layer.borderWidth = 1
+        catButton.layer.borderColor = UIColor.black.cgColor
         
         boyButton.setImage(UIImage(named: "boy"), for: .normal)
         girlButton.setImage(UIImage(named: "girl"), for: .normal)
+        dogButton.setImage(UIImage(named: "dog"), for: .normal)
+        catButton.setImage(UIImage(named: "cat"), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,19 +63,42 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func boyButtonPressed(_ sender: Any) {
-        if (!boyPressed) {
-            boyPressed = true
+        if (buttonPressed != "boy") {
+            resetButtonColors()
+            buttonPressed = "boy"
             boyButton.layer.borderColor = UIColor.red.cgColor
-            girlButton.layer.borderColor = UIColor.black.cgColor
         }
     }
     
     @IBAction func girlButtonPressed(_ sender: Any) {
-        if (boyPressed) {
-            boyPressed = false
-            boyButton.layer.borderColor = UIColor.black.cgColor
+        if (buttonPressed != "girl") {
+            resetButtonColors()
+            buttonPressed = "girl"
             girlButton.layer.borderColor = UIColor.red.cgColor
         }
+    }
+    
+    @IBAction func dogButtonPressed(_ sender: Any) {
+        if (buttonPressed != "dog") {
+            resetButtonColors()
+            buttonPressed = "dog"
+            dogButton.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
+    @IBAction func catButtonPressed(_ sender: Any) {
+        if (buttonPressed != "cat") {
+            resetButtonColors()
+            buttonPressed = "cat"
+            catButton.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
+    func resetButtonColors() {
+        boyButton.layer.borderColor = UIColor.black.cgColor
+        girlButton.layer.borderColor = UIColor.black.cgColor
+        dogButton.layer.borderColor = UIColor.black.cgColor
+        catButton.layer.borderColor = UIColor.black.cgColor
     }
     
     @IBAction func onSignUpPressed(_ sender: Any) {
@@ -97,7 +128,7 @@ class SignUpViewController: UIViewController {
 
             let apiUrl = URL(string: Constants.API + "signup")
 
-            let profileImage = boyPressed ? "boy" : "girl"
+            let profileImage = buttonPressed
             let params = ["username": self.username.text!, "email": self.email.text!, "password": self.password.text!, "profile_url": profileImage]
             Alamofire.request(apiUrl!, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
 
