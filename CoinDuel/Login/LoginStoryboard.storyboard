@@ -183,7 +183,7 @@
                                 <rect key="frame" x="177" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW3-ul-Jet">
-                                <rect key="frame" x="75" y="438" width="225" height="40"/>
+                                <rect key="frame" x="75" y="418" width="225" height="40"/>
                                 <color key="backgroundColor" red="0.24313725490196078" green="0.60784313725490191" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6Jf-XK-9dC"/>
@@ -198,7 +198,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppH-9B-AKC">
-                                <rect key="frame" x="75" y="494" width="176" height="20"/>
+                                <rect key="frame" x="75" y="474" width="176" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9Ik-LG-Pt0"/>
                                 </constraints>
@@ -207,7 +207,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK3-3C-gDY">
-                                <rect key="frame" x="256" y="494" width="47" height="20"/>
+                                <rect key="frame" x="256" y="474" width="47" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="wOY-j3-Lsy"/>
                                 </constraints>
@@ -217,10 +217,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02t-Up-CtX">
-                                <rect key="frame" x="110.5" y="354" width="70" height="70"/>
+                                <rect key="frame" x="75" y="354" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="Fja-Yq-YMh"/>
-                                    <constraint firstAttribute="height" constant="70" id="Q10-4U-eQw"/>
+                                    <constraint firstAttribute="width" constant="50" id="Fja-Yq-YMh"/>
+                                    <constraint firstAttribute="height" constant="50" id="Q10-4U-eQw"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
@@ -231,10 +231,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-lI-NQH">
-                                <rect key="frame" x="194.5" y="354" width="70" height="70"/>
+                                <rect key="frame" x="250" y="354" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="F7q-KU-Pfb"/>
-                                    <constraint firstAttribute="width" constant="70" id="HkX-nj-5xS"/>
+                                    <constraint firstAttribute="height" constant="50" id="F7q-KU-Pfb"/>
+                                    <constraint firstAttribute="width" constant="50" id="HkX-nj-5xS"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
@@ -244,15 +244,47 @@
                                     <action selector="girlButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="XhK-QO-zhQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTF-bn-yV0" userLabel="Dog Button">
+                                <rect key="frame" x="133.5" y="354" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ad8-rA-MZJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="TXR-bb-vqn"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dogButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="xhn-ZR-7Qf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuj-ad-Pe5" userLabel="Cat Button">
+                                <rect key="frame" x="191.5" y="354" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="X3C-14-bq0"/>
+                                    <constraint firstAttribute="width" constant="50" id="zwD-N3-JcB"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="catButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="IRa-6C-9Ob"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="q4F-N4-7HN" firstAttribute="centerX" secondItem="6Af-MV-ju1" secondAttribute="centerX" id="0gs-ya-MJq"/>
+                            <constraint firstItem="yuj-ad-Pe5" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" constant="29" id="1a3-pF-6mt"/>
                             <constraint firstItem="dK3-3C-gDY" firstAttribute="leading" secondItem="ppH-9B-AKC" secondAttribute="trailing" constant="5" id="4fX-29-Vku"/>
                             <constraint firstItem="19k-Cz-PFH" firstAttribute="top" secondItem="b1A-NQ-cjs" secondAttribute="bottom" constant="2" id="6GI-Dm-ZSd"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="trailing" secondItem="q4F-N4-7HN" secondAttribute="trailing" id="6sc-u5-Om7"/>
+                            <constraint firstItem="yuj-ad-Pe5" firstAttribute="centerY" secondItem="QTF-bn-yV0" secondAttribute="centerY" id="8Vn-3a-t4s"/>
+                            <constraint firstItem="QTF-bn-yV0" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" constant="-29" id="8tU-yP-x8T"/>
                             <constraint firstItem="q4F-N4-7HN" firstAttribute="trailing" secondItem="v1Y-CU-tM3" secondAttribute="trailing" id="Cbj-cW-zx2"/>
-                            <constraint firstItem="iNa-lI-NQH" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" constant="42" id="ChP-K5-uhK"/>
+                            <constraint firstItem="iNa-lI-NQH" firstAttribute="trailing" secondItem="FRc-F8-tBJ" secondAttribute="trailing" id="ChP-K5-uhK"/>
+                            <constraint firstItem="QTF-bn-yV0" firstAttribute="centerY" secondItem="02t-Up-CtX" secondAttribute="centerY" id="FnR-wv-ZUz"/>
                             <constraint firstItem="QW3-ul-Jet" firstAttribute="top" secondItem="02t-Up-CtX" secondAttribute="bottom" constant="14" id="GKr-o6-q32"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="top" secondItem="M7j-Rp-pW1" secondAttribute="top" constant="110" id="HkA-Jz-rDh"/>
                             <constraint firstItem="v1Y-CU-tM3" firstAttribute="leading" secondItem="FRc-F8-tBJ" secondAttribute="leading" id="HwR-dk-WK0"/>
@@ -272,7 +304,7 @@
                             <constraint firstItem="19k-Cz-PFH" firstAttribute="centerX" secondItem="b1A-NQ-cjs" secondAttribute="centerX" id="p0z-14-faP"/>
                             <constraint firstItem="v1Y-CU-tM3" firstAttribute="trailing" secondItem="FRc-F8-tBJ" secondAttribute="trailing" id="q4d-bs-Icq"/>
                             <constraint firstItem="q4F-N4-7HN" firstAttribute="leading" secondItem="v1Y-CU-tM3" secondAttribute="leading" id="qtn-2X-dL1"/>
-                            <constraint firstItem="02t-Up-CtX" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" constant="-42" id="rOX-a1-r9I"/>
+                            <constraint firstItem="02t-Up-CtX" firstAttribute="leading" secondItem="FRc-F8-tBJ" secondAttribute="leading" id="rOX-a1-r9I"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" id="sbX-Tk-bgw"/>
                             <constraint firstItem="FRc-F8-tBJ" firstAttribute="top" secondItem="v1Y-CU-tM3" secondAttribute="bottom" constant="16" id="xco-O2-tK0"/>
                             <constraint firstItem="WVL-H6-X5W" firstAttribute="top" secondItem="FRc-F8-tBJ" secondAttribute="bottom" constant="2" id="zXw-YT-vd9"/>
@@ -282,7 +314,9 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ys9-BC-sd9" id="xhr-xW-use"/>
                         <outlet property="boyButton" destination="02t-Up-CtX" id="nEI-rA-B7R"/>
+                        <outlet property="catButton" destination="yuj-ad-Pe5" id="mze-xd-lvA"/>
                         <outlet property="confirmedPassword" destination="FRc-F8-tBJ" id="oTG-G5-JXK"/>
+                        <outlet property="dogButton" destination="QTF-bn-yV0" id="JHO-5t-Pjc"/>
                         <outlet property="email" destination="q4F-N4-7HN" id="pgf-5b-9Be"/>
                         <outlet property="girlButton" destination="iNa-lI-NQH" id="4fM-g4-QZg"/>
                         <outlet property="noEmailLabel" destination="6Af-MV-ju1" id="AMS-10-q6o"/>
