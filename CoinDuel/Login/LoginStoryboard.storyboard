@@ -183,7 +183,7 @@
                                 <rect key="frame" x="177" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW3-ul-Jet">
-                                <rect key="frame" x="75" y="354" width="225" height="40"/>
+                                <rect key="frame" x="75" y="438" width="225" height="40"/>
                                 <color key="backgroundColor" red="0.24313725490196078" green="0.60784313725490191" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6Jf-XK-9dC"/>
@@ -198,7 +198,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppH-9B-AKC">
-                                <rect key="frame" x="75" y="410" width="176" height="20"/>
+                                <rect key="frame" x="75" y="494" width="176" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9Ik-LG-Pt0"/>
                                 </constraints>
@@ -207,13 +207,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK3-3C-gDY">
-                                <rect key="frame" x="256" y="410" width="47" height="20"/>
+                                <rect key="frame" x="256" y="494" width="47" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="wOY-j3-Lsy"/>
                                 </constraints>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <segue destination="x3h-7b-ihK" kind="show" id="pLi-uy-4wB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02t-Up-CtX">
+                                <rect key="frame" x="110.5" y="354" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Fja-Yq-YMh"/>
+                                    <constraint firstAttribute="height" constant="70" id="Q10-4U-eQw"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="7kl-CL-e5b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-lI-NQH">
+                                <rect key="frame" x="194.5" y="354" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="F7q-KU-Pfb"/>
+                                    <constraint firstAttribute="width" constant="70" id="HkX-nj-5xS"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="girlButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="XhK-QO-zhQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -224,13 +252,16 @@
                             <constraint firstItem="19k-Cz-PFH" firstAttribute="top" secondItem="b1A-NQ-cjs" secondAttribute="bottom" constant="2" id="6GI-Dm-ZSd"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="trailing" secondItem="q4F-N4-7HN" secondAttribute="trailing" id="6sc-u5-Om7"/>
                             <constraint firstItem="q4F-N4-7HN" firstAttribute="trailing" secondItem="v1Y-CU-tM3" secondAttribute="trailing" id="Cbj-cW-zx2"/>
+                            <constraint firstItem="iNa-lI-NQH" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" constant="42" id="ChP-K5-uhK"/>
+                            <constraint firstItem="QW3-ul-Jet" firstAttribute="top" secondItem="02t-Up-CtX" secondAttribute="bottom" constant="14" id="GKr-o6-q32"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="top" secondItem="M7j-Rp-pW1" secondAttribute="top" constant="110" id="HkA-Jz-rDh"/>
                             <constraint firstItem="v1Y-CU-tM3" firstAttribute="leading" secondItem="FRc-F8-tBJ" secondAttribute="leading" id="HwR-dk-WK0"/>
-                            <constraint firstItem="QW3-ul-Jet" firstAttribute="top" secondItem="WVL-H6-X5W" secondAttribute="bottom" constant="2" id="IM8-mQ-G2j"/>
+                            <constraint firstItem="02t-Up-CtX" firstAttribute="top" secondItem="WVL-H6-X5W" secondAttribute="bottom" constant="2" id="ILC-Gp-C9D"/>
                             <constraint firstItem="WVL-H6-X5W" firstAttribute="centerX" secondItem="QW3-ul-Jet" secondAttribute="centerX" id="Jjn-Em-rPW"/>
                             <constraint firstItem="WVL-H6-X5W" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" id="JlB-lJ-zb6"/>
                             <constraint firstItem="q4F-N4-7HN" firstAttribute="top" secondItem="19k-Cz-PFH" secondAttribute="bottom" constant="2" id="PcY-o1-QxR"/>
                             <constraint firstItem="ys9-BC-sd9" firstAttribute="centerY" secondItem="8Zc-30-mfz" secondAttribute="centerY" id="Ul4-IY-U1s"/>
+                            <constraint firstItem="iNa-lI-NQH" firstAttribute="centerY" secondItem="02t-Up-CtX" secondAttribute="centerY" id="Uuc-XT-ITe"/>
                             <constraint firstItem="ppH-9B-AKC" firstAttribute="top" secondItem="QW3-ul-Jet" secondAttribute="bottom" constant="16" id="X1K-Nl-gXw"/>
                             <constraint firstItem="ys9-BC-sd9" firstAttribute="centerX" secondItem="WVL-H6-X5W" secondAttribute="centerX" id="YfS-hX-56i"/>
                             <constraint firstItem="ppH-9B-AKC" firstAttribute="leading" secondItem="QW3-ul-Jet" secondAttribute="leading" id="ZJc-LP-KTf"/>
@@ -241,6 +272,7 @@
                             <constraint firstItem="19k-Cz-PFH" firstAttribute="centerX" secondItem="b1A-NQ-cjs" secondAttribute="centerX" id="p0z-14-faP"/>
                             <constraint firstItem="v1Y-CU-tM3" firstAttribute="trailing" secondItem="FRc-F8-tBJ" secondAttribute="trailing" id="q4d-bs-Icq"/>
                             <constraint firstItem="q4F-N4-7HN" firstAttribute="leading" secondItem="v1Y-CU-tM3" secondAttribute="leading" id="qtn-2X-dL1"/>
+                            <constraint firstItem="02t-Up-CtX" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" constant="-42" id="rOX-a1-r9I"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" id="sbX-Tk-bgw"/>
                             <constraint firstItem="FRc-F8-tBJ" firstAttribute="top" secondItem="v1Y-CU-tM3" secondAttribute="bottom" constant="16" id="xco-O2-tK0"/>
                             <constraint firstItem="WVL-H6-X5W" firstAttribute="top" secondItem="FRc-F8-tBJ" secondAttribute="bottom" constant="2" id="zXw-YT-vd9"/>
@@ -249,8 +281,10 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="ys9-BC-sd9" id="xhr-xW-use"/>
+                        <outlet property="boyButton" destination="02t-Up-CtX" id="nEI-rA-B7R"/>
                         <outlet property="confirmedPassword" destination="FRc-F8-tBJ" id="oTG-G5-JXK"/>
                         <outlet property="email" destination="q4F-N4-7HN" id="pgf-5b-9Be"/>
+                        <outlet property="girlButton" destination="iNa-lI-NQH" id="4fM-g4-QZg"/>
                         <outlet property="noEmailLabel" destination="6Af-MV-ju1" id="AMS-10-q6o"/>
                         <outlet property="noPasswordLabel" destination="WVL-H6-X5W" id="IHq-mC-tyC"/>
                         <outlet property="noUsernameLabel" destination="19k-Cz-PFH" id="ojx-0N-bTb"/>
@@ -337,6 +371,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mkH-uc-JAS"/>
-        <segue reference="Sum-gf-KeX"/>
+        <segue reference="pLi-uy-4wB"/>
     </inferredMetricsTieBreakers>
 </document>
