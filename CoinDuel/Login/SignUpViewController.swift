@@ -25,6 +25,10 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signupButton: UIButton!
     
+    @IBOutlet weak var boyButton: UIButton!
+    @IBOutlet weak var girlButton: UIButton!
+    var boyPressed = true
+    
     var validated = false
 
     override func viewDidLoad() {
@@ -35,14 +39,37 @@ class SignUpViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        boyButton.layer.borderWidth = 1
+        boyButton.layer.borderColor = UIColor.red.cgColor
+        girlButton.layer.borderWidth = 1
+        girlButton.layer.borderColor = UIColor.black.cgColor
+        
+        boyButton.setImage(UIImage(named: "boy"), for: .normal)
+        girlButton.setImage(UIImage(named: "girl"), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func boyButtonPressed(_ sender: Any) {
+        if (!boyPressed) {
+            boyPressed = true
+            boyButton.layer.borderColor = UIColor.red.cgColor
+            girlButton.layer.borderColor = UIColor.black.cgColor
+        }
+    }
+    
+    @IBAction func girlButtonPressed(_ sender: Any) {
+        if (boyPressed) {
+            boyPressed = false
+            boyButton.layer.borderColor = UIColor.black.cgColor
+            girlButton.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
     @IBAction func onSignUpPressed(_ sender: Any) {
 
 //        display error messages if fields are empty
@@ -70,7 +97,7 @@ class SignUpViewController: UIViewController {
 
             let apiUrl = URL(string: Constants.API + "signup")
 
-            let profileImage = arc4random_uniform(2) == 0 ? "boy" : "girl"
+            let profileImage = boyPressed ? "boy" : "girl"
             let params = ["username": self.username.text!, "email": self.email.text!, "password": self.password.text!, "profile_url": profileImage]
             Alamofire.request(apiUrl!, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
 
