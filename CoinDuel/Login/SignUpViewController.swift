@@ -43,11 +43,12 @@ class SignUpViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         boyButton.layer.borderWidth = 1
-        boyButton.layer.borderColor = UIColor.red.cgColor
+        boyButton.layer.borderColor = UIColor.black.cgColor
+        boyButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
         girlButton.layer.borderWidth = 1
         girlButton.layer.borderColor = UIColor.black.cgColor
         dogButton.layer.borderWidth = 1
-        dogButton.layer.borderColor = UIColor.red.cgColor
+        dogButton.layer.borderColor = UIColor.black.cgColor
         catButton.layer.borderWidth = 1
         catButton.layer.borderColor = UIColor.black.cgColor
         
@@ -66,7 +67,7 @@ class SignUpViewController: UIViewController {
         if (buttonPressed != "boy") {
             resetButtonColors()
             buttonPressed = "boy"
-            boyButton.layer.borderColor = UIColor.red.cgColor
+            boyButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
         }
     }
     
@@ -74,7 +75,7 @@ class SignUpViewController: UIViewController {
         if (buttonPressed != "girl") {
             resetButtonColors()
             buttonPressed = "girl"
-            girlButton.layer.borderColor = UIColor.red.cgColor
+            girlButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
         }
     }
     
@@ -82,7 +83,7 @@ class SignUpViewController: UIViewController {
         if (buttonPressed != "dog") {
             resetButtonColors()
             buttonPressed = "dog"
-            dogButton.layer.borderColor = UIColor.red.cgColor
+            dogButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
         }
     }
     
@@ -90,15 +91,15 @@ class SignUpViewController: UIViewController {
         if (buttonPressed != "cat") {
             resetButtonColors()
             buttonPressed = "cat"
-            catButton.layer.borderColor = UIColor.red.cgColor
+            catButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
         }
     }
     
     func resetButtonColors() {
-        boyButton.layer.borderColor = UIColor.black.cgColor
-        girlButton.layer.borderColor = UIColor.black.cgColor
-        dogButton.layer.borderColor = UIColor.black.cgColor
-        catButton.layer.borderColor = UIColor.black.cgColor
+        boyButton.layer.backgroundColor = UIColor.white.cgColor
+        girlButton.layer.backgroundColor = UIColor.white.cgColor
+        dogButton.layer.backgroundColor = UIColor.white.cgColor
+        catButton.layer.backgroundColor = UIColor.white.cgColor
     }
     
     @IBAction func onSignUpPressed(_ sender: Any) {
