@@ -29,6 +29,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var girlButton: UIButton!
     @IBOutlet weak var dogButton: UIButton!
     @IBOutlet weak var catButton: UIButton!
+    
+    
+    @IBOutlet weak var profile5: UIButton!
+    @IBOutlet weak var profile6: UIButton!
+    @IBOutlet weak var profile7: UIButton!
+    @IBOutlet weak var profile8: UIButton!
+    
+    
     var buttonPressed = "boy"
     
     var validated = false
@@ -52,10 +60,14 @@ class SignUpViewController: UIViewController {
         catButton.layer.borderWidth = 1
         catButton.layer.borderColor = UIColor.black.cgColor
         
+        profile5.layer.borderWidth = 1
+        profile5.layer.borderColor = UIColor.black.cgColor
+        
         boyButton.setImage(UIImage(named: "boy"), for: .normal)
         girlButton.setImage(UIImage(named: "girl"), for: .normal)
         dogButton.setImage(UIImage(named: "dog"), for: .normal)
         catButton.setImage(UIImage(named: "cat"), for: .normal)
+        profile5.setimage(UIImage(named:))
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,6 +96,10 @@ class SignUpViewController: UIViewController {
             case 4:
                 resetButtonColors()
                 buttonPressed = "girl"
+                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+            case 4:
+                resetButtonColors()
+                buttonPressed = "profile5"
                 button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
             default:
                 print("Unknown language")
