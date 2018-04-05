@@ -216,7 +216,7 @@
                                     <segue destination="x3h-7b-ihK" kind="show" id="pLi-uy-4wB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02t-Up-CtX">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02t-Up-CtX">
                                 <rect key="frame" x="75" y="354" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Fja-Yq-YMh"/>
@@ -230,7 +230,7 @@
                                     <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="7kl-CL-e5b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-lI-NQH">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-lI-NQH">
                                 <rect key="frame" x="250" y="354" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="F7q-KU-Pfb"/>
@@ -241,10 +241,10 @@
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="girlButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="XhK-QO-zhQ"/>
+                                    <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="6xX-C1-6tD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTF-bn-yV0" userLabel="Dog Button">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTF-bn-yV0" userLabel="Dog Button">
                                 <rect key="frame" x="133.5" y="354" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ad8-rA-MZJ"/>
@@ -255,10 +255,10 @@
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="dogButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="xhn-ZR-7Qf"/>
+                                    <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="H3H-nz-IUQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuj-ad-Pe5" userLabel="Cat Button">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuj-ad-Pe5" userLabel="Cat Button">
                                 <rect key="frame" x="191.5" y="354" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="X3C-14-bq0"/>
@@ -269,7 +269,7 @@
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="catButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="IRa-6C-9Ob"/>
+                                    <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="3Hq-5g-vqy"/>
                                 </connections>
                             </button>
                         </subviews>

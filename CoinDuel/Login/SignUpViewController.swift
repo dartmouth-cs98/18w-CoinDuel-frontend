@@ -64,34 +64,30 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func boyButtonPressed(_ sender: Any) {
-        if (buttonPressed != "boy") {
-            resetButtonColors()
-            buttonPressed = "boy"
-            boyButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+        guard let button = sender as? UIButton else {
+            return
         }
-    }
-    
-    @IBAction func girlButtonPressed(_ sender: Any) {
-        if (buttonPressed != "girl") {
-            resetButtonColors()
-            buttonPressed = "girl"
-            girlButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-        }
-    }
-    
-    @IBAction func dogButtonPressed(_ sender: Any) {
-        if (buttonPressed != "dog") {
-            resetButtonColors()
-            buttonPressed = "dog"
-            dogButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-        }
-    }
-    
-    @IBAction func catButtonPressed(_ sender: Any) {
-        if (buttonPressed != "cat") {
-            resetButtonColors()
-            buttonPressed = "cat"
-            catButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+        
+        switch button.tag {
+            case 1:
+                resetButtonColors()
+                buttonPressed = "boy"
+                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+            case 2:
+                resetButtonColors()
+                buttonPressed = "dog"
+                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+            case 3:
+                resetButtonColors()
+                buttonPressed = "cat"
+                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+            case 4:
+                resetButtonColors()
+                buttonPressed = "girl"
+                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+            default:
+                print("Unknown language")
+                return
         }
     }
     
