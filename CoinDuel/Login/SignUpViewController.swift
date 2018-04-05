@@ -67,7 +67,7 @@ class SignUpViewController: UIViewController {
         girlButton.setImage(UIImage(named: "girl"), for: .normal)
         dogButton.setImage(UIImage(named: "dog"), for: .normal)
         catButton.setImage(UIImage(named: "cat"), for: .normal)
-        profile5.setimage(UIImage(named:))
+        profile5.setImage(UIImage(named: "profile5"), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,7 +97,7 @@ class SignUpViewController: UIViewController {
                 resetButtonColors()
                 buttonPressed = "girl"
                 button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 4:
+            case 5:
                 resetButtonColors()
                 buttonPressed = "profile5"
                 button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
