@@ -441,19 +441,19 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="ys9-BC-sd9" id="xhr-xW-use"/>
-                        <outlet property="boyButton" destination="02t-Up-CtX" id="nEI-rA-B7R"/>
-                        <outlet property="catButton" destination="yuj-ad-Pe5" id="mze-xd-lvA"/>
                         <outlet property="confirmedPassword" destination="FRc-F8-tBJ" id="oTG-G5-JXK"/>
-                        <outlet property="dogButton" destination="QTF-bn-yV0" id="JHO-5t-Pjc"/>
                         <outlet property="email" destination="q4F-N4-7HN" id="pgf-5b-9Be"/>
-                        <outlet property="girlButton" destination="iNa-lI-NQH" id="4fM-g4-QZg"/>
                         <outlet property="noEmailLabel" destination="6Af-MV-ju1" id="AMS-10-q6o"/>
                         <outlet property="noPasswordLabel" destination="WVL-H6-X5W" id="IHq-mC-tyC"/>
                         <outlet property="noUsernameLabel" destination="19k-Cz-PFH" id="ojx-0N-bTb"/>
                         <outlet property="password" destination="v1Y-CU-tM3" id="R0a-pu-uMk"/>
+                        <outlet property="profile1" destination="02t-Up-CtX" id="nEI-rA-B7R"/>
                         <outlet property="profile10" destination="tzw-ee-Dkh" id="v3I-EL-BWv"/>
                         <outlet property="profile11" destination="eqB-3h-5qY" id="NTW-U3-zij"/>
                         <outlet property="profile12" destination="mnV-PY-BgB" id="Cpm-2Q-jsX"/>
+                        <outlet property="profile2" destination="QTF-bn-yV0" id="JHO-5t-Pjc"/>
+                        <outlet property="profile3" destination="yuj-ad-Pe5" id="mze-xd-lvA"/>
+                        <outlet property="profile4" destination="iNa-lI-NQH" id="4fM-g4-QZg"/>
                         <outlet property="profile5" destination="rt4-qo-I3l" id="jBH-3j-zXg"/>
                         <outlet property="profile6" destination="5L7-nY-NMo" id="sy9-5o-6PV"/>
                         <outlet property="profile7" destination="2aH-LO-0pM" id="09I-MQ-Kvh"/>
