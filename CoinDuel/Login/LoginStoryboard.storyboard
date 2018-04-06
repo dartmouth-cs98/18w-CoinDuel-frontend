@@ -329,7 +329,7 @@
                                     <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="pLb-jg-SFe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig5-W1-ceX">
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig5-W1-ceX">
                                 <rect key="frame" x="75" y="470" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NiZ-vE-xuE"/>
@@ -342,7 +342,7 @@
                                     <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="Iyn-aV-FG7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnV-PY-BgB">
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnV-PY-BgB">
                                 <rect key="frame" x="249" y="470" width="50" height="50"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
@@ -352,7 +352,7 @@
                                     <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="9xx-sY-0rb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzw-ee-Dkh" userLabel="Dog Button">
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzw-ee-Dkh" userLabel="Dog Button">
                                 <rect key="frame" x="133" y="470" width="50" height="50"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
@@ -362,7 +362,7 @@
                                     <action selector="boyButtonPressed:" destination="eLU-vL-l5w" eventType="touchUpInside" id="qvc-uu-0ee"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqB-3h-5qY" userLabel="Cat Button">
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqB-3h-5qY" userLabel="Cat Button">
                                 <rect key="frame" x="191" y="470" width="50" height="50"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
@@ -461,10 +461,14 @@
                         <outlet property="noPasswordLabel" destination="WVL-H6-X5W" id="IHq-mC-tyC"/>
                         <outlet property="noUsernameLabel" destination="19k-Cz-PFH" id="ojx-0N-bTb"/>
                         <outlet property="password" destination="v1Y-CU-tM3" id="R0a-pu-uMk"/>
+                        <outlet property="profile10" destination="tzw-ee-Dkh" id="v3I-EL-BWv"/>
+                        <outlet property="profile11" destination="eqB-3h-5qY" id="NTW-U3-zij"/>
+                        <outlet property="profile12" destination="mnV-PY-BgB" id="Cpm-2Q-jsX"/>
                         <outlet property="profile5" destination="rt4-qo-I3l" id="jBH-3j-zXg"/>
                         <outlet property="profile6" destination="5L7-nY-NMo" id="sy9-5o-6PV"/>
                         <outlet property="profile7" destination="2aH-LO-0pM" id="09I-MQ-Kvh"/>
                         <outlet property="profile8" destination="L6c-Lj-H3X" id="pXO-f6-pgz"/>
+                        <outlet property="profile9" destination="ig5-W1-ceX" id="HrS-Jy-76J"/>
                         <outlet property="signupButton" destination="QW3-ul-Jet" id="vgU-Ar-Fub"/>
                         <outlet property="username" destination="b1A-NQ-cjs" id="CsP-Wn-Ar5"/>
                     </connections>
