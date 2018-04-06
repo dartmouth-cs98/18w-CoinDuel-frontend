@@ -87,10 +87,10 @@ class SignUpViewController: UIViewController {
         profile12.layer.borderWidth = 1
         profile12.layer.borderColor = UIColor.black.cgColor
         
-        boyButton.setImage(UIImage(named: "boy"), for: .normal)
-        girlButton.setImage(UIImage(named: "girl"), for: .normal)
-        dogButton.setImage(UIImage(named: "dog"), for: .normal)
-        catButton.setImage(UIImage(named: "cat"), for: .normal)
+        boyButton.setImage(UIImage(named: "profile1"), for: .normal)
+        girlButton.setImage(UIImage(named: "profile4"), for: .normal)
+        dogButton.setImage(UIImage(named: "profile2"), for: .normal)
+        catButton.setImage(UIImage(named: "profile3"), for: .normal)
         profile5.setImage(UIImage(named: "profile5"), for: .normal)
         profile6.setImage(UIImage(named: "profile6"), for: .normal)
         profile7.setImage(UIImage(named: "profile7"), for: .normal)
@@ -111,59 +111,9 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        switch button.tag {
-            case 1:
-                resetButtonColors()
-                buttonPressed = "boy"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 2:
-                resetButtonColors()
-                buttonPressed = "dog"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 3:
-                resetButtonColors()
-                buttonPressed = "cat"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 4:
-                resetButtonColors()
-                buttonPressed = "girl"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 5:
-                resetButtonColors()
-                buttonPressed = "profile5"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 6:
-                resetButtonColors()
-                buttonPressed = "profile6"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 7:
-                resetButtonColors()
-                buttonPressed = "profile7"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 8:
-                resetButtonColors()
-                buttonPressed = "profile8"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 9:
-                resetButtonColors()
-                buttonPressed = "profile9"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 10:
-                resetButtonColors()
-                buttonPressed = "profile10"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 11:
-                resetButtonColors()
-                buttonPressed = "profile11"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            case 12:
-                resetButtonColors()
-                buttonPressed = "profile12"
-                button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-            default:
-                print("Unknown language")
-                return
-        }
+        resetButtonColors()
+        buttonPressed = "profile" + String(button.tag)
+        button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
     }
     
     func resetButtonColors() {
@@ -179,7 +129,6 @@ class SignUpViewController: UIViewController {
         profile10.layer.backgroundColor = UIColor.white.cgColor
         profile11.layer.backgroundColor = UIColor.white.cgColor
         profile12.layer.backgroundColor = UIColor.white.cgColor
-        
     }
     
     @IBAction func onSignUpPressed(_ sender: Any) {
