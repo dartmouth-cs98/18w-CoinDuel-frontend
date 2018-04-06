@@ -25,10 +25,10 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signupButton: UIButton!
     
-    @IBOutlet weak var boyButton: UIButton!
-    @IBOutlet weak var girlButton: UIButton!
-    @IBOutlet weak var dogButton: UIButton!
-    @IBOutlet weak var catButton: UIButton!
+    @IBOutlet weak var profile1: UIButton!
+    @IBOutlet weak var profile2: UIButton!
+    @IBOutlet weak var profile3: UIButton!
+    @IBOutlet weak var profile4: UIButton!
     
     @IBOutlet weak var profile5: UIButton!
     @IBOutlet weak var profile6: UIButton!
@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var profile11: UIButton!
     @IBOutlet weak var profile12: UIButton!
     
-    var buttonPressed = "boy"
+    var buttonPressed = "profile1"
     
     var validated = false
 
@@ -53,52 +53,15 @@ class SignUpViewController: UIViewController {
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
-        boyButton.layer.borderWidth = 1
-        boyButton.layer.borderColor = UIColor.black.cgColor
-        boyButton.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
-        girlButton.layer.borderWidth = 1
-        girlButton.layer.borderColor = UIColor.black.cgColor
-        dogButton.layer.borderWidth = 1
-        dogButton.layer.borderColor = UIColor.black.cgColor
-        catButton.layer.borderWidth = 1
-        catButton.layer.borderColor = UIColor.black.cgColor
+        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12]
         
-        profile5.layer.borderWidth = 1
-        profile5.layer.borderColor = UIColor.black.cgColor
-        
-        profile6.layer.borderWidth = 1
-        profile6.layer.borderColor = UIColor.black.cgColor
-        
-        profile7.layer.borderWidth = 1
-        profile7.layer.borderColor = UIColor.black.cgColor
-        
-        profile8.layer.borderWidth = 1
-        profile8.layer.borderColor = UIColor.black.cgColor
-        
-        profile9.layer.borderWidth = 1
-        profile9.layer.borderColor = UIColor.black.cgColor
-        
-        profile10.layer.borderWidth = 1
-        profile10.layer.borderColor = UIColor.black.cgColor
-        
-        profile11.layer.borderWidth = 1
-        profile11.layer.borderColor = UIColor.black.cgColor
-        
-        profile12.layer.borderWidth = 1
-        profile12.layer.borderColor = UIColor.black.cgColor
-        
-        boyButton.setImage(UIImage(named: "profile1"), for: .normal)
-        girlButton.setImage(UIImage(named: "profile4"), for: .normal)
-        dogButton.setImage(UIImage(named: "profile2"), for: .normal)
-        catButton.setImage(UIImage(named: "profile3"), for: .normal)
-        profile5.setImage(UIImage(named: "profile5"), for: .normal)
-        profile6.setImage(UIImage(named: "profile6"), for: .normal)
-        profile7.setImage(UIImage(named: "profile7"), for: .normal)
-        profile8.setImage(UIImage(named: "profile8"), for: .normal)
-        profile9.setImage(UIImage(named: "profile9"), for: .normal)
-        profile10.setImage(UIImage(named: "profile10"), for: .normal)
-        profile11.setImage(UIImage(named: "profile11"), for: .normal)
-        profile12.setImage(UIImage(named: "profile12"), for: .normal)
+        var count = 1
+        for profile in profileImages {
+            profile!.layer.borderWidth = 1
+            profile!.layer.borderColor = UIColor.black.cgColor
+            profile!.setImage(UIImage(named: "profile" + String(count)), for: .normal)
+            count = count + 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,18 +80,10 @@ class SignUpViewController: UIViewController {
     }
     
     func resetButtonColors() {
-        boyButton.layer.backgroundColor = UIColor.white.cgColor
-        girlButton.layer.backgroundColor = UIColor.white.cgColor
-        dogButton.layer.backgroundColor = UIColor.white.cgColor
-        catButton.layer.backgroundColor = UIColor.white.cgColor
-        profile5.layer.backgroundColor = UIColor.white.cgColor
-        profile6.layer.backgroundColor = UIColor.white.cgColor
-        profile7.layer.backgroundColor = UIColor.white.cgColor
-        profile8.layer.backgroundColor = UIColor.white.cgColor
-        profile9.layer.backgroundColor = UIColor.white.cgColor
-        profile10.layer.backgroundColor = UIColor.white.cgColor
-        profile11.layer.backgroundColor = UIColor.white.cgColor
-        profile12.layer.backgroundColor = UIColor.white.cgColor
+        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12]
+        for profile in profileImages {
+            profile!.layer.backgroundColor = UIColor.white.cgColor
+        }
     }
     
     @IBAction func onSignUpPressed(_ sender: Any) {
