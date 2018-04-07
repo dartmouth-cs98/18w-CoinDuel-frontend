@@ -82,9 +82,16 @@ class SignUpViewController: UIViewController {
         
         if isSlideMenuHidden {
             sideMenuConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
 
         } else {
             sideMenuConstraint.constant = -240
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
         }
         isSlideMenuHidden = !isSlideMenuHidden
     }
