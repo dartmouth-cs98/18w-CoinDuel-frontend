@@ -44,8 +44,16 @@ class SignUpViewController: UIViewController {
     
     var validated = false
 
+    @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
+    var isSlideMenuHidden = true
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        // initialize constant with 0
+        sideMenuConstraint.constant = -240
+        
         self.activityIndicator.isHidden = true
         signupButton.layer.masksToBounds = true
         signupButton.layer.cornerRadius = 5
@@ -67,6 +75,18 @@ class SignUpViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func organizeBtnPressed(_ sender: UIButton) {
+        
+        if isSlideMenuHidden {
+            sideMenuConstraint.constant = 0
+
+        } else {
+            sideMenuConstraint.constant = -240
+        }
+        isSlideMenuHidden = !isSlideMenuHidden
     }
     
     @IBAction func boyButtonPressed(_ sender: Any) {
