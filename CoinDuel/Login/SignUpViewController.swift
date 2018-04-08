@@ -91,7 +91,6 @@ class SignUpViewController: UIViewController {
 
         } else {
             sideMenuConstraint.constant = -800
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
