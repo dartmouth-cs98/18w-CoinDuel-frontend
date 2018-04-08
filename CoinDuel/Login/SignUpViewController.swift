@@ -98,6 +98,7 @@ class SignUpViewController: UIViewController {
         isSlideMenuHidden = !isSlideMenuHidden
     }
     
+    
     @IBAction func boyButtonPressed(_ sender: Any) {
         guard let button = sender as? UIButton else {
             return
@@ -107,6 +108,7 @@ class SignUpViewController: UIViewController {
         buttonPressed = "profile" + String(button.tag)
         button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
     }
+    
     
     func resetButtonColors() {
         let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12]
