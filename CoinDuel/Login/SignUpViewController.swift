@@ -44,7 +44,10 @@ class SignUpViewController: UIViewController {
     
     var validated = false
 
+    //@IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
+    
     var isSlideMenuHidden = true
     
     override func viewDidLoad() {
@@ -52,7 +55,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         // initialize constant with 0
-        sideMenuConstraint.constant = -240
+        sideMenuConstraint.constant = -800
         
         self.activityIndicator.isHidden = true
         signupButton.layer.masksToBounds = true
@@ -87,7 +90,7 @@ class SignUpViewController: UIViewController {
             })
 
         } else {
-            sideMenuConstraint.constant = -240
+            sideMenuConstraint.constant = -800
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
