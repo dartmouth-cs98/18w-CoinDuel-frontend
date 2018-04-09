@@ -80,6 +80,7 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Below code based on tutorial found at this link: https://www.youtube.com/watch?v=mmSEidHEGL8
     
     @IBAction func organizeBtnPressed(_ sender: UIButton) {
         
