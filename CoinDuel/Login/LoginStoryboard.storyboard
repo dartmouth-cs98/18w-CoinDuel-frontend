@@ -510,6 +510,9 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Privacy" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RdX-fZ-hYc">
                                         <rect key="frame" x="39" y="585" width="52" height="17"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -731,13 +734,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="How to Play" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gVp-cd-ssm">
-                                <rect key="frame" x="100" y="43" width="175" height="53"/>
+                                <rect key="frame" x="100" y="87" width="175" height="53"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kKz-Op-gpJ">
-                                <rect key="frame" x="0.0" y="119" width="375" height="2117"/>
+                                <rect key="frame" x="0.0" y="163" width="375" height="2073"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile1" translatesAutoresizingMaskIntoConstraints="NO" id="ohC-Nv-M0q">
                                         <rect key="frame" x="87" y="32" width="200" height="200"/>
@@ -963,6 +966,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FfU-Jm-bGz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zkr-1h-OAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kg8-kO-0QQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pfh-qq-IFQ">
@@ -975,7 +979,6 @@
                         <segue destination="eLU-vL-l5w" kind="relationship" relationship="rootViewController" id="4cn-pZ-fTo"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zkr-1h-OAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1430" y="651"/>
         </scene>
@@ -988,13 +991,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="FAQs" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-tI-PmI">
-                                <rect key="frame" x="100" y="43" width="175" height="53"/>
+                                <rect key="frame" x="100" y="87" width="175" height="53"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OG7-Lj-LIR">
-                                <rect key="frame" x="0.0" y="119" width="375" height="1821"/>
+                                <rect key="frame" x="0.0" y="163" width="375" height="1777"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bj4-lV-QMN">
                                         <rect key="frame" x="8" y="30" width="17" height="185"/>
@@ -1259,7 +1262,7 @@
         <image name="twitter" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YQM-pz-Xnm"/>
+        <segue reference="mkH-uc-JAS"/>
         <segue reference="pLi-uy-4wB"/>
     </inferredMetricsTieBreakers>
 </document>
