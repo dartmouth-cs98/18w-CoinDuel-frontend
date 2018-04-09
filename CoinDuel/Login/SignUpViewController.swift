@@ -99,6 +99,31 @@ class SignUpViewController: UIViewController {
         isSlideMenuHidden = !isSlideMenuHidden
     }
     
+    // Based on this link: https://stackoverflow.com/questions/39392939/how-to-add-a-hyperlink-button-on-ios-swift
+    
+    func openUrl(urlStr:String!) {
+        
+        if let url = NSURL(string:urlStr) {
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+        
+    }
+    
+    @IBAction func linkedButton(_ sender: Any) {
+        openUrl(urlStr: "http://www.dartmouth.edu/~dpc/")
+    }
+    
+    @IBAction func twitterButton(_ sender: Any) {
+        openUrl(urlStr: "https://twitter.com/")
+    }
+    
+    @IBAction func facebookButton(_ sender: Any) {
+        openUrl(urlStr: "https://www.facebook.com/")
+    }
+    
+    @IBAction func instaButton(_ sender: Any) {
+        openUrl(urlStr: "https://www.instagram.com/p/BhUeeTeBrob/?tagged=cryptocurrency")
+    }
     
     @IBAction func boyButtonPressed(_ sender: Any) {
         guard let button = sender as? UIButton else {
