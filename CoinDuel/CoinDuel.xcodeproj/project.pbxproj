@@ -167,7 +167,6 @@
 		1EB504B6201A7B8700BB76AA = {
 			isa = PBXGroup;
 			children = (
-				F824B1B520363F96008D1F14 /* Login */,
 				1EB504C1201A7B8700BB76AA /* CoinDuel */,
 				1EB504D6201A7B8700BB76AA /* CoinDuelTests */,
 				1EB504E1201A7B8700BB76AA /* CoinDuelUITests */,
@@ -192,25 +191,17 @@
 		1EB504C1201A7B8700BB76AA /* CoinDuel */ = {
 			isa = PBXGroup;
 			children = (
+				50804B2F207D476A005236D4 /* Controllers */,
+				50804B2E207D475B005236D4 /* Models */,
+				50804B2D207D4745005236D4 /* Views */,
+				F824B1B520363F96008D1F14 /* Login */,
 				A0BCF934207BFDCF005664A3 /* CoinDuel.entitlements */,
 				1EB504CE201A7B8700BB76AA /* Info.plist */,
 				1EB504C2201A7B8700BB76AA /* AppDelegate.swift */,
 				1EB504C9201A7B8700BB76AA /* Assets.xcassets */,
-				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
-				1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */,
-				1E17A6322040A801007A341C /* ResultsViewController.swift */,
-				1E56321820378D310043ECF9 /* Game.swift */,
-				1E93AE45203CEACB006CE5E5 /* Coin.swift */,
 				1E33168A203672BF00BEE349 /* Constant.swift */,
-				1EB504C6201A7B8700BB76AA /* Main.storyboard */,
-				A06F1E08204376640070D305 /* CoinDetailViewController.swift */,
-				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
-				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
 				509BC41C2030DF7B00702226 /* UserTableViewCell.swift */,
 				1E331688203637BD00BEE349 /* GameTableViewCell.swift */,
-				50E4993F2038B64500DBCC42 /* User.swift */,
-				504A1B88203B798E004819F1 /* Leaderboard.swift */,
-				A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */,
 				A050E8482048B4310009A96E /* DateValueFormatter.swift */,
 			);
 			path = CoinDuel;
@@ -241,6 +232,39 @@
 				89187AAAA8FD4FE99707A675 /* Pods_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50804B2D207D4745005236D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EB504C6201A7B8700BB76AA /* Main.storyboard */,
+				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
+				A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		50804B2E207D475B005236D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E56321820378D310043ECF9 /* Game.swift */,
+				1E93AE45203CEACB006CE5E5 /* Coin.swift */,
+				50E4993F2038B64500DBCC42 /* User.swift */,
+				504A1B88203B798E004819F1 /* Leaderboard.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		50804B2F207D476A005236D4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
+				1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */,
+				1E17A6322040A801007A341C /* ResultsViewController.swift */,
+				A06F1E08204376640070D305 /* CoinDetailViewController.swift */,
+				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A0BCF924207BFBA3005664A3 /* OneSignalNotificationServiceExtension */ = {
