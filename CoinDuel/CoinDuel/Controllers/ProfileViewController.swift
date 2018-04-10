@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController {
             defaults.removeObject(forKey: key)
         }
         
-        let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
         self.present(vc, animated: true, completion: nil)
     }
