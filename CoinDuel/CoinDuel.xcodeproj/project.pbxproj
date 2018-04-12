@@ -32,7 +32,6 @@
 		A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */; };
 		F824B1B220363D95008D1F14 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
-		F82DB481207AC0F500FA6990 /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82DB480207AC0F500FA6990 /* HowToPlayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +85,6 @@
 		BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.debug.xcconfig"; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F82DB480207AC0F500FA6990 /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +204,6 @@
 				F824B1B120363D95008D1F14 /* LoginStoryboard.storyboard */,
 				A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */,
 				A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */,
-				F82DB480207AC0F500FA6990 /* HowToPlayViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -426,7 +423,6 @@
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
 				A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */,
-				F82DB481207AC0F500FA6990 /* HowToPlayViewController.swift in Sources */,
 				504A1B89203B798E004819F1 /* Leaderboard.swift in Sources */,
 				A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */,
 				1E56321920378D310043ECF9 /* Game.swift in Sources */,
