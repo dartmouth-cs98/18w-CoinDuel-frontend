@@ -15,7 +15,9 @@ class HelpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GifView.loadGif(asset: "comedy")
+        // Based on tutorial from: https://www.youtube.com/watch?v=Rm61mxcSD4U
+        
+        GifView.loadGif(name: "comedy")
         // Do any additional setup after loading the view.
     }
 

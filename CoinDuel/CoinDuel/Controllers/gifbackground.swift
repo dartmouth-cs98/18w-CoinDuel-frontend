@@ -1,7 +1,7 @@
 //
 //  Gif.swift
 //  SwiftGif
-//  From: https://github.com/swiftgif/SwiftGif/blob/master/SwiftGifCommon/UIImage%2BGif.swift
+//  Code From: https://github.com/swiftgif/SwiftGif/blob/master/SwiftGifCommon/UIImage%2BGif.swift
 //  Created by Arne Bahlo on 07.06.14.
 //  Copyright (c) 2014 Arne Bahlo. All rights reserved.
 //
