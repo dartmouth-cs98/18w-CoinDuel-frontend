@@ -9,10 +9,13 @@
 import UIKit
 
 class HelpViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var GifView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        GifView.loadGif(asset: "comedy")
         // Do any additional setup after loading the view.
     }
 

@@ -55,13 +55,13 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incorrect username/password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptd-q9-f0L">
-                                <rect key="frame" x="115.5" y="306" width="144" height="12"/>
+                                <rect key="frame" x="116" y="306" width="144" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.87401439794873093" green="0.59076066531690119" blue="0.038684402464350551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k12-Ob-7bh">
-                                <rect key="frame" x="75" y="376" width="160.5" height="20"/>
+                                <rect key="frame" x="75" y="376" width="161" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Wxv-iW-IL3"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOf-3c-MLk">
-                                <rect key="frame" x="240.5" y="376" width="55" height="20"/>
+                                <rect key="frame" x="241" y="376" width="55" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="BjI-PW-Idu"/>
                                 </constraints>
@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="9hT-Xu-D4g">
-                                <rect key="frame" x="117.5" y="70" width="140" height="100"/>
+                                <rect key="frame" x="118" y="70" width="140" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Jhi-0X-3Za"/>
                                     <constraint firstAttribute="width" constant="140" id="MzG-Uk-I7E"/>
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eg1-j2-9cP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1955.072463768116" y="-460.59782608695656"/>
+            <point key="canvasLocation" x="1954.4000000000001" y="-461.01949025487261"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="CG8-6F-q0P">
@@ -988,17 +988,24 @@
                                     <constraint firstAttribute="height" constant="50" id="wuD-I1-GVJ"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FKt-1Q-a4B">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="480"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="5kQ-dv-fHx" secondAttribute="bottom" constant="91" id="047-Vr-iiX"/>
                             <constraint firstItem="xOY-a8-dOt" firstAttribute="top" secondItem="jIP-TJ-07g" secondAttribute="bottom" constant="20" id="1HV-Z5-AoD"/>
+                            <constraint firstItem="FKt-1Q-a4B" firstAttribute="leading" secondItem="j5x-ta-bFk" secondAttribute="leading" id="2YL-c4-v0d"/>
                             <constraint firstAttribute="bottom" secondItem="eGq-50-54I" secondAttribute="bottom" constant="91" id="5vh-lC-hc2"/>
                             <constraint firstItem="jIP-TJ-07g" firstAttribute="top" secondItem="QLt-iH-4Px" secondAttribute="top" constant="115" id="71S-aT-ccd"/>
+                            <constraint firstAttribute="trailing" secondItem="FKt-1Q-a4B" secondAttribute="trailing" id="8pd-Sv-yAI"/>
                             <constraint firstItem="l4I-P7-svd" firstAttribute="leading" secondItem="QLt-iH-4Px" secondAttribute="leading" constant="95" id="AkZ-I7-tV7"/>
                             <constraint firstItem="Tih-e4-df2" firstAttribute="leading" secondItem="jIP-TJ-07g" secondAttribute="leading" id="DYt-CU-79e"/>
                             <constraint firstItem="5kQ-dv-fHx" firstAttribute="top" secondItem="Ldu-LM-vqD" secondAttribute="bottom" constant="7" id="DtM-tu-eWp"/>
+                            <constraint firstItem="HuM-f6-yMn" firstAttribute="top" secondItem="FKt-1Q-a4B" secondAttribute="bottom" constant="22" id="I15-d1-pVm"/>
                             <constraint firstItem="l4I-P7-svd" firstAttribute="leading" secondItem="o6A-f5-aSN" secondAttribute="leading" id="Kc8-aY-qhV"/>
+                            <constraint firstItem="FKt-1Q-a4B" firstAttribute="top" secondItem="j5x-ta-bFk" secondAttribute="top" id="Obi-yi-K3S"/>
                             <constraint firstItem="eGq-50-54I" firstAttribute="leading" secondItem="kJC-os-vYZ" secondAttribute="trailing" constant="75" id="RKK-7Z-Bk6"/>
                             <constraint firstItem="Jsg-zF-TQ9" firstAttribute="top" secondItem="Tih-e4-df2" secondAttribute="top" id="SnK-An-Tt0"/>
                             <constraint firstItem="eGq-50-54I" firstAttribute="top" secondItem="sxe-QW-Zdc" secondAttribute="bottom" constant="7" id="ThB-Ik-Xqa"/>
@@ -1024,11 +1031,40 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QLt-iH-4Px"/>
                     </view>
+                    <connections>
+                        <outlet property="GifView" destination="FKt-1Q-a4B" id="edD-d7-51C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5FP-mP-th6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="urx-77-Bqp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1538.4000000000001" y="1172.5637181409297"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="E1A-TY-GSl">
+            <objects>
+                <viewController id="CsV-2i-dlW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xjr-YO-niE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Skb-AI-HeF">
+                                <rect key="frame" x="0.0" y="138" width="375" height="389"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vne-hQ-AtW" firstAttribute="bottom" secondItem="Skb-AI-HeF" secondAttribute="bottom" constant="140" id="EmO-2J-TkO"/>
+                            <constraint firstAttribute="trailing" secondItem="Skb-AI-HeF" secondAttribute="trailing" id="hy9-SJ-FVy"/>
+                            <constraint firstItem="Skb-AI-HeF" firstAttribute="top" secondItem="vne-hQ-AtW" secondAttribute="top" constant="118" id="mkY-WD-hUE"/>
+                            <constraint firstItem="Skb-AI-HeF" firstAttribute="leading" secondItem="Xjr-YO-niE" secondAttribute="leading" id="mvq-dI-0zv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vne-hQ-AtW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mxj-RL-tR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2431.1999999999998" y="1704.1979010494754"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="I55-vg-ywH">
@@ -1223,8 +1259,9 @@
         <image name="twitter" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="62B-Zz-NSK"/>
         <segue reference="T3N-Ws-l2v"/>
-        <segue reference="mkH-uc-JAS"/>
+        <segue reference="YQM-pz-Xnm"/>
         <segue reference="pLi-uy-4wB"/>
     </inferredMetricsTieBreakers>
 </document>

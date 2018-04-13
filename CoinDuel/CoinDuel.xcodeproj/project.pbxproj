@@ -36,6 +36,9 @@
 		F824B1B220363D95008D1F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* Login.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
 		F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BD62080553500A3AC2C /* HelpViewController.swift */; };
+		F8D17BDB2080639700A3AC2C /* gifbackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BDA2080639700A3AC2C /* gifbackground.swift */; };
+		F8D17BE3208068A800A3AC2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504C9201A7B8700BB76AA /* Assets.xcassets */; };
+		F8D17BE4208068A900A3AC2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504C9201A7B8700BB76AA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,7 @@
 		F824B1B120363D95008D1F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F8D17BD62080553500A3AC2C /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		F8D17BDA2080639700A3AC2C /* gifbackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifbackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +273,7 @@
 				A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */,
 				A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */,
 				F8D17BD62080553500A3AC2C /* HelpViewController.swift */,
+				F8D17BDA2080639700A3AC2C /* gifbackground.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D17BE3208068A800A3AC2C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D17BE4208068A900A3AC2C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +594,7 @@
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
 				F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */,
 				A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */,
+				F8D17BDB2080639700A3AC2C /* gifbackground.swift in Sources */,
 				504A1B89203B798E004819F1 /* Leaderboard.swift in Sources */,
 				A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */,
 				1E56321920378D310043ECF9 /* Game.swift in Sources */,
