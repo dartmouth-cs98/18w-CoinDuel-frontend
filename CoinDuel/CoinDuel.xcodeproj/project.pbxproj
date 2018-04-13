@@ -35,6 +35,7 @@
 		EAEE9C15043A4ADBB13FB3B2 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89187AAAA8FD4FE99707A675 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		F824B1B220363D95008D1F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* Login.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
+		F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BD62080553500A3AC2C /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.debug.xcconfig"; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F8D17BD62080553500A3AC2C /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
 				A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */,
 				A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */,
+				F8D17BD62080553500A3AC2C /* HelpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
+				F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */,
 				A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */,
 				504A1B89203B798E004819F1 /* Leaderboard.swift in Sources */,
 				A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */,

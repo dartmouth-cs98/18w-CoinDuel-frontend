@@ -80,6 +80,16 @@ class SignUpViewController: UIViewController {
         button.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
     }
     
+    // Below code from https://stackoverflow.com/questions/39392939/how-to-add-a-hyperlink-button-on-ios-swift
+    
+    func openUrl(urlStr:String!) {
+        
+        if let url = NSURL(string:urlStr) {
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+        
+    }
+    
     func resetButtonColors() {
         let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12]
         for profile in profileImages {
