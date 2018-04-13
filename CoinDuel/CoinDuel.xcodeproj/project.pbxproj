@@ -39,7 +39,6 @@
 		F8D17BDB2080639700A3AC2C /* gifbackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BDA2080639700A3AC2C /* gifbackground.swift */; };
 		F8D17BE3208068A800A3AC2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504C9201A7B8700BB76AA /* Assets.xcassets */; };
 		F8D17BE4208068A900A3AC2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EB504C9201A7B8700BB76AA /* Assets.xcassets */; };
-		F8FF756820806DB3003BE675 /* comedy.gif in Resources */ = {isa = PBXBuildFile; fileRef = F8FF756720806DB3003BE675 /* comedy.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +123,6 @@
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F8D17BD62080553500A3AC2C /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		F8D17BDA2080639700A3AC2C /* gifbackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifbackground.swift; sourceTree = "<group>"; };
-		F8FF756720806DB3003BE675 /* comedy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = comedy.gif; path = ../../../../../comedy.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,7 +274,6 @@
 				A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */,
 				F8D17BD62080553500A3AC2C /* HelpViewController.swift */,
 				F8D17BDA2080639700A3AC2C /* gifbackground.swift */,
-				F8FF756720806DB3003BE675 /* comedy.gif */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -454,7 +451,6 @@
 				1EB504C8201A7B8700BB76AA /* Main.storyboard in Resources */,
 				F824B1B220363D95008D1F14 /* Login.storyboard in Resources */,
 				A06F1E0B2043C6B10070D305 /* CoinDetail.storyboard in Resources */,
-				F8FF756820806DB3003BE675 /* comedy.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

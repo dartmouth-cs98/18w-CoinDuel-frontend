@@ -17,7 +17,7 @@ class HelpViewController: UIViewController {
         super.viewDidLoad()
         // Based on tutorial from: https://www.youtube.com/watch?v=Rm61mxcSD4U
         
-        GifView.loadGif(name: "comedy")
+        GifView.loadGif(asset: "giphy")
         // Do any additional setup after loading the view.
     }
 
