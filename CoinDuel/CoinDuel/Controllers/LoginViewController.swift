@@ -14,10 +14,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
+    @IBOutlet weak var gifView: UIImageView!
     override func viewDidAppear(_ animated: Bool) {
         signinButton.layer.masksToBounds = true
-        signinButton.layer.cornerRadius = 5
+        signinButton.layer.cornerRadius = 15
         signupButton.layer.masksToBounds = true
-        signupButton.layer.cornerRadius = 5
+        signupButton.layer.cornerRadius = 15
+        
+        gifView.loadGif(asset: "colors1")
+        
     }
 }
