@@ -10,15 +10,10 @@ import UIKit
 
 class HelpViewController: UIViewController {
     
-    
-    @IBOutlet weak var GifView: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Based on tutorial from: https://www.youtube.com/watch?v=Rm61mxcSD4U
-        
-        GifView.loadGif(asset: "giphy")
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
