@@ -26,7 +26,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var secondPlaceLabel: UILabel!
     @IBOutlet weak var thirdPlaceLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var coverViewInactiveGame: UIView!
     var leaderboard: Leaderboard = Leaderboard()
     var numberFormatter: NumberFormatter = NumberFormatter()
     let refreshControl = UIRefreshControl()
@@ -35,11 +34,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (!self.game.isActive) {
-            self.coverViewInactiveGame.isHidden = false
-        } else{
-            self.coverViewInactiveGame.isHidden = true
-        }
+
         
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
