@@ -120,6 +120,7 @@ class SignUpViewController: UIViewController {
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             var user_id: String = ""
+            var authToken: String = ""
 
 
             let apiUrl = URL(string: Constants.API + "signup")
@@ -132,8 +133,9 @@ class SignUpViewController: UIViewController {
                 if let statusCode = response.response?.statusCode {
                     if (statusCode == 200){
                         do{
-                            var jsonArray = try JSON(data: response.data!)
-                            user_id = jsonArray["_id"].description
+                            var json = try JSON(data: response.data!)
+                            user_id = json["user"]["_id"].description
+                            authToken = json["token"].description
                         } catch{
                             print("error loading json")
                         }
@@ -142,6 +144,7 @@ class SignUpViewController: UIViewController {
                             defaults.set(self.username.text!, forKey: "username")
                             defaults.set(user_id, forKey: "id")
                             defaults.set(profileImage, forKey: "profileImage")
+                            defaults.set(authToken, forKey: "authToken")
                             self.hideSpinner()
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
