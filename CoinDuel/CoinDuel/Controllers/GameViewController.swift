@@ -58,9 +58,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
         user.updateCoinBalance() { (completion) -> Void in
             if completion {
-                DispatchQueue.main.async() {
-                    self.profileButton.setTitle(self.numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC", for: UIControlState .normal)
-                }
+//                DispatchQueue.main.async() {
+//                    self.profileButton.setTitle(self.numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC", for: UIControlState .normal)
+//                }
                 // Retrieve gameId (if we already have it)
                 let storedGameId = UserDefaults.standard.string(forKey: "gameId")
                 
@@ -413,6 +413,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    @IBAction func onBackPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("leaving game VC")
+        }
+    }
+
     @IBAction func submitButtonPress(_ sender: UIButton) {
         // Submit the entry to the server
         self.game.submitEntry() { (success) -> Void in
