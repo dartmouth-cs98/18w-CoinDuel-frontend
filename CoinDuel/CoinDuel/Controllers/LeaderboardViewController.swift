@@ -25,12 +25,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var firstPlaceLabel: UILabel!
     @IBOutlet weak var secondPlaceLabel: UILabel!
     @IBOutlet weak var thirdPlaceLabel: UILabel!
-    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     var leaderboard: Leaderboard = Leaderboard()
     var numberFormatter: NumberFormatter = NumberFormatter()
     let refreshControl = UIRefreshControl()
     var isCurrent = true
-    var game: Game = Game()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +76,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isCurrent {
-            if (self.game.isActive){
+            if (self.leaderboard.game.isActive){
                 return self.leaderboard.currentUsers.count
             } else{
                 return 0
@@ -183,7 +181,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                 var users:[User] = [User]()
                 if self.isCurrent {
                     users = self.leaderboard.currentUsers
-                    if (!self.game.isActive){
+                    if (!self.leaderboard.game.isActive){
                         users = [User]()
                     }
                 } else {
@@ -195,7 +193,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                 self.thirdPlaceLabel.text = users.count > 2 ? users[2].username : ""
                 
                 self.refreshControl.endRefreshing()
-                self.loadingActivityIndicatorView.stopAnimating()
             }
         }
         else {
@@ -206,7 +203,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                 self.thirdPlaceLabel.text = ""
                 
                 self.refreshControl.endRefreshing()
-                self.loadingActivityIndicatorView.stopAnimating()
             }
         }
     }
