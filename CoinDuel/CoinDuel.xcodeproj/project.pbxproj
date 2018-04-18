@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0C26799B7B63DAD4A25210BD /* Pods_CoinDuel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */; };
 		1E17A6332040A801007A341C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17A6322040A801007A341C /* ResultsViewController.swift */; };
-		1E2CA8B3203AF78D0099193D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */; };
 		1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E331688203637BD00BEE349 /* GameTableViewCell.swift */; };
 		1E33168B203672BF00BEE349 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E33168A203672BF00BEE349 /* Constant.swift */; };
 		1E56321920378D310043ECF9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E56321820378D310043ECF9 /* Game.swift */; };
@@ -28,6 +27,7 @@
 		A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050E8482048B4310009A96E /* DateValueFormatter.swift */; };
 		A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F1E08204376640070D305 /* CoinDetailViewController.swift */; };
 		A06F1E0B2043C6B10070D305 /* CoinDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */; };
+		A07604A62087F0E7003BE65C /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07604A52087F0E7003BE65C /* LandingPageViewController.swift */; };
 		A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */; };
 		A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */; };
 		A0BCF926207BFBA3005664A3 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BCF925207BFBA3005664A3 /* NotificationService.swift */; };
@@ -81,7 +81,6 @@
 
 /* Begin PBXFileReference section */
 		1E17A6322040A801007A341C /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1E331688203637BD00BEE349 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		1E33168A203672BF00BEE349 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1E56321820378D310043ECF9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -111,6 +110,7 @@
 		A050E8482048B4310009A96E /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		A06F1E08204376640070D305 /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
 		A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoinDetail.storyboard; sourceTree = "<group>"; };
+		A07604A52087F0E7003BE65C /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A0BCF923207BFBA3005664A3 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,7 +266,6 @@
 			children = (
 				F824B1B320363F88008D1F14 /* LoginViewController.swift */,
 				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
-				1E2CA8B2203AF78D0099193D /* ProfileViewController.swift */,
 				1E17A6322040A801007A341C /* ResultsViewController.swift */,
 				A06F1E08204376640070D305 /* CoinDetailViewController.swift */,
 				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
@@ -274,6 +273,7 @@
 				A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */,
 				F8D17BD62080553500A3AC2C /* HelpViewController.swift */,
 				F8D17BDA2080639700A3AC2C /* gifbackground.swift */,
+				A07604A52087F0E7003BE65C /* LandingPageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -587,8 +587,8 @@
 				1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */,
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
 				1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */,
-				1E2CA8B3203AF78D0099193D /* ProfileViewController.swift in Sources */,
 				1E17A6332040A801007A341C /* ResultsViewController.swift in Sources */,
+				A07604A62087F0E7003BE65C /* LandingPageViewController.swift in Sources */,
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let storyName = UserDefaults.standard.string(forKey:"username") != nil ? "Main" : "Login"
-        let controllerName = UserDefaults.standard.string(forKey:"username") != nil ? "GameViewController" : "LoginViewController"
+        let controllerName = UserDefaults.standard.string(forKey:"username") != nil ? "LandingPageViewController" : "LoginViewController"
         
         let storyboard = UIStoryboard(name: storyName, bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: controllerName)
