@@ -22,29 +22,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="DV8-Ib-gTl">
-                                <rect key="frame" x="117.5" y="130" width="140" height="100"/>
+                                <rect key="frame" x="117.5" y="283.5" width="140" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="6W6-Q0-Oge"/>
-                                    <constraint firstAttribute="width" constant="140" id="Yd1-OB-iIb"/>
+                                    <constraint firstAttribute="width" constant="140" id="FcM-aZ-baP"/>
+                                    <constraint firstAttribute="height" constant="100" id="qNL-dx-l2E"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cryptocurrency Investing for a New Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxQ-Yp-Nhp">
-                                <rect key="frame" x="35" y="320" width="305" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="8nY-P1-B7j"/>
-                                    <constraint firstAttribute="width" constant="305" id="SAS-qa-Fya"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="top" secondItem="ftl-JP-Wvu" secondAttribute="bottom" constant="110" id="61J-JN-HKS"/>
-                            <constraint firstItem="ZxQ-Yp-Nhp" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="Epi-r3-8vb"/>
-                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="RUs-Ay-tir"/>
-                            <constraint firstItem="ZxQ-Yp-Nhp" firstAttribute="top" secondItem="DV8-Ib-gTl" secondAttribute="bottom" constant="90" id="vkv-2Z-dPb"/>
+                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerY" secondItem="r6s-4R-HhH" secondAttribute="centerY" id="6PG-hK-h47"/>
+                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="Rue-Np-5u7"/>
                         </constraints>
                     </view>
                 </viewController>
