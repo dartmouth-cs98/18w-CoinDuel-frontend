@@ -27,6 +27,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var isLateEntry: Bool = false
     let refreshControl = UIRefreshControl()
     let numberFormatter = NumberFormatter()
+    var user: User = User(username: "", coinBalance: 0)
 
     
     // Completion blocks from https://stackoverflow.com/questions/35357807/running-one-function-after-another-completes
@@ -55,11 +56,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func startup() {
         // Retrieve user balance
-        let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
-        user.updateCoinBalance() { (completion) -> Void in
+        self.user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
+        self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
                 DispatchQueue.main.async() {
-                    self.profileButton.setTitle(self.numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC", for: UIControlState .normal)
+                    print("retrieved coin balance" + String(self.user.coinBalance))
+//                    self.profileButton.setTitle(self.numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC", for: UIControlState .normal)
+                    self.profileButton.setTitle("Profile", for: UIControlState.application)
                 }
                 // Retrieve gameId (if we already have it)
                 let storedGameId = UserDefaults.standard.string(forKey: "gameId")
@@ -390,10 +393,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             self.present(destinationVC, animated: true, completion: nil)
                             print("showing coinDetail")
                         }
-                    }
-                } else if (segID == "leaderboardSegue") {
-                    if let leaderboardVC = segue.destination as? LeaderboardViewController {
-                        leaderboardVC.game = self.game
                     }
                 }
             }
