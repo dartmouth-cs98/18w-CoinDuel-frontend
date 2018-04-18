@@ -40,7 +40,7 @@ class SignInViewController: UIViewController {
         
         if let user = username.text, !user.isEmpty, let pass = password.text, !pass.isEmpty {
 
-            let params: [String: Any]? = ["username": self.username.text!, "password": self.password.text!]
+            let params = ["username": self.username.text!, "password": self.password.text!]
             let apiUrl = URL(string: Constants.API + "signin")
 
             Alamofire.request(apiUrl!, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
