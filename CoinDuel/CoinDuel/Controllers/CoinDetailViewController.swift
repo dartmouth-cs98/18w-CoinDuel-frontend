@@ -31,6 +31,7 @@ class CoinDetailViewController: UIViewController {
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
     @IBOutlet weak var coinPercentChangeLabel: UILabel!
     @IBOutlet weak var inactiveChartButtons: UIStackView!
+    @IBOutlet weak var coinName: UILabel!
     
     
     var game: Game = Game()
@@ -61,6 +62,18 @@ class CoinDetailViewController: UIViewController {
 
 //        setup chart and call it for one day values
         self.oneDayChart((Any).self)
+        
+        let apiUrl = Constants.API + "coin/" + coinSymbolLabel
+        Alamofire.request(apiUrl, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                self.coinName.text = json["name"].stringValue + " — Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque fringilla molestie nisl pulvinar aliquet. Praesent non massa sed metus lacinia dictum. Integer eu quam vitae massa molestie consequat. Fusce vestibulum et lectus quis ultrices. Donec at ullamcorper nibh, eget faucibus massa. Nullam scelerisque ante erat, quis volutpat ipsum dictum ac. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     @IBAction func onBackPressed(_ sender: Any) {
