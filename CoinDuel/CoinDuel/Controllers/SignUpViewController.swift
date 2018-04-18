@@ -147,7 +147,7 @@ class SignUpViewController: UIViewController {
                             defaults.set(authToken, forKey: "authToken")
                             self.hideSpinner()
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
+                            let vc = storyboard.instantiateViewController(withIdentifier: "LandingPageViewController") as UIViewController
                             self.present(vc, animated: true, completion: nil)
                         }
                     } else if(statusCode == 422) {
