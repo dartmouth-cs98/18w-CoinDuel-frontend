@@ -67,6 +67,7 @@ class SignInViewController: UIViewController {
                         defaults.set(profileUrl, forKey: "profileImage")
                         defaults.set(authToken, forKey: "authToken")
 
+                        //call main storyboard once succesful sign in
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController") as UIViewController
                         self.present(vc, animated: true, completion: nil)
