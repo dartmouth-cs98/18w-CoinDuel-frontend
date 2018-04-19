@@ -169,18 +169,49 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdy-N5-HHs" userLabel="Coin Name">
-                                        <rect key="frame" x="57.5" y="465" width="300" height="284.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdy-N5-HHs" userLabel="Coin Name">
+                                        <rect key="frame" x="57.5" y="465" width="300" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="0zM-YE-Vxa"/>
+                                            <constraint firstAttribute="height" constant="22" id="cJQ-gP-4oo"/>
                                         </constraints>
-                                        <string key="text">Coin Name - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque fringilla molestie nisl pulvinar aliquet. Praesent non massa sed metus lacinia dictum. Integer eu quam vitae massa molestie consequat. Fusce vestibulum et lectus quis ultrices. Donec at ullamcorper nibh, eget faucibus massa. Nullam scelerisque ante erat, quis volutpat ipsum dictum ac. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QJ-FE-w9y" userLabel="Article 1">
+                                        <rect key="frame" x="57" y="492" width="300" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="H7g-QR-5sH"/>
+                                            <constraint firstAttribute="width" constant="300" id="HTI-ff-vz9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqm-1d-UTm" userLabel="Article 2">
+                                        <rect key="frame" x="57" y="519" width="300" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="0f9-QJ-T3o"/>
+                                            <constraint firstAttribute="width" constant="300" id="OWW-uv-IWa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kc-mL-TMO" userLabel="Article 3">
+                                        <rect key="frame" x="57" y="546" width="300" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="nGt-xK-IdD"/>
+                                            <constraint firstAttribute="width" constant="300" id="pvb-cm-kj9"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4kc-mL-TMO" secondAttribute="bottom" constant="50" id="2wl-wf-Wdf"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="hTA-E8-wgV" secondAttribute="centerX" id="681-39-WVf"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="afL-Wf-bWE" secondAttribute="centerX" id="DqP-BS-cgi"/>
                                     <constraint firstAttribute="trailing" secondItem="XIP-tQ-g9N" secondAttribute="trailing" constant="5" id="Fw4-zU-Uqf"/>
@@ -188,13 +219,18 @@
                                     <constraint firstItem="oc6-PC-XQu" firstAttribute="top" secondItem="ABb-ja-HlS" secondAttribute="bottom" id="JAv-mG-CMt"/>
                                     <constraint firstItem="knE-gU-Knr" firstAttribute="top" secondItem="XIP-tQ-g9N" secondAttribute="bottom" id="LI3-4g-Xmk"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="knE-gU-Knr" secondAttribute="centerX" id="Nji-Vn-Uga"/>
+                                    <constraint firstItem="4kc-mL-TMO" firstAttribute="top" secondItem="iqm-1d-UTm" secondAttribute="bottom" constant="5" id="Oz5-Md-7cX"/>
+                                    <constraint firstItem="7QJ-FE-w9y" firstAttribute="top" secondItem="xdy-N5-HHs" secondAttribute="bottom" constant="5" id="V37-Y1-RPZ"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="XIP-tQ-g9N" secondAttribute="centerX" id="ZHN-0F-Caw"/>
+                                    <constraint firstItem="7QJ-FE-w9y" firstAttribute="centerX" secondItem="afL-Wf-bWE" secondAttribute="centerX" id="ZyT-uX-Fgi"/>
                                     <constraint firstItem="hTA-E8-wgV" firstAttribute="top" secondItem="XIP-tQ-g9N" secondAttribute="bottom" id="bfs-Ff-Bjh"/>
-                                    <constraint firstAttribute="bottom" secondItem="xdy-N5-HHs" secondAttribute="bottom" constant="100" id="cqa-TY-gxU"/>
                                     <constraint firstItem="xdy-N5-HHs" firstAttribute="centerX" secondItem="afL-Wf-bWE" secondAttribute="centerX" id="dNv-bS-mz1"/>
                                     <constraint firstItem="xdy-N5-HHs" firstAttribute="top" secondItem="hTA-E8-wgV" secondAttribute="bottom" constant="20" id="fMK-7t-QOQ"/>
+                                    <constraint firstItem="iqm-1d-UTm" firstAttribute="top" secondItem="7QJ-FE-w9y" secondAttribute="bottom" constant="5" id="l7q-4E-Px4"/>
                                     <constraint firstItem="XIP-tQ-g9N" firstAttribute="top" secondItem="oc6-PC-XQu" secondAttribute="bottom" id="lqX-4h-yIb"/>
+                                    <constraint firstItem="4kc-mL-TMO" firstAttribute="centerX" secondItem="afL-Wf-bWE" secondAttribute="centerX" id="mgf-3n-zqx"/>
                                     <constraint firstItem="XIP-tQ-g9N" firstAttribute="leading" secondItem="afL-Wf-bWE" secondAttribute="leading" constant="5" id="ndU-8k-RtI"/>
+                                    <constraint firstItem="iqm-1d-UTm" firstAttribute="centerX" secondItem="afL-Wf-bWE" secondAttribute="centerX" id="o5b-Ms-Q4G"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="oc6-PC-XQu" secondAttribute="centerX" id="wze-HA-nqd"/>
                                 </constraints>
                             </scrollView>
@@ -214,6 +250,9 @@
                     <size key="freeformSize" width="415" height="1000"/>
                     <connections>
                         <outlet property="activeChartButtons" destination="hTA-E8-wgV" id="KIb-UY-hEZ"/>
+                        <outlet property="article1" destination="7QJ-FE-w9y" id="XzN-CN-eXh"/>
+                        <outlet property="article2" destination="iqm-1d-UTm" id="Q9l-bk-bGq"/>
+                        <outlet property="article3" destination="4kc-mL-TMO" id="1xM-t5-05C"/>
                         <outlet property="capCoinAllocationLabel" destination="rp1-QJ-YGh" id="HFk-AG-NRl"/>
                         <outlet property="chartView" destination="XIP-tQ-g9N" id="91K-NV-P7W"/>
                         <outlet property="coinName" destination="xdy-N5-HHs" id="KiA-I6-Ehs"/>
