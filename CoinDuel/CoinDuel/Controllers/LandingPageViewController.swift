@@ -9,11 +9,16 @@
 import Foundation
 import UIKit
 
+
 class LandingPageViewController: UIViewController {
 
 
     @IBOutlet weak var UserLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var enterGameButton: UIButton!
+    @IBOutlet weak var profileBlockView: UIView!
+    @IBOutlet weak var nextGameTextField: UILabel!
+    var game: Game = Game()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,14 @@ class LandingPageViewController: UIViewController {
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
 
         profileImage.image = UIImage(named: profImage!)
+
+        self.game.getCurrentGame { (success) in
+            if (success){
+                print(self.game.startDate)
+            }
+        }
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,8 +52,8 @@ class LandingPageViewController: UIViewController {
         }
 
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
-        self.present(vc, animated: true, completion: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+        self.present(gameVC, animated: true, completion: nil)
     }
 }
 
