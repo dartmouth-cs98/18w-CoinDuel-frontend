@@ -534,15 +534,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ixB-hS-P83">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V30-gp-o4F">
-                                <rect key="frame" x="75" y="507" width="225" height="40"/>
-                                <color key="backgroundColor" red="0.79607843137254897" green="0.16862745098039217" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="BHb-rE-f2Q"/>
-                                    <constraint firstAttribute="height" constant="40" id="ScI-X6-9Oh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Sign Up">
+                                <rect key="frame" x="75" y="545" width="225" height="40"/>
+                                <color key="backgroundColor" red="0.15294117647058825" green="0.21568627450980393" blue="0.27450980392156865" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="SIGN UP">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -550,53 +549,39 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-61-VeY">
-                                <rect key="frame" x="75" y="451" width="225" height="40"/>
-                                <color key="backgroundColor" red="0.79719057906097568" green="0.17385102819081358" blue="0.79613812668727579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="75" y="497" width="225" height="40"/>
+                                <color key="backgroundColor" red="0.15055963397026062" green="0.21464744210243225" blue="0.27705866098403931" alpha="0.30947666952054792" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="dTY-af-jQ2"/>
-                                    <constraint firstAttribute="height" constant="40" id="eq6-69-nT0"/>
+                                    <constraint firstAttribute="height" constant="40" id="bk1-bM-1Mp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Sign In">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="SIGN IN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="x3h-7b-ihK" kind="show" id="Sum-gf-KeX"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8tT-YQ-uyZ">
-                                <rect key="frame" x="0.0" y="30" width="375" height="281"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="281" id="TkG-VD-2S6"/>
-                                    <constraint firstAttribute="width" constant="375" id="p34-rk-Fm9"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newlogo" translatesAutoresizingMaskIntoConstraints="NO" id="cCR-h9-z1Y">
-                                <rect key="frame" x="87" y="335" width="200" height="76"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="HVw-jn-nVb"/>
-                                    <constraint firstAttribute="height" constant="76" id="bax-Su-JPh"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="V30-gp-o4F" firstAttribute="centerX" secondItem="yxG-Fo-cTw" secondAttribute="centerX" id="0Pg-AW-Zb9"/>
-                            <constraint firstItem="8tT-YQ-uyZ" firstAttribute="trailing" secondItem="yJx-dy-ief" secondAttribute="trailing" id="2Qs-8L-fR1"/>
-                            <constraint firstItem="V30-gp-o4F" firstAttribute="top" secondItem="Ggd-61-VeY" secondAttribute="bottom" constant="16" id="2gy-Iq-6EE"/>
-                            <constraint firstItem="Ggd-61-VeY" firstAttribute="centerX" secondItem="yxG-Fo-cTw" secondAttribute="centerX" id="8St-O4-0XJ"/>
-                            <constraint firstItem="8tT-YQ-uyZ" firstAttribute="leading" secondItem="yJx-dy-ief" secondAttribute="leading" id="Dc6-dh-az0"/>
-                            <constraint firstItem="8tT-YQ-uyZ" firstAttribute="top" secondItem="yxG-Fo-cTw" secondAttribute="top" constant="30" id="HMh-DY-5BO"/>
-                            <constraint firstItem="cCR-h9-z1Y" firstAttribute="top" secondItem="yJx-dy-ief" secondAttribute="top" constant="315" id="a5H-QV-nkB"/>
-                            <constraint firstItem="Ggd-61-VeY" firstAttribute="centerX" secondItem="V30-gp-o4F" secondAttribute="centerX" id="ioW-kJ-2I8"/>
-                            <constraint firstItem="cCR-h9-z1Y" firstAttribute="centerX" secondItem="yxG-Fo-cTw" secondAttribute="centerX" id="jtl-X8-RIm"/>
-                            <constraint firstItem="yJx-dy-ief" firstAttribute="bottom" secondItem="V30-gp-o4F" secondAttribute="bottom" constant="120" id="pSV-zW-tJO"/>
+                            <constraint firstItem="V30-gp-o4F" firstAttribute="top" secondItem="Ggd-61-VeY" secondAttribute="bottom" constant="8" symbolic="YES" id="0hF-27-8Qa"/>
+                            <constraint firstItem="Ggd-61-VeY" firstAttribute="trailing" secondItem="V30-gp-o4F" secondAttribute="trailing" id="AZk-mO-qPF"/>
+                            <constraint firstItem="ixB-hS-P83" firstAttribute="centerX" secondItem="V30-gp-o4F" secondAttribute="centerX" id="GeQ-lL-gXC"/>
+                            <constraint firstItem="Ggd-61-VeY" firstAttribute="top" secondItem="yJx-dy-ief" secondAttribute="top" constant="477" id="HDC-5W-WQQ"/>
+                            <constraint firstItem="ixB-hS-P83" firstAttribute="bottom" secondItem="yJx-dy-ief" secondAttribute="bottom" id="PLV-5P-Xcv"/>
+                            <constraint firstItem="yJx-dy-ief" firstAttribute="bottom" secondItem="V30-gp-o4F" secondAttribute="bottom" constant="82" id="RUl-vp-8sg"/>
+                            <constraint firstItem="Ggd-61-VeY" firstAttribute="leading" secondItem="V30-gp-o4F" secondAttribute="leading" id="a0v-Hz-zyN"/>
+                            <constraint firstItem="ixB-hS-P83" firstAttribute="leading" secondItem="yxG-Fo-cTw" secondAttribute="leading" id="d4c-ul-49q"/>
+                            <constraint firstItem="Ggd-61-VeY" firstAttribute="leading" secondItem="yJx-dy-ief" secondAttribute="leading" constant="75" id="i6h-KP-xew"/>
+                            <constraint firstAttribute="trailing" secondItem="ixB-hS-P83" secondAttribute="trailing" id="nEv-JP-owD"/>
+                            <constraint firstItem="ixB-hS-P83" firstAttribute="top" secondItem="yxG-Fo-cTw" secondAttribute="top" id="ton-QK-2Ih"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yJx-dy-ief"/>
                     </view>
                     <navigationItem key="navigationItem" id="cWP-6N-9dg"/>
                     <connections>
-                        <outlet property="gifView" destination="8tT-YQ-uyZ" id="aFu-r5-K1l"/>
+                        <outlet property="imageView" destination="ixB-hS-P83" id="fhp-9X-zd5"/>
                         <outlet property="signinButton" destination="Ggd-61-VeY" id="FGq-od-VgM"/>
                         <outlet property="signupButton" destination="V30-gp-o4F" id="NKq-jV-h7m"/>
                     </connections>
@@ -1262,7 +1247,6 @@
         <image name="help7" width="256" height="256"/>
         <image name="help9" width="256" height="256"/>
         <image name="instagram" width="256" height="256"/>
-        <image name="newlogo" width="640" height="242"/>
         <image name="play" width="64" height="64"/>
         <image name="question" width="50" height="50"/>
         <image name="twitter" width="256" height="256"/>
