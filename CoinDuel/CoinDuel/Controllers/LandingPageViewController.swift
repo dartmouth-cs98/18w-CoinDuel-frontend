@@ -14,7 +14,7 @@ class LandingPageViewController: UIViewController {
 
 
     @IBOutlet weak var UserLabel: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
+
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
     @IBOutlet weak var nextGameTextField: UILabel!
@@ -22,6 +22,7 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var leaderboardButton: UIButton!
     var game: Game = Game()
     
+    @IBOutlet weak var profileImageButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.profileBlockView.layer.masksToBounds = true
@@ -36,7 +37,7 @@ class LandingPageViewController: UIViewController {
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
 
-        profileImage.image = UIImage(named: profImage!)
+        self.profileImageButton.imageView?.image = UIImage(named: profImage!)
 
         self.game.getCurrentGame { (success) in
             if (success){
@@ -44,21 +45,16 @@ class LandingPageViewController: UIViewController {
             }
         }
 
-
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        logoImageView.isUserInteractionEnabled = true
-        logoImageView.addGestureRecognizer(tapGestureRecognizer)
-
     }
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        print("image tapped")
+
+    @IBAction func onProfileImagePressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let leaderboardVC = storyboard.instantiateViewController(withIdentifier: "LeaderboardViewController") as? LeaderboardViewController {
             self.present(leaderboardVC, animated: true, completion: nil)
             print("showing leaderboard")
         }
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

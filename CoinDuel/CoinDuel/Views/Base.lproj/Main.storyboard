@@ -51,15 +51,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kce-x5-Hpa">
                                 <rect key="frame" x="32" y="280" width="310" height="310"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="AyK-FK-hoz">
-                                        <rect key="frame" x="118" y="8" width="75" height="76"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="76" id="DTD-o1-OLa"/>
-                                            <constraint firstAttribute="width" constant="75" id="htB-QP-G6W"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xp-4k-DFT">
-                                        <rect key="frame" x="112" y="92" width="87" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xp-4k-DFT">
+                                        <rect key="frame" x="112" y="96" width="87" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="87" id="QaK-Hk-5Nq"/>
                                         </constraints>
@@ -67,7 +60,7 @@
                                         <color key="textColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYl-Cn-YaV">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYl-Cn-YaV">
                                         <rect key="frame" x="0.0" y="121" width="310" height="3"/>
                                         <color key="backgroundColor" red="0.78823529411764703" green="0.2196078431372549" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -81,9 +74,6 @@
                                     <constraint firstItem="uYl-Cn-YaV" firstAttribute="leading" secondItem="Kce-x5-Hpa" secondAttribute="leading" id="AdV-Bd-ZFv"/>
                                     <constraint firstItem="uYl-Cn-YaV" firstAttribute="top" secondItem="0xp-4k-DFT" secondAttribute="bottom" constant="8" symbolic="YES" id="EvA-T6-znS"/>
                                     <constraint firstItem="0xp-4k-DFT" firstAttribute="centerX" secondItem="uYl-Cn-YaV" secondAttribute="centerX" id="frU-rb-dCg"/>
-                                    <constraint firstItem="0xp-4k-DFT" firstAttribute="top" secondItem="AyK-FK-hoz" secondAttribute="bottom" constant="8" symbolic="YES" id="hlI-gm-Fbu"/>
-                                    <constraint firstItem="AyK-FK-hoz" firstAttribute="centerX" secondItem="0xp-4k-DFT" secondAttribute="centerX" id="kIN-Do-jsG"/>
-                                    <constraint firstItem="AyK-FK-hoz" firstAttribute="top" secondItem="Kce-x5-Hpa" secondAttribute="topMargin" id="nOv-YA-Fec"/>
                                     <constraint firstAttribute="trailing" secondItem="uYl-Cn-YaV" secondAttribute="trailing" id="zep-tQ-1ax"/>
                                 </constraints>
                             </view>
@@ -119,6 +109,14 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80c-CJ-kHq">
+                                <rect key="frame" x="144" y="290" width="87" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="profile"/>
+                                <connections>
+                                    <action selector="onProfileImagePressed:" destination="2va-lX-zsX" eventType="touchUpInside" id="w7A-ny-ldf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2196078431372549" green="0.5607843137254902" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -154,7 +152,7 @@
                         <outlet property="logoImageView" destination="g81-0H-Dyh" id="0rN-kK-wnS"/>
                         <outlet property="nextGameTextField" destination="Xcp-ft-STZ" id="0SG-MD-Zja"/>
                         <outlet property="profileBlockView" destination="Kce-x5-Hpa" id="2bi-cu-xki"/>
-                        <outlet property="profileImage" destination="AyK-FK-hoz" id="bZe-la-N9A"/>
+                        <outlet property="profileImageButton" destination="80c-CJ-kHq" id="phl-Kc-Xiu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npx-Kz-6eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
