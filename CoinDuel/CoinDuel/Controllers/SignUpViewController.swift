@@ -45,6 +45,9 @@ class SignUpViewController: UIViewController {
     var buttonPressed = "profile1"
     
     var validated = false
+    
+    // custom grey
+    var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.8)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +56,17 @@ class SignUpViewController: UIViewController {
         signupButton.layer.cornerRadius = 3
         signupButton.layer.borderWidth = 0.75
         signupButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
+        
+        // custom placeholders
+        // From https://stackoverflow.com/questions/26076054/changing-placeholder-text-color-with-swift
+        username.attributedPlaceholder = NSAttributedString(string: "Username",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
+        password.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
+        email.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
+        confirmedPassword.attributedPlaceholder = NSAttributedString(string: "Confirm Password",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)

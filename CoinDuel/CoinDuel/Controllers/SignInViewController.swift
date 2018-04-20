@@ -23,11 +23,14 @@ class SignInViewController: UIViewController {
     
     var validated = false
     
+    // custom grey
+    var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.8)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = 3
-        loginButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
+        loginButton.layer.borderColor = grey80.cgColor
         loginButton.layer.borderWidth = 0.75
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -40,12 +43,19 @@ class SignInViewController: UIViewController {
         username.layer.borderWidth = 0
         username.layer.masksToBounds = true
         username.layer.cornerRadius = 3
-        username.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
+        username.layer.borderColor = grey80.cgColor
         
         password.layer.borderWidth = 0
         password.layer.masksToBounds = true
         password.layer.cornerRadius = 3
-        password.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
+        password.layer.borderColor = grey80.cgColor
+        
+        // custom placeholders
+        // https://stackoverflow.com/questions/26076054/changing-placeholder-text-color-with-swift
+        username.attributedPlaceholder = NSAttributedString(string: "Username",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: grey80])
+        password.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: grey80])
     }
 
     override func didReceiveMemoryWarning() {
