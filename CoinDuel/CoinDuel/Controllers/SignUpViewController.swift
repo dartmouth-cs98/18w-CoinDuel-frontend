@@ -62,7 +62,7 @@ class SignUpViewController: UIViewController {
         var count = 1
         for profile in profileImages {
             profile!.layer.borderWidth = 1
-            profile!.layer.borderColor = UIColor.black.cgColor
+            profile!.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0).cgColor
             profile!.setImage(UIImage(named: "profile" + String(count)), for: .normal)
             count = count + 1
         }
