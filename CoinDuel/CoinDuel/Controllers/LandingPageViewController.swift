@@ -18,10 +18,21 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
     @IBOutlet weak var nextGameTextField: UILabel!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var leaderboardButton: UIButton!
     var game: Game = Game()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.profileBlockView.layer.masksToBounds = true
+        self.profileBlockView.layer.cornerRadius = 10
+        self.enterGameButton.layer.masksToBounds = true
+        self.enterGameButton.layer.cornerRadius = 10
+        self.logoImageView.layer.masksToBounds = true
+        self.logoImageView.layer.cornerRadius = 10
+        self.leaderboardButton.layer.masksToBounds = true
+        self.leaderboardButton.layer.cornerRadius = 10
+
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
 
@@ -32,8 +43,21 @@ class LandingPageViewController: UIViewController {
                 print(self.game.startDate)
             }
         }
-        
 
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        logoImageView.isUserInteractionEnabled = true
+        logoImageView.addGestureRecognizer(tapGestureRecognizer)
+
+    }
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        print("image tapped")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let leaderboardVC = storyboard.instantiateViewController(withIdentifier: "LeaderboardViewController") as? LeaderboardViewController {
+            self.present(leaderboardVC, animated: true, completion: nil)
+            print("showing leaderboard")
+        }
     }
 
     override func didReceiveMemoryWarning() {
