@@ -21,15 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="DV8-Ib-gTl">
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="DV8-Ib-gTl">
                                 <rect key="frame" x="117.5" y="283.5" width="140" height="100"/>
+                                <color key="backgroundColor" red="0.1803921568627451" green="0.47058823529411764" blue="0.74901960784313726" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="FcM-aZ-baP"/>
                                     <constraint firstAttribute="height" constant="100" id="qNL-dx-l2E"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.1803921568627451" green="0.47058823529411764" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerY" secondItem="r6s-4R-HhH" secondAttribute="centerY" id="6PG-hK-h47"/>
                             <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="Rue-Np-5u7"/>

@@ -41,15 +41,32 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var profile14: UIButton!
     @IBOutlet weak var profile15: UIButton!
     
+    @IBOutlet weak var imageView: UIImageView!
     var buttonPressed = "profile1"
     
     var validated = false
+    
+    // custom grey
+    var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.8)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
         signupButton.layer.masksToBounds = true
-        signupButton.layer.cornerRadius = 5
+        signupButton.layer.cornerRadius = 3
+        signupButton.layer.borderWidth = 0.75
+        signupButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
+        
+        // custom placeholders
+        // From https://stackoverflow.com/questions/26076054/changing-placeholder-text-color-with-swift
+        username.attributedPlaceholder = NSAttributedString(string: "Username",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
+        password.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
+        email.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
+        confirmedPassword.attributedPlaceholder = NSAttributedString(string: "Confirm Password",
+                                                            attributes: [NSAttributedStringKey.foregroundColor: self.grey80])
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
@@ -59,10 +76,16 @@ class SignUpViewController: UIViewController {
         var count = 1
         for profile in profileImages {
             profile!.layer.borderWidth = 1
-            profile!.layer.borderColor = UIColor.black.cgColor
+            profile!.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0).cgColor
             profile!.setImage(UIImage(named: "profile" + String(count)), for: .normal)
             count = count + 1
         }
+        
+        // highlight default profile pic (profile 1)
+        profile1.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+        
+        // Color scheme based on instagram and https://stackoverflow.com/questions/47800574/gradient-over-instagram-svg-of-fontawesome-5
+        self.imageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,9 +114,10 @@ class SignUpViewController: UIViewController {
     }
     
     func resetButtonColors() {
-        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12]
+        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12, profile13, profile14, profile15]
+        
         for profile in profileImages {
-            profile!.layer.backgroundColor = UIColor.white.cgColor
+            profile!.layer.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:0).cgColor
         }
     }
     
