@@ -9,6 +9,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Foundation
+
+// Based on code from https://stackoverflow.com/questions/37903124/set-background-gradient-on-button-in-swift
 
 class SignInViewController: UIViewController {
     
@@ -16,16 +19,33 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var failedLogin: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     var validated = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.layer.masksToBounds = true
-        loginButton.layer.cornerRadius = 5
+        loginButton.layer.cornerRadius = 3
+        loginButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
+        loginButton.layer.borderWidth = 0.75
+        
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        // Color scheme based on instagram and https://stackoverflow.com/questions/47800574/gradient-over-instagram-svg-of-fontawesome-5
+        self.imageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+        
+        username.layer.borderWidth = 0
+        username.layer.masksToBounds = true
+        username.layer.cornerRadius = 3
+        username.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
+        
+        password.layer.borderWidth = 0
+        password.layer.masksToBounds = true
+        password.layer.cornerRadius = 3
+        password.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
     }
 
     override func didReceiveMemoryWarning() {

@@ -41,6 +41,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var profile14: UIButton!
     @IBOutlet weak var profile15: UIButton!
     
+    @IBOutlet weak var imageView: UIImageView!
     var buttonPressed = "profile1"
     
     var validated = false
@@ -49,7 +50,9 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
         signupButton.layer.masksToBounds = true
-        signupButton.layer.cornerRadius = 5
+        signupButton.layer.cornerRadius = 3
+        signupButton.layer.borderWidth = 0.75
+        signupButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
@@ -63,6 +66,9 @@ class SignUpViewController: UIViewController {
             profile!.setImage(UIImage(named: "profile" + String(count)), for: .normal)
             count = count + 1
         }
+        
+        // Color scheme based on instagram and https://stackoverflow.com/questions/47800574/gradient-over-instagram-svg-of-fontawesome-5
+        self.imageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
 
     override func didReceiveMemoryWarning() {
