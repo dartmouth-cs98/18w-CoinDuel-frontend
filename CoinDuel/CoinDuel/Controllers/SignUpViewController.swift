@@ -67,6 +67,9 @@ class SignUpViewController: UIViewController {
             count = count + 1
         }
         
+        // highlight default profile pic (profile 1)
+        profile1.layer.backgroundColor = UIColor(red: (220/255.0), green: (220/255.0), blue: (220/255.0), alpha: 1.0).cgColor
+        
         // Color scheme based on instagram and https://stackoverflow.com/questions/47800574/gradient-over-instagram-svg-of-fontawesome-5
         self.imageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
@@ -97,9 +100,10 @@ class SignUpViewController: UIViewController {
     }
     
     func resetButtonColors() {
-        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12]
+        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12, profile13, profile14, profile15]
+        
         for profile in profileImages {
-            profile!.layer.backgroundColor = UIColor.white.cgColor
+            profile!.layer.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:0).cgColor
         }
     }
     
