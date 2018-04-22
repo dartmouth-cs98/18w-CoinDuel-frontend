@@ -50,6 +50,10 @@ class SignUpViewController: UIViewController {
     var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.8)
 
     override func viewDidLoad() {
+        //use this for stuff other than frame changes
+    }
+
+    override func viewDidLayoutSubviews() {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
         signupButton.layer.masksToBounds = true
@@ -192,6 +196,11 @@ class SignUpViewController: UIViewController {
             })
         }
 
+    }
+    @IBAction func onXPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("leaving")
+        }
     }
     func hideSpinner() ->  Void{
         self.activityIndicator.isHidden = true

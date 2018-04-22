@@ -33,9 +33,12 @@ class LoginViewController: UIViewController {
     
     
     @IBOutlet weak var imageView: UIImageView!
-    
-    @IBOutlet weak var gifView: UIImageView!
+
     override func viewDidLoad() {
+        print("cook")
+    }
+
+    override func viewDidLayoutSubviews() {
         
         // sign in
         signinButton.layer.borderWidth = 0.75
@@ -56,7 +59,6 @@ class LoginViewController: UIViewController {
         self.imageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
         //self.imageView.applyGradient(colours: [UIColor(red:0.99, green:0.96, blue:0.59, alpha:1.0), UIColor(red:0.99, green:0.96, blue:0.59, alpha:1.0), UIColor(red:0.99, green:0.35, blue:0.29, alpha:1.0), UIColor(red:0.84, green:0.14, blue:0.62, alpha:1.0),UIColor(red:0.16, green:0.35, blue:0.92, alpha:1.0)], locations: [0.0, 0.05, 0.45, 0.6, 0.9])
         
-        gifView.loadGif(asset: "colors1")
     }
     
     @IBAction func back1(_ sender: Any) {
