@@ -25,8 +25,12 @@ class SignInViewController: UIViewController {
     
     // custom grey
     var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.8)
-    
+
     override func viewDidLoad() {
+        print("cook")
+    }
+
+    override func viewDidLayoutSubviews(){
         super.viewDidLoad()
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = 3
