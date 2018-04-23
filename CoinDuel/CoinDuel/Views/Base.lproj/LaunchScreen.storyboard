@@ -6,13 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Launch Screen View Controller-->
         <scene sceneID="4z9-wH-e3c">
             <objects>
-                <viewController id="9Ms-5M-Wcq" sceneMemberID="viewController">
+                <viewController id="9Ms-5M-Wcq" customClass="LaunchScreenViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ftl-JP-Wvu"/>
                         <viewControllerLayoutGuide type="bottom" id="pBV-YM-CGX"/>
@@ -21,25 +23,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="DV8-Ib-gTl">
-                                <rect key="frame" x="117.5" y="283.5" width="140" height="100"/>
-                                <color key="backgroundColor" red="0.1803921568627451" green="0.47058823529411764" blue="0.74901960784313726" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-Kg-RfR">
+                                <rect key="frame" x="81" y="114" width="211" height="149"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="FcM-aZ-baP"/>
-                                    <constraint firstAttribute="height" constant="100" id="qNL-dx-l2E"/>
+                                    <constraint firstAttribute="height" constant="149" id="Y0y-wO-sus"/>
+                                    <constraint firstAttribute="width" constant="211" id="ay0-yb-PmF"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1803921568627451" green="0.47058823529411764" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerY" secondItem="r6s-4R-HhH" secondAttribute="centerY" id="6PG-hK-h47"/>
-                            <constraint firstItem="DV8-Ib-gTl" firstAttribute="centerX" secondItem="r6s-4R-HhH" secondAttribute="centerX" id="Rue-Np-5u7"/>
+                            <constraint firstItem="0qm-Kg-RfR" firstAttribute="leading" secondItem="r6s-4R-HhH" secondAttribute="leading" constant="81" id="I3A-N8-tUE"/>
+                            <constraint firstItem="0qm-Kg-RfR" firstAttribute="top" secondItem="r6s-4R-HhH" secondAttribute="top" constant="114" id="J9T-Kl-oYz"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLM-oV-cD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149.5" y="-159.5"/>
+            <point key="canvasLocation" x="-108" y="-66"/>
+        </scene>
+        <!--LoginViewController-->
+        <scene sceneID="PXE-5o-CQh">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eD7-Rj-fff" customClass="LoginViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GnL-bT-X5Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gge-c8-x1G">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="A9h-iE-nxW"/>
+                                    <constraint firstAttribute="width" secondItem="gge-c8-x1G" secondAttribute="height" multiplier="375:667" id="DA2-xi-xXa"/>
+                                    <constraint firstAttribute="height" constant="667" id="LQQ-ZO-y7Q"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAO-U6-eEH">
+                                <rect key="frame" x="75" y="448" width="218" height="43"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="aXG-jN-zPo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.79949700339999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="Lo1-PS-51d">
+                                <rect key="frame" x="82" y="114" width="211" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lo1-PS-51d" secondAttribute="height" multiplier="211:149" id="3gH-Js-TIE"/>
+                                    <constraint firstAttribute="height" constant="149" id="9N6-7E-cX6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lo1-PS-51d" firstAttribute="centerX" secondItem="gge-c8-x1G" secondAttribute="centerX" id="3L9-OZ-l2W"/>
+                            <constraint firstItem="gge-c8-x1G" firstAttribute="bottom" secondItem="54D-lZ-hBR" secondAttribute="bottom" id="Adr-CK-chH"/>
+                            <constraint firstItem="qAO-U6-eEH" firstAttribute="leading" secondItem="54D-lZ-hBR" secondAttribute="leading" constant="75" id="Gah-Yr-pYu"/>
+                            <constraint firstItem="Lo1-PS-51d" firstAttribute="trailing" secondItem="qAO-U6-eEH" secondAttribute="trailing" id="Gu3-w8-Ujc"/>
+                            <constraint firstItem="gge-c8-x1G" firstAttribute="leading" secondItem="54D-lZ-hBR" secondAttribute="leading" id="Nci-2b-gjq"/>
+                            <constraint firstItem="Lo1-PS-51d" firstAttribute="leading" secondItem="54D-lZ-hBR" secondAttribute="leading" constant="82" id="ZH5-7k-kZM"/>
+                            <constraint firstItem="gge-c8-x1G" firstAttribute="trailing" secondItem="54D-lZ-hBR" secondAttribute="trailing" id="qUj-me-vWE"/>
+                            <constraint firstItem="gge-c8-x1G" firstAttribute="top" secondItem="GnL-bT-X5Z" secondAttribute="top" id="xCF-b7-eKF"/>
+                            <constraint firstItem="Lo1-PS-51d" firstAttribute="top" secondItem="54D-lZ-hBR" secondAttribute="top" constant="94" id="xeJ-0t-paH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="54D-lZ-hBR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Qk-cF-k6y"/>
+                    <connections>
+                        <outlet property="imageView" destination="gge-c8-x1G" id="sQb-KT-AJW"/>
+                        <outlet property="signinButton" destination="qAO-U6-eEH" id="KSh-QU-cOL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sKa-Zd-WjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="-67"/>
         </scene>
     </scenes>
     <resources>
