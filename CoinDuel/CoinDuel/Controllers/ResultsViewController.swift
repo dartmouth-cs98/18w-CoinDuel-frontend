@@ -20,6 +20,7 @@ class ResultsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.game.id)
         let defaults = UserDefaults.standard
         let username = defaults.string(forKey: "username")
 
@@ -27,9 +28,8 @@ class ResultsViewController: UIViewController {
         self.numberFormatter.numberStyle = NumberFormatter.Style.decimal
         self.numberFormatter.minimumFractionDigits = 2
         self.numberFormatter.maximumFractionDigits = 2
-
-        self.leaderboard.getCurrentLeaderboard { (booool) in
-            if (booool){
+        self.leaderboard.getLeaderboardForGame(gameID: self.game.id) { (success) in
+            if (success){
                 var numPlayers = self.leaderboard.currentUsers.count.description
                 for user in self.leaderboard.currentUsers {
                     self.place += 1
