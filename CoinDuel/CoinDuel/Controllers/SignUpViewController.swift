@@ -192,13 +192,9 @@ class SignUpViewController: UIViewController {
         }
 
     }
-    @IBAction func onXPressed(_ sender: Any) {
-        self.dismiss(animated: true) {
-            print("leaving")
-        }
-    }
+
     func hideSpinner() ->  Void{
-        self.activityIndicator.isHidden = true
-        self.activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
     }
 }
