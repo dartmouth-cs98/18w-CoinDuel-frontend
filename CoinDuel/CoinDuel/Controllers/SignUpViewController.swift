@@ -35,11 +35,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var profile8: UIButton!
     @IBOutlet weak var profile9: UIButton!
     @IBOutlet weak var profile10: UIButton!
-    @IBOutlet weak var profile11: UIButton!
-    @IBOutlet weak var profile12: UIButton!
-    @IBOutlet weak var profile13: UIButton!
-    @IBOutlet weak var profile14: UIButton!
-    @IBOutlet weak var profile15: UIButton!
     
     @IBOutlet weak var imageView: UIImageView!
     var buttonPressed = "profile1"
@@ -75,7 +70,7 @@ class SignUpViewController: UIViewController {
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
-        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12, profile13, profile14, profile15]
+        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10]
         
         var count = 1
         for profile in profileImages {
@@ -118,7 +113,7 @@ class SignUpViewController: UIViewController {
     }
     
     func resetButtonColors() {
-        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12, profile13, profile14, profile15]
+        let profileImages = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10]
         
         for profile in profileImages {
             profile!.layer.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:0).cgColor
