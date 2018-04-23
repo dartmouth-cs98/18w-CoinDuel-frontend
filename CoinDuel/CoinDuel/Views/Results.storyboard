@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ResultsViewController-->
+        <scene sceneID="Ygf-vp-AhA">
+            <objects>
+                <viewController storyboardIdentifier="ResultsViewController" title="ResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4MD-UT-zef" customClass="ResultsViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jcm-tf-shl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMi-RI-5oy">
+                                <rect key="frame" x="107.5" y="70" width="160" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfF-8R-VaM">
+                                <rect key="frame" x="67" y="263" width="240" height="232"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnW-o7-hSt">
+                                        <rect key="frame" x="75.5" y="105.5" width="89" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="TnW-o7-hSt" firstAttribute="centerY" secondItem="CfF-8R-VaM" secondAttribute="centerY" id="DgL-gH-bTZ"/>
+                                    <constraint firstItem="TnW-o7-hSt" firstAttribute="centerX" secondItem="CfF-8R-VaM" secondAttribute="centerX" id="afI-dJ-Bl5"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for playing!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHE-TR-Cim">
+                                <rect key="frame" x="115.5" y="166" width="145.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="And placed 1 out of 25 participants" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsi-mF-zLQ">
+                                <rect key="frame" x="54" y="212" width="268" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-PR-k5Q">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <color key="backgroundColor" red="0.3326749101" green="0.87576437620000003" blue="0.52071353620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="sLG-dT-5V5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Next Round">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="4MD-UT-zef" eventType="touchUpInside" id="PJe-eM-fHz"/>
+                                    <segue destination="APR-L7-6sP" kind="unwind" unwindAction="unwindResultsViewWithUnwindSegue:" id="HUg-FS-5yj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.22063425189999999" green="0.55939980830000002" blue="0.7871473605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DHE-TR-Cim" firstAttribute="top" secondItem="BMi-RI-5oy" secondAttribute="bottom" constant="70" id="6J9-hj-jfU"/>
+                            <constraint firstItem="BMi-RI-5oy" firstAttribute="top" secondItem="7Nu-v8-1DJ" secondAttribute="top" constant="50" id="9fL-ZI-cfA"/>
+                            <constraint firstItem="CfF-8R-VaM" firstAttribute="centerX" secondItem="Jcm-tf-shl" secondAttribute="centerX" id="AiP-Y6-Pir"/>
+                            <constraint firstItem="CfF-8R-VaM" firstAttribute="leading" secondItem="7Nu-v8-1DJ" secondAttribute="leading" constant="67" id="Ea1-io-mb0"/>
+                            <constraint firstItem="dqb-PR-k5Q" firstAttribute="centerX" secondItem="CfF-8R-VaM" secondAttribute="centerX" id="Nfh-R8-XKu"/>
+                            <constraint firstAttribute="trailing" secondItem="dqb-PR-k5Q" secondAttribute="trailing" id="Nz4-AS-tBt"/>
+                            <constraint firstItem="CfF-8R-VaM" firstAttribute="top" secondItem="Lsi-mF-zLQ" secondAttribute="bottom" constant="30" id="Otf-PF-JXU"/>
+                            <constraint firstItem="dqb-PR-k5Q" firstAttribute="centerX" secondItem="Lsi-mF-zLQ" secondAttribute="centerX" id="PKr-4Q-Tsn"/>
+                            <constraint firstItem="dqb-PR-k5Q" firstAttribute="centerX" secondItem="CfF-8R-VaM" secondAttribute="centerX" id="eGK-IT-yXI"/>
+                            <constraint firstItem="dqb-PR-k5Q" firstAttribute="bottom" secondItem="7Nu-v8-1DJ" secondAttribute="bottom" id="ge2-nG-gJj"/>
+                            <constraint firstItem="dqb-PR-k5Q" firstAttribute="centerX" secondItem="DHE-TR-Cim" secondAttribute="centerX" id="hii-n3-fvY"/>
+                            <constraint firstItem="dqb-PR-k5Q" firstAttribute="top" secondItem="CfF-8R-VaM" secondAttribute="bottom" constant="92" id="txU-Ew-jKW"/>
+                            <constraint firstItem="dqb-PR-k5Q" firstAttribute="leading" secondItem="Jcm-tf-shl" secondAttribute="leading" id="w1h-V1-I3Q"/>
+                            <constraint firstItem="BMi-RI-5oy" firstAttribute="centerX" secondItem="Jcm-tf-shl" secondAttribute="centerX" id="xeD-h6-Sf8"/>
+                            <constraint firstItem="Lsi-mF-zLQ" firstAttribute="top" secondItem="DHE-TR-Cim" secondAttribute="bottom" constant="25" id="yc4-X5-iEf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Nu-v8-1DJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="capcoinResultLabel" destination="DHE-TR-Cim" id="m2p-y8-qLp"/>
+                        <outlet property="resultsText" destination="Lsi-mF-zLQ" id="Chl-9B-Aqp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xWa-Ps-FfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="APR-L7-6sP" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-706" y="123"/>
+        </scene>
+    </scenes>
+</document>

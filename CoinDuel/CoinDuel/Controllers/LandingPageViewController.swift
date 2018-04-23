@@ -47,7 +47,12 @@ class LandingPageViewController: UIViewController {
                 print(self.game.startDate)
             }
         }
+    }
 
+    func initializeLandingPage() {
+        let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
+        
+        
     }
 
     @IBAction func onProfileImagePressed(_ sender: Any) {

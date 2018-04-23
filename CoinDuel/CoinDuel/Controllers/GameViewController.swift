@@ -74,11 +74,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             self.game.id = storedGameId!
                             self.game.getEntry() { (entryStatus) -> Void in
                                 if entryStatus == "entry" {
-                                    self.performSegue(withIdentifier: "DisplayResultsPopup", sender: self)
                                     DispatchQueue.main.async() {
                                         self.refreshControl.endRefreshing()
                                         self.loadingActivityIndicatorView.stopAnimating()
                                     }
+                                    let storyboard = UIStoryboard(name: "Results", bundle: nil)
+                                    if let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController {
+                                        resultsVC.game = self.game
+                                    }
+                                    self.present(resultsVC, animated: true, completion: nil)
+
                                 } else {
                                     // Could not get results for this game
                                     print("No results available")

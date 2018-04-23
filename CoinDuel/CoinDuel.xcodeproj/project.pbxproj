@@ -32,6 +32,7 @@
 		A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */; };
 		A0BCF926207BFBA3005664A3 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BCF925207BFBA3005664A3 /* NotificationService.swift */; };
 		A0BCF92A207BFBA3005664A3 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A0BCF923207BFBA3005664A3 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A0FBDD5D208E81BE00EA9336 /* Results.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FBDD5C208E81BE00EA9336 /* Results.storyboard */; };
 		EAEE9C15043A4ADBB13FB3B2 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89187AAAA8FD4FE99707A675 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		F824B1B220363D95008D1F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* Login.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
@@ -118,6 +119,7 @@
 		A0BCF927207BFBA3005664A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0BCF92F207BFCB2005664A3 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		A0BCF934207BFDCF005664A3 /* CoinDuel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoinDuel.entitlements; sourceTree = "<group>"; };
+		A0FBDD5C208E81BE00EA9336 /* Results.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Results.storyboard; sourceTree = "<group>"; };
 		BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.debug.xcconfig"; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				F824B1B120363D95008D1F14 /* Login.storyboard */,
 				1EB504C6201A7B8700BB76AA /* Main.storyboard */,
+				A0FBDD5C208E81BE00EA9336 /* Results.storyboard */,
 				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
 				A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */,
 			);
@@ -449,6 +452,7 @@
 				1EB504CD201A7B8700BB76AA /* LaunchScreen.storyboard in Resources */,
 				1EB504CA201A7B8700BB76AA /* Assets.xcassets in Resources */,
 				1EB504C8201A7B8700BB76AA /* Main.storyboard in Resources */,
+				A0FBDD5D208E81BE00EA9336 /* Results.storyboard in Resources */,
 				F824B1B220363D95008D1F14 /* Login.storyboard in Resources */,
 				A06F1E0B2043C6B10070D305 /* CoinDetail.storyboard in Resources */,
 			);
