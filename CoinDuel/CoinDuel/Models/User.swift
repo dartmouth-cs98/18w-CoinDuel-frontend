@@ -13,6 +13,11 @@ import Alamofire
 class User {
     var username: String
     var coinBalance: Double
+
+    init() {
+        self.username = ""
+        self.coinBalance = 0
+    }
     
     init(username: String?, coinBalance: Double) {
         self.username = username ?? ""
@@ -21,37 +26,28 @@ class User {
     
     // Retrieves the user's coin balance
     func updateCoinBalance(completion: @escaping (_ success: Bool) -> Void) {
-        var json = [String: String]()
-        json["username"] = self.username
-        
-        // Credit for following API technique: https://stackoverflow.com/questions/31937686/how-to-make-http-post-request-with-json-body-in-swift
-        if let jsonData = try? JSONSerialization.data(withJSONObject: json) {
-            let url = URL(string: Constants.API + "user")!
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
-            print(request)
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-                // Error checking
-                guard error == nil else {
-                    completion(false)
-                    return
+
+        let params = ["username": self.username]
+        let apiUrl = URL(string: Constants.API + "user")
+
+        Alamofire.request(apiUrl!, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
+
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 200){
+                    do{
+                        var json = try JSON(data: response.data!)
+                        if let coinBalance = json["coinBalance"].double {
+                            self.coinBalance = coinBalance
+                        }
+                        completion(true)
+                    } catch{
+                        print("error loading json")
+                        completion(false)
+                    }
                 }
-                
-                let json = JSON(data!)
-                print(json)
-                
-                self.coinBalance = json["coinBalance"].doubleValue
-                completion(true)
             }
-            
-            task.resume()
-        } else {
-            print("Failed conversion to JSON")
-            completion(false)
-        }
+
+
+        })
     }
 }

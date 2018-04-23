@@ -49,5 +49,11 @@ class ResultsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("leaving Results VC")
+            UserDefaults.standard.set(nil, forKey: "gameId")
+        }
+    }
 }
 
