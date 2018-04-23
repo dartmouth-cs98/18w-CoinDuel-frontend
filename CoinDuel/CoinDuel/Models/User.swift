@@ -13,6 +13,11 @@ import Alamofire
 class User {
     var username: String
     var coinBalance: Double
+
+    init() {
+        self.username = ""
+        self.coinBalance = 0
+    }
     
     init(username: String?, coinBalance: Double) {
         self.username = username ?? ""

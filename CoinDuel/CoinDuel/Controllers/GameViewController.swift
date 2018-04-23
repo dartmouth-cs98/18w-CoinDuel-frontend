@@ -27,6 +27,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var isLateEntry: Bool = false
     let refreshControl = UIRefreshControl()
     let numberFormatter = NumberFormatter()
+    var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
 
     
     // Completion blocks from https://stackoverflow.com/questions/35357807/running-one-function-after-another-completes
@@ -55,9 +56,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func startup() {
         // Retrieve user balance
-        let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
-        user.updateCoinBalance() { (completion) -> Void in
+        print(self.user.coinBalance)
+        self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
+                print(self.user.coinBalance)
 //                DispatchQueue.main.async() {
 //                    self.profileButton.setTitle(self.numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC", for: UIControlState .normal)
 //                }
