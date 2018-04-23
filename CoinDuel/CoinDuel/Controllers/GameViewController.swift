@@ -79,9 +79,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         self.loadingActivityIndicatorView.stopAnimating()
                                     }
                                     let storyboard = UIStoryboard(name: "Results", bundle: nil)
-                                    if let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController {
-                                        resultsVC.game = self.game
-                                    }
+                                    let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
+                                    resultsVC.game = self.game
                                     self.present(resultsVC, animated: true, completion: nil)
 
                                 } else {
