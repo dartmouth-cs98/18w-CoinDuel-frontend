@@ -5,42 +5,16 @@
 //  Created by Henry Wilson on 1/25/18.
 //  Copyright © 2018 Capitalize. All rights reserved.
 //
-
+// Facebook code from https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
 
 import UIKit
 import OneSignal
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    
-    //  AppDelegate.m
-    #import <FBSDKCoreKit/FBSDKCoreKit.h>
-    
-    - (BOOL)application:(UIApplication *)application 
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    [[FBSDKApplicationDelegate sharedInstance] application:application
-    didFinishLaunchingWithOptions:launchOptions];
-    // Add any custom logic here.
-    return YES;
-    }
-    
-    - (BOOL)application:(UIApplication *)application 
-    openURL:(NSURL *)url 
-    options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    
-    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-    openURL:url
-    sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
-    ];
-    // Add any custom logic here.
-    return handled;
-    }
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -73,15 +47,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
         })
+        
+        // Based on Facebook login example at https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
+        // Based on Facebook login example at https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
+        FBSDKAppEvents.activateApp()
     }
-
+    
+    // Based on Facebook login example at https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
