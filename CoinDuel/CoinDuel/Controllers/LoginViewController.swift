@@ -37,7 +37,9 @@ class LoginViewController: UIViewController {
     
     var dict : [String : AnyObject]!
     
-    override func viewDidLoad() {
+    var fbLoginSuccess = false
+    
+    override func viewDidAppear(_ animated: Bool) {
         print("cook")
         
         //  From https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
@@ -55,6 +57,14 @@ class LoginViewController: UIViewController {
         //if the user is already logged in
         if let accessToken = FBSDKAccessToken.current(){
             getFBUserData()
+            
+        }
+        
+        // Based on https://stackoverflow.com/questions/36238925/segue-wont-trigger-after-facebook-login-with-swift
+        if (self.fbLoginSuccess == true) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "LandingPageViewController") as UIViewController
+            self.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -74,6 +84,8 @@ class LoginViewController: UIViewController {
                     print("User cancelled login.")
                 case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                     self.getFBUserData()
+                    self.fbLoginSuccess = true
+
             }
         }
     }
