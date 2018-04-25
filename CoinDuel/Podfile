@@ -9,6 +9,8 @@ target 'CoinDuel' do
 	pod 'FeedbackEffect'
 	pod 'NVActivityIndicatorView'
 	pod 'OneSignal', '>= 2.5.2', '< 3.0'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 end
 
 target 'OneSignalNotificationServiceExtension' do

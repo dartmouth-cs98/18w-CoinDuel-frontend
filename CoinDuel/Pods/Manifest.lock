@@ -1,8 +1,26 @@
 PODS:
   - Alamofire (4.6.0)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
+  - FacebookCore (0.3.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.27)
+  - FacebookLogin (0.3.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3)
+    - FBSDKCoreKit (~> 4.27)
+    - FBSDKLoginKit (~> 4.27)
+  - FBSDKCoreKit (4.32.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.32.0):
+    - FBSDKCoreKit
   - FeedbackEffect (1.3)
   - NVActivityIndicatorView (4.1.1):
     - NVActivityIndicatorView/Presenter (= 4.1.1)
@@ -13,20 +31,41 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.6)
   - Charts
+  - FacebookCore
+  - FacebookLogin
   - FeedbackEffect
   - NVActivityIndicatorView
   - OneSignal (< 3.0, >= 2.5.2)
   - OneSignal (< 3.0, >= 2.6.2)
   - SwiftyJSON
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Bolts
+    - Charts
+    - FacebookCore
+    - FacebookLogin
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FeedbackEffect
+    - NVActivityIndicatorView
+    - OneSignal
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
+  FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
+  FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
+  FBSDKCoreKit: 55d7f2ac45d9c4b9b6119f4e43900fe84b9b7b1b
+  FBSDKLoginKit: 32ac05c2a59952c363c2e85aafa8f73ba93bcbad
   FeedbackEffect: 64154deab1c898a043e7d172b4f34f398cf01474
   NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
   OneSignal: ab5c509192ca8390bdd3570a6261e6decf4c79c1
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: f4a9dc5f01de970a62b22ce95a4b40ff9cc81ad2
+PODFILE CHECKSUM: 49d07e25ac91565c8c34432f045e2cd19d8d0c72
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
