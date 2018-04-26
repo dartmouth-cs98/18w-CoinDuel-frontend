@@ -18,7 +18,7 @@ class LandingPageViewController: UIViewController {
 
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
-    @IBOutlet weak var nextGameTextField: UILabel!
+    @IBOutlet weak var nextGameLabel: UILabel!
 
     @IBOutlet weak var leaderboardButton: UIButton!
     var game: Game = Game()
@@ -45,15 +45,27 @@ class LandingPageViewController: UIViewController {
 
         self.game.getCurrentGame { (success) in
             if (success){
-                print(self.game.startDate)
+                //check if game is in progress or has finished
+                if (self.game.isActive && !self.game.hasFinished){
+                    self.displayActiveGameMode()
+                } else if (self.game.hasFinished) {
+                    self.displayUpcomingGameMode()
+                }
             }
         }
     }
 
     func initializeLandingPage() {
         let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
-        
-        
+    }
+
+    func displayActiveGameMode (){
+        self.nextGameLabel.text = "Game in progress: Ending at " + self.game.finishDate.description
+    }
+
+
+    func displayUpcomingGameMode() {
+        self.nextGameLabel.text = "The next game starts at " + self.game.startDate.description
     }
 
     @IBAction func onProfileImagePressed(_ sender: Any) {

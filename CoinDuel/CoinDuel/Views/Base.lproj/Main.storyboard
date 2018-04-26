@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2va-lX-zsX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2va-lX-zsX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -141,14 +141,14 @@
                         <outlet property="UserLabel" destination="0xp-4k-DFT" id="pMR-zO-Zf6"/>
                         <outlet property="enterGameButton" destination="V3K-u2-4LC" id="TRA-gA-bgu"/>
                         <outlet property="leaderboardButton" destination="CmD-PG-D7c" id="ouc-ht-XZD"/>
-                        <outlet property="nextGameTextField" destination="Xcp-ft-STZ" id="0SG-MD-Zja"/>
+                        <outlet property="nextGameLabel" destination="Xcp-ft-STZ" id="ile-Lr-3jb"/>
                         <outlet property="profileBlockView" destination="Kce-x5-Hpa" id="2bi-cu-xki"/>
                         <outlet property="profileImageButton" destination="80c-CJ-kHq" id="phl-Kc-Xiu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npx-Kz-6eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-449" y="830"/>
+            <point key="canvasLocation" x="-490" y="546"/>
         </scene>
         <!--GameViewController-->
         <scene sceneID="vBP-Km-ENc">
@@ -598,7 +598,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-dc-2mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448.8" y="359.37031484257875"/>
+            <point key="canvasLocation" x="1132" y="-27"/>
         </scene>
         <!--CoinDetailViewController-->
         <scene sceneID="ags-Hf-TUR">
@@ -606,7 +606,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="CoinDetail" storyboardName="CoinDetail" referencedIdentifier="CoinDetailViewController" id="KoH-MT-oNv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vM9-Cq-1Qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="411"/>
+            <point key="canvasLocation" x="318" y="438"/>
         </scene>
     </scenes>
     <resources>
