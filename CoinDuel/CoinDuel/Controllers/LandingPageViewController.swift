@@ -14,13 +14,13 @@ import FBSDKLoginKit
 class LandingPageViewController: UIViewController {
 
     @IBOutlet weak var UserLabel: UILabel!
-
     @IBOutlet weak var imageViewGradient: UIImageView!
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
     @IBOutlet weak var nextGameLabel: UILabel!
     @IBOutlet weak var leaderboardButton: UIButton!
     @IBOutlet weak var profileImageButton: UIButton!
+    
 
     var game: Game = Game()
 
