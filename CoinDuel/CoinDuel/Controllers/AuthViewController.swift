@@ -16,25 +16,26 @@ class AuthViewController: UIViewController {
 
     // fb auth
     var fbLoginButton = LoginButton(readPermissions: [ .publicProfile ])
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        
         //  From https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
         //  FacebookLogin
         //  Created by Belal Khan on 09/08/17.
         //  Copyright © 2017 Belal Khan. All rights reserved.
         
-        //center button
-        self.fbLoginButton.center = view.center
-        
         //adding it to view
         view.addSubview(fbLoginButton)
+        
+        //center facebook button
+        self.fbLoginButton.center = view.center
+        self.fbLoginButton.frame.size.width = 327
+        self.fbLoginButton.frame.size.height = 50
+        self.fbLoginButton.center = view.center
         
         //if the user is already logged in
         if let accessToken = FBSDKAccessToken.current(){
             segueWithFBAuth()
         }
-        
     }
     
     //  Below 2 functions from https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
