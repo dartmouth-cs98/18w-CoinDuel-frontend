@@ -80,7 +80,7 @@ class Game {
                         return
                     }
                     self.rawStartDate = startDate.description
-                    dateFormatter.dateFormat = "EEEE h:mm a z"
+                    dateFormatter.dateFormat = "EEEE, h:mm a z"
                     dateFormatter.timeZone = TimeZone.current
                     self.startDate = dateFormatter.string(from: startDate)
                     self.finishDate = dateFormatter.string(from: finishDate)

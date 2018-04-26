@@ -13,17 +13,21 @@ import FacebookLogin
 import FBSDKLoginKit
 class LandingPageViewController: UIViewController {
 
-
     @IBOutlet weak var UserLabel: UILabel!
-
+    @IBOutlet weak var imageViewGradient: UIImageView!
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
-    @IBOutlet weak var nextGameTextField: UILabel!
-
+    @IBOutlet weak var nextGameLabel: UILabel!
     @IBOutlet weak var leaderboardButton: UIButton!
-    var game: Game = Game()
-    
     @IBOutlet weak var profileImageButton: UIButton!
+    
+
+    var game: Game = Game()
+
+
+    override func viewDidLayoutSubviews(){
+        self.imageViewGradient.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,29 +35,44 @@ class LandingPageViewController: UIViewController {
         self.profileBlockView.layer.cornerRadius = 10
         self.enterGameButton.layer.masksToBounds = true
         self.enterGameButton.layer.cornerRadius = 10
-
         self.leaderboardButton.layer.masksToBounds = true
         self.leaderboardButton.layer.cornerRadius = 10
+        self.profileImageButton.layer.masksToBounds = true
+        self.profileImageButton.layer.cornerRadius = 10
 
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
-        print(profImage!)
 
         if let image = UIImage(named: profImage!){
             self.profileImageButton.setImage(image, for: .normal)
         }
 
-        self.game.getCurrentGame { (success) in
-            if (success){
-                print(self.game.startDate)
-            }
-        }
+        self.initializeLandingPage()
     }
 
     func initializeLandingPage() {
         let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
-        
-        
+        self.game.getCurrentGame { (success) in
+            if (success){
+                print("got game")
+                self.displayActiveGameMode()
+
+                //check if game is in progress or has finished
+                if (self.game.isActive && !self.game.hasFinished){
+                    self.displayActiveGameMode()
+                } else if (self.game.hasFinished) {
+                    self.displayActiveGameMode()
+                }
+            }
+        }
+    }
+
+    func displayActiveGameMode (){
+        self.nextGameLabel.text = "The current game is ending " + self.game.finishDate.description
+    }
+
+    func displayUpcomingGameMode() {
+        self.nextGameLabel.text = "The next game starts at " + self.game.startDate.description
     }
 
     @IBAction func onProfileImagePressed(_ sender: Any) {
