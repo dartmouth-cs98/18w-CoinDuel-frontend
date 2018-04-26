@@ -14,6 +14,8 @@ class AuthViewController: UIViewController {
     
     var dict : [String : AnyObject]!
 
+    @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
+    
     // fb auth
     var fbLoginButton = LoginButton(readPermissions: [ .publicProfile ])
 
@@ -23,19 +25,20 @@ class AuthViewController: UIViewController {
         //  Created by Belal Khan on 09/08/17.
         //  Copyright © 2017 Belal Khan. All rights reserved.
         
-        //adding it to view
+        // segue if already logged in
+        if (FBSDKAccessToken.current() != nil) {
+            segueWithFBAuth()
+        }
+        
+        //adding fb button to view
+        self.loadingWheel.stopAnimating()
         view.addSubview(fbLoginButton)
         
-        //center facebook button
+        //center fb button
         self.fbLoginButton.center = view.center
         self.fbLoginButton.frame.size.width = 327
         self.fbLoginButton.frame.size.height = 50
         self.fbLoginButton.center = view.center
-        
-        //if the user is already logged in
-        if let accessToken = FBSDKAccessToken.current(){
-            segueWithFBAuth()
-        }
     }
     
     //  Below 2 functions from https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
@@ -53,22 +56,9 @@ class AuthViewController: UIViewController {
             case .cancelled:
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                
+                // segue with fb credentials
                 self.segueWithFBAuth()
-                
-                // async segue
-                DispatchQueue.main.async() {
-                    //call main storyboard once succesful sign in
-                    print("segue to main")
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "LandingPageViewController") as UIViewController
-                    self.present(vc, animated: true, completion: nil)
-                }
-                
-                // segue to main storyboard
-                // Based on https://stackoverflow.com/questions/36238925/segue-wont-trigger-after-facebook-login-with-swift
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "LandingPageViewController") as UIViewController
-                self.present(vc, animated: true, completion: nil)
             }
         }
     }
@@ -79,6 +69,7 @@ class AuthViewController: UIViewController {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     self.dict = result as! [String : AnyObject]
+                    print(self.dict)
                     
                     //set deaults
                     let defaults = UserDefaults.standard

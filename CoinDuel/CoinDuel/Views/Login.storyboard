@@ -588,14 +588,26 @@
                                     <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="G0s-Y7-b8U"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="k6O-HD-2dV">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="M5v-ux-WpG"/>
+                                    <constraint firstAttribute="width" constant="20" id="zzY-5o-9gH"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="k6O-HD-2dV" firstAttribute="centerX" secondItem="GGF-Dv-S9E" secondAttribute="centerX" id="2Fh-LE-RWB"/>
+                            <constraint firstItem="k6O-HD-2dV" firstAttribute="centerY" secondItem="GGF-Dv-S9E" secondAttribute="centerY" id="5NQ-hv-NEo"/>
                             <constraint firstItem="1cE-v0-ho0" firstAttribute="leading" secondItem="02D-fJ-BnL" secondAttribute="leading" constant="20" id="5YJ-oz-R16"/>
                             <constraint firstItem="1cE-v0-ho0" firstAttribute="top" secondItem="GGF-Dv-S9E" secondAttribute="top" constant="30" id="q7D-NA-12K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="02D-fJ-BnL"/>
                     </view>
+                    <connections>
+                        <outlet property="loadingWheel" destination="k6O-HD-2dV" id="3bC-yq-2gZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duF-ZL-FPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1261,7 +1273,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ItM-AD-zS1"/>
-        <segue reference="RrX-yt-mxB"/>
+        <segue reference="G0s-Y7-b8U"/>
         <segue reference="mkH-uc-JAS"/>
     </inferredMetricsTieBreakers>
 </document>
