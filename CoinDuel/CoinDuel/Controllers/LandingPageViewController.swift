@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-
+import FacebookLogin
+import FBSDKLoginKit
 class LandingPageViewController: UIViewController {
 
 
@@ -65,6 +66,10 @@ class LandingPageViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let gameVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
         self.present(gameVC, animated: true, completion: nil)
+        
+        // From https://stackoverflow.com/questions/29374235/facebook-sdk-4-0-ios-swift-log-a-user-out-programmatically
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut() // this is an instance function 
     }
 
 

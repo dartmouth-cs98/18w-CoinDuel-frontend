@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
     
     // fb auth
     var fbLoginButton = LoginButton(readPermissions: [ .publicProfile ])
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         
         //  From https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
@@ -55,8 +55,9 @@ class LoginViewController: UIViewController {
         
         //if the user is already logged in
         if let accessToken = FBSDKAccessToken.current(){
-            segueWithFBAuth()
+           segueWithFBAuth()
         }
+
     }
     
     //  Below 2 functions from https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
