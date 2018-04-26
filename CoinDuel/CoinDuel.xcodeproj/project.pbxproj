@@ -34,6 +34,7 @@
 		A0BCF92A207BFBA3005664A3 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A0BCF923207BFBA3005664A3 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A0FBDD5D208E81BE00EA9336 /* Results.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FBDD5C208E81BE00EA9336 /* Results.storyboard */; };
 		EAEE9C15043A4ADBB13FB3B2 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89187AAAA8FD4FE99707A675 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		F813428F209261DD0031AC42 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F813428E209261DD0031AC42 /* AuthViewController.swift */; };
 		F824B1B220363D95008D1F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* Login.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
 		F8A7FDE1208E7AA500FA5E30 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */; };
@@ -122,6 +123,7 @@
 		A0BCF934207BFDCF005664A3 /* CoinDuel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoinDuel.entitlements; sourceTree = "<group>"; };
 		A0FBDD5C208E81BE00EA9336 /* Results.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Results.storyboard; sourceTree = "<group>"; };
 		BDC3428D4670BFFAFEB70891 /* Pods-CoinDuel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinDuel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel.debug.xcconfig"; sourceTree = "<group>"; };
+		F813428E209261DD0031AC42 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		50804B2F207D476A005236D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F813428E209261DD0031AC42 /* AuthViewController.swift */,
 				F824B1B320363F88008D1F14 /* LoginViewController.swift */,
 				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
 				1E17A6322040A801007A341C /* ResultsViewController.swift */,
@@ -574,6 +577,7 @@
 				1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */,
 				1E17A6332040A801007A341C /* ResultsViewController.swift in Sources */,
 				A07604A62087F0E7003BE65C /* LandingPageViewController.swift in Sources */,
+				F813428F209261DD0031AC42 /* AuthViewController.swift in Sources */,
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
