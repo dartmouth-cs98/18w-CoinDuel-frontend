@@ -379,7 +379,7 @@
                                     <color key="titleColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="C4o-cu-rai" kind="show" id="RrX-yt-mxB"/>
+                                    <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="RrX-yt-mxB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -526,7 +526,7 @@
                                     <constraint firstAttribute="width" constant="218" id="vBf-Uk-yho"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Facebook | Google">
+                                <state key="normal" title="Use Facebook">
                                     <color key="titleColor" white="1" alpha="0.80233304790000004" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -559,6 +559,7 @@
                         <outlet property="imageView" destination="VoZ-iN-Zg5" id="xug-Rl-Jd2"/>
                         <outlet property="signinButton" destination="Ggd-61-VeY" id="FGq-od-VgM"/>
                         <outlet property="signupButton" destination="V30-gp-o4F" id="NKq-jV-h7m"/>
+                        <outlet property="useFacebookButton" destination="PNV-30-TLD" id="PbK-XD-AMR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZL-rf-jYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -572,7 +573,27 @@
                     <view key="view" contentMode="scaleToFill" id="GGF-Dv-S9E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cE-v0-ho0">
+                                <rect key="frame" x="20" y="30" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="62r-J4-xzG"/>
+                                    <constraint firstAttribute="height" constant="30" id="SQf-xb-Ndn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="G0s-Y7-b8U"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="1cE-v0-ho0" firstAttribute="leading" secondItem="02D-fJ-BnL" secondAttribute="leading" constant="20" id="5YJ-oz-R16"/>
+                            <constraint firstItem="1cE-v0-ho0" firstAttribute="top" secondItem="GGF-Dv-S9E" secondAttribute="top" constant="30" id="q7D-NA-12K"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="02D-fJ-BnL"/>
                     </view>
                 </viewController>
