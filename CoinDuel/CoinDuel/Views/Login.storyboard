@@ -192,7 +192,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ys9-BC-sd9">
-                                <rect key="frame" x="177" y="324" width="20" height="20"/>
+                                <rect key="frame" x="177" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW3-ul-Jet">
                                 <rect key="frame" x="75" y="524" width="225" height="40"/>
@@ -517,13 +517,31 @@
                                     <constraint firstAttribute="width" secondItem="cCR-h9-z1Y" secondAttribute="height" multiplier="211:149" id="EG6-l6-DrE"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNV-30-TLD">
+                                <rect key="frame" x="75" y="561" width="218" height="42"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="L3W-gi-142"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="M3e-eF-xI9"/>
+                                    <constraint firstAttribute="width" constant="218" id="vBf-Uk-yho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Facebook | Google">
+                                    <color key="titleColor" white="1" alpha="0.80233304790000004" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="rdR-iz-Shz" kind="show" id="OxU-38-ITF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PNV-30-TLD" firstAttribute="leading" secondItem="V30-gp-o4F" secondAttribute="leading" id="1iO-na-Abw"/>
                             <constraint firstItem="Ggd-61-VeY" firstAttribute="leading" secondItem="yJx-dy-ief" secondAttribute="leading" constant="75" id="3sh-Bl-HEC"/>
                             <constraint firstItem="VoZ-iN-Zg5" firstAttribute="top" secondItem="yxG-Fo-cTw" secondAttribute="top" id="8KY-aG-Id8"/>
                             <constraint firstItem="VoZ-iN-Zg5" firstAttribute="trailing" secondItem="yJx-dy-ief" secondAttribute="trailing" id="BZI-7e-Hbd"/>
                             <constraint firstItem="yJx-dy-ief" firstAttribute="bottom" secondItem="V30-gp-o4F" secondAttribute="bottom" constant="120" id="Lli-Z1-H8C"/>
+                            <constraint firstItem="PNV-30-TLD" firstAttribute="top" secondItem="V30-gp-o4F" secondAttribute="bottom" constant="14" id="NZA-e3-8N6"/>
                             <constraint firstItem="VoZ-iN-Zg5" firstAttribute="bottom" secondItem="yJx-dy-ief" secondAttribute="bottom" id="Z67-qj-7ck"/>
                             <constraint firstItem="Ggd-61-VeY" firstAttribute="leading" secondItem="V30-gp-o4F" secondAttribute="leading" id="aF1-23-fGU"/>
                             <constraint firstItem="cCR-h9-z1Y" firstAttribute="top" secondItem="yJx-dy-ief" secondAttribute="top" constant="94" id="cZa-3F-qBi"/>
@@ -546,6 +564,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZL-rf-jYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1165.5999999999999" y="-99.400299850074973"/>
+        </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="VTw-FW-83x">
+            <objects>
+                <viewController id="rdR-iz-Shz" customClass="AuthViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GGF-Dv-S9E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="02D-fJ-BnL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="duF-ZL-FPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="664"/>
         </scene>
         <!--Help View Controller-->
         <scene sceneID="Bg6-Hv-oiQ">
@@ -734,7 +767,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5FP-mP-th6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="urx-77-Bqp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="1508"/>
+            <point key="canvasLocation" x="1954" y="1231"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="I55-vg-ywH">
