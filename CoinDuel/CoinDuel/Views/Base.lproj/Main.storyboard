@@ -168,14 +168,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ps4-7y-zkq">
-                                <rect key="frame" x="247" y="40" width="98" height="33"/>
+                                <rect key="frame" x="292" y="40" width="53" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Leaderboard">
+                                <state key="normal" title="Trades">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UBg-rn-yG4" kind="show" identifier="leaderboardSegue" id="6iU-Z3-zfk"/>
+                                    <segue destination="3Rr-5Q-AuL" kind="show" id="qZ4-DS-gBB"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4n-1HR">
@@ -607,7 +607,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8r1-dc-2mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="-27"/>
+            <point key="canvasLocation" x="1030" y="680"/>
+        </scene>
+        <!--Trades View Controller-->
+        <scene sceneID="Mgp-KJ-lV0">
+            <objects>
+                <viewController id="3Rr-5Q-AuL" customClass="TradesViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dPA-bS-RMC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-PC-CK6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNs-Ka-Ckm">
+                                <rect key="frame" x="20" y="30" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="UCX-Wh-OXZ"/>
+                                    <constraint firstAttribute="width" constant="30" id="Y1e-L1-fLi"/>
+                                    <constraint firstAttribute="width" secondItem="xNs-Ka-Ckm" secondAttribute="height" multiplier="1:1" id="h7T-oT-ur0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitButtonPressed:" destination="3Rr-5Q-AuL" eventType="touchUpInside" id="adC-Bc-gFv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xNs-Ka-Ckm" firstAttribute="top" secondItem="dRT-Oe-UgZ" secondAttribute="top" constant="10" id="I0z-3v-J5O"/>
+                            <constraint firstItem="xNs-Ka-Ckm" firstAttribute="leading" secondItem="dRT-Oe-UgZ" secondAttribute="leading" constant="20" id="ve7-Lr-zhj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dRT-Oe-UgZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="ZQy-PC-CK6" id="Q0w-Gb-TZP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRW-ze-pkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029.5999999999999" y="-27.436281859070466"/>
         </scene>
         <!--CoinDetailViewController-->
         <scene sceneID="ags-Hf-TUR">

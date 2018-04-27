@@ -24,6 +24,7 @@
 		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
 		50E499402038B64500DBCC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4993F2038B64500DBCC42 /* User.swift */; };
+		A04F235D2092B2D00067E159 /* TradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04F235C2092B2D00067E159 /* TradesViewController.swift */; };
 		A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050E8482048B4310009A96E /* DateValueFormatter.swift */; };
 		A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F1E08204376640070D305 /* CoinDetailViewController.swift */; };
 		A06F1E0B2043C6B10070D305 /* CoinDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */; };
@@ -110,6 +111,7 @@
 		6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinDuel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89187AAAA8FD4FE99707A675 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5067DC7B8017C991D24E28 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		A04F235C2092B2D00067E159 /* TradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesViewController.swift; sourceTree = "<group>"; };
 		A050E8482048B4310009A96E /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		A06F1E08204376640070D305 /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
 		A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoinDetail.storyboard; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				F813428E209261DD0031AC42 /* AuthViewController.swift */,
 				F824B1B320363F88008D1F14 /* LoginViewController.swift */,
 				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
+				A04F235C2092B2D00067E159 /* TradesViewController.swift */,
 				1E17A6322040A801007A341C /* ResultsViewController.swift */,
 				A06F1E08204376640070D305 /* CoinDetailViewController.swift */,
 				50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */,
@@ -588,6 +591,7 @@
 				A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */,
 				F8A7FDE1208E7AA500FA5E30 /* LaunchScreenViewController.swift in Sources */,
 				1E56321920378D310043ECF9 /* Game.swift in Sources */,
+				A04F235D2092B2D00067E159 /* TradesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

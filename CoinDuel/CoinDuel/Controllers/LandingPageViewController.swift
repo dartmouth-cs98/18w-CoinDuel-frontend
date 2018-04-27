@@ -101,6 +101,7 @@ class LandingPageViewController: UIViewController {
     @IBAction func onLeaderboardPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let leaderboardVC = storyboard.instantiateViewController(withIdentifier: "LeaderboardViewController") as? LeaderboardViewController {
+            leaderboardVC.game = self.game
             self.present(leaderboardVC, animated: true, completion: nil)
             print("showing leaderboard")
         }
