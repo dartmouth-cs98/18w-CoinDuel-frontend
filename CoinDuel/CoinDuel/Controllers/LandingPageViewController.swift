@@ -26,6 +26,7 @@ class LandingPageViewController: UIViewController {
     var game: Game = Game()
     let numberFormatter = NumberFormatter()
 
+    var granularity = 20000
 
     override func viewDidLayoutSubviews(){
         self.imageViewGradient.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -80,10 +81,12 @@ class LandingPageViewController: UIViewController {
 
     func displayActiveGameMode (){
         self.nextGameLabel.text = "The current game is ending " + self.game.finishDate.description
+        // show active game capcoin performance graph
     }
 
     func displayUpcomingGameMode() {
         self.nextGameLabel.text = "The next game starts at " + self.game.startDate.description
+        //show alltime capcoin performance graph
     }
 
     @IBAction func onProfileImagePressed(_ sender: Any) {
