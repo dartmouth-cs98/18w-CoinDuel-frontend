@@ -21,9 +21,10 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var capCoinBalanceLabel: UILabel!
     @IBOutlet weak var leaderboardButton: UIButton!
     @IBOutlet weak var profileImageButton: UIButton!
-    
-    let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
+
+    let user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0)
     var game: Game = Game()
+    let numberFormatter = NumberFormatter()
 
 
     override func viewDidLayoutSubviews(){
@@ -44,6 +45,11 @@ class LandingPageViewController: UIViewController {
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
 
+        // Number format
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+
         if let image = UIImage(named: profImage!){
             self.profileImageButton.setImage(image, for: .normal)
         }
@@ -54,7 +60,7 @@ class LandingPageViewController: UIViewController {
     func initializeLandingPage() {
         self.user.updateCoinBalance { (success) in
             if (success){
-                self.capCoinBalanceLabel.text = self.user.coinBalance.description
+                self.capCoinBalanceLabel.text = "Current CapCoin Balance: " + self.numberFormatter.string(from: NSNumber(value: self.user.coinBalance))! + " CC"
             }
         }
         self.game.getCurrentGame { (success) in

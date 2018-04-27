@@ -421,7 +421,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func onBackPressed(_ sender: Any) {
 //        source for animation to dismiss: https://stackoverflow.com/questions/38799143/dismiss-view-controller-with-custom-animation
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
             let transition: CATransition = CATransition()
             transition.duration = 0.3
             transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
