@@ -1272,6 +1272,7 @@
         <image name="twitter" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Sum-gf-KeX"/>
         <segue reference="ItM-AD-zS1"/>
         <segue reference="XeG-tn-Gsn"/>
         <segue reference="mkH-uc-JAS"/>

@@ -167,6 +167,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQF-np-sbL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ps4-7y-zkq">
                                 <rect key="frame" x="292" y="40" width="53" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -326,11 +329,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.22063425186805244" green="0.55939980834734016" blue="0.7871473605305066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bQF-np-sbL" firstAttribute="trailing" secondItem="heS-RT-K7Y" secondAttribute="trailing" id="1gs-Q8-U5N"/>
                             <constraint firstItem="cEc-9g-Dpw" firstAttribute="centerY" secondItem="lYA-Lq-gpg" secondAttribute="centerY" id="80c-Xv-hXG"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="Ps4-7y-zkq" secondAttribute="trailing" constant="30" id="FhF-Ky-Gm6"/>
                             <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="20" id="G9G-2R-gjh" userLabel="Tomorrow, 9AM EST.top = Next Game.bottom + 10"/>
+                            <constraint firstItem="bQF-np-sbL" firstAttribute="top" secondItem="lYA-Lq-gpg" secondAttribute="top" id="IbP-R8-W8a"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="4Mq-4n-1HR" secondAttribute="trailing" id="Jtv-z0-L73"/>
                             <constraint firstItem="XpZ-PS-Om2" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="KAb-jY-t6K"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="MKD-FP-mjk"/>
@@ -345,15 +349,18 @@
                             <constraint firstItem="Iwe-rj-qlY" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="gfn-Vl-8n7"/>
                             <constraint firstItem="uic-rp-aTm" firstAttribute="top" secondItem="WLo-dE-vaq" secondAttribute="top" id="gqh-JX-nzH"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="leading" secondItem="lYA-Lq-gpg" secondAttribute="leading" id="guS-bY-WSW"/>
+                            <constraint firstItem="bQF-np-sbL" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="lyt-Wj-eZo"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="uic-rp-aTm" secondAttribute="trailing" constant="10" id="pS3-Zx-rgu"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="r4T-JL-TVI" userLabel="Table View.centerX = centerX"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="90" id="sta-pP-tS3"/>
                             <constraint firstItem="WLo-dE-vaq" firstAttribute="centerY" secondItem="VV8-pq-nHY" secondAttribute="centerY" id="uCf-Tx-6vz"/>
+                            <constraint firstItem="bQF-np-sbL" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" id="y14-g5-KXa"/>
                             <constraint firstItem="4Mq-4n-1HR" firstAttribute="top" secondItem="Iwe-rj-qlY" secondAttribute="bottom" constant="40" id="ymm-OB-zYQ" userLabel="Table View.top = Tomorrow, 9AM EST.bottom + 30"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="heS-RT-K7Y"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="bQF-np-sbL" id="srT-ls-0vS"/>
                         <outlet property="gameReturnLabel" destination="uic-rp-aTm" id="LTB-3E-dd3"/>
                         <outlet property="gameStatusLabel" destination="WLo-dE-vaq" id="Zng-w1-Rej"/>
                         <outlet property="gameTableView" destination="4Mq-4n-1HR" id="5N1-0g-ehv"/>
@@ -617,9 +624,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-PC-CK6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-PC-CK6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNs-Ka-Ckm">
                                 <rect key="frame" x="20" y="30" width="30" height="30"/>
@@ -639,7 +645,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ZQy-PC-CK6" firstAttribute="bottom" secondItem="dRT-Oe-UgZ" secondAttribute="bottom" id="65r-Qw-8kd"/>
+                            <constraint firstItem="ZQy-PC-CK6" firstAttribute="top" secondItem="dPA-bS-RMC" secondAttribute="top" id="D51-PP-VwY"/>
                             <constraint firstItem="xNs-Ka-Ckm" firstAttribute="top" secondItem="dRT-Oe-UgZ" secondAttribute="top" constant="10" id="I0z-3v-J5O"/>
+                            <constraint firstItem="ZQy-PC-CK6" firstAttribute="trailing" secondItem="dRT-Oe-UgZ" secondAttribute="trailing" id="NLI-W8-WLG"/>
+                            <constraint firstItem="ZQy-PC-CK6" firstAttribute="leading" secondItem="dRT-Oe-UgZ" secondAttribute="leading" id="pYV-nJ-D5G"/>
                             <constraint firstItem="xNs-Ka-Ckm" firstAttribute="leading" secondItem="dRT-Oe-UgZ" secondAttribute="leading" constant="20" id="ve7-Lr-zhj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dRT-Oe-UgZ"/>
