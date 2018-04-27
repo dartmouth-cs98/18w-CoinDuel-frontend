@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8NS-Z9-o2d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMi-RI-5oy">
                                 <rect key="frame" x="107.5" y="70" width="160" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -68,7 +71,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.22063425189999999" green="0.55939980830000002" blue="0.7871473605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DHE-TR-Cim" firstAttribute="top" secondItem="BMi-RI-5oy" secondAttribute="bottom" constant="70" id="6J9-hj-jfU"/>
                             <constraint firstItem="BMi-RI-5oy" firstAttribute="top" secondItem="7Nu-v8-1DJ" secondAttribute="top" constant="50" id="9fL-ZI-cfA"/>
@@ -78,9 +80,13 @@
                             <constraint firstAttribute="trailing" secondItem="dqb-PR-k5Q" secondAttribute="trailing" id="Nz4-AS-tBt"/>
                             <constraint firstItem="CfF-8R-VaM" firstAttribute="top" secondItem="Lsi-mF-zLQ" secondAttribute="bottom" constant="30" id="Otf-PF-JXU"/>
                             <constraint firstItem="dqb-PR-k5Q" firstAttribute="centerX" secondItem="Lsi-mF-zLQ" secondAttribute="centerX" id="PKr-4Q-Tsn"/>
+                            <constraint firstItem="8NS-Z9-o2d" firstAttribute="trailing" secondItem="7Nu-v8-1DJ" secondAttribute="trailing" id="QDL-Eb-fU4"/>
+                            <constraint firstItem="8NS-Z9-o2d" firstAttribute="bottom" secondItem="7Nu-v8-1DJ" secondAttribute="bottom" id="UaD-bZ-jr5"/>
+                            <constraint firstItem="8NS-Z9-o2d" firstAttribute="leading" secondItem="7Nu-v8-1DJ" secondAttribute="leading" id="ded-UO-GTS"/>
                             <constraint firstItem="dqb-PR-k5Q" firstAttribute="centerX" secondItem="CfF-8R-VaM" secondAttribute="centerX" id="eGK-IT-yXI"/>
                             <constraint firstItem="dqb-PR-k5Q" firstAttribute="bottom" secondItem="7Nu-v8-1DJ" secondAttribute="bottom" id="ge2-nG-gJj"/>
                             <constraint firstItem="dqb-PR-k5Q" firstAttribute="centerX" secondItem="DHE-TR-Cim" secondAttribute="centerX" id="hii-n3-fvY"/>
+                            <constraint firstItem="8NS-Z9-o2d" firstAttribute="top" secondItem="Jcm-tf-shl" secondAttribute="top" id="npj-Qi-lmc"/>
                             <constraint firstItem="dqb-PR-k5Q" firstAttribute="top" secondItem="CfF-8R-VaM" secondAttribute="bottom" constant="92" id="txU-Ew-jKW"/>
                             <constraint firstItem="dqb-PR-k5Q" firstAttribute="leading" secondItem="Jcm-tf-shl" secondAttribute="leading" id="w1h-V1-I3Q"/>
                             <constraint firstItem="BMi-RI-5oy" firstAttribute="centerX" secondItem="Jcm-tf-shl" secondAttribute="centerX" id="xeD-h6-Sf8"/>
@@ -89,6 +95,7 @@
                         <viewLayoutGuide key="safeArea" id="7Nu-v8-1DJ"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="8NS-Z9-o2d" id="fOH-eE-p1i"/>
                         <outlet property="capcoinResultLabel" destination="DHE-TR-Cim" id="m2p-y8-qLp"/>
                         <outlet property="resultsText" destination="Lsi-mF-zLQ" id="Chl-9B-Aqp"/>
                     </connections>
@@ -96,7 +103,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWa-Ps-FfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="APR-L7-6sP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-706" y="123"/>
+            <point key="canvasLocation" x="-706.39999999999998" y="122.78860569715144"/>
         </scene>
     </scenes>
 </document>

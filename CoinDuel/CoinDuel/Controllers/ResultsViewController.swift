@@ -11,12 +11,17 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     var game: Game = Game()
     let numberFormatter = NumberFormatter()
     var leaderboard: Leaderboard = Leaderboard()
     var place: Int = 0
     @IBOutlet weak var capcoinResultLabel: UILabel!
     @IBOutlet weak var resultsText: UILabel!
+
+    override func viewDidLayoutSubviews(){
+        self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

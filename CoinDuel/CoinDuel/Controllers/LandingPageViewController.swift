@@ -18,10 +18,11 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
     @IBOutlet weak var nextGameLabel: UILabel!
+    @IBOutlet weak var capCoinBalanceLabel: UILabel!
     @IBOutlet weak var leaderboardButton: UIButton!
     @IBOutlet weak var profileImageButton: UIButton!
     
-
+    let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
     var game: Game = Game()
 
 
@@ -51,7 +52,11 @@ class LandingPageViewController: UIViewController {
     }
 
     func initializeLandingPage() {
-        let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
+        self.user.updateCoinBalance { (success) in
+            if (success){
+                self.capCoinBalanceLabel.text = self.user.coinBalance.description
+            }
+        }
         self.game.getCurrentGame { (success) in
             if (success){
                 print("got game")

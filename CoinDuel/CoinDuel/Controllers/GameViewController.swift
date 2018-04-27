@@ -420,9 +420,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
-        self.dismiss(animated: true) {
-            print("leaving game VC")
-        }
+//        source for animation to dismiss: https://stackoverflow.com/questions/38799143/dismiss-view-controller-with-custom-animation
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            let transition: CATransition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            transition.type = kCATransitionReveal
+            transition.subtype = kCATransitionFromLeft
+            self.view.window!.layer.add(transition, forKey: nil)
+            self.dismiss(animated: false, completion: nil)
+        }, completion: nil)
     }
 
     @IBAction func submitButtonPress(_ sender: UIButton) {
