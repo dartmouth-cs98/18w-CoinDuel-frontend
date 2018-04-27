@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7gg-YM-4Fw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7gg-YM-4Fw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,6 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="415" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-bv-Bbw">
+                                <rect key="frame" x="0.0" y="0.0" width="415" height="1000"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9w-xQ-I1d">
                                 <rect key="frame" x="0.0" y="0.0" width="415" height="83.5"/>
                                 <subviews>
@@ -49,7 +52,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.2196078431372549" green="0.5607843137254902" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="rp1-QJ-YGh" firstAttribute="top" secondItem="n9w-xQ-I1d" secondAttribute="top" constant="35" id="5U7-ua-w4L"/>
                                     <constraint firstAttribute="bottom" secondItem="ntR-V5-bE0" secondAttribute="bottom" constant="16" id="5me-Yl-4q0"/>
@@ -72,7 +74,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.11 (10.48%)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc6-PC-XQu">
-                                        <rect key="frame" x="160" y="53" width="95" height="25"/>
+                                        <rect key="frame" x="160.5" y="53" width="94.5" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="obR-tc-myP"/>
                                         </constraints>
@@ -235,15 +237,18 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="n9w-xQ-I1d" firstAttribute="leading" secondItem="Vsi-9D-uT6" secondAttribute="leading" id="1Qd-Pm-d3G"/>
+                            <constraint firstItem="fdg-bv-Bbw" firstAttribute="leading" secondItem="tfH-1B-EXf" secondAttribute="leading" id="8gy-aa-Lxz"/>
                             <constraint firstAttribute="trailing" secondItem="n9w-xQ-I1d" secondAttribute="trailing" id="ICf-oR-EVy"/>
                             <constraint firstItem="n9w-xQ-I1d" firstAttribute="top" secondItem="Vsi-9D-uT6" secondAttribute="top" id="S6d-m0-MFW"/>
                             <constraint firstItem="afL-Wf-bWE" firstAttribute="trailing" secondItem="tfH-1B-EXf" secondAttribute="trailing" id="TDh-hX-GxB"/>
+                            <constraint firstItem="fdg-bv-Bbw" firstAttribute="trailing" secondItem="tfH-1B-EXf" secondAttribute="trailing" id="c1F-bT-v2d"/>
+                            <constraint firstItem="fdg-bv-Bbw" firstAttribute="top" secondItem="Vsi-9D-uT6" secondAttribute="top" id="efU-7b-cmi"/>
                             <constraint firstItem="afL-Wf-bWE" firstAttribute="leading" secondItem="tfH-1B-EXf" secondAttribute="leading" id="rXG-9E-vXK"/>
                             <constraint firstItem="tfH-1B-EXf" firstAttribute="bottom" secondItem="afL-Wf-bWE" secondAttribute="bottom" id="roM-iE-4TP"/>
                             <constraint firstItem="afL-Wf-bWE" firstAttribute="top" secondItem="n9w-xQ-I1d" secondAttribute="bottom" id="web-9G-r6m"/>
+                            <constraint firstItem="fdg-bv-Bbw" firstAttribute="bottom" secondItem="tfH-1B-EXf" secondAttribute="bottom" id="xGF-1c-zD9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tfH-1B-EXf"/>
                     </view>
@@ -253,6 +258,7 @@
                         <outlet property="article1" destination="7QJ-FE-w9y" id="XzN-CN-eXh"/>
                         <outlet property="article2" destination="iqm-1d-UTm" id="Q9l-bk-bGq"/>
                         <outlet property="article3" destination="4kc-mL-TMO" id="1xM-t5-05C"/>
+                        <outlet property="backgroundImageView" destination="fdg-bv-Bbw" id="h40-4h-gaO"/>
                         <outlet property="capCoinAllocationLabel" destination="rp1-QJ-YGh" id="HFk-AG-NRl"/>
                         <outlet property="chartView" destination="XIP-tQ-g9N" id="91K-NV-P7W"/>
                         <outlet property="coinName" destination="xdy-N5-HHs" id="KiA-I6-Ehs"/>
@@ -264,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tu6-b1-Y36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="642.75362318840587" y="879.61956521739137"/>
+            <point key="canvasLocation" x="642.39999999999998" y="878.86056971514245"/>
         </scene>
     </scenes>
 </document>

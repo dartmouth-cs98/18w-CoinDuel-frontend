@@ -18,12 +18,15 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
     @IBOutlet weak var nextGameLabel: UILabel!
+    @IBOutlet weak var capCoinBalanceLabel: UILabel!
     @IBOutlet weak var leaderboardButton: UIButton!
     @IBOutlet weak var profileImageButton: UIButton!
-    
 
+    let user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0)
     var game: Game = Game()
+    let numberFormatter = NumberFormatter()
 
+    var granularity = 20000
 
     override func viewDidLayoutSubviews(){
         self.imageViewGradient.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -43,6 +46,11 @@ class LandingPageViewController: UIViewController {
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
 
+        // Number format
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+
         if let image = UIImage(named: profImage!){
             self.profileImageButton.setImage(image, for: .normal)
         }
@@ -51,7 +59,11 @@ class LandingPageViewController: UIViewController {
     }
 
     func initializeLandingPage() {
-        let user = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
+        self.user.updateCoinBalance { (success) in
+            if (success){
+                self.capCoinBalanceLabel.text = "Current CapCoin Balance: " + self.numberFormatter.string(from: NSNumber(value: self.user.coinBalance))! + " CC"
+            }
+        }
         self.game.getCurrentGame { (success) in
             if (success){
                 print("got game")
@@ -69,10 +81,12 @@ class LandingPageViewController: UIViewController {
 
     func displayActiveGameMode (){
         self.nextGameLabel.text = "The current game is ending " + self.game.finishDate.description
+        // show active game capcoin performance graph
     }
 
     func displayUpcomingGameMode() {
         self.nextGameLabel.text = "The next game starts at " + self.game.startDate.description
+        //show alltime capcoin performance graph
     }
 
     @IBAction func onProfileImagePressed(_ sender: Any) {
@@ -101,6 +115,7 @@ class LandingPageViewController: UIViewController {
     @IBAction func onLeaderboardPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let leaderboardVC = storyboard.instantiateViewController(withIdentifier: "LeaderboardViewController") as? LeaderboardViewController {
+            leaderboardVC.game = self.game
             self.present(leaderboardVC, animated: true, completion: nil)
             print("showing leaderboard")
         }

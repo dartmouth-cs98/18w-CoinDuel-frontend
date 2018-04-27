@@ -11,6 +11,7 @@ import UIKit
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var gameReturnLabel: UILabel!
     @IBOutlet weak var gameStatusLabel: UILabel!
@@ -29,6 +30,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let numberFormatter = NumberFormatter()
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
 
+    override func viewDidLayoutSubviews(){
+        self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+    }
     
     // Completion blocks from https://stackoverflow.com/questions/35357807/running-one-function-after-another-completes
     override func viewDidLoad() {
@@ -397,10 +401,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             print("showing coinDetail")
                         }
                     }
-                } else if (segID == "leaderboardSegue") {
-                    if let leaderboardVC = segue.destination as? LeaderboardViewController {
-                        leaderboardVC.game = self.game
-                    }
                 }
             }
         }
@@ -420,9 +420,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
-        self.dismiss(animated: true) {
-            print("leaving game VC")
-        }
+//        source for animation to dismiss: https://stackoverflow.com/questions/38799143/dismiss-view-controller-with-custom-animation
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            let transition: CATransition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            transition.type = kCATransitionReveal
+            transition.subtype = kCATransitionFromLeft
+            self.view.window!.layer.add(transition, forKey: nil)
+            self.dismiss(animated: false, completion: nil)
+        }, completion: nil)
     }
 
     @IBAction func submitButtonPress(_ sender: UIButton) {

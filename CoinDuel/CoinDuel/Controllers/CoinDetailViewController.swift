@@ -26,6 +26,7 @@ class CoinDetailViewController: UIViewController {
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
 
     @IBOutlet weak var activeChartButtons: UIStackView!
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
@@ -46,6 +47,11 @@ class CoinDetailViewController: UIViewController {
     var priceData : [Double] = []
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
+
+
+    override func viewDidLayoutSubviews(){
+        self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
