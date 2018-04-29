@@ -45,6 +45,8 @@ class LandingPageViewController: UIViewController {
 
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
+        print("profile")
+        print(profImage!)
 
         // Number format
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
