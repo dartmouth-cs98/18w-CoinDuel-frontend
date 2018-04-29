@@ -123,9 +123,12 @@ class LandingPageViewController: UIViewController {
             print("showing leaderboard")
         }
     }
-    @IBAction func enterGamePressed(_ sender: Any) {
-        
+    
+    @IBAction func unwindGameView(unwindSegue: UIStoryboardSegue) {
+        print("Unwind")
+        self.viewDidLoad()
     }
+
 
 }
 

@@ -120,7 +120,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="enterGamePressed:" destination="2va-lX-zsX" eventType="touchUpInside" id="lMe-lH-n0g"/>
                                     <segue destination="FKk-Hh-yoa" kind="show" id="GlX-ij-NE1"/>
                                 </connections>
                             </button>
@@ -390,9 +389,11 @@
                         <outlet property="nextGameLabel" destination="VV8-pq-nHY" id="O8f-vt-AkB"/>
                         <outlet property="profileButton" destination="XpZ-PS-Om2" id="xON-gg-wRo"/>
                         <outlet property="submitButton" destination="9Rn-65-6gk" id="HNT-BN-YBv"/>
+                        <segue destination="TDa-iF-9qf" kind="unwind" identifier="unwindSeguetoLandingView" unwindAction="unwindGameViewWithUnwindSegue:" id="bsO-od-imf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vO-3a-CbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TDa-iF-9qf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="317.60000000000002" y="-27.436281859070466"/>
         </scene>
