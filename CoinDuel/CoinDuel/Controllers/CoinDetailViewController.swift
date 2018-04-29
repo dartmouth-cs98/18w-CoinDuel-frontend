@@ -83,7 +83,7 @@ class CoinDetailViewController: UIViewController {
                     case .success(let value):
                         let innerJson = JSON(value)
                         let newsArray = innerJson["Data"].arrayValue
-                        self.coinName.text = json["name"].stringValue
+                        self.coinName.text = json["name"].stringValue + " News"
                         self.article1.text = newsArray[0]["title"].stringValue
                         self.article2.text = newsArray[1]["title"].stringValue
                         self.article3.text = newsArray[2]["title"].stringValue

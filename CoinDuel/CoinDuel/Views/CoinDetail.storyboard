@@ -84,7 +84,7 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIP-tQ-g9N" customClass="LineChartView" customModule="Charts">
                                         <rect key="frame" x="5" y="78" width="405.5" height="340"/>
-                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.22210570469798657" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="340" id="aJe-LS-VpR"/>
                                         </constraints>
@@ -212,6 +212,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4kc-mL-TMO" secondAttribute="bottom" constant="50" id="2wl-wf-Wdf"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="hTA-E8-wgV" secondAttribute="centerX" id="681-39-WVf"/>
@@ -237,6 +238,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="n9w-xQ-I1d" firstAttribute="leading" secondItem="Vsi-9D-uT6" secondAttribute="leading" id="1Qd-Pm-d3G"/>
                             <constraint firstItem="fdg-bv-Bbw" firstAttribute="leading" secondItem="tfH-1B-EXf" secondAttribute="leading" id="8gy-aa-Lxz"/>

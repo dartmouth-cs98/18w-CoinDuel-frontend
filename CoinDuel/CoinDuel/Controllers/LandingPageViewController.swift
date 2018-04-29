@@ -45,6 +45,8 @@ class LandingPageViewController: UIViewController {
 
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
+        print("profile")
+        print(profImage!)
 
         // Number format
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
@@ -67,25 +69,26 @@ class LandingPageViewController: UIViewController {
         self.game.getCurrentGame { (success) in
             if (success){
                 print("got game")
-                self.displayActiveGameMode()
 
                 //check if game is in progress or has finished
                 if (self.game.isActive && !self.game.hasFinished){
                     self.displayActiveGameMode()
                 } else if (self.game.hasFinished) {
                     self.displayActiveGameMode()
+                } else {
+                    self.displayUpcomingGameMode()
                 }
             }
         }
     }
 
     func displayActiveGameMode (){
-        self.nextGameLabel.text = "The current game is ending " + self.game.finishDate.description
+        self.nextGameLabel.text = "Game ending " + self.game.finishDate.description
         // show active game capcoin performance graph
     }
 
     func displayUpcomingGameMode() {
-        self.nextGameLabel.text = "The next game starts at " + self.game.startDate.description
+        self.nextGameLabel.text = "Game starting " + self.game.startDate.description
         //show alltime capcoin performance graph
     }
 
@@ -120,9 +123,12 @@ class LandingPageViewController: UIViewController {
             print("showing leaderboard")
         }
     }
-    @IBAction func enterGamePressed(_ sender: Any) {
-        
+    
+    @IBAction func unwindGameView(unwindSegue: UIStoryboardSegue) {
+        print("Unwind")
+        self.viewDidLoad()
     }
+
 
 }
 
