@@ -130,7 +130,7 @@
                                     <constraint firstAttribute="width" secondItem="Bd9-Ml-297" secondAttribute="height" multiplier="211:149" id="h7q-WK-80Q"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The next game starts at 7pm EST" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcp-ft-STZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcp-ft-STZ">
                                 <rect key="frame" x="20" y="122" width="327.5" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="397-OG-3sE"/>
