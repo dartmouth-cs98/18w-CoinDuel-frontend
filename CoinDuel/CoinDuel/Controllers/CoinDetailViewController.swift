@@ -224,6 +224,7 @@ class CoinDetailViewController: UIViewController {
         data.addDataSet(set1) //Adds the line to the dataSet
         //finally - it adds the chart data to the chart and causes an update
         chartView.data = data
+        chartView.legend.enabled = false
         // removes horizontal lines from chart
         let leftAxis:YAxis = chartView.leftAxis
         leftAxis.drawGridLinesEnabled = false
