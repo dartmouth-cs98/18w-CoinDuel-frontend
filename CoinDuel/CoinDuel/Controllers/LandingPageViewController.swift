@@ -34,6 +34,8 @@ class LandingPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.enterGameButton.isHidden = true
+
         self.profileBlockView.layer.masksToBounds = true
         self.profileBlockView.layer.cornerRadius = 10
         self.enterGameButton.layer.masksToBounds = true
@@ -78,17 +80,27 @@ class LandingPageViewController: UIViewController {
                 } else {
                     self.displayUpcomingGameMode()
                 }
+            } else {
+                // No games are scheduled
+                self.displayNoGameMode()
             }
         }
     }
 
     func displayActiveGameMode (){
         self.nextGameLabel.text = "Game ending " + self.game.finishDate.description
+        self.enterGameButton.isHidden = false
         // show active game capcoin performance graph
     }
 
     func displayUpcomingGameMode() {
         self.nextGameLabel.text = "Game starting " + self.game.startDate.description
+        self.enterGameButton.isHidden = false
+        //show alltime capcoin performance graph
+    }
+    
+    func displayNoGameMode() {
+        self.nextGameLabel.text = "No games are currently scheduled"
         //show alltime capcoin performance graph
     }
 
