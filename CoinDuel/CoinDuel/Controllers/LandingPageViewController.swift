@@ -95,10 +95,11 @@ class LandingPageViewController: UIViewController {
     @IBAction func onProfileImagePressed(_ sender: Any) {
         //call main storyboard once succesful sign in
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as UIViewController
-        self.present(vc, animated: true, completion: nil)
 
-
+        if let ProfileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+            ProfileVC.user = user
+            self.present(ProfileVC, animated: true, completion: nil)
+        }
 //        let defaults = UserDefaults.standard
 //        let dictionary = defaults.dictionaryRepresentation()
 //        dictionary.keys.forEach { key in

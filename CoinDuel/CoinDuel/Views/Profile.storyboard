@@ -43,8 +43,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhK-HW-BPR">
-                                <rect key="frame" x="266" y="30" width="74" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="285" y="30" width="74" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -57,13 +57,13 @@
                         <constraints>
                             <constraint firstItem="2wR-4b-nUk" firstAttribute="bottom" secondItem="Esy-KF-5Xh" secondAttribute="bottom" id="EAT-jQ-Vbj"/>
                             <constraint firstItem="CmI-Qh-6Pm" firstAttribute="top" secondItem="Esy-KF-5Xh" secondAttribute="top" constant="10" id="NoO-yl-s2S"/>
-                            <constraint firstItem="KhK-HW-BPR" firstAttribute="leading" secondItem="jEs-zs-wDz" secondAttribute="trailing" constant="16" id="OAI-gp-YUh"/>
+                            <constraint firstItem="KhK-HW-BPR" firstAttribute="leading" secondItem="jEs-zs-wDz" secondAttribute="trailing" constant="35" id="OAI-gp-YUh"/>
                             <constraint firstItem="2wR-4b-nUk" firstAttribute="top" secondItem="vNI-0W-FVm" secondAttribute="top" id="Ot2-AC-ZfS"/>
                             <constraint firstItem="2wR-4b-nUk" firstAttribute="trailing" secondItem="Esy-KF-5Xh" secondAttribute="trailing" id="ZEZ-If-bDZ"/>
                             <constraint firstItem="jEs-zs-wDz" firstAttribute="top" secondItem="Esy-KF-5Xh" secondAttribute="top" constant="3" id="Zs5-XA-cSM"/>
                             <constraint firstItem="jEs-zs-wDz" firstAttribute="centerX" secondItem="2wR-4b-nUk" secondAttribute="centerX" id="cWJ-07-cyy"/>
                             <constraint firstItem="KhK-HW-BPR" firstAttribute="bottom" secondItem="CmI-Qh-6Pm" secondAttribute="bottom" id="fiq-J3-klS"/>
-                            <constraint firstItem="Esy-KF-5Xh" firstAttribute="trailing" secondItem="KhK-HW-BPR" secondAttribute="trailing" constant="35" id="iQ5-gS-2PP"/>
+                            <constraint firstItem="Esy-KF-5Xh" firstAttribute="trailing" secondItem="KhK-HW-BPR" secondAttribute="trailing" constant="16" id="iQ5-gS-2PP"/>
                             <constraint firstItem="jEs-zs-wDz" firstAttribute="leading" secondItem="CmI-Qh-6Pm" secondAttribute="trailing" constant="75" id="m9N-y8-X2C"/>
                             <constraint firstItem="2wR-4b-nUk" firstAttribute="leading" secondItem="Esy-KF-5Xh" secondAttribute="leading" id="nXG-rB-vUP"/>
                             <constraint firstItem="KhK-HW-BPR" firstAttribute="top" secondItem="CmI-Qh-6Pm" secondAttribute="top" id="rtV-ua-8w7"/>
