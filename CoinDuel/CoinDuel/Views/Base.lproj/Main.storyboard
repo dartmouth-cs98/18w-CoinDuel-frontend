@@ -405,6 +405,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oi7-Ah-eu6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vz-ip-5LW">
                                 <rect key="frame" x="20" y="30" width="30" height="30"/>
                                 <constraints>
@@ -583,7 +586,7 @@
                                 <rect key="frame" x="177" y="324" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.22063425189999999" green="0.55939980830000002" blue="0.7871473605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.47058823529999999" blue="0.74901960779999999" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sEn-Nv-VbL" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="top" constant="30" id="12w-em-33n"/>
                             <constraint firstItem="XFT-NL-vh0" firstAttribute="trailing" secondItem="Kwd-75-WdK" secondAttribute="trailing" id="1iY-hg-v8Q"/>
@@ -607,19 +610,24 @@
                             <constraint firstItem="Uud-Af-qRi" firstAttribute="top" secondItem="BPm-Qz-A6J" secondAttribute="bottom" constant="5" id="Zg9-7m-BbI"/>
                             <constraint firstItem="8vz-ip-5LW" firstAttribute="top" secondItem="bEC-1n-FFo" secondAttribute="top" constant="30" id="c4w-Ew-dpz"/>
                             <constraint firstItem="fkK-4N-zeC" firstAttribute="centerX" secondItem="BPm-Qz-A6J" secondAttribute="leading" constant="5" id="czv-mM-u19"/>
+                            <constraint firstItem="oi7-Ah-eu6" firstAttribute="top" secondItem="bEC-1n-FFo" secondAttribute="top" id="dmU-qw-hni"/>
                             <constraint firstItem="zV3-pp-8PO" firstAttribute="top" secondItem="HGF-1q-tCH" secondAttribute="bottom" constant="25" id="iXq-Ff-KRp"/>
                             <constraint firstItem="HGF-1q-tCH" firstAttribute="leading" secondItem="bEC-1n-FFo" secondAttribute="centerX" constant="10" id="m1k-6v-F5Q"/>
                             <constraint firstItem="pl9-hq-uC8" firstAttribute="centerX" secondItem="sEn-Nv-VbL" secondAttribute="leading" constant="5" id="mJh-Ti-Mm8"/>
                             <constraint firstItem="jNR-zT-mzo" firstAttribute="centerX" secondItem="zV3-pp-8PO" secondAttribute="leading" constant="5" id="mml-Jf-9Dp"/>
                             <constraint firstItem="zV3-pp-8PO" firstAttribute="centerX" secondItem="bEC-1n-FFo" secondAttribute="centerX" id="nwh-Eb-ma6"/>
                             <constraint firstItem="LeA-qF-opa" firstAttribute="top" secondItem="sEn-Nv-VbL" secondAttribute="bottom" constant="5" id="q7x-hr-Hw5"/>
+                            <constraint firstItem="oi7-Ah-eu6" firstAttribute="trailing" secondItem="XFT-NL-vh0" secondAttribute="trailing" id="sFK-if-3j8"/>
                             <constraint firstItem="jNR-zT-mzo" firstAttribute="top" secondItem="zV3-pp-8PO" secondAttribute="top" constant="-5" id="sQh-2j-93A"/>
+                            <constraint firstItem="oi7-Ah-eu6" firstAttribute="bottom" secondItem="XFT-NL-vh0" secondAttribute="bottom" id="t5t-8P-2IZ"/>
                             <constraint firstItem="Uud-Af-qRi" firstAttribute="centerX" secondItem="BPm-Qz-A6J" secondAttribute="centerX" id="tNh-pN-kH7"/>
+                            <constraint firstItem="oi7-Ah-eu6" firstAttribute="leading" secondItem="XFT-NL-vh0" secondAttribute="leading" id="tpf-fI-noe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XFT-NL-vh0"/>
                     </view>
                     <connections>
                         <outlet property="allTimeButton" destination="HGF-1q-tCH" id="J69-Zf-U7s"/>
+                        <outlet property="backgroundImageView" destination="oi7-Ah-eu6" id="sIA-If-jKa"/>
                         <outlet property="currentButton" destination="qFR-Ap-aNq" id="pxT-2Z-hG1"/>
                         <outlet property="firstNumberLabel" destination="jNR-zT-mzo" id="Roy-MK-gxj"/>
                         <outlet property="firstPlaceImage" destination="zV3-pp-8PO" id="OGG-UC-vND"/>
