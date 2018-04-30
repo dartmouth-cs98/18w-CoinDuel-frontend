@@ -60,13 +60,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func startup() {
         // Retrieve user balance
-        print(self.user.coinBalance)
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
-                print(self.user.coinBalance)
-//                DispatchQueue.main.async() {
-//                    self.profileButton.setTitle(self.numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC", for: UIControlState .normal)
-//                }
                 // Retrieve gameId (if we already have it)
                 let storedGameId = UserDefaults.standard.string(forKey: "gameId")
                 
@@ -239,18 +234,29 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // When there are no active games, display this
     func displayNoGameMode() {
-        nextGameLabel.text = "No Games Scheduled"
-        gameTimeLabel.text = "Check back soon!"
+//        nextGameLabel.text = "No Games Scheduled"
+//        gameTimeLabel.text = "Check back soon!"
+//
+//        nextGameLabel.isHidden = false
+//        gameTimeLabel.isHidden = false
+//        gameStatusLabel.isHidden = true
+//        gameReturnLabel.isHidden = true
+//        submitButton.isHidden = true
+//
+//        DispatchQueue.main.async() {
+//            self.gameTableView.reloadData()
+//        }
+        // from: https://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
+        // Segue: https://medium.com/@mimicatcodes/create-unwind-segues-in-swift-3-8793f7d23c6f
+        // https://stackoverflow.com/questions/32535495/how-to-call-a-function-when-ok-is-pressed-in-an-uialert
         
-        nextGameLabel.isHidden = false
-        gameTimeLabel.isHidden = false
-        gameStatusLabel.isHidden = true
-        gameReturnLabel.isHidden = true
-        submitButton.isHidden = true
+        let alert = UIAlertController(title: "No Games Scheduled", message: "Please check back later for more games.", preferredStyle: UIAlertControllerStyle.alert)
         
-        DispatchQueue.main.async() {
-            self.gameTableView.reloadData()
-        }
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.performSegue(withIdentifier: "unwindSeguetoLandingView", sender: self)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func updateGameModeLabels() {
@@ -268,24 +274,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func refreshPriceData(_ sender:Any) {
-//        if self.isGameDisplayMode && self.game.isActive {
-//            self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
-//                if coinSuccess {
-//                    // Show price page with returns
-//                    DispatchQueue.main.async() {
-//                        self.updateGameModeLabels()
-//                        self.gameTableView.reloadData()
-//                        self.refreshControl.endRefreshing()
-//                        self.loadingActivityIndicatorView.stopAnimating()
-//                    }
-//                } else {
-//                    self.networkError("Unable to update coin prices")
-//                }
-//            }
-//        } else {
-//            self.refreshControl.endRefreshing()
-//            self.loadingActivityIndicatorView.stopAnimating()
-//        }
         self.startup()
     }
 
