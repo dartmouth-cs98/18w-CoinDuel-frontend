@@ -7,8 +7,19 @@
 //
 
 import UIKit
+import FacebookLogin
+import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
+
+    @IBOutlet weak var backgroundImageView: UIImageView!
+
+    let user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0)
+    
+
+    override func viewDidLayoutSubviews(){
+        self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +27,27 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func onLogOutPressed(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+        self.present(gameVC, animated: true, completion: nil)
+
+        // From https://stackoverflow.com/questions/29374235/facebook-sdk-4-0-ios-swift-log-a-user-out-programmatically
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut() // this is an instance function
+
+    }
+    @IBAction func onXPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            print("byebye")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
