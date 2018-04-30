@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oMB-kl-xpk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ProfileViewController-->
+        <scene sceneID="TmE-lU-VRh">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" title="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oMB-kl-xpk" customClass="ProfileViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vNI-0W-FVm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2wR-4b-nUk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmI-Qh-6Pm">
+                                <rect key="frame" x="20" y="30" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CmI-Qh-6Pm" secondAttribute="height" multiplier="1:1" id="ZkT-oN-oWk"/>
+                                    <constraint firstAttribute="width" constant="30" id="dX2-tT-R5I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onXPressed:" destination="oMB-kl-xpk" eventType="touchUpInside" id="VlY-g1-Jfx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEs-zs-wDz">
+                                <rect key="frame" x="125" y="23" width="125" height="45"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhK-HW-BPR">
+                                <rect key="frame" x="285" y="30" width="74" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogOutPressed:" destination="oMB-kl-xpk" eventType="touchUpInside" id="f8E-Fs-cai"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2wR-4b-nUk" firstAttribute="bottom" secondItem="Esy-KF-5Xh" secondAttribute="bottom" id="EAT-jQ-Vbj"/>
+                            <constraint firstItem="CmI-Qh-6Pm" firstAttribute="top" secondItem="Esy-KF-5Xh" secondAttribute="top" constant="10" id="NoO-yl-s2S"/>
+                            <constraint firstItem="KhK-HW-BPR" firstAttribute="leading" secondItem="jEs-zs-wDz" secondAttribute="trailing" constant="35" id="OAI-gp-YUh"/>
+                            <constraint firstItem="2wR-4b-nUk" firstAttribute="top" secondItem="vNI-0W-FVm" secondAttribute="top" id="Ot2-AC-ZfS"/>
+                            <constraint firstItem="2wR-4b-nUk" firstAttribute="trailing" secondItem="Esy-KF-5Xh" secondAttribute="trailing" id="ZEZ-If-bDZ"/>
+                            <constraint firstItem="jEs-zs-wDz" firstAttribute="top" secondItem="Esy-KF-5Xh" secondAttribute="top" constant="3" id="Zs5-XA-cSM"/>
+                            <constraint firstItem="jEs-zs-wDz" firstAttribute="centerX" secondItem="2wR-4b-nUk" secondAttribute="centerX" id="cWJ-07-cyy"/>
+                            <constraint firstItem="KhK-HW-BPR" firstAttribute="bottom" secondItem="CmI-Qh-6Pm" secondAttribute="bottom" id="fiq-J3-klS"/>
+                            <constraint firstItem="Esy-KF-5Xh" firstAttribute="trailing" secondItem="KhK-HW-BPR" secondAttribute="trailing" constant="16" id="iQ5-gS-2PP"/>
+                            <constraint firstItem="jEs-zs-wDz" firstAttribute="leading" secondItem="CmI-Qh-6Pm" secondAttribute="trailing" constant="75" id="m9N-y8-X2C"/>
+                            <constraint firstItem="2wR-4b-nUk" firstAttribute="leading" secondItem="Esy-KF-5Xh" secondAttribute="leading" id="nXG-rB-vUP"/>
+                            <constraint firstItem="KhK-HW-BPR" firstAttribute="top" secondItem="CmI-Qh-6Pm" secondAttribute="top" id="rtV-ua-8w7"/>
+                            <constraint firstItem="CmI-Qh-6Pm" firstAttribute="leading" secondItem="Esy-KF-5Xh" secondAttribute="leading" constant="20" id="vXn-KU-jd8"/>
+                            <constraint firstItem="jEs-zs-wDz" firstAttribute="centerY" secondItem="KhK-HW-BPR" secondAttribute="centerY" id="y2S-0p-gNR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Esy-KF-5Xh"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="2wR-4b-nUk" id="Hn0-nf-Lze"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SM5-jS-bG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370.39999999999998" y="-116.49175412293854"/>
+        </scene>
+    </scenes>
+</document>
