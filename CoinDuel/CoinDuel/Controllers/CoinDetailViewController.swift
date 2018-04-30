@@ -224,7 +224,9 @@ class CoinDetailViewController: UIViewController {
         data.addDataSet(set1) //Adds the line to the dataSet
         //finally - it adds the chart data to the chart and causes an update
         chartView.data = data
-
+        // removes horizontal lines from chart
+        let leftAxis:YAxis = chartView.leftAxis
+        leftAxis.drawGridLinesEnabled = false
 
         //        round the Double https://stackoverflow.com/questions/27338573/rounding-a-double-value-to-x-number-of-decimal-places-in-swift
         let x = ((currentCoinPrice - tempInitialPrice)/tempInitialPrice) * 100
