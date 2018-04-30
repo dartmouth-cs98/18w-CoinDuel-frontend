@@ -58,7 +58,12 @@ class CoinDetailViewController: UIViewController {
         self.coinPercentChangeLabel.text = ""
         self.nameHeaderLabel.text = coinSymbolLabel
         self.coinPriceLabel.text = "$" + currentCoinPrice.description
-        self.capCoinAllocationLabel.text = allocation + " CC"
+
+        if self.allocation != "0.0" {
+            self.capCoinAllocationLabel.text = allocation + " CC"
+        } else {
+            self.capCoinAllocationLabel.text = ""
+        }
 
 //        toggle buttons if game is active or not
         if(self.game.isActive){
