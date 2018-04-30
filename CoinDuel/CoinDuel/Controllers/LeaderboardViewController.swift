@@ -103,8 +103,13 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         cell.placeLabel.text = String(indexPath.row + 1)
-        cell.nameLabel.text = user.username
         cell.scoreLabel.text = numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC"
+        cell.nameLabel.text = user.username
+        
+        // don't display cells with empty names
+        if (cell.nameLabel.text == "") {
+            cell.isHidden = true
+        }
     
         if user.username == UserDefaults.standard.string(forKey:"username") {
             cell.placeLabel.textColor = UIColor.red
@@ -185,6 +190,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     users = self.leaderboard.currentUsers
                     if (!self.game.isActive){
                         users = [User]()
+                        self.currentButton.isEnabled = false
                     }
                 } else {
                     users = self.leaderboard.allTimeUsers
