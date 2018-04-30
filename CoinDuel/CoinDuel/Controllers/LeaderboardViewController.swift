@@ -26,11 +26,16 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var secondPlaceLabel: UILabel!
     @IBOutlet weak var thirdPlaceLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     var leaderboard: Leaderboard = Leaderboard()
     var numberFormatter: NumberFormatter = NumberFormatter()
     let refreshControl = UIRefreshControl()
     var isCurrent = false
     var game: Game = Game()
+    
+    override func viewDidLayoutSubviews(){
+        self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
