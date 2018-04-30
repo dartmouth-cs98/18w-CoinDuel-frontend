@@ -57,7 +57,6 @@ class Game {
     // Makes request and parses JSON
     // Followed tutorial from https://github.com/SwiftyJSON/SwiftyJSON for all Alamofire requests
     func getCurrentGame(completion: @escaping (_ success: Bool) -> Void) {
-        self.coins = [Coin]()
         let url = Constants.API + "game/"
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
@@ -85,6 +84,8 @@ class Game {
                     self.startDate = dateFormatter.string(from: startDate)
                     self.finishDate = dateFormatter.string(from: finishDate)
                     
+                    self.coins = [Coin]()
+
                     // Get all coins (retrieving only the name for now)
                     for coin in json[0]["coins"] {
                         
