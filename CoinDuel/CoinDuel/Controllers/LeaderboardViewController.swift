@@ -29,13 +29,12 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     var leaderboard: Leaderboard = Leaderboard()
     var numberFormatter: NumberFormatter = NumberFormatter()
     let refreshControl = UIRefreshControl()
-    var isCurrent = true
+    var isCurrent = false
     var game: Game = Game()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
             self.leaderboardTable.refreshControl = refreshControl
@@ -60,18 +59,30 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         
         allTimeButton.layer.masksToBounds = true
         allTimeButton.layer.cornerRadius = 10
+        allTimeButton.layer.borderWidth = 0.0;
+        allTimeButton.layer.borderColor = (UIColor.white).cgColor;
+        allTimeButton.backgroundColor = Constants.greenColor
+        
         currentButton.layer.masksToBounds = true
         currentButton.layer.cornerRadius = 10
-        
-        allTimeButton.layer.borderWidth = 2.0;
-        allTimeButton.layer.borderColor = (UIColor.white).cgColor;
+        currentButton.layer.borderWidth = 2.0;
         currentButton.layer.borderColor = (UIColor.white).cgColor;
+        currentButton.backgroundColor = Constants.lightBlueColor
         
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
         
-        self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
+        // start in all time leaderboard
+        self.isCurrent = false
+        
+        // disable current game button if game is not active
+        if (!self.game.isActive) {
+            self.currentButton.isEnabled = false
+            self.currentButton.alpha = 0.35
+        }
+        
+        self.leaderboard.getAllTimeLeaderboard() { (success) -> Void in
             self.getLeaderBoardHelper(success: success)
         }
     }
@@ -105,11 +116,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         cell.placeLabel.text = String(indexPath.row + 1)
         cell.scoreLabel.text = numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC"
         cell.nameLabel.text = user.username
-        
-        // don't display cells with empty names
-        if (cell.nameLabel.text == "") {
-            cell.isHidden = true
-        }
     
         if user.username == UserDefaults.standard.string(forKey:"username") {
             cell.placeLabel.textColor = UIColor.red
@@ -190,7 +196,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     users = self.leaderboard.currentUsers
                     if (!self.game.isActive){
                         users = [User]()
-                        self.currentButton.isEnabled = false
                     }
                 } else {
                     users = self.leaderboard.allTimeUsers
