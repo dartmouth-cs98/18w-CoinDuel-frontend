@@ -29,6 +29,8 @@
 		A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F1E08204376640070D305 /* CoinDetailViewController.swift */; };
 		A06F1E0B2043C6B10070D305 /* CoinDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */; };
 		A07604A62087F0E7003BE65C /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07604A52087F0E7003BE65C /* LandingPageViewController.swift */; };
+		A0B35E372097AA4000EBA236 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B35E362097AA4000EBA236 /* Profile.storyboard */; };
+		A0B35E3B2097ABC900EBA236 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B35E3A2097ABC900EBA236 /* ProfileViewController.swift */; };
 		A0B615CB2039FC9C00F9EF00 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */; };
 		A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */; };
 		A0BCF926207BFBA3005664A3 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BCF925207BFBA3005664A3 /* NotificationService.swift */; };
@@ -116,6 +118,8 @@
 		A06F1E08204376640070D305 /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
 		A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoinDetail.storyboard; sourceTree = "<group>"; };
 		A07604A52087F0E7003BE65C /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
+		A0B35E362097AA4000EBA236 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		A0B35E3A2097ABC900EBA236 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A0B615CA2039FC9C00F9EF00 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A0B615CC2039FCA600F9EF00 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A0BCF923207BFBA3005664A3 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +257,7 @@
 			children = (
 				F824B1B120363D95008D1F14 /* Login.storyboard */,
 				1EB504C6201A7B8700BB76AA /* Main.storyboard */,
+				A0B35E362097AA4000EBA236 /* Profile.storyboard */,
 				A0FBDD5C208E81BE00EA9336 /* Results.storyboard */,
 				1EB504CB201A7B8700BB76AA /* LaunchScreen.storyboard */,
 				A06F1E0A2043C6B10070D305 /* CoinDetail.storyboard */,
@@ -275,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				F813428E209261DD0031AC42 /* AuthViewController.swift */,
+				A0B35E3A2097ABC900EBA236 /* ProfileViewController.swift */,
 				F824B1B320363F88008D1F14 /* LoginViewController.swift */,
 				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
 				A04F235C2092B2D00067E159 /* TradesViewController.swift */,
@@ -461,6 +467,7 @@
 				1EB504C8201A7B8700BB76AA /* Main.storyboard in Resources */,
 				A0FBDD5D208E81BE00EA9336 /* Results.storyboard in Resources */,
 				F824B1B220363D95008D1F14 /* Login.storyboard in Resources */,
+				A0B35E372097AA4000EBA236 /* Profile.storyboard in Resources */,
 				A06F1E0B2043C6B10070D305 /* CoinDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +592,7 @@
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,
 				F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */,
+				A0B35E3B2097ABC900EBA236 /* ProfileViewController.swift in Sources */,
 				A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */,
 				F8D17BDB2080639700A3AC2C /* gifbackground.swift in Sources */,
 				504A1B89203B798E004819F1 /* Leaderboard.swift in Sources */,
