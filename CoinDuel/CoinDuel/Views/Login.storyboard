@@ -483,10 +483,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-61-VeY">
-                                <rect key="frame" x="75" y="448" width="218" height="43"/>
+                                <rect key="frame" x="82" y="425" width="211" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="DyP-X0-SZd"/>
+                                    <constraint firstAttribute="height" constant="42" id="DyP-X0-SZd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign In">
@@ -497,7 +497,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V30-gp-o4F">
-                                <rect key="frame" x="75" y="505" width="218" height="42"/>
+                                <rect key="frame" x="82" y="479" width="211" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="bDD-lq-Xsj"/>
@@ -518,12 +518,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNV-30-TLD">
-                                <rect key="frame" x="75" y="561" width="218" height="42"/>
+                                <rect key="frame" x="82" y="533" width="211" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="L3W-gi-142"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="M3e-eF-xI9"/>
-                                    <constraint firstAttribute="width" constant="218" id="vBf-Uk-yho"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Use Facebook">
@@ -536,21 +534,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PNV-30-TLD" firstAttribute="leading" secondItem="V30-gp-o4F" secondAttribute="leading" id="1iO-na-Abw"/>
-                            <constraint firstItem="Ggd-61-VeY" firstAttribute="leading" secondItem="yJx-dy-ief" secondAttribute="leading" constant="75" id="3sh-Bl-HEC"/>
+                            <constraint firstItem="Ggd-61-VeY" firstAttribute="leading" secondItem="cCR-h9-z1Y" secondAttribute="leading" id="022-5f-vpI"/>
+                            <constraint firstItem="PNV-30-TLD" firstAttribute="top" secondItem="V30-gp-o4F" secondAttribute="bottom" constant="12" id="2wf-z8-06l"/>
+                            <constraint firstItem="V30-gp-o4F" firstAttribute="top" secondItem="Ggd-61-VeY" secondAttribute="bottom" constant="12" id="4AX-fg-M0r"/>
                             <constraint firstItem="VoZ-iN-Zg5" firstAttribute="top" secondItem="yxG-Fo-cTw" secondAttribute="top" id="8KY-aG-Id8"/>
+                            <constraint firstAttribute="bottom" secondItem="Ggd-61-VeY" secondAttribute="bottom" constant="200" id="90L-jz-fMK"/>
+                            <constraint firstItem="cCR-h9-z1Y" firstAttribute="trailing" secondItem="Ggd-61-VeY" secondAttribute="trailing" id="9CE-x0-D58"/>
+                            <constraint firstItem="cCR-h9-z1Y" firstAttribute="trailing" secondItem="PNV-30-TLD" secondAttribute="trailing" id="AcD-Yh-Aco"/>
                             <constraint firstItem="VoZ-iN-Zg5" firstAttribute="trailing" secondItem="yJx-dy-ief" secondAttribute="trailing" id="BZI-7e-Hbd"/>
-                            <constraint firstItem="yJx-dy-ief" firstAttribute="bottom" secondItem="V30-gp-o4F" secondAttribute="bottom" constant="120" id="Lli-Z1-H8C"/>
-                            <constraint firstItem="PNV-30-TLD" firstAttribute="top" secondItem="V30-gp-o4F" secondAttribute="bottom" constant="14" id="NZA-e3-8N6"/>
+                            <constraint firstItem="cCR-h9-z1Y" firstAttribute="trailing" secondItem="V30-gp-o4F" secondAttribute="trailing" id="QDE-cM-t86"/>
                             <constraint firstItem="VoZ-iN-Zg5" firstAttribute="bottom" secondItem="yJx-dy-ief" secondAttribute="bottom" id="Z67-qj-7ck"/>
-                            <constraint firstItem="Ggd-61-VeY" firstAttribute="leading" secondItem="V30-gp-o4F" secondAttribute="leading" id="aF1-23-fGU"/>
                             <constraint firstItem="cCR-h9-z1Y" firstAttribute="top" secondItem="yJx-dy-ief" secondAttribute="top" constant="94" id="cZa-3F-qBi"/>
                             <constraint firstItem="cCR-h9-z1Y" firstAttribute="leading" secondItem="yJx-dy-ief" secondAttribute="leading" constant="82" id="ddB-oy-dfj"/>
-                            <constraint firstItem="Ggd-61-VeY" firstAttribute="trailing" secondItem="V30-gp-o4F" secondAttribute="trailing" id="iBP-E4-GO0"/>
+                            <constraint firstItem="cCR-h9-z1Y" firstAttribute="leading" secondItem="PNV-30-TLD" secondAttribute="leading" id="kWt-yA-Kpt"/>
+                            <constraint firstItem="V30-gp-o4F" firstAttribute="leading" secondItem="cCR-h9-z1Y" secondAttribute="leading" id="mPn-Kc-iBx"/>
                             <constraint firstItem="VoZ-iN-Zg5" firstAttribute="leading" secondItem="yJx-dy-ief" secondAttribute="leading" id="ryV-pv-Oqu"/>
-                            <constraint firstItem="cCR-h9-z1Y" firstAttribute="trailing" secondItem="Ggd-61-VeY" secondAttribute="trailing" id="s9C-k1-Yn4"/>
                             <constraint firstItem="cCR-h9-z1Y" firstAttribute="centerX" secondItem="VoZ-iN-Zg5" secondAttribute="centerX" id="tyy-66-G8d"/>
-                            <constraint firstItem="V30-gp-o4F" firstAttribute="top" secondItem="Ggd-61-VeY" secondAttribute="bottom" constant="14" id="uot-Hf-wdf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yJx-dy-ief"/>
                     </view>
