@@ -24,7 +24,7 @@ class SignInViewController: UIViewController {
     var validated = false
     
     // custom grey
-    var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.8)
+    var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.6)
 
     override func viewDidLoad() {
         print("cook")
