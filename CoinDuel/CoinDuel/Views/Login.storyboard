@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -191,9 +191,6 @@
                                 <color key="textColor" red="0.87401439790000002" green="0.59076066530000004" blue="0.038684402460000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ys9-BC-sd9">
-                                <rect key="frame" x="177" y="323.5" width="20" height="20"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QW3-ul-Jet">
                                 <rect key="frame" x="75" y="524" width="225" height="40"/>
                                 <color key="backgroundColor" red="0.24313725490196078" green="0.60784313725490191" blue="0.85490196078431369" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -382,6 +379,9 @@
                                     <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="RrX-yt-mxB"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ys9-BC-sd9">
+                                <rect key="frame" x="177" y="534" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -408,11 +408,10 @@
                             <constraint firstItem="M7j-Rp-pW1" firstAttribute="bottom" secondItem="oF9-t7-c3e" secondAttribute="bottom" constant="20" id="Sfu-mP-XSk"/>
                             <constraint firstItem="tzw-ee-Dkh" firstAttribute="leading" secondItem="ig5-W1-ceX" secondAttribute="trailing" id="TFq-Jv-EA5"/>
                             <constraint firstItem="2aH-LO-0pM" firstAttribute="top" secondItem="yuj-ad-Pe5" secondAttribute="bottom" id="TnY-PL-le8"/>
+                            <constraint firstItem="ys9-BC-sd9" firstAttribute="centerY" secondItem="QW3-ul-Jet" secondAttribute="centerY" id="U0r-xh-hwb"/>
                             <constraint firstItem="QTF-bn-yV0" firstAttribute="leading" secondItem="02t-Up-CtX" secondAttribute="trailing" id="UQQ-y2-fJE"/>
-                            <constraint firstItem="ys9-BC-sd9" firstAttribute="centerY" secondItem="8Zc-30-mfz" secondAttribute="centerY" id="Ul4-IY-U1s"/>
                             <constraint firstItem="zEt-oM-ODp" firstAttribute="top" secondItem="8Zc-30-mfz" secondAttribute="top" constant="70" id="Upr-n8-U9t"/>
                             <constraint firstItem="iNa-lI-NQH" firstAttribute="centerY" secondItem="02t-Up-CtX" secondAttribute="centerY" id="Uuc-XT-ITe"/>
-                            <constraint firstItem="ys9-BC-sd9" firstAttribute="centerX" secondItem="WVL-H6-X5W" secondAttribute="centerX" id="YfS-hX-56i"/>
                             <constraint firstItem="rt4-qo-I3l" firstAttribute="leading" secondItem="iNa-lI-NQH" secondAttribute="trailing" id="aDl-LR-ipd"/>
                             <constraint firstItem="5L7-nY-NMo" firstAttribute="top" secondItem="QTF-bn-yV0" secondAttribute="bottom" id="b36-MJ-Ra7"/>
                             <constraint firstItem="yuj-ad-Pe5" firstAttribute="centerX" secondItem="8Zc-30-mfz" secondAttribute="centerX" id="d5b-ul-hoA"/>
@@ -420,6 +419,7 @@
                             <constraint firstItem="v1Y-CU-tM3" firstAttribute="top" secondItem="6Af-MV-ju1" secondAttribute="bottom" constant="2" id="g25-KA-d3O"/>
                             <constraint firstItem="L6c-Lj-H3X" firstAttribute="top" secondItem="iNa-lI-NQH" secondAttribute="bottom" id="h1I-1Y-xdU"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="top" secondItem="zEt-oM-ODp" secondAttribute="bottom" constant="20" id="h9N-FD-alq"/>
+                            <constraint firstItem="ys9-BC-sd9" firstAttribute="centerX" secondItem="QW3-ul-Jet" secondAttribute="centerX" id="jev-j8-Ikt"/>
                             <constraint firstItem="b1A-NQ-cjs" firstAttribute="leading" secondItem="q4F-N4-7HN" secondAttribute="leading" id="kTj-K7-gXb"/>
                             <constraint firstItem="L6c-Lj-H3X" firstAttribute="leading" secondItem="2aH-LO-0pM" secondAttribute="trailing" id="lBp-dt-DVn"/>
                             <constraint firstItem="ig5-W1-ceX" firstAttribute="leading" secondItem="L6c-Lj-H3X" secondAttribute="trailing" id="nuK-3p-3Ns"/>
@@ -460,6 +460,7 @@
                         <outlet property="profile9" destination="ig5-W1-ceX" id="HrS-Jy-76J"/>
                         <outlet property="signupButton" destination="QW3-ul-Jet" id="vgU-Ar-Fub"/>
                         <outlet property="username" destination="b1A-NQ-cjs" id="CsP-Wn-Ar5"/>
+                        <segue destination="x3h-7b-ihK" kind="show" identifier="fromSignupToSignin" id="NXd-ck-skK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="87f-bA-9cJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1274,5 +1275,6 @@
         <segue reference="ItM-AD-zS1"/>
         <segue reference="RrX-yt-mxB"/>
         <segue reference="mkH-uc-JAS"/>
+        <segue reference="NXd-ck-skK"/>
     </inferredMetricsTieBreakers>
 </document>
