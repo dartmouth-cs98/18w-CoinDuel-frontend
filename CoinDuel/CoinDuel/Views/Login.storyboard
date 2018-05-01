@@ -59,8 +59,8 @@
                                     <action selector="onLoginPressed:" destination="x3h-7b-ihK" eventType="touchUpInside" id="D3Z-Bk-iSn"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incorrect username/password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptd-q9-f0L">
-                                <rect key="frame" x="116" y="286" width="144" height="12"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="all fields required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptd-q9-f0L">
+                                <rect key="frame" x="145.5" y="286" width="84" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.87401439794873093" green="0.59076066531690119" blue="0.038684402464350551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,6 +87,9 @@
                                     <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="XeG-tn-Gsn"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yAs-6a-2tY">
+                                <rect key="frame" x="177" y="310" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -103,13 +106,16 @@
                             <constraint firstItem="3OL-nj-p7q" firstAttribute="top" secondItem="8pv-Dd-nT3" secondAttribute="top" id="iTV-tY-xIz"/>
                             <constraint firstItem="ptd-q9-f0L" firstAttribute="top" secondItem="EjS-wj-C7s" secondAttribute="bottom" constant="2" id="iai-s7-x6C"/>
                             <constraint firstItem="0ca-p2-SYk" firstAttribute="centerX" secondItem="8pv-Dd-nT3" secondAttribute="centerX" id="jYW-rF-otp"/>
+                            <constraint firstItem="yAs-6a-2tY" firstAttribute="centerX" secondItem="0ca-p2-SYk" secondAttribute="centerX" id="lEH-6A-dmz"/>
                             <constraint firstItem="EjS-wj-C7s" firstAttribute="centerX" secondItem="8pv-Dd-nT3" secondAttribute="centerX" id="ppY-FU-Gt4"/>
                             <constraint firstItem="UPN-s4-fw7" firstAttribute="leading" secondItem="Zom-oC-h91" secondAttribute="leading" constant="20" id="pq4-BC-e6B"/>
                             <constraint firstItem="krH-z4-7Jw" firstAttribute="centerX" secondItem="8pv-Dd-nT3" secondAttribute="centerX" id="rC3-WB-7v2"/>
+                            <constraint firstItem="yAs-6a-2tY" firstAttribute="centerY" secondItem="0ca-p2-SYk" secondAttribute="centerY" id="zah-GW-fQz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zom-oC-h91"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="yAs-6a-2tY" id="sJK-u2-KLv"/>
                         <outlet property="failedLogin" destination="ptd-q9-f0L" id="6VH-PM-gUy"/>
                         <outlet property="imageView" destination="3OL-nj-p7q" id="Tjx-Qu-gXe"/>
                         <outlet property="loginButton" destination="0ca-p2-SYk" id="KOr-6G-6zJ"/>
@@ -1273,7 +1279,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ItM-AD-zS1"/>
-        <segue reference="RrX-yt-mxB"/>
+        <segue reference="XeG-tn-Gsn"/>
         <segue reference="mkH-uc-JAS"/>
         <segue reference="NXd-ck-skK"/>
     </inferredMetricsTieBreakers>

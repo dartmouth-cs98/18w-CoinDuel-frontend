@@ -127,6 +127,10 @@ class SignUpViewController: UIViewController {
         self.noUsernameLabel.isHidden = true
         self.noEmailLabel.isHidden = true
         
+        // reset dynamic messages
+        self.noPasswordLabel.text = "enter and confirm a password"
+        self.noEmailLabel.text = "enter your email address"
+        
         // abondon sign up if errors were detected
         let proceed = self.verifySignUpCredentials()
         if (!proceed) {
@@ -155,6 +159,8 @@ class SignUpViewController: UIViewController {
                         var json = try JSON(data: response.data!)       // parse to json
                         user_id = json["user"]["_id"].description
                         authToken = json["token"].description
+                        
+                    // unable to parse json
                     } catch{
                         print("error loading json")
                     }
@@ -166,13 +172,13 @@ class SignUpViewController: UIViewController {
                         defaults.set(user_id, forKey: "id")
                         defaults.set(profileImage, forKey: "profileImage")
                         defaults.set(authToken, forKey: "authToken")
-                        self.hideSpinner()
                         
                         // prompt user to check email
                         let alert = UIAlertController(title: "Please verify your email address.", message: "A verification email has been sent to " + self.email.text! + ". You'll be able to login after verifying this address.", preferredStyle: .alert)
                         let action = UIAlertAction(title: "OK", style: .default, handler: { action in self.performSegue(withIdentifier: "fromSignupToSignin", sender: self) })
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)
+                        self.hideSpinner()
                     }
                 
                 // identified error sent back
@@ -184,8 +190,11 @@ class SignUpViewController: UIViewController {
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)
                         self.hideSpinner()
+                        
+                    // unable to parse json
                     } catch {
                         print("error loading json")
+                        self.hideSpinner()
                     }
                 // unknown error
                 } else {
@@ -204,68 +213,76 @@ class SignUpViewController: UIViewController {
      * @return Bool, indicating if app can proceed with sign up
      */
     func verifySignUpCredentials() -> Bool {
-        // check for incomplete fields
-        var incompletes = false
-        var errTitle = "Oops! "
-        var errBody = ""
-        
         // prompt user for username if empty
         if (self.username.text == "") {
-            incompletes = true
-            errTitle += "You forgot to enter a username."
-            errBody = "Please enter a username and try again."
             self.noUsernameLabel.isHidden = false
+            return false
             
         // prompt user for email if empty
         } else if (self.email.text == "") {
-            incompletes = true
-            errTitle += "You forgot to enter your email address."
-            errBody = "Please enter your email and try again."
             self.noEmailLabel.isHidden = false
+            return false
+        
+        // prompt user if email address is invalid
+        } else if (isValidEmail(email : self.email.text!) == false) {
+            self.noEmailLabel.text = "invalid email"
+            self.noEmailLabel.isHidden = false
+            return false
             
-        // prompt user for password if both empty
-        } else if (self.password.text == "" && self.confirmedPassword.text == "") {
-            incompletes = true
-            errTitle += "You forgot to enter a password."
-            errBody = "Please enter a password and try again."
+        // prompt user for password if empty
+        } else if (self.password.text == "") {
             self.noPasswordLabel.isHidden = false
+            return false
             
-        // prompt user for double password if one empty
-        } else if (self.password.text == "" || self.confirmedPassword.text == "") {
-            incompletes = true
-            errTitle += "You must enter your password twice."
-            errBody = "Please enter a password in both password fields and try again."
+        // prompt user if password is too short
+        } else if ((self.password.text?.count)! < 6) {
+            self.noPasswordLabel.text = "passwords must be at least 6 characters"
             self.noPasswordLabel.isHidden = false
+            return false
             
-        // ensure passwords match
+        // prompt user to confirm passwords
+        } else if (self.confirmedPassword.text == "") {
+            self.noPasswordLabel.text = "confirm your password"
+            self.noPasswordLabel.isHidden = false
+            return false
+            
+        // prompt user that passwords do not match
         } else if (self.password.text != self.confirmedPassword.text){
-            let alert = UIAlertController(title: "Oops! Passwords do not match.", message: "Please make sure your passwords match and try again.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-            
-            // clear password fields
-            self.password.text = ""
-            self.confirmedPassword.text = ""
+            self.noPasswordLabel.text = "passwords do not match"
+            self.noPasswordLabel.isHidden = false
             return false
         }
-        
-        // display error if detected
-        if (incompletes == true) {
-            let alert = UIAlertController(title: errTitle, message: errBody, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-            return false
-        }
-        
+
         // no errors!
         return true
     }
     
+    /*
+     * Validate an email address based on regular expressions.
+     * @return Bool, indicating if the email is valid
+     * ADAPTED FROM: https://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
+     */
+    func isValidEmail(email : String) -> Bool {
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let validator = NSPredicate(format : "SELF MATCHES %@", regex)
+        return validator.evaluate(with : email)
+    }
+
+    /*
+     * Pass username and password into login view controller.
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is SignInViewController {
+            let controller = segue.destination as? SignInViewController
+            controller?.usernamePreload = self.username.text
+            controller?.passwordPreload = self.password.text
+        }
+    }
+    
     func hideSpinner() ->  Void{
-        activityIndicator.isHidden = true
-        signupButton.isHidden = false
-        activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.signupButton.isHidden = false
+        self.activityIndicator.stopAnimating()
     }
 }
