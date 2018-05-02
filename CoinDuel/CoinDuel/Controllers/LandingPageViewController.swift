@@ -12,23 +12,30 @@ import UIKit
 import FacebookLogin
 import FBSDKLoginKit
 class LandingPageViewController: UIViewController {
-
+    
     @IBOutlet weak var UserLabel: UILabel!
     @IBOutlet weak var imageViewGradient: UIImageView!
-    @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var profileBlockView: UIView!
-    @IBOutlet weak var nextGameLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var capCoinBalanceLabel: UILabel!
-    @IBOutlet weak var leaderboardButton: UIButton!
-    @IBOutlet weak var profileImageButton: UIButton!
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var gameStatusLabel: UILabel!
+    @IBOutlet weak var gameTimeLabel: UILabel!
 
-    let user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0)
+    @IBOutlet weak var enterGameButton: UIButton!
+    @IBOutlet weak var leaderboardButton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
+    
+    let user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0, rank: 0)
     var game: Game = Game()
     let numberFormatter = NumberFormatter()
 
     var granularity = 20000
 
     override func viewDidLayoutSubviews(){
+        super.viewDidLayoutSubviews()
+        
+        // background gradient
         self.imageViewGradient.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
 
@@ -41,33 +48,42 @@ class LandingPageViewController: UIViewController {
         self.enterGameButton.layer.masksToBounds = true
         self.enterGameButton.layer.cornerRadius = 10
         self.leaderboardButton.layer.masksToBounds = true
-        self.leaderboardButton.layer.cornerRadius = 10
-        self.profileImageButton.layer.masksToBounds = true
-        self.profileImageButton.layer.cornerRadius = 10
+        self.leaderboardButton.layer.cornerRadius = self.leaderboardButton.frame.height / 2
+        self.profileButton.layer.masksToBounds = true
+        self.profileButton.layer.cornerRadius = self.leaderboardButton.frame.height / 2
 
+        // load user data from defaults
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
         let profImage = UserDefaults.standard.string(forKey:"profileImage")
-        print("profile")
-        print(profImage!)
 
         // Number format
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
 
-        if let image = UIImage(named: profImage!){
-            self.profileImageButton.setImage(image, for: .normal)
-        }
-
+        // display profile image
+        self.profileImage.image = UIImage(named: profImage!)
+        
+        // dynamic instantiation
         self.initializeLandingPage()
     }
 
     func initializeLandingPage() {
-        self.user.updateCoinBalance { (success) in
+        // set rank view
+        self.user.updateRankAllTime { (success) in
             if (success){
-                self.capCoinBalanceLabel.text = "Current CapCoin Balance: " + self.numberFormatter.string(from: NSNumber(value: self.user.coinBalance))! + " CC"
+                self.rankLabel.text = "#" + String(self.user.rank)
             }
         }
+        
+        // set coin balance view
+        self.user.updateCoinBalance { (success) in
+            if (success){
+                self.capCoinBalanceLabel.text = self.numberFormatter.string(from: NSNumber(value: self.user.coinBalance))! + " CC"
+            }
+        }
+        
+        // set game views
         self.game.getCurrentGame { (success) in
             if (success){
                 print("got game")
@@ -88,45 +104,58 @@ class LandingPageViewController: UIViewController {
     }
 
     func displayActiveGameMode (){
-        self.nextGameLabel.text = "Game ending " + self.game.finishDate.description
+        // set labels
+        self.gameStatusLabel.text = "Game In Progress"
+        self.gameTimeLabel.text = "Game ends " + self.game.finishDate.description
         self.enterGameButton.isHidden = false
+        
+        // set button
+        self.enterGameButton.setTitle("Enter Game", for: .normal)
+        self.enterGameButton.layer.masksToBounds = true
+        self.enterGameButton.layer.cornerRadius = self.enterGameButton.frame.height / 2
+        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
+        self.enterGameButton.layer.borderWidth = 0.75
+        
         // show active game capcoin performance graph
     }
 
     func displayUpcomingGameMode() {
-        self.nextGameLabel.text = "Game starting " + self.game.startDate.description
+        // set labels
+        self.gameStatusLabel.text = "Next Game"
+        self.gameTimeLabel.numberOfLines = 0
+        self.gameTimeLabel.text = self.game.startDate.description
         self.enterGameButton.isHidden = false
+        
+        // set button
+        self.enterGameButton.setTitle("Set Lineup", for: .normal)
+        self.enterGameButton.layer.masksToBounds = true
+        self.enterGameButton.layer.cornerRadius = self.enterGameButton.frame.height / 2
+        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
+        self.enterGameButton.layer.borderWidth = 0.75
+        
         //show alltime capcoin performance graph
     }
     
     func displayNoGameMode() {
-        self.nextGameLabel.text = "No games are currently scheduled"
+        // set labels
+        self.gameStatusLabel.text = "No games scheduled"
+        self.gameTimeLabel.text = "Check back soon!"
+        
         //show alltime capcoin performance graph
     }
-
-    @IBAction func onProfileImagePressed(_ sender: Any) {
-        //call main storyboard once succesful sign in
+    
+    /*
+     * Present profile upon button press.
+     */
+    @IBAction func onProfilePressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-
+        
+        // present profile
         if let ProfileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
             ProfileVC.user = user
             self.present(ProfileVC, animated: true, completion: nil)
         }
-//        let defaults = UserDefaults.standard
-//        let dictionary = defaults.dictionaryRepresentation()
-//        dictionary.keys.forEach { key in
-//            defaults.removeObject(forKey: key)
-//        }
-//
-//        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-//        let gameVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
-//        self.present(gameVC, animated: true, completion: nil)
-//
-//        // From https://stackoverflow.com/questions/29374235/facebook-sdk-4-0-ios-swift-log-a-user-out-programmatically
-//        let loginManager = FBSDKLoginManager()
-//        loginManager.logOut() // this is an instance function
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

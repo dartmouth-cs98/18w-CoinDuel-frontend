@@ -43,7 +43,6 @@ class SignInViewController: UIViewController {
         password.attributedPlaceholder = NSAttributedString(string: "Password",
                                                             attributes: [NSAttributedStringKey.foregroundColor: grey80])
         
-        
         // check for username in user defaults
         if let defaultUsername = UserDefaults.standard.string(forKey: "username") {
             self.username.text = defaultUsername

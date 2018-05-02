@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
 
-    var user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0)
+    var user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0, rank: 0)
     
 
     override func viewDidLayoutSubviews(){
