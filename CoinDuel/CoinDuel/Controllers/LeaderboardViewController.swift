@@ -111,7 +111,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             fatalError("The dequeued cell is not an instance of UserTableViewCell.")
         }
         
-        var user = User(username: "", coinBalance: 0.0)
+        var user = User(username: "", coinBalance: 0.0, rank: 0)
         if self.isCurrent {
             user = self.leaderboard.currentUsers[indexPath.row]
         } else {

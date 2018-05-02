@@ -12,13 +12,13 @@ import UIKit
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var gameReturnLabel: UILabel!
     @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var nextGameLabel: UILabel!
     @IBOutlet weak var gameTimeLabel: UILabel!
     @IBOutlet weak var gameTableView: UITableView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var tradeButton: UIButton!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     var game: Game = Game()
@@ -28,10 +28,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var isLateEntry: Bool = false
     let refreshControl = UIRefreshControl()
     let numberFormatter = NumberFormatter()
-    var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0)
+    var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0)
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
+        
+        // trade button
+        self.tradeButton.layer.masksToBounds = true
+        self.tradeButton.layer.cornerRadius = self.tradeButton.frame.height / 2
     }
     
     // Completion blocks from https://stackoverflow.com/questions/35357807/running-one-function-after-another-completes
@@ -205,7 +209,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             gameTimeLabel.text = "Game starts " + self.game.startDate
             self.submitButton.isHidden = false
         } else {
-            nextGameLabel.text = "✓ Entry Submitted"
+            nextGameLabel.text = "✓ Lineup set"
             gameTimeLabel.text = "Game starts " + self.game.startDate
             self.submitButton.isHidden = true
         }
@@ -265,8 +269,11 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if (self.game.totalPercentageReturn() > 0) {
             gameStatusLabel.text = "↑ " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
             gameStatusLabel.textColor = UIColor.white
-        } else {
+        } else if (self.game.totalPercentageReturn() < 0) {
             gameStatusLabel.text = "↓ " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
+            gameStatusLabel.textColor = UIColor.white
+        } else {
+            gameStatusLabel.text = "  " + numberFormatter.string(from: NSNumber(value: self.game.totalReturn()))! + " CapCoin"
             gameStatusLabel.textColor = UIColor.white
         }
         

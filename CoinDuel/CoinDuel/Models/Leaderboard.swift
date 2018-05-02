@@ -32,7 +32,7 @@ class Leaderboard {
                 for obj in jsonArray {
                     let name = obj["userId"]["username"].stringValue
                     let coins = obj["coin_balance"].doubleValue
-                    self.currentUsers.append(User(username: name, coinBalance: coins))
+                    self.currentUsers.append(User(username: name, coinBalance: coins, rank: 0))
                 }
                 self.currentUsers = self.currentUsers.sorted(by: { $0.coinBalance > $1.coinBalance })
                 completion(true)
@@ -57,14 +57,14 @@ class Leaderboard {
                         
                         // do not display cell with no name user (user has been deleted)
                         if (name != "") {
-                            self.currentUsers.append(User(username: name, coinBalance: coins))
+                            self.currentUsers.append(User(username: name, coinBalance: coins, rank: 0))
                         }
                     }
                     self.currentUsers = self.currentUsers.sorted(by: { $0.coinBalance > $1.coinBalance })
                     
                     // catch an empty game
                     if (self.currentUsers.count == 0) {
-                        self.currentUsers.append(User(username: "No users in game", coinBalance: 0.0))
+                        self.currentUsers.append(User(username: "No users in game", coinBalance: 0.0, rank: 0))
                     }
                     completion(true)
                 case .failure(let error):
@@ -85,7 +85,7 @@ class Leaderboard {
                     for obj in jsonArray {
                         let name = obj["username"].stringValue
                         let coins = obj["coin_balance"].doubleValue
-                        self.allTimeUsers.append(User(username: name, coinBalance: coins))
+                        self.allTimeUsers.append(User(username: name, coinBalance: coins, rank: 0))
                     }
                     self.allTimeUsers = self.allTimeUsers.sorted(by: { $0.coinBalance > $1.coinBalance })
                     completion(true)

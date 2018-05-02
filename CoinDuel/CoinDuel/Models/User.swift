@@ -13,15 +13,42 @@ import Alamofire
 class User {
     var username: String
     var coinBalance: Double
+    var rank: Int
 
     init() {
         self.username = ""
         self.coinBalance = 0
+        self.rank = 0
     }
     
-    init(username: String?, coinBalance: Double) {
+    init(username: String?, coinBalance: Double, rank: Int) {
         self.username = username ?? ""
         self.coinBalance = coinBalance
+        self.rank = rank
+    }
+    
+    // retrieves user's all time rank
+    func updateRankAllTime(completion: @escaping (_ success: Bool) -> Void) {
+        
+        let url = URL(string: Constants.API + "leaderboard")!
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let jsonArray = JSON(value).arrayValue
+                var rank = 1
+                for obj in jsonArray {
+                    if (obj["username"].stringValue == self.username) {
+                        self.rank = rank
+                        break
+                    }
+                    rank += 1
+                }
+                completion(true)
+            case .failure(let error):
+                completion(false)
+                print(error)
+            }
+        }
     }
     
     // Retrieves the user's coin balance
@@ -46,8 +73,6 @@ class User {
                     }
                 }
             }
-
-
         })
     }
 }
