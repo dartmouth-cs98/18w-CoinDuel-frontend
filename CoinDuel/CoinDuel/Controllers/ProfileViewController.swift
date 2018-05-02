@@ -30,8 +30,12 @@ class ProfileViewController: UIViewController {
     @IBAction func onLogOutPressed(_ sender: Any) {
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
+        
+        // reset all user defaults except username
         dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
+            if (key != "username") {
+                defaults.removeObject(forKey: key)
+            }
         }
 
         let storyboard = UIStoryboard(name: "Login", bundle: nil)

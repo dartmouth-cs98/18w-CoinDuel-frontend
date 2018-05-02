@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let storyName = UserDefaults.standard.string(forKey:"username") != nil ? "Main" : "Login"
-        let controllerName = UserDefaults.standard.string(forKey:"username") != nil ? "LandingPageViewController" : "LoginViewController"
+        let storyName = UserDefaults.standard.string(forKey:"authToken") != nil ? "Main" : "Login"
+        let controllerName = UserDefaults.standard.string(forKey:"authToken") != nil ? "LandingPageViewController" : "LoginViewController"
         
         let storyboard = UIStoryboard(name: storyName, bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: controllerName)
