@@ -211,6 +211,15 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func getLeaderBoardHelper(success:Bool) {
+        // hide all profile pictures
+        self.firstPlaceImage.isHidden = true
+        self.secondPlaceImage.isHidden = true
+        self.thirdPlaceImage.isHidden = true
+        self.firstNumberLabel.isHidden = true
+        self.secondNumberLabel.isHidden = true
+        self.thirdNumberLabel.isHidden = true
+        
+        // get leaderboard
         if (success) {
             DispatchQueue.main.async() {
                 self.leaderboardTable.reloadData()
@@ -223,14 +232,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                 } else {
                     users = self.leaderboard.allTimeUsers
                 }
-                
-                // hide all profile pictures
-                self.firstPlaceImage.isHidden = true
-                self.secondPlaceImage.isHidden = true
-                self.thirdPlaceImage.isHidden = true
-                self.firstNumberLabel.isHidden = true
-                self.secondNumberLabel.isHidden = true
-                self.thirdNumberLabel.isHidden = true
                 
                 // add name to place labels
                 self.firstPlaceLabel.text = users.count > 0 ? users[0].username : ""

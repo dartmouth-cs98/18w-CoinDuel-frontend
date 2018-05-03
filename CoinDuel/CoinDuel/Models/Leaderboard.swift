@@ -24,7 +24,9 @@ class Leaderboard {
 
     func getLeaderboardForGame(gameID: String, completion: @escaping (_ finished: Bool) -> Void) {
         let url = URL(string: Constants.API + "leaderboard/" + gameID)!
-        Alamofire.request(url, method: .get).validate().responseJSON { response in
+        let header: HTTPHeaders = [
+            "authorization": UserDefaults.standard.string(forKey:"authToken")!]
+        Alamofire.request(url, method: .get, headers: header).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 self.currentUsers.removeAll()
