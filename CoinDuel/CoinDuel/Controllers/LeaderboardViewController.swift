@@ -36,6 +36,9 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     // button colors
     var activeButtonColor = UIColor(red:0.91, green:0.24, blue:0.19, alpha:1.0)
     
+    // custom grey
+    var grey80 = UIColor(red:1, green:1, blue:1, alpha:0.5)
+    
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
@@ -72,14 +75,14 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         allTimeButton.layer.masksToBounds = true
         allTimeButton.layer.cornerRadius = allTimeButton.frame.height / 2
         allTimeButton.layer.borderWidth = 0.0;
-        allTimeButton.layer.borderColor = (UIColor.white).cgColor;
+        allTimeButton.layer.borderColor = grey80.cgColor;
         allTimeButton.backgroundColor = activeButtonColor
         
         currentButton.layer.masksToBounds = true
         currentButton.layer.cornerRadius = currentButton.frame.height / 2
-        currentButton.layer.borderWidth = 1.0;
-        currentButton.layer.borderColor = (UIColor.white).cgColor;
-        currentButton.backgroundColor = Constants.lightBlueColor
+        currentButton.layer.borderWidth = 0.5;
+        currentButton.layer.borderColor = grey80.cgColor;
+        currentButton.backgroundColor = UIColor.clear
         
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         numberFormatter.minimumFractionDigits = 2
@@ -162,21 +165,11 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             self.loadingActivityIndicatorView.startAnimating()
             self.loadingActivityIndicatorView.isHidden = false
             
-            // reset images
-            self.firstPlaceImage.image = UIImage(named: "profile")
-            self.secondPlaceImage.image = UIImage(named: "profile")
-            self.thirdPlaceImage.image = UIImage(named: "profile")
-            
-            // reset labels
-            self.firstPlaceLabel.text = ""
-            self.secondPlaceLabel.text = ""
-            self.thirdPlaceLabel.text = ""
-            
             // reset views
             allTimeButton.backgroundColor = activeButtonColor
-            currentButton.backgroundColor = Constants.lightBlueColor
+            currentButton.backgroundColor = UIColor.clear
             allTimeButton.layer.borderWidth = 0.0;
-            currentButton.layer.borderWidth = 1.0;
+            currentButton.layer.borderWidth = 0.5;
             self.leaderboard.getAllTimeLeaderboard() { (success) -> Void in
                 self.getLeaderBoardHelper(success: success)
             }
@@ -191,20 +184,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             self.loadingActivityIndicatorView.startAnimating()
             self.loadingActivityIndicatorView.isHidden = false
             
-            // reset images
-            self.firstPlaceImage.image = UIImage(named: "profile")
-            self.secondPlaceImage.image = UIImage(named: "profile")
-            self.thirdPlaceImage.image = UIImage(named: "profile")
-            
-            // reset labels
-            self.firstPlaceLabel.text = ""
-            self.secondPlaceLabel.text = ""
-            self.thirdPlaceLabel.text = ""
-            
             // reset views
-            allTimeButton.backgroundColor = Constants.lightBlueColor
+            allTimeButton.backgroundColor = UIColor.clear
             currentButton.backgroundColor = activeButtonColor
-            allTimeButton.layer.borderWidth = 1.0;
+            allTimeButton.layer.borderWidth = 0.5;
             currentButton.layer.borderWidth = 0.0;
             self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
                 self.getLeaderBoardHelper(success: success)
@@ -241,6 +224,14 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     users = self.leaderboard.allTimeUsers
                 }
                 
+                // hide all profile pictures
+                self.firstPlaceImage.isHidden = true
+                self.secondPlaceImage.isHidden = true
+                self.thirdPlaceImage.isHidden = true
+                self.firstNumberLabel.isHidden = true
+                self.secondNumberLabel.isHidden = true
+                self.thirdNumberLabel.isHidden = true
+                
                 // add name to place labels
                 self.firstPlaceLabel.text = users.count > 0 ? users[0].username : ""
                 self.secondPlaceLabel.text = users.count > 1 ? users[1].username : ""
@@ -254,6 +245,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                         users[0].updateCoinBalance { (success) in
                             if (success){
                                 self.firstPlaceImage.image = UIImage(named: users[0].profilePicture)
+                                self.firstPlaceImage.isHidden = false
+                                self.firstNumberLabel.isHidden = false
                             }
                         }
                     }
@@ -263,6 +256,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                         users[1].updateCoinBalance { (success) in
                             if (success){
                                 self.secondPlaceImage.image = UIImage(named: users[1].profilePicture)
+                                self.secondPlaceImage.isHidden = false
+                                self.secondNumberLabel.isHidden = false
                             }
                         }
                     }
@@ -272,18 +267,35 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                         users[2].updateCoinBalance { (success) in
                             if (success){
                                 self.thirdPlaceImage.image = UIImage(named: users[2].profilePicture)
+                                self.thirdPlaceImage.isHidden = false
+                                self.thirdNumberLabel.isHidden = false
                             }
                         }
                     }
                     
                 // add profile pictures to place images if all time rankings
                 } else {
-                    let firstPlaceProfile = users.count > 0 ? users[0].profilePicture : "profile"
-                    let secondPlaceProfile = users.count > 1 ? users[1].profilePicture : "profile"
-                    let thirdPlaceProfile = users.count > 2 ? users[2].profilePicture : "profile"
-                    self.firstPlaceImage.image = UIImage(named: firstPlaceProfile)
-                    self.secondPlaceImage.image = UIImage(named: secondPlaceProfile)
-                    self.thirdPlaceImage.image = UIImage(named: thirdPlaceProfile)
+                    
+                    // first place profile picture
+                    if users.count > 0 {
+                        self.firstPlaceImage.image = UIImage(named: users[0].profilePicture)
+                        self.firstPlaceImage.isHidden = false
+                        self.firstNumberLabel.isHidden = false
+                    }
+                    
+                    // second place profile picture
+                    if users.count > 1 {
+                        self.secondPlaceImage.image = UIImage(named: users[1].profilePicture)
+                        self.secondPlaceImage.isHidden = false
+                        self.secondNumberLabel.isHidden = false
+                    }
+                    
+                    // third place profile picture
+                    if users.count > 2 {
+                        self.thirdPlaceImage.image = UIImage(named: users[2].profilePicture)
+                        self.thirdPlaceImage.isHidden = false
+                        self.thirdNumberLabel.isHidden = false
+                    }
                 }
             
                 // hide activity

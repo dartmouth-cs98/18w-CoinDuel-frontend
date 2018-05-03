@@ -307,6 +307,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
         
+        // coin amount border radius
+        cell.coinAmountLabel.layer.masksToBounds = true
+        cell.coinAmountLabel.layer.cornerRadius = cell.coinAmountLabel.frame.height / 2
+        
         cell.gameVC = self
         cell.game = game // Give the cell access to the game so it can increment coinAmount
         cell.indexPath = indexPath.row
@@ -350,9 +354,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinPricePreviewLabel.isHidden = false
             cell.coinPriceLabel.isHidden = true
             cell.coinReturnLabel.isHidden = true
-            
-            // coin amount border
-            cell.coinAmountLabel.layer.cornerRadius = cell.coinAmountLabel.frame.height / 2
             
             cell.coinAmountStepper.value = coin.allocation
             
