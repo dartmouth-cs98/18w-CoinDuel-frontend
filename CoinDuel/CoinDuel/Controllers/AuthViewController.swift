@@ -17,8 +17,10 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
     
     // fb auth
-    var fbLoginButton = LoginButton(readPermissions: [ .publicProfile ])
 
+    var fbLoginButton = LoginButton(readPermissions: [ .publicProfile, .email ])
+
+    
     override func viewDidAppear(_ animated: Bool) {
         //  From https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
         //  FacebookLogin
@@ -29,6 +31,8 @@ class AuthViewController: UIViewController {
         if (FBSDKAccessToken.current() != nil) {
             segueWithFBAuth()
         }
+        
+
         
         //adding fb button to view
         self.loadingWheel.stopAnimating()
@@ -63,13 +67,35 @@ class AuthViewController: UIViewController {
         }
     }
     
+    //giving permission: https://stackoverflow.com/questions/47147596/facebook-login-email-not-come-swift-isnt-there-any-solution
+    func getpermission(){
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        //   fbLoginManager.loginBehavior = FBSDKLoginBehavior.web
+        
+        fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+            if (error == nil){
+                let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                if fbloginresult.grantedPermissions != nil {
+                    if(fbloginresult.grantedPermissions.contains("email"))
+                    {
+                        self.segueWithFBAuth()
+                        fbLoginManager.logOut()
+                        
+                    }
+                }
+            }
+        }
+        
+    }
+    
     //function is fetching the user data
     func segueWithFBAuth(){
         if((FBSDKAccessToken.current()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     self.dict = result as! [String : AnyObject]
-                    print(self.dict)
+                    print("*****************************")
+                    print(self.dict["email"])
                     
                     //set deaults
                     let defaults = UserDefaults.standard
