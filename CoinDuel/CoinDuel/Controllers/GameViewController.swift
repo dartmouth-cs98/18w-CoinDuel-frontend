@@ -28,7 +28,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var isLateEntry: Bool = false
     let refreshControl = UIRefreshControl()
     let numberFormatter = NumberFormatter()
-    var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0)
+    var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -82,6 +82,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     DispatchQueue.main.async() {
                                         self.refreshControl.endRefreshing()
                                         self.loadingActivityIndicatorView.stopAnimating()
+                                        self.loadingActivityIndicatorView.isHidden = true
                                     }
                                     let storyboard = UIStoryboard(name: "Results", bundle: nil)
                                     let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
@@ -114,6 +115,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                 DispatchQueue.main.async() {
                                                     self.refreshControl.endRefreshing()
                                                     self.loadingActivityIndicatorView.stopAnimating()
+                                                    self.loadingActivityIndicatorView.isHidden = true
                                                 }
                                             } else {
                                                 self.networkError("Unable to update coin prices")
@@ -126,6 +128,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         DispatchQueue.main.async() {
                                             self.refreshControl.endRefreshing()
                                             self.loadingActivityIndicatorView.stopAnimating()
+                                            self.loadingActivityIndicatorView.isHidden = true
                                         }
                                     } else if !self.game.hasFinished {
                                         // Update prices
@@ -136,6 +139,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                 DispatchQueue.main.async() {
                                                     self.refreshControl.endRefreshing()
                                                     self.loadingActivityIndicatorView.stopAnimating()
+                                                    self.loadingActivityIndicatorView.isHidden = true
                                                 }
                                             } else {
                                                 self.networkError("Unable to update coin prices")
@@ -149,6 +153,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         DispatchQueue.main.async() {
                                             self.refreshControl.endRefreshing()
                                             self.loadingActivityIndicatorView.stopAnimating()
+                                            self.loadingActivityIndicatorView.isHidden = true
                                         }
                                         return
                                     } else if self.game.isActive {
@@ -156,6 +161,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         DispatchQueue.main.async() {
                                             self.refreshControl.endRefreshing()
                                             self.loadingActivityIndicatorView.stopAnimating()
+                                            self.loadingActivityIndicatorView.isHidden = true
                                         }
                                     }
                                     
@@ -168,6 +174,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                             DispatchQueue.main.async() {
                                                 self.refreshControl.endRefreshing()
                                                 self.loadingActivityIndicatorView.stopAnimating()
+                                                self.loadingActivityIndicatorView.isHidden = true
                                             }
                                         } else {
                                             self.networkError("Unable to update coin prices")
@@ -197,7 +204,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         gameReturnLabel.isHidden = true
         gameStatusLabel.isHidden = true
         
-        self.submitButton.setTitle("Allocate 10 additional CapCoin", for: UIControlState .normal)
+        self.submitButton.setTitle("10 CC AVAILABLE", for: UIControlState .normal)
         self.submitButton.isEnabled = false
         
         if self.isLateEntry {
@@ -344,6 +351,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinPriceLabel.isHidden = true
             cell.coinReturnLabel.isHidden = true
             
+            // coin amount border
+            cell.coinAmountLabel.layer.cornerRadius = cell.coinAmountLabel.frame.height / 2
+            
             cell.coinAmountStepper.value = coin.allocation
             
             let remaining = 10.0 - self.game.totalAmount()
@@ -351,15 +361,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.coinAmountStepper.maximumValue = 10.0
                 
                 self.submitButton.backgroundColor = Constants.orangeColor
-                self.submitButton.setTitle("Allocate " + String(Int(remaining)) + " additional CapCoin", for: UIControlState .normal)
+                self.submitButton.setTitle(String(Int(remaining)) + " CC AVAILABLE", for: UIControlState .normal)
                 self.submitButton.isEnabled = false
             } else {
                 cell.coinAmountStepper.maximumValue = coin.allocation
                 
                 if self.hasEntry {
-                    self.submitButton.setTitle("Update choices", for: UIControlState .normal)
+                    self.submitButton.setTitle("UPDATE CHOICES", for: UIControlState .normal)
                 } else {
-                    self.submitButton.setTitle("Submit", for: UIControlState .normal)
+                    self.submitButton.setTitle("SUBMIT", for: UIControlState .normal)
                 }
                 self.submitButton.backgroundColor = Constants.greenColor
                 self.submitButton.isEnabled = true
@@ -411,6 +421,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         DispatchQueue.main.async() {
             self.refreshControl.endRefreshing()
             self.loadingActivityIndicatorView.stopAnimating()
+            self.loadingActivityIndicatorView.isHidden = true
         }
     }
     

@@ -14,17 +14,20 @@ class User {
     var username: String
     var coinBalance: Double
     var rank: Int
+    var profilePicture: String
 
     init() {
         self.username = ""
         self.coinBalance = 0
         self.rank = 0
+        self.profilePicture = ""
     }
     
-    init(username: String?, coinBalance: Double, rank: Int) {
+    init(username: String?, coinBalance: Double, rank: Int, profilePicture: String) {
         self.username = username ?? ""
         self.coinBalance = coinBalance
         self.rank = rank
+        self.profilePicture = profilePicture
     }
     
     // retrieves user's all time rank
@@ -66,6 +69,9 @@ class User {
                         if let coinBalance = json["coinBalance"].double {
                             self.coinBalance = coinBalance
                         }
+                        
+                        // store profile picture for leaderboard
+                        self.profilePicture = json["profile_url"].string!
                         completion(true)
                     } catch{
                         print("error loading json")
