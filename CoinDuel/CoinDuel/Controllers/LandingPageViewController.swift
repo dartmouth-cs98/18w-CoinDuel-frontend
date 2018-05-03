@@ -26,7 +26,7 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var leaderboardButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
     
-    let user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0, rank: 0)
+    let user = User(username: UserDefaults.standard.string(forKey: "username"), coinBalance: 0.0, rank: 0, profilePicture: "profile")
     var game: Game = Game()
     let numberFormatter = NumberFormatter()
 

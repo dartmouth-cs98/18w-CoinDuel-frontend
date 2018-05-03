@@ -34,8 +34,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     var game: Game = Game()
     
     // button colors
-    var nonActiveButtonColor = UIColor(red:0.91, green:0.24, blue:0.19, alpha:1.0).cgColor
-    var nonActiveButtonColor = UIColor(red:0.91, green:0.24, blue:0.19, alpha:1.0).cgColor
+    var activeButtonColor = UIColor(red:0.91, green:0.24, blue:0.19, alpha:1.0)
     
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -43,6 +42,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // show activity indicator
+        self.loadingActivityIndicatorView.startAnimating()
+        self.loadingActivityIndicatorView.isHidden = false
 
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
@@ -67,14 +70,14 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         allTimeButton.layer.masksToBounds = true
-        allTimeButton.layer.cornerRadius = 10
+        allTimeButton.layer.cornerRadius = allTimeButton.frame.height / 2
         allTimeButton.layer.borderWidth = 0.0;
         allTimeButton.layer.borderColor = (UIColor.white).cgColor;
-        allTimeButton.backgroundColor = Constants.greenColor
+        allTimeButton.backgroundColor = activeButtonColor
         
         currentButton.layer.masksToBounds = true
-        currentButton.layer.cornerRadius = 10
-        currentButton.layer.borderWidth = 2.0;
+        currentButton.layer.cornerRadius = currentButton.frame.height / 2
+        currentButton.layer.borderWidth = 1.0;
         currentButton.layer.borderColor = (UIColor.white).cgColor;
         currentButton.backgroundColor = Constants.lightBlueColor
         
@@ -115,7 +118,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             fatalError("The dequeued cell is not an instance of UserTableViewCell.")
         }
         
-        var user = User(username: "", coinBalance: 0.0, rank: 0)
+        var user = User(username: "", coinBalance: 0.0, rank: 0, profilePicture: "profile")
         if self.isCurrent {
             user = self.leaderboard.currentUsers[indexPath.row]
         } else {
@@ -126,14 +129,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         cell.scoreLabel.text = numberFormatter.string(from: NSNumber(value: user.coinBalance))! + " CC"
         cell.nameLabel.text = user.username
     
+        // different cell for current user
+        cell.nameLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         if user.username == UserDefaults.standard.string(forKey:"username") {
-            cell.placeLabel.textColor = UIColor.red
-            cell.nameLabel.textColor = UIColor.red
-            cell.scoreLabel.textColor = UIColor.red
-        } else {
-            cell.placeLabel.textColor = UIColor.black
-            cell.nameLabel.textColor = UIColor.black
-            cell.scoreLabel.textColor = UIColor.black
+            cell.nameLabel.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         }
         
         return cell
@@ -157,11 +156,27 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
 
     @IBAction func allTimeClick(_ sender: Any) {
+        // load all time leaderboard
         if self.isCurrent {
-            allTimeButton.backgroundColor = Constants.greenColor
+            // show activity indicator
+            self.loadingActivityIndicatorView.startAnimating()
+            self.loadingActivityIndicatorView.isHidden = false
+            
+            // reset images
+            self.firstPlaceImage.image = UIImage(named: "profile")
+            self.secondPlaceImage.image = UIImage(named: "profile")
+            self.thirdPlaceImage.image = UIImage(named: "profile")
+            
+            // reset labels
+            self.firstPlaceLabel.text = ""
+            self.secondPlaceLabel.text = ""
+            self.thirdPlaceLabel.text = ""
+            
+            // reset views
+            allTimeButton.backgroundColor = activeButtonColor
             currentButton.backgroundColor = Constants.lightBlueColor
             allTimeButton.layer.borderWidth = 0.0;
-            currentButton.layer.borderWidth = 2.0;
+            currentButton.layer.borderWidth = 1.0;
             self.leaderboard.getAllTimeLeaderboard() { (success) -> Void in
                 self.getLeaderBoardHelper(success: success)
             }
@@ -170,10 +185,26 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func currentClick(_ sender: Any) {
+        // load current leaderboard
         if !self.isCurrent {
+            // show activity indicator
+            self.loadingActivityIndicatorView.startAnimating()
+            self.loadingActivityIndicatorView.isHidden = false
+            
+            // reset images
+            self.firstPlaceImage.image = UIImage(named: "profile")
+            self.secondPlaceImage.image = UIImage(named: "profile")
+            self.thirdPlaceImage.image = UIImage(named: "profile")
+            
+            // reset labels
+            self.firstPlaceLabel.text = ""
+            self.secondPlaceLabel.text = ""
+            self.thirdPlaceLabel.text = ""
+            
+            // reset views
             allTimeButton.backgroundColor = Constants.lightBlueColor
-            currentButton.backgroundColor = Constants.greenColor
-            allTimeButton.layer.borderWidth = 2.0;
+            currentButton.backgroundColor = activeButtonColor
+            allTimeButton.layer.borderWidth = 1.0;
             currentButton.layer.borderWidth = 0.0;
             self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
                 self.getLeaderBoardHelper(success: success)
@@ -210,23 +241,74 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     users = self.leaderboard.allTimeUsers
                 }
                 
+                // add name to place labels
                 self.firstPlaceLabel.text = users.count > 0 ? users[0].username : ""
                 self.secondPlaceLabel.text = users.count > 1 ? users[1].username : ""
                 self.thirdPlaceLabel.text = users.count > 2 ? users[2].username : ""
                 
+                // asynchronously add profile picture to name labels if current game
+                if self.isCurrent {
+                    
+                    // first place profile picture
+                    if users.count > 0 {
+                        users[0].updateCoinBalance { (success) in
+                            if (success){
+                                self.firstPlaceImage.image = UIImage(named: users[0].profilePicture)
+                            }
+                        }
+                    }
+                    
+                    // second place profile picture
+                    if users.count > 1 {
+                        users[1].updateCoinBalance { (success) in
+                            if (success){
+                                self.secondPlaceImage.image = UIImage(named: users[1].profilePicture)
+                            }
+                        }
+                    }
+                    
+                    // third place profile picture
+                    if users.count > 2 {
+                        users[2].updateCoinBalance { (success) in
+                            if (success){
+                                self.thirdPlaceImage.image = UIImage(named: users[2].profilePicture)
+                            }
+                        }
+                    }
+                    
+                // add profile pictures to place images if all time rankings
+                } else {
+                    let firstPlaceProfile = users.count > 0 ? users[0].profilePicture : "profile"
+                    let secondPlaceProfile = users.count > 1 ? users[1].profilePicture : "profile"
+                    let thirdPlaceProfile = users.count > 2 ? users[2].profilePicture : "profile"
+                    self.firstPlaceImage.image = UIImage(named: firstPlaceProfile)
+                    self.secondPlaceImage.image = UIImage(named: secondPlaceProfile)
+                    self.thirdPlaceImage.image = UIImage(named: thirdPlaceProfile)
+                }
+            
+                // hide activity
                 self.refreshControl.endRefreshing()
                 self.loadingActivityIndicatorView.stopAnimating()
+                self.loadingActivityIndicatorView.isHidden = true
             }
         }
         else {
             DispatchQueue.main.async() {
                 self.leaderboardTable.reloadData()
+                
+                // reset labels
                 self.firstPlaceLabel.text = ""
                 self.secondPlaceLabel.text = ""
                 self.thirdPlaceLabel.text = ""
                 
+                // reset images
+                self.firstPlaceImage.image = UIImage(named: "profile")
+                self.secondPlaceImage.image = UIImage(named: "profile")
+                self.thirdPlaceImage.image = UIImage(named: "profile")
+                    
                 self.refreshControl.endRefreshing()
                 self.loadingActivityIndicatorView.stopAnimating()
+                self.loadingActivityIndicatorView.isHidden = true
             }
         }
     }
