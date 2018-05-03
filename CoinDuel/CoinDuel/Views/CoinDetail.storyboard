@@ -123,19 +123,19 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-E8-wgV">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-E8-wgV">
                                         <rect key="frame" x="61.5" y="438" width="293" height="27"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qs-1y-TNN">
-                                                <rect key="frame" x="0.0" y="0.0" width="61" height="27"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="33" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="This Game"/>
+                                                <state key="normal" title="Game"/>
                                                 <connections>
                                                     <action selector="currentGameChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="ZQu-ju-0VX"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-Ay-6cg">
-                                                <rect key="frame" x="89" y="0.0" width="30" height="27"/>
+                                                <rect key="frame" x="68" y="0.0" width="30" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="1D"/>
                                                 <connections>
@@ -143,7 +143,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blk-jn-m3o">
-                                                <rect key="frame" x="147" y="0.0" width="30" height="27"/>
+                                                <rect key="frame" x="133" y="0.0" width="30" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="1W"/>
                                                 <connections>
@@ -151,7 +151,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4o-TF-JDp">
-                                                <rect key="frame" x="205" y="0.0" width="30" height="27"/>
+                                                <rect key="frame" x="198" y="0.0" width="30" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="1M"/>
                                                 <connections>
