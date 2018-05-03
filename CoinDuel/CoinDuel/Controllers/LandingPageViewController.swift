@@ -46,11 +46,16 @@ class LandingPageViewController: UIViewController {
         self.profileBlockView.layer.masksToBounds = true
         self.profileBlockView.layer.cornerRadius = 10
         self.enterGameButton.layer.masksToBounds = true
-        self.enterGameButton.layer.cornerRadius = 10
+        self.enterGameButton.layer.cornerRadius = self.enterGameButton.frame.height / 2
         self.leaderboardButton.layer.masksToBounds = true
         self.leaderboardButton.layer.cornerRadius = self.leaderboardButton.frame.height / 2
         self.profileButton.layer.masksToBounds = true
         self.profileButton.layer.cornerRadius = self.leaderboardButton.frame.height / 2
+        
+        self.leaderboardButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
+        self.leaderboardButton.layer.borderWidth = 0.75
+        self.profileButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
+        self.profileButton.layer.borderWidth = 0.75
 
         // load user data from defaults
         UserLabel.text = UserDefaults.standard.string(forKey:"username")
@@ -113,8 +118,8 @@ class LandingPageViewController: UIViewController {
         self.enterGameButton.setTitle("Enter Game", for: .normal)
         self.enterGameButton.layer.masksToBounds = true
         self.enterGameButton.layer.cornerRadius = self.enterGameButton.frame.height / 2
-        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
-        self.enterGameButton.layer.borderWidth = 0.75
+//        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
+//        self.enterGameButton.layer.borderWidth = 0.75
         
         // show active game capcoin performance graph
     }
@@ -130,8 +135,8 @@ class LandingPageViewController: UIViewController {
         self.enterGameButton.setTitle("Set Lineup", for: .normal)
         self.enterGameButton.layer.masksToBounds = true
         self.enterGameButton.layer.cornerRadius = self.enterGameButton.frame.height / 2
-        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
-        self.enterGameButton.layer.borderWidth = 0.75
+//        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor
+//        self.enterGameButton.layer.borderWidth = 0.75
         
         //show alltime capcoin performance graph
     }
