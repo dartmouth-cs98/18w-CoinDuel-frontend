@@ -33,6 +33,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     var isCurrent = false
     var game: Game = Game()
     
+    // button colors
+    var nonActiveButtonColor = UIColor(red:0.91, green:0.24, blue:0.19, alpha:1.0).cgColor
+    var nonActiveButtonColor = UIColor(red:0.91, green:0.24, blue:0.19, alpha:1.0).cgColor
+    
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
