@@ -47,6 +47,7 @@ class CoinDetailViewController: UIViewController {
     var priceData : [Double] = []
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
+    var currentTimeFrame = 0
 
 
     override func viewDidLayoutSubviews(){
@@ -153,6 +154,7 @@ class CoinDetailViewController: UIViewController {
         let apiURL = "https://min-api.cryptocompare.com/data/histominute?fsym=" + coinSymbolLabel + "&tsym=USD&limit=" + mins.description
         self.setChartData(apiURL: apiURL, collectPrice: 1)
         self.granularity = 20000
+        self.currentTimeFrame = 0
     }
     @IBAction func oneWeekChart(_ sender: Any) {
 //        api for past 7 days data
@@ -160,6 +162,7 @@ class CoinDetailViewController: UIViewController {
         let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=" + hours.description
         self.setChartData(apiURL: apiURL, collectPrice: 1)
         self.granularity = 20000 * 7
+        self.currentTimeFrame = 1
 
     }
     @IBAction func oneMonthChart(_ sender: Any) {
@@ -168,12 +171,14 @@ class CoinDetailViewController: UIViewController {
         let apiURL = "https://min-api.cryptocompare.com/data/histohour?fsym=" + coinSymbolLabel + "&tsym=USD&limit=" + hours.description
         self.setChartData(apiURL: apiURL, collectPrice: 1)
         self.granularity = 20000 * 25
+        self.currentTimeFrame = 2
 
     }
     @IBAction func oneYearChart(_ sender: Any) {
         let apiURL = "https://min-api.cryptocompare.com/data/histoday?fsym=" + coinSymbolLabel + "&tsym=USD&limit=365"
         self.setChartData(apiURL: apiURL, collectPrice: 1)
         self.granularity = 20000 * 285
+        self.currentTimeFrame = 3
     }
 
     func setChartData(apiURL: String, collectPrice: Int) -> Void {
@@ -271,7 +276,7 @@ class CoinDetailViewController: UIViewController {
         xAxis.drawGridLinesEnabled = false
         xAxis.centerAxisLabelsEnabled = false
         xAxis.granularity = Double(self.granularity)
-        xAxis.valueFormatter = DateValueFormatter()
+        xAxis.valueFormatter = DateValueFormatter(rank: currentTimeFrame)
 
         let rightYAxis = chartView.rightAxis
         rightYAxis.drawGridLinesEnabled = false

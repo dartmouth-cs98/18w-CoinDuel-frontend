@@ -12,12 +12,24 @@ import Charts
 
 public class DateValueFormatter: NSObject, IAxisValueFormatter {
     private let dateFormatter = DateFormatter()
+    var rank: Int
+    
+    init(rank: Int) {
+        self.rank = rank
 
-    override init() {
         super.init()
-        dateFormatter.dateFormat = "dd MMM HH:mm"
-
-//        dateFormatter.dateFormat = "HH:mm"
+        if (rank == 0) {
+            dateFormatter.dateFormat = "hh:mm a"
+        }
+        else if (rank == 1) {
+            dateFormatter.dateFormat = "EEE"
+        }
+        else if (rank == 2) {
+            dateFormatter.dateFormat = "MM/dd"
+        }
+        else if (rank == 3) {
+            dateFormatter.dateFormat = "MM/dd"
+        }
     }
 
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
