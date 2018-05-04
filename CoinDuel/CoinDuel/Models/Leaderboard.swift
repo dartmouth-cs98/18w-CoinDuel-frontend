@@ -88,9 +88,7 @@ class Leaderboard {
         print(header)
         do {
             var request = try URLRequest(url: url, method: .get, headers: header)
-//            let data = ["authorization": UserDefaults.standard.string(forKey:"authToken")!]
 
-//            request.httpBody = try! JSONSerialization.data(withJSONObject: data)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
             Alamofire.request(request).validate().responseJSON { response in

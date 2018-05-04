@@ -74,6 +74,8 @@ class LandingPageViewController: UIViewController {
     }
 
     func initializeLandingPage() {
+        // Retrieve gameId (if we already have it)
+        let storedGameId = UserDefaults.standard.string(forKey: "gameId")
         // set rank view
         self.user.updateRankAllTime { (success) in
             if (success){
@@ -92,6 +94,25 @@ class LandingPageViewController: UIViewController {
         self.game.getCurrentGame { (success) in
             if (success){
                 print("got game")
+
+                if storedGameId != nil && self.game.id != storedGameId {
+                    // Display results pop up if the user had an entry
+                    self.game = Game()
+                    self.game.id = storedGameId!
+                    self.game.getEntry() { (entryStatus) -> Void in
+                        if entryStatus == "entry" {
+                            
+                            let storyboard = UIStoryboard(name: "Results", bundle: nil)
+                            let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
+                            resultsVC.game = self.game
+                            self.present(resultsVC, animated: true, completion: nil)
+
+                        } else {
+                            // Could not get results for this game
+                            print("No results available")
+                        }
+                    }
+                }
 
                 //check if game is in progress or has finished
                 if (self.game.isActive && !self.game.hasFinished){
