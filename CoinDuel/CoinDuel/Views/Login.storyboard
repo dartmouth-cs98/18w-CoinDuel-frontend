@@ -87,7 +87,7 @@
                                     <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="XeG-tn-Gsn"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yAs-6a-2tY">
+                            <activityIndicatorView hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="yAs-6a-2tY">
                                 <rect key="frame" x="177" y="310" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -385,7 +385,7 @@
                                     <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="RrX-yt-mxB"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ys9-BC-sd9">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ys9-BC-sd9">
                                 <rect key="frame" x="177" y="534" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
