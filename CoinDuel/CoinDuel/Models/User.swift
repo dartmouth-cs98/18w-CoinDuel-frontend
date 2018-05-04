@@ -32,25 +32,36 @@ class User {
     
     // retrieves user's all time rank
     func updateRankAllTime(completion: @escaping (_ success: Bool) -> Void) {
-        
+
         let url = URL(string: Constants.API + "leaderboard")!
-        Alamofire.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let jsonArray = JSON(value).arrayValue
-                var rank = 1
-                for obj in jsonArray {
-                    if (obj["username"].stringValue == self.username) {
-                        self.rank = rank
-                        break
+        let header: HTTPHeaders = [
+            "authorization": UserDefaults.standard.string(forKey:"authToken")!]
+        print(header)
+        do {
+            var request = try URLRequest(url: url, method: .get, headers: header)
+
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            Alamofire.request(request).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let jsonArray = JSON(value).arrayValue
+                    var rank = 1
+                    for obj in jsonArray {
+                        if (obj["username"].stringValue == self.username) {
+                            self.rank = rank
+                            break
+                        }
+                        rank += 1
                     }
-                    rank += 1
+                    completion(true)
+                case .failure(let error):
+                    completion(false)
+                    print(error)
                 }
-                completion(true)
-            case .failure(let error):
-                completion(false)
-                print(error)
             }
+        } catch {
+            print("error")
         }
     }
     

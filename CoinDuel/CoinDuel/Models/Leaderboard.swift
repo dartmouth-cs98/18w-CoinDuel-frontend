@@ -80,9 +80,19 @@ class Leaderboard {
     }
     
     func getAllTimeLeaderboard(completion: @escaping (_ success: Bool) -> Void) {
+
+
         let url = URL(string: Constants.API + "leaderboard")!
-        Alamofire.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
+        let header: HTTPHeaders = [
+            "authorization": UserDefaults.standard.string(forKey:"authToken")!]
+        print(header)
+        do {
+            var request = try URLRequest(url: url, method: .get, headers: header)
+
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            Alamofire.request(request).validate().responseJSON { response in
+                switch response.result {
                 case .success(let value):
                     self.allTimeUsers.removeAll()
                     let jsonArray = JSON(value).arrayValue
@@ -99,7 +109,10 @@ class Leaderboard {
                 case .failure(let error):
                     completion(false)
                     print(error)
+                }
             }
+        } catch {
+            print("error")
         }
     }
 }
