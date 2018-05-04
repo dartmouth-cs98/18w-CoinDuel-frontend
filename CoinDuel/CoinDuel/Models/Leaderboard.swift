@@ -114,7 +114,5 @@ class Leaderboard {
         } catch {
             print("error")
         }
-
-
     }
 }
