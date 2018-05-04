@@ -20,7 +20,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var tradeButton: UIButton!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
-    
+    @IBOutlet weak var submitIndicator: UIActivityIndicatorView!
+
     var game: Game = Game()
     var isGameDisplayMode: Bool = false
     var isPercentReturnMode: Bool = true
@@ -58,6 +59,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
+        
+        // hide submit activity
+        self.submitIndicator.isHidden = true
         
         self.startup()
     }
@@ -197,6 +201,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func displayEntryMode() {
         self.isGameDisplayMode = false
+        self.submitIndicator.isHidden = true
 
         nextGameLabel.isHidden = false
         gameTimeLabel.isHidden = false
@@ -261,6 +266,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Segue: https://medium.com/@mimicatcodes/create-unwind-segues-in-swift-3-8793f7d23c6f
         // https://stackoverflow.com/questions/32535495/how-to-call-a-function-when-ok-is-pressed-in-an-uialert
         
+        // hide spinner
+        self.submitIndicator.isHidden = true
+        
         let alert = UIAlertController(title: "No Games Scheduled", message: "Please check back later for more games.", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
@@ -285,6 +293,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         gameTimeLabel.text = "Game ends " + self.game.finishDate
+        
+        // hide spinner
+        self.submitIndicator.isHidden = true
     }
     
     @objc func refreshPriceData(_ sender:Any) {
@@ -432,6 +443,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     @IBAction func submitButtonPress(_ sender: UIButton) {
+        // show activity
+        self.submitIndicator.isHidden = false
+        self.submitButton.isHidden = true
+        
         // Submit the entry to the server
         self.game.submitEntry() { (success) -> Void in
             if success {
@@ -450,6 +465,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 self.displayGameMode()
                             } else {
                                 self.networkError("Unable to update prices")
+                                
+                                // hide spinner
+                                self.submitIndicator.isHidden = true
                             }
                         }
                     } else if entryUpdate == "entry" && !self.game.isActive {
@@ -461,9 +479,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 self.displayEntryMode()
                             } else {
                                 self.networkError("Unable to update coin prices")
+                                
+                                // hide spinner
+                                self.submitIndicator.isHidden = true
                             }
                         }                    } else {
                         self.networkError("Unable to submit entry")
+                        
+                        // hide spinner
+                        self.submitIndicator.isHidden = true
                     }
                 })
             }
