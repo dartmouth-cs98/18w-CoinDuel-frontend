@@ -273,7 +273,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4n-1HR">
-                                <rect key="frame" x="0.0" y="191" width="375" height="396"/>
+                                <rect key="frame" x="0.0" y="191" width="375" height="476"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="GameTableViewCell" id="buj-xw-9U8" customClass="GameTableViewCell" customModule="CoinDuel" customModuleProvider="target">
@@ -446,7 +446,7 @@
                             <constraint firstItem="zby-Da-ZpX" firstAttribute="centerY" secondItem="9Rn-65-6gk" secondAttribute="centerY" id="CYw-hy-3Wz"/>
                             <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="20" id="G9G-2R-gjh" userLabel="Tomorrow, 9AM EST.top = Next Game.bottom + 10"/>
                             <constraint firstItem="bQF-np-sbL" firstAttribute="top" secondItem="lYA-Lq-gpg" secondAttribute="top" id="IbP-R8-W8a"/>
-                            <constraint firstItem="9Rn-65-6gk" firstAttribute="firstBaseline" secondItem="4Mq-4n-1HR" secondAttribute="baseline" constant="50" id="Jse-DI-4fj"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="firstBaseline" secondItem="4Mq-4n-1HR" secondAttribute="baseline" constant="-30" id="Jse-DI-4fj"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="4Mq-4n-1HR" secondAttribute="trailing" id="Jtv-z0-L73"/>
                             <constraint firstItem="XpZ-PS-Om2" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="10" id="KAb-jY-t6K"/>
                             <constraint firstItem="zby-Da-ZpX" firstAttribute="centerX" secondItem="9Rn-65-6gk" secondAttribute="centerX" id="LFZ-1D-AHr"/>
