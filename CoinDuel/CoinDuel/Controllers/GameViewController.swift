@@ -338,6 +338,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let url = URL(string: coin.logoUrl)
                 let image = try? Data(contentsOf: url!)
                 cell.coinLogo.image = UIImage(data: image!)
+                cell.coinLogo.layer.masksToBounds = true
+                cell.coinLogo.layer.cornerRadius = 15
             }
         }
     
