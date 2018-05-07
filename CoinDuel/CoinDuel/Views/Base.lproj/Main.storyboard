@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2va-lX-zsX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2va-lX-zsX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -273,7 +273,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Mq-4n-1HR">
-                                <rect key="frame" x="0.0" y="191" width="375" height="476"/>
+                                <rect key="frame" x="0.0" y="191" width="375" height="396"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="GameTableViewCell" id="buj-xw-9U8" customClass="GameTableViewCell" customModule="CoinDuel" customModuleProvider="target">
@@ -446,17 +446,17 @@
                             <constraint firstItem="zby-Da-ZpX" firstAttribute="centerY" secondItem="9Rn-65-6gk" secondAttribute="centerY" id="CYw-hy-3Wz"/>
                             <constraint firstItem="Iwe-rj-qlY" firstAttribute="top" secondItem="VV8-pq-nHY" secondAttribute="bottom" constant="20" id="G9G-2R-gjh" userLabel="Tomorrow, 9AM EST.top = Next Game.bottom + 10"/>
                             <constraint firstItem="bQF-np-sbL" firstAttribute="top" secondItem="lYA-Lq-gpg" secondAttribute="top" id="IbP-R8-W8a"/>
+                            <constraint firstItem="9Rn-65-6gk" firstAttribute="firstBaseline" secondItem="4Mq-4n-1HR" secondAttribute="baseline" constant="50" id="Jse-DI-4fj"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="4Mq-4n-1HR" secondAttribute="trailing" id="Jtv-z0-L73"/>
-                            <constraint firstItem="XpZ-PS-Om2" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="20" id="KAb-jY-t6K"/>
+                            <constraint firstItem="XpZ-PS-Om2" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="10" id="KAb-jY-t6K"/>
                             <constraint firstItem="zby-Da-ZpX" firstAttribute="centerX" secondItem="9Rn-65-6gk" secondAttribute="centerX" id="LFZ-1D-AHr"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="bottom" secondItem="heS-RT-K7Y" secondAttribute="bottom" id="MKD-FP-mjk"/>
                             <constraint firstItem="cEc-9g-Dpw" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="Mhn-Hy-og8"/>
-                            <constraint firstAttribute="bottom" secondItem="4Mq-4n-1HR" secondAttribute="bottom" id="OSs-63-DC4"/>
                             <constraint firstItem="VV8-pq-nHY" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="SvU-Eo-oQW"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" id="TWl-mo-VnL"/>
                             <constraint firstItem="WLo-dE-vaq" firstAttribute="centerX" secondItem="lYA-Lq-gpg" secondAttribute="centerX" id="UwD-1O-Enl"/>
                             <constraint firstItem="XpZ-PS-Om2" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="10" id="bVP-Kv-A1v"/>
-                            <constraint firstItem="XpZ-PS-Om2" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="30" id="czQ-aW-tW7"/>
+                            <constraint firstItem="XpZ-PS-Om2" firstAttribute="leading" secondItem="heS-RT-K7Y" secondAttribute="leading" constant="20" id="czQ-aW-tW7"/>
                             <constraint firstItem="Ps4-7y-zkq" firstAttribute="top" secondItem="heS-RT-K7Y" secondAttribute="top" constant="10" id="g0m-mD-t2e"/>
                             <constraint firstItem="9Rn-65-6gk" firstAttribute="trailing" secondItem="heS-RT-K7Y" secondAttribute="trailing" id="gCa-Fp-wjq"/>
                             <constraint firstItem="heS-RT-K7Y" firstAttribute="trailing" secondItem="Ps4-7y-zkq" secondAttribute="trailing" constant="30" id="gGm-ml-9pH"/>
