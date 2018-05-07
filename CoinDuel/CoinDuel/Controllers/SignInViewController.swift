@@ -173,8 +173,8 @@ class SignInViewController: UIViewController {
                     
                 // unknown error
                 } else {
-                    errTitle = "Oops! Our server seems to running into some trouble."
-                    errBody = "Please wait a moment and try again."
+                    errTitle = "Hmm, we were unable to log you in."
+                    errBody = "Please make sure the username and password you entered were correct."
                 }
                 
                 // display error in alert popup

@@ -21,7 +21,10 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var gameTimeLabel: UILabel!
-
+    
+    @IBOutlet weak var balanceActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var rankActivityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var enterGameButton: UIButton!
     @IBOutlet weak var leaderboardButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
@@ -81,6 +84,7 @@ class LandingPageViewController: UIViewController {
             if (success){
                 self.rankLabel.text = "#" + String(self.user.rank)
             }
+            self.rankActivityIndicator.isHidden = true
         }
         
         // set coin balance view
@@ -88,6 +92,7 @@ class LandingPageViewController: UIViewController {
             if (success){
                 self.capCoinBalanceLabel.text = self.numberFormatter.string(from: NSNumber(value: self.user.coinBalance))! + " CC"
             }
+            self.balanceActivityIndicator.isHidden = true
         }
         
         // set game views

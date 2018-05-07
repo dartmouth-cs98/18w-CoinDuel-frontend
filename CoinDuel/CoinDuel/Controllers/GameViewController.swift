@@ -329,6 +329,17 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Display varies depending on whether game is active
         
         let coin = self.game.coins[indexPath.row]
+        
+        // load coin logo
+        coin.getCoinLogo { (success) in
+            if (success){
+                
+                // adapted from https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+                let url = URL(string: coin.logoUrl)
+                let image = try? Data(contentsOf: url!)
+                cell.coinLogo.image = UIImage(data: image!)
+            }
+        }
     
         if isGameDisplayMode {
             cell.coinAmountStepper.isHidden = true
