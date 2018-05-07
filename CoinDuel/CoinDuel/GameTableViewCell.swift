@@ -15,6 +15,7 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var coinReturnLabel: UILabel!
     @IBOutlet weak var coinPriceLabel: UILabel!
     @IBOutlet weak var coinPricePreviewLabel: UILabel!
+    @IBOutlet weak var coinLogo: UIImageView!
     
     var indexPath = 0
     var game: Game = Game()
