@@ -30,6 +30,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     var leaderboard: Leaderboard = Leaderboard()
     var numberFormatter: NumberFormatter = NumberFormatter()
     let refreshControl = UIRefreshControl()
+    
     var isCurrent = false
     var game: Game = Game()
     
@@ -146,6 +147,11 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @objc func refreshLeaderboardData(_ sender:Any) {
+        // show activity indicator
+        self.loadingActivityIndicatorView.startAnimating()
+        self.loadingActivityIndicatorView.isHidden = false
+        
+        // load leadboard
         if self.isCurrent {
             self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
                 self.getLeaderBoardHelper(success: success)

@@ -22,6 +22,7 @@ class LandingPageViewController: UIViewController {
     @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var gameTimeLabel: UILabel!
     
+    @IBOutlet weak var enterButtonActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var balanceActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var rankActivityIndicator: UIActivityIndicatorView!
     
@@ -138,6 +139,7 @@ class LandingPageViewController: UIViewController {
         // set labels
         self.gameStatusLabel.text = "Game In Progress"
         self.gameTimeLabel.text = "Game ends " + self.game.finishDate.description
+        self.enterButtonActivityIndicator.isHidden = true
         self.enterGameButton.isHidden = false
         
         // set button
@@ -155,6 +157,7 @@ class LandingPageViewController: UIViewController {
         self.gameStatusLabel.text = "Next Game"
         self.gameTimeLabel.numberOfLines = 0
         self.gameTimeLabel.text = self.game.startDate.description
+        self.enterButtonActivityIndicator.isHidden = true
         self.enterGameButton.isHidden = false
         
         // set button
@@ -171,6 +174,7 @@ class LandingPageViewController: UIViewController {
         // set labels
         self.gameStatusLabel.text = "No games scheduled"
         self.gameTimeLabel.text = "Check back soon!"
+        self.enterButtonActivityIndicator.isHidden = true
         
         //show alltime capcoin performance graph
     }

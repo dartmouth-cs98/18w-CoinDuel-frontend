@@ -21,7 +21,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tradeButton: UIButton!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var submitIndicator: UIActivityIndicatorView!
-
+    
     var game: Game = Game()
     var isGameDisplayMode: Bool = false
     var isPercentReturnMode: Bool = true
@@ -43,8 +43,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Loading GameView")
-        
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
             self.gameTableView.refreshControl = refreshControl
@@ -62,6 +60,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // hide submit activity
         self.submitIndicator.isHidden = true
+        
+        // format text
+        self.gameTimeLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
         
         self.startup()
     }
@@ -299,6 +300,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func refreshPriceData(_ sender:Any) {
+        self.loadingActivityIndicatorView.startAnimating()
+        self.loadingActivityIndicatorView.isHidden = false
         self.startup()
     }
 
@@ -331,15 +334,17 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let coin = self.game.coins[indexPath.row]
         
         // load coin logo
-        coin.getCoinLogo { (success) in
-            if (success){
-                
-                // adapted from https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
-                let url = URL(string: coin.logoUrl)
-                let image = try? Data(contentsOf: url!)
-                cell.coinLogo.image = UIImage(data: image!)
-                cell.coinLogo.layer.masksToBounds = true
-                cell.coinLogo.layer.cornerRadius = 15
+        if (coin.logoUrl == "") {
+            coin.getCoinLogo { (success) in
+                if (success){
+                    
+                    // adapted from https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+                    let url = URL(string: coin.logoUrl)
+                    let image = try? Data(contentsOf: url!)
+                    cell.coinLogo.image = UIImage(data: image!)
+                    cell.coinLogo.layer.masksToBounds = true
+                    cell.coinLogo.layer.cornerRadius = 15
+                }
             }
         }
     
@@ -496,7 +501,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 // hide spinner
                                 self.submitIndicator.isHidden = true
                             }
-                        }                    } else {
+                        }
+                    } else {
                         self.networkError("Unable to submit entry")
                         
                         // hide spinner
