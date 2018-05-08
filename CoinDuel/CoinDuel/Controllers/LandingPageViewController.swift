@@ -197,8 +197,6 @@ class LandingPageViewController: UIViewController {
         self.enterGameButton.isHidden = true
         self.rankLabel.text = ""
         self.capCoinBalanceLabel.text = ""
-        self.gameStatusLabel.text = "loading..."
-        self.gameTimeLabel.text = ""
         
         // show all activity indicators
         self.enterButtonActivityIndicator.isHidden = false
