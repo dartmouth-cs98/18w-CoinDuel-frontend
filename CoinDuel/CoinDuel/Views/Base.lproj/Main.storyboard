@@ -196,6 +196,17 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="AgM-1h-gfb">
                                 <rect key="frame" x="177" y="244" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmG-tp-YVP">
+                                <rect key="frame" x="20" y="30" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LrH-JN-Neo"/>
+                                    <constraint firstAttribute="width" constant="30" id="e0A-ks-2bL"/>
+                                </constraints>
+                                <state key="normal" image="refresh"/>
+                                <connections>
+                                    <action selector="onRefreshPressed:" destination="2va-lX-zsX" eventType="touchUpInside" id="d9o-ZW-Hx2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Kce-x5-Hpa" firstAttribute="leading" secondItem="mgS-e1-Jsm" secondAttribute="leading" constant="32" id="0am-bD-ye8"/>
@@ -212,8 +223,10 @@
                             <constraint firstItem="r7C-ql-EQ9" firstAttribute="top" secondItem="lea-15-vUH" secondAttribute="top" id="KnM-yx-mTA"/>
                             <constraint firstItem="V3K-u2-4LC" firstAttribute="top" secondItem="Xcp-ft-STZ" secondAttribute="bottom" constant="50" id="KyA-90-Jet"/>
                             <constraint firstItem="r7C-ql-EQ9" firstAttribute="trailing" secondItem="mgS-e1-Jsm" secondAttribute="trailing" id="RhW-fa-9xY"/>
+                            <constraint firstItem="jmG-tp-YVP" firstAttribute="top" secondItem="mgS-e1-Jsm" secondAttribute="top" constant="10" id="Sy3-aV-aN3"/>
                             <constraint firstItem="Bd9-Ml-297" firstAttribute="top" secondItem="mgS-e1-Jsm" secondAttribute="top" constant="14" id="WoD-s0-7TF"/>
                             <constraint firstItem="C2G-px-Evt" firstAttribute="centerX" secondItem="r7C-ql-EQ9" secondAttribute="centerX" id="ZCD-ZC-aor"/>
+                            <constraint firstItem="jmG-tp-YVP" firstAttribute="leading" secondItem="mgS-e1-Jsm" secondAttribute="leading" constant="20" id="aQn-F4-o9J"/>
                             <constraint firstItem="Xcp-ft-STZ" firstAttribute="centerX" secondItem="Kce-x5-Hpa" secondAttribute="centerX" id="gz8-cl-Sg1"/>
                             <constraint firstItem="AgM-1h-gfb" firstAttribute="centerX" secondItem="V3K-u2-4LC" secondAttribute="centerX" id="j2H-bp-mQA"/>
                             <constraint firstItem="Xcp-ft-STZ" firstAttribute="leading" secondItem="mgS-e1-Jsm" secondAttribute="leading" constant="13" id="jQd-XB-v64"/>
@@ -818,5 +831,6 @@
     <resources>
         <image name="Logo3" width="638" height="460"/>
         <image name="profile" width="225" height="225"/>
+        <image name="refresh" width="512" height="512"/>
     </resources>
 </document>

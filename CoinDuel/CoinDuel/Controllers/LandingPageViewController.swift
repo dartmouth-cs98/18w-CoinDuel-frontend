@@ -192,6 +192,23 @@ class LandingPageViewController: UIViewController {
         }
     }
 
+    @IBAction func onRefreshPressed(_ sender: Any) {
+        // hide previously loaded stats
+        self.enterGameButton.isHidden = true
+        self.rankLabel.text = ""
+        self.capCoinBalanceLabel.text = ""
+        self.gameStatusLabel.text = "loading..."
+        self.gameTimeLabel.text = ""
+        
+        // show all activity indicators
+        self.enterButtonActivityIndicator.isHidden = false
+        self.rankActivityIndicator.isHidden = false
+        self.balanceActivityIndicator.isHidden = false
+        
+        // init rest of landing page
+        self.initializeLandingPage()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
