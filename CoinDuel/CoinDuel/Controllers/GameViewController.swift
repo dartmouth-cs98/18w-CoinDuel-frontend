@@ -62,7 +62,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.submitIndicator.isHidden = true
         
         // format text
-        self.gameTimeLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        self.gameTimeLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         self.startup()
     }
