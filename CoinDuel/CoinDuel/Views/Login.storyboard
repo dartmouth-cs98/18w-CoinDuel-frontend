@@ -572,10 +572,10 @@
             </objects>
             <point key="canvasLocation" x="1165.5999999999999" y="-99.400299850074973"/>
         </scene>
-        <!--View Controller-->
+        <!--Slide View Controller-->
         <scene sceneID="qbD-6N-6jD">
             <objects>
-                <viewController id="bUL-EF-veu" sceneMemberID="viewController">
+                <viewController id="bUL-EF-veu" customClass="SlideViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I72-Ov-Evb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -600,6 +600,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8GG-ZF-E6l"/>
                     </view>
+                    <connections>
+                        <outlet property="slideScrollView" destination="CG4-7l-Lbu" id="EoU-73-SIA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXF-co-tb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

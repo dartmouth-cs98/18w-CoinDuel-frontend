@@ -8,6 +8,9 @@
 
 import UIKit
 
+// This code is based on this tutorial:
+// https://www.youtube.com/watch?v=Vq71SPkJIus
+
 class Slide: UIView {
 
     /*
@@ -18,4 +21,7 @@ class Slide: UIView {
     }
     */
 
+    @IBOutlet weak var label: UILabel!
+    
+    
 }
