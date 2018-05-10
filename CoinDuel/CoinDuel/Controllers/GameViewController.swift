@@ -22,6 +22,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var submitIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+
+
     var game: Game = Game()
     var isGameDisplayMode: Bool = false
     var isPercentReturnMode: Bool = true
@@ -68,6 +71,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func startup() {
+        print(tableViewBottomConstraint.constant.description)
         // Retrieve user balance
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
@@ -201,6 +205,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func displayEntryMode() {
+        print(self.tableViewBottomConstraint.constant.description)
+        self.tableViewBottomConstraint.constant = 50
+        self.view.layoutIfNeeded()
+
         self.isGameDisplayMode = false
         self.submitIndicator.isHidden = true
 
@@ -233,6 +241,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func displayGameMode() {
+        print(self.tableViewBottomConstraint.constant.description)
+        self.tableViewBottomConstraint.constant = -30
+        self.view.layoutIfNeeded()
+
         self.isGameDisplayMode = true
         
         self.updateGameModeLabels()
@@ -251,6 +263,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // When there are no active games, display this
     func displayNoGameMode() {
+        print(self.tableViewBottomConstraint.constant.description)
+        self.tableViewBottomConstraint.constant = -30
+        self.view.layoutIfNeeded()
 //        nextGameLabel.text = "No Games Scheduled"
 //        gameTimeLabel.text = "Check back soon!"
 //
