@@ -238,6 +238,7 @@ class CoinDetailViewController: UIViewController {
         // removes horizontal lines from chart
         let leftAxis:YAxis = chartView.leftAxis
         leftAxis.drawGridLinesEnabled = false
+        leftAxis.labelFont = UIFont.init(name: "AvenirNext-Regular", size: 11)!
 
         //        round the Double https://stackoverflow.com/questions/27338573/rounding-a-double-value-to-x-number-of-decimal-places-in-swift
         let x = ((currentCoinPrice - tempInitialPrice)/tempInitialPrice) * 100
