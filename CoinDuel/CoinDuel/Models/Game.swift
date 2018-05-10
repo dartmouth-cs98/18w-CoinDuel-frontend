@@ -114,7 +114,7 @@ class Game {
                     self.coins = [Coin]()
                 
                     // Get all coin names, default CapCoin allocation to 0
-                    for coin in json["choices"] {
+                    for coin in json["currentChoices"] {
                         self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue, coin.1["startPrice"].doubleValue))
                     }
                     
@@ -153,7 +153,7 @@ class Game {
                 let json = JSON(value)
                 print(json)
                 // Get all coin names, default CapCoin allocation to 0
-                for coin in json["choices"] {
+                for coin in json["currentChoices"] {
                     self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue, coin.1["startPrice"].doubleValue))
                 }
                 completion(true)
