@@ -22,7 +22,7 @@ private class CubicLineSampleFillFormatter: IFillFormatter {
     }
 }
 
-class CoinDetailViewController: UIViewController {
+class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
@@ -33,10 +33,7 @@ class CoinDetailViewController: UIViewController {
     @IBOutlet weak var coinPercentChangeLabel: UILabel!
     @IBOutlet weak var inactiveChartButtons: UIStackView!
     @IBOutlet weak var coinName: UILabel!
-    @IBOutlet weak var article1: UILabel!
-    @IBOutlet weak var article2: UILabel!
-    @IBOutlet weak var article3: UILabel!
-    
+    @IBOutlet weak var tableView: UITableView!
     
     var game: Game = Game()
     var coinSymbolLabel: String = ""
@@ -45,10 +42,10 @@ class CoinDetailViewController: UIViewController {
     var initialCoinPrice: Double = Double()
     var tempInitialPrice: Double = 0.0
     var priceData : [Double] = []
+    var newsHeaders = [String]()
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
     var currentTimeFrame = 0
-
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -59,6 +56,10 @@ class CoinDetailViewController: UIViewController {
         self.coinPercentChangeLabel.text = ""
         self.nameHeaderLabel.text = coinSymbolLabel
         self.coinPriceLabel.text = "$" + currentCoinPrice.description
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
 
         if self.allocation != "0.0" {
             self.capCoinAllocationLabel.text = allocation + " CC"
@@ -90,9 +91,10 @@ class CoinDetailViewController: UIViewController {
                         let innerJson = JSON(value)
                         let newsArray = innerJson["Data"].arrayValue
                         self.coinName.text = json["name"].stringValue + " News"
-                        self.article1.text = newsArray[0]["title"].stringValue
-                        self.article2.text = newsArray[1]["title"].stringValue
-                        self.article3.text = newsArray[2]["title"].stringValue
+                        self.newsHeaders.append(newsArray[0]["title"].stringValue)
+                        self.newsHeaders.append(newsArray[1]["title"].stringValue)
+                        self.newsHeaders.append(newsArray[2]["title"].stringValue)
+                        self.tableView.reloadData()
                     case .failure(let error):
                         print(error)
                     }
@@ -102,6 +104,22 @@ class CoinDetailViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newsHeaders.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "NewsTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NewsTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of NewsTableViewCell.")
+        }
+        
+        cell.articleTitle.text = newsHeaders[indexPath.row]
+        
+        return cell
     }
 
     @IBAction func onBackPressed(_ sender: Any) {
