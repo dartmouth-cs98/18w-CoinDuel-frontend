@@ -21,6 +21,7 @@
 		1EB504D8201A7B8700BB76AA /* CoinDuelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504D7201A7B8700BB76AA /* CoinDuelTests.swift */; };
 		1EB504E3201A7B8700BB76AA /* CoinDuelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */; };
 		504A1B89203B798E004819F1 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A1B88203B798E004819F1 /* Leaderboard.swift */; };
+		505BCAAB20A5038900414432 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BCAAA20A5038900414432 /* NewsTableViewCell.swift */; };
 		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
 		50E499402038B64500DBCC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4993F2038B64500DBCC42 /* User.swift */; };
@@ -105,6 +106,7 @@
 		1EB504E2201A7B8700BB76AA /* CoinDuelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDuelUITests.swift; sourceTree = "<group>"; };
 		1EB504E4201A7B8700BB76AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		504A1B88203B798E004819F1 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		505BCAAA20A5038900414432 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		509BC41C2030DF7B00702226 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		50C82EAF5FB61A72ABB12414 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				1E331688203637BD00BEE349 /* GameTableViewCell.swift */,
 				A050E8482048B4310009A96E /* DateValueFormatter.swift */,
 				F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */,
+				505BCAAA20A5038900414432 /* NewsTableViewCell.swift */,
 			);
 			path = CoinDuel;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 			files = (
 				A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */,
 				1E33168B203672BF00BEE349 /* Constant.swift in Sources */,
+				505BCAAB20A5038900414432 /* NewsTableViewCell.swift in Sources */,
 				F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */,
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
 				A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */,
