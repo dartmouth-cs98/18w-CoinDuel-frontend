@@ -202,13 +202,17 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.networkError("Could not retrieve user's coin balance")
             }
         }
+        if(self.submitButton.isHidden){
+            self.tableViewBottomConstraint.constant = -30
+            self.view.layoutIfNeeded()
+        } else {
+            print(self.tableViewBottomConstraint.constant.description)
+            self.tableViewBottomConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }
     }
     
     func displayEntryMode() {
-        print(self.tableViewBottomConstraint.constant.description)
-        self.tableViewBottomConstraint.constant = 50
-        self.view.layoutIfNeeded()
-
         self.isGameDisplayMode = false
         self.submitIndicator.isHidden = true
 
@@ -234,6 +238,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             gameTimeLabel.text = "Game starts " + self.game.startDate
             self.submitButton.isHidden = true
         }
+
+        if(self.submitButton.isHidden){
+            self.tableViewBottomConstraint.constant = -30
+            self.view.layoutIfNeeded()
+        } else {
+            print(self.tableViewBottomConstraint.constant.description)
+            self.tableViewBottomConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }
         
         DispatchQueue.main.async() {
             self.gameTableView.reloadData()
@@ -241,9 +254,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func displayGameMode() {
-        print(self.tableViewBottomConstraint.constant.description)
-        self.tableViewBottomConstraint.constant = -30
-        self.view.layoutIfNeeded()
+
 
         self.isGameDisplayMode = true
         
@@ -259,13 +270,20 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         DispatchQueue.main.async() {
             self.gameTableView.reloadData()
         }
+
+        if(self.submitButton.isHidden){
+            self.tableViewBottomConstraint.constant = -30
+            self.view.layoutIfNeeded()
+        } else {
+            print(self.tableViewBottomConstraint.constant.description)
+            self.tableViewBottomConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }
     }
     
     // When there are no active games, display this
     func displayNoGameMode() {
-        print(self.tableViewBottomConstraint.constant.description)
-        self.tableViewBottomConstraint.constant = -30
-        self.view.layoutIfNeeded()
+
 //        nextGameLabel.text = "No Games Scheduled"
 //        gameTimeLabel.text = "Check back soon!"
 //
@@ -292,6 +310,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }))
         
         self.present(alert, animated: true, completion: nil)
+
+        if(self.submitButton.isHidden){
+            self.tableViewBottomConstraint.constant = -30
+            self.view.layoutIfNeeded()
+        } else {
+            print(self.tableViewBottomConstraint.constant.description)
+            self.tableViewBottomConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }
     }
     
     func updateGameModeLabels() {
