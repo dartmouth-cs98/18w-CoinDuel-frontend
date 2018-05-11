@@ -103,14 +103,15 @@ class LandingPageViewController: UIViewController {
 
                 if storedGameId != nil && self.game.id != storedGameId {
                     // Display results pop up if the user had an entry
-                    self.game = Game()
-                    self.game.id = storedGameId!
-                    self.game.getEntry() { (entryStatus) -> Void in
+                    let resultsGame = Game()
+                    resultsGame.id = storedGameId!
+                    resultsGame.getEntry() { (entryStatus) -> Void in
                         if entryStatus == "entry" {
                             
+                            // display results view
                             let storyboard = UIStoryboard(name: "Results", bundle: nil)
                             let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
-                            resultsVC.game = self.game
+                            resultsVC.game = resultsGame
                             self.present(resultsVC, animated: true, completion: nil)
 
                         } else {
