@@ -44,9 +44,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var priceData : [Double] = []
     var newsHeaders = [String]()
     var newsDates = [String]()
+    var newsUrls = [String]()
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
     var currentTimeFrame = 0
+    var maxArticles = 3
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -92,12 +94,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                         let innerJson = JSON(value)
                         let newsArray = innerJson["Data"].arrayValue
                         self.coinName.text = json["name"].stringValue + " News"
-                        self.newsHeaders.append(newsArray[0]["title"].stringValue)
-                        self.newsHeaders.append(newsArray[1]["title"].stringValue)
-                        self.newsHeaders.append(newsArray[2]["title"].stringValue)
-                        self.newsDates.append(newsArray[0]["published_on"].stringValue)
-                        self.newsDates.append(newsArray[1]["published_on"].stringValue)
-                        self.newsDates.append(newsArray[2]["published_on"].stringValue)
+                        for i in 0 ..< self.maxArticles {
+                            self.newsHeaders.append(newsArray[i]["title"].stringValue)
+                            self.newsDates.append(newsArray[i]["published_on"].stringValue)
+                            self.newsUrls.append(newsArray[i]["url"].stringValue)
+                        }
                         self.tableView.reloadData()
                     case .failure(let error):
                         print(error)
@@ -130,6 +131,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         cell.articleDate.text = dateString
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIApplication.shared.openURL(URL(string: newsUrls[indexPath.row])!)
     }
 
     @IBAction func onBackPressed(_ sender: Any) {
