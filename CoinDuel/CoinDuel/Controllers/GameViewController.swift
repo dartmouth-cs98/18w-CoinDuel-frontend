@@ -83,9 +83,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         // See if we need to display results
                         if storedGameId != nil && self.game.id != storedGameId {
                             print("Should display results popup")
-                            self.game = Game()
-                            self.game.id = storedGameId!
-                            self.game.getEntry() { (entryStatus) -> Void in
+                            let resultsGame = Game()
+                            resultsGame.id = storedGameId!
+                            resultsGame.getEntry() { (entryStatus) -> Void in
                                 if entryStatus == "entry" {
                                     DispatchQueue.main.async() {
                                         self.refreshControl.endRefreshing()
@@ -94,14 +94,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     }
                                     let storyboard = UIStoryboard(name: "Results", bundle: nil)
                                     let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
-                                    resultsVC.game = self.game
+                                    resultsVC.game = resultsGame
                                     self.present(resultsVC, animated: true, completion: nil)
 
                                 } else {
                                     // Could not get results for this game
                                     print("No results available")
-                                    self.networkError("Could not retrieve game results"
-                                    )
+                                    self.networkError("Could not retrieve game results")
                                 }
                             }
                         } else {
