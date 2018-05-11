@@ -64,6 +64,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // hide submit activity
         self.submitIndicator.isHidden = true
         
+        // hide trades until game starts
+        self.tradeButton.isHidden = true
+        
         // format text
         self.gameTimeLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
@@ -260,6 +263,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         nextGameLabel.isHidden = true
         gameTimeLabel.isHidden = false
         self.submitButton.isHidden = true
+        self.tradeButton.isHidden = false
         
         DispatchQueue.main.async() {
             self.gameTableView.reloadData()
