@@ -152,6 +152,13 @@ class Game {
             case .success(let value):
                 let json = JSON(value)
                 print(json)
+                
+                // check for insufficient funds
+                if (json["error"].exists() && json["error"] == "insufficient funds") {
+                    completion(false)
+                    return
+                }
+                
                 // Get all coin names, default CapCoin allocation to 0
                 for coin in json["currentChoices"] {
                     self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue, coin.1["startPrice"].doubleValue))

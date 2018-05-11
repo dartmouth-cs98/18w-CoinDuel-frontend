@@ -71,7 +71,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func startup() {
-        print(tableViewBottomConstraint.constant.description)
         // Retrieve user balance
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
@@ -206,7 +205,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableViewBottomConstraint.constant = -30
             self.view.layoutIfNeeded()
         } else {
-            print(self.tableViewBottomConstraint.constant.description)
             self.tableViewBottomConstraint.constant = 50
             self.view.layoutIfNeeded()
         }
@@ -243,7 +241,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableViewBottomConstraint.constant = -30
             self.view.layoutIfNeeded()
         } else {
-            print(self.tableViewBottomConstraint.constant.description)
             self.tableViewBottomConstraint.constant = 50
             self.view.layoutIfNeeded()
         }
@@ -254,8 +251,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func displayGameMode() {
-
-
         self.isGameDisplayMode = true
         
         self.updateGameModeLabels()
@@ -275,7 +270,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableViewBottomConstraint.constant = -30
             self.view.layoutIfNeeded()
         } else {
-            print(self.tableViewBottomConstraint.constant.description)
             self.tableViewBottomConstraint.constant = 50
             self.view.layoutIfNeeded()
         }
@@ -315,7 +309,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableViewBottomConstraint.constant = -30
             self.view.layoutIfNeeded()
         } else {
-            print(self.tableViewBottomConstraint.constant.description)
             self.tableViewBottomConstraint.constant = 50
             self.view.layoutIfNeeded()
         }
@@ -544,13 +537,37 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 self.submitIndicator.isHidden = true
                             }
                         }
+                        
+                    // entry submission failure
                     } else {
                         self.networkError("Unable to submit entry")
-                        
-                        // hide spinner
+                        self.tableViewBottomConstraint.constant = -30
+                        self.view.layoutIfNeeded()
                         self.submitIndicator.isHidden = true
                     }
                 })
+                
+            // submit entry failure
+            } else {
+                
+                // insufficient funds
+                if (self.user.coinBalance < 10) {
+                    self.submitButton.setTitle("INSUFFICIENT FUNDS", for: UIControlState .normal)
+                    self.submitButton.backgroundColor = UIColor.red
+                    self.submitIndicator.isHidden = true
+                    self.submitButton.isHidden = false
+                    self.submitButton.isEnabled = false
+                    
+                    // display error to user
+                    self.networkError("You do not have enough CapCoin available to play in this game.")
+                
+                // unknown error
+                } else {
+                    self.networkError("Unable to submit entry")
+                    self.tableViewBottomConstraint.constant = -30
+                    self.view.layoutIfNeeded()
+                    self.submitIndicator.isHidden = true
+                }
             }
         }
 
