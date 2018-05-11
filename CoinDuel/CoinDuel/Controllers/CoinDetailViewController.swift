@@ -43,6 +43,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var tempInitialPrice: Double = 0.0
     var priceData : [Double] = []
     var newsHeaders = [String]()
+    var newsDates = [String]()
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
     var currentTimeFrame = 0
@@ -94,6 +95,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                         self.newsHeaders.append(newsArray[0]["title"].stringValue)
                         self.newsHeaders.append(newsArray[1]["title"].stringValue)
                         self.newsHeaders.append(newsArray[2]["title"].stringValue)
+                        self.newsDates.append(newsArray[0]["published_on"].stringValue)
+                        self.newsDates.append(newsArray[1]["published_on"].stringValue)
+                        self.newsDates.append(newsArray[2]["published_on"].stringValue)
                         self.tableView.reloadData()
                     case .failure(let error):
                         print(error)
@@ -118,6 +122,12 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         cell.articleTitle.text = newsHeaders[indexPath.row]
+        let date = NSDate(timeIntervalSince1970: Double(newsDates[indexPath.row])!)
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.dateFormat = "MMM dd, YYYY hh:mm a"
+        
+        let dateString = dayTimePeriodFormatter.string(from: date as Date)
+        cell.articleDate.text = dateString
         
         return cell
     }
