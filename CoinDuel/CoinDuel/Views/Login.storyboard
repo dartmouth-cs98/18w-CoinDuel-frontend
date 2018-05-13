@@ -573,40 +573,55 @@
             <point key="canvasLocation" x="1165.5999999999999" y="-99.400299850074973"/>
         </scene>
         <!--Slide View Controller-->
-        <scene sceneID="qbD-6N-6jD">
+        <scene sceneID="crC-b3-rxF">
             <objects>
-                <viewController id="bUL-EF-veu" customClass="SlideViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="I72-Ov-Evb">
+                <viewController id="BwR-oJ-CI6" customClass="SlideViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="H09-cc-gYB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X43-Tr-6cV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDr-Oh-72V">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CG4-7l-Lbu">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-nc-hc5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-Zb-R6S">
+                                        <rect key="frame" x="168" y="598" width="40" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="XaL-JM-Row"/>
+                                        </constraints>
+                                    </pageControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="PQI-Zb-R6S" secondAttribute="trailing" constant="167" id="Dlb-LK-R1m"/>
+                                    <constraint firstItem="PQI-Zb-R6S" firstAttribute="top" secondItem="Mxp-nc-hc5" secondAttribute="top" constant="598" id="LJ9-9A-9c5"/>
+                                    <constraint firstItem="PQI-Zb-R6S" firstAttribute="centerX" secondItem="Mxp-nc-hc5" secondAttribute="centerX" id="Ub3-Ah-URc"/>
+                                    <constraint firstAttribute="bottom" secondItem="PQI-Zb-R6S" secondAttribute="bottom" constant="32" id="uhC-Tz-e6s"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="X43-Tr-6cV" firstAttribute="top" secondItem="I72-Ov-Evb" secondAttribute="top" id="9mL-tn-901"/>
-                            <constraint firstItem="X43-Tr-6cV" firstAttribute="leading" secondItem="I72-Ov-Evb" secondAttribute="leading" id="aAq-gl-9R2"/>
-                            <constraint firstItem="CG4-7l-Lbu" firstAttribute="bottom" secondItem="8GG-ZF-E6l" secondAttribute="bottom" id="aYw-ec-pfn"/>
-                            <constraint firstAttribute="trailing" secondItem="X43-Tr-6cV" secondAttribute="trailing" id="bbt-1T-1Ib"/>
-                            <constraint firstItem="X43-Tr-6cV" firstAttribute="bottom" secondItem="8GG-ZF-E6l" secondAttribute="bottom" id="bdD-jX-gsN"/>
-                            <constraint firstItem="CG4-7l-Lbu" firstAttribute="top" secondItem="I72-Ov-Evb" secondAttribute="top" id="i2j-DU-FHn"/>
-                            <constraint firstItem="CG4-7l-Lbu" firstAttribute="leading" secondItem="8GG-ZF-E6l" secondAttribute="leading" id="wVw-9q-HGJ"/>
-                            <constraint firstItem="CG4-7l-Lbu" firstAttribute="trailing" secondItem="8GG-ZF-E6l" secondAttribute="trailing" id="xBO-EC-CkO"/>
+                            <constraint firstItem="PcP-Oj-S53" firstAttribute="bottom" secondItem="UDr-Oh-72V" secondAttribute="bottom" id="5w9-Xd-nMG"/>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="leading" secondItem="PcP-Oj-S53" secondAttribute="leading" id="8zF-mq-uV3"/>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="top" secondItem="H09-cc-gYB" secondAttribute="top" id="9JT-Fn-xHF"/>
+                            <constraint firstItem="UDr-Oh-72V" firstAttribute="leading" secondItem="PcP-Oj-S53" secondAttribute="leading" id="GIP-Ue-hBH"/>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="trailing" secondItem="PcP-Oj-S53" secondAttribute="trailing" id="JWI-yl-Gpe"/>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="bottom" secondItem="PcP-Oj-S53" secondAttribute="bottom" id="MTZ-ZM-JV8"/>
+                            <constraint firstItem="UDr-Oh-72V" firstAttribute="top" secondItem="H09-cc-gYB" secondAttribute="top" id="Xop-mu-Z1l"/>
+                            <constraint firstItem="PcP-Oj-S53" firstAttribute="trailing" secondItem="UDr-Oh-72V" secondAttribute="trailing" id="wIg-am-RW5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8GG-ZF-E6l"/>
+                        <viewLayoutGuide key="safeArea" id="PcP-Oj-S53"/>
                     </view>
                     <connections>
-                        <outlet property="slideScrollView" destination="CG4-7l-Lbu" id="EoU-73-SIA"/>
+                        <outlet property="pageControl" destination="PQI-Zb-R6S" id="Br5-0O-rR9"/>
+                        <outlet property="scrollView" destination="Mxp-nc-hc5" id="5pF-Wt-5nR"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YXF-co-tb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OR8-fN-43X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167.19999999999999" y="686.80659670164926"/>
+            <point key="canvasLocation" x="287" y="1282"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="VTw-FW-83x">
@@ -669,6 +684,9 @@
                                 <state key="normal" title="Help!">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="BwR-oJ-CI6" kind="presentation" id="yTB-3H-Xx5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tih-e4-df2">
                                 <rect key="frame" x="143" y="271" width="127" height="48"/>
@@ -1316,7 +1334,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="ItM-AD-zS1"/>
         <segue reference="RrX-yt-mxB"/>
-        <segue reference="mkH-uc-JAS"/>
+        <segue reference="RMK-eE-SZz"/>
         <segue reference="Sum-gf-KeX"/>
     </inferredMetricsTieBreakers>
 </document>
