@@ -583,39 +583,38 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDr-Oh-72V">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-nc-hc5">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-nc-hc5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-Zb-R6S">
-                                        <rect key="frame" x="168" y="598" width="40" height="37"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="D6S-0b-H9Q">
+                                        <rect key="frame" x="168" y="613" width="40" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="XaL-JM-Row"/>
+                                            <constraint firstAttribute="width" constant="40" id="WlA-kQ-KQT"/>
                                         </constraints>
                                     </pageControl>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="PQI-Zb-R6S" secondAttribute="trailing" constant="167" id="Dlb-LK-R1m"/>
-                                    <constraint firstItem="PQI-Zb-R6S" firstAttribute="top" secondItem="Mxp-nc-hc5" secondAttribute="top" constant="598" id="LJ9-9A-9c5"/>
-                                    <constraint firstItem="PQI-Zb-R6S" firstAttribute="centerX" secondItem="Mxp-nc-hc5" secondAttribute="centerX" id="Ub3-Ah-URc"/>
-                                    <constraint firstAttribute="bottom" secondItem="PQI-Zb-R6S" secondAttribute="bottom" constant="32" id="uhC-Tz-e6s"/>
+                                    <constraint firstItem="D6S-0b-H9Q" firstAttribute="top" secondItem="Mxp-nc-hc5" secondAttribute="top" constant="613" id="LBL-dl-M52"/>
+                                    <constraint firstItem="D6S-0b-H9Q" firstAttribute="centerX" secondItem="Mxp-nc-hc5" secondAttribute="centerX" id="suE-zh-dzh"/>
+                                    <constraint firstAttribute="trailing" secondItem="D6S-0b-H9Q" secondAttribute="trailing" constant="167" id="uMO-nw-xgd"/>
+                                    <constraint firstAttribute="bottom" secondItem="D6S-0b-H9Q" secondAttribute="bottom" constant="17" id="wrg-gz-94n"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="top" secondItem="H09-cc-gYB" secondAttribute="top" id="4oQ-z2-Uth"/>
                             <constraint firstItem="PcP-Oj-S53" firstAttribute="bottom" secondItem="UDr-Oh-72V" secondAttribute="bottom" id="5w9-Xd-nMG"/>
-                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="leading" secondItem="PcP-Oj-S53" secondAttribute="leading" id="8zF-mq-uV3"/>
-                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="top" secondItem="H09-cc-gYB" secondAttribute="top" id="9JT-Fn-xHF"/>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="trailing" secondItem="PcP-Oj-S53" secondAttribute="trailing" id="6Jv-Lp-FMb"/>
                             <constraint firstItem="UDr-Oh-72V" firstAttribute="leading" secondItem="PcP-Oj-S53" secondAttribute="leading" id="GIP-Ue-hBH"/>
-                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="trailing" secondItem="PcP-Oj-S53" secondAttribute="trailing" id="JWI-yl-Gpe"/>
-                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="bottom" secondItem="PcP-Oj-S53" secondAttribute="bottom" id="MTZ-ZM-JV8"/>
                             <constraint firstItem="UDr-Oh-72V" firstAttribute="top" secondItem="H09-cc-gYB" secondAttribute="top" id="Xop-mu-Z1l"/>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="bottom" secondItem="PcP-Oj-S53" secondAttribute="bottom" id="aMx-YI-Xnw"/>
+                            <constraint firstItem="Mxp-nc-hc5" firstAttribute="leading" secondItem="PcP-Oj-S53" secondAttribute="leading" id="djY-q7-hIx"/>
                             <constraint firstItem="PcP-Oj-S53" firstAttribute="trailing" secondItem="UDr-Oh-72V" secondAttribute="trailing" id="wIg-am-RW5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PcP-Oj-S53"/>
                     </view>
                     <connections>
-                        <outlet property="pageControl" destination="PQI-Zb-R6S" id="Br5-0O-rR9"/>
                         <outlet property="scrollView" destination="Mxp-nc-hc5" id="5pF-Wt-5nR"/>
                     </connections>
                 </viewController>
@@ -694,6 +693,9 @@
                                 <state key="normal" title="About Us">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="TpX-II-0sE" kind="show" id="rsp-JK-wZT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOY-a8-dOt">
                                 <rect key="frame" x="143" y="203" width="73" height="48"/>
@@ -861,6 +863,21 @@
                 <exit id="urx-77-Bqp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1954" y="1231"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="k0C-pi-M65">
+            <objects>
+                <viewController id="TpX-II-0sE" customClass="ViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UxC-Yh-jPR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="gnZ-9w-f9F"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kac-JN-BHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="1882"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="I55-vg-ywH">
@@ -1332,7 +1349,7 @@
         <image name="twitter" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ItM-AD-zS1"/>
+        <segue reference="u0n-WX-2HM"/>
         <segue reference="RrX-yt-mxB"/>
         <segue reference="RMK-eE-SZz"/>
         <segue reference="Sum-gf-KeX"/>

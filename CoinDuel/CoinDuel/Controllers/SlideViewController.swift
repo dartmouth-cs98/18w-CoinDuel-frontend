@@ -11,13 +11,17 @@ import UIKit
 // Below code from tutorial at
 // https://www.youtube.com/watch?v=X2Wr4TtMG6Q
 
-class SlideViewController: UIViewController {
+class SlideViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    var contentWidth:CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.delegate = self
         
         for image in 0...2 {
             let image2 = String(image)
@@ -25,11 +29,19 @@ class SlideViewController: UIViewController {
             print(type(of: image))
             let imageView = UIImageView(image: imageToDisplay)
             let xCoordinate = view.frame.midX + view.frame.width * CGFloat(image)
+            contentWidth += view.frame.width
             scrollView.addSubview(imageView)
-            imageView.frame = CGRect(x: xCoordinate - 50, y: (view.frame.height / 2) - 50, width: 256, height: 256)
+            imageView.frame = CGRect(x: xCoordinate - 50, y: (view.frame.height / 2) - 50, width: 100, height: 100)
         }
+        
+        scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
 
         // Do any additional setup after loading the view.
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+        //pageControl.currentPage =
     }
 
     override func didReceiveMemoryWarning() {
