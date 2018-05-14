@@ -33,11 +33,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let refreshControl = UIRefreshControl()
     let numberFormatter = NumberFormatter()
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
+    
+    let SectionHeaderHeight: CGFloat = 40
+
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
         
         // trade button
+        self.tradeButton.isHidden = true
         self.tradeButton.layer.masksToBounds = true
         self.tradeButton.layer.cornerRadius = self.tradeButton.frame.height / 2
     }
@@ -74,6 +78,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func startup() {
+        self.tradeButton.isHidden = true
+
         // Retrieve user balance
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
@@ -263,7 +269,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         nextGameLabel.isHidden = true
         gameTimeLabel.isHidden = false
         self.submitButton.isHidden = true
-        self.tradeButton.isHidden = false
+//        self.tradeButton.isHidden = false
         
         DispatchQueue.main.async() {
             self.gameTableView.reloadData()
@@ -348,8 +354,56 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    // From https://medium.com/swift-programming/swift-enums-and-uitableview-sections-1806b74b8138
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if self.game.coins.filter({$0.allocation > 0}).count > 0 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.game.coins.count
+        if !isGameDisplayMode {
+            return self.game.coins.count
+        } else {
+            if section == 0 {
+                return self.game.coins.filter({$0.allocation > 0}).count
+            } else {
+                return self.game.coins.filter({$0.allocation == 0}).count
+            }
+        }
+    }
+    
+    // From https://medium.com/swift-programming/swift-enums-and-uitableview-sections-1806b74b8138
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+//        if section == 0 && isGameDisplayMode && (self.game.coins.filter({$0.allocation > 0}).count > 0) {
+//            return SectionHeaderHeight
+//        } else if section == 1 {
+//            return SectionHeaderHeight
+//        } else {
+//            return 0
+//        }
+        return SectionHeaderHeight
+    }
+    
+    // From https://medium.com/swift-programming/swift-enums-and-uitableview-sections-1806b74b8138
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
+        view.backgroundColor = UIColor.clear
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = UIColor.white
+        
+        if section == 0 {
+            label.text = "My Cryptos"
+        } else if section == 1 {
+            label.text = "Watch List"
+        }
+        
+        view.addSubview(label)
+        return view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -368,8 +422,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.indexPath = indexPath.row
 
         // Display varies depending on whether game is active
+        var indexPathRow = indexPath.row
+        if indexPath.section == 1 {
+            indexPathRow += self.game.coins.filter({$0.allocation > 0}).count
+        }
         
-        let coin = self.game.coins[indexPath.row]
+        let coin = self.game.coins[indexPathRow]
         
         // load coin logo
         if (coin.logoUrl == "") {
