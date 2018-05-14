@@ -392,6 +392,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinPricePreviewLabel.isHidden = true
             cell.coinPriceLabel.isHidden = false
             cell.coinReturnLabel.isHidden = false
+            
+            cell.coinReturnLabel.layer.masksToBounds = true
+            cell.coinReturnLabel.layer.cornerRadius = cell.coinReturnLabel.frame.height / 2
 
             cell.coinNameLabel.text = coin.ticker
             
