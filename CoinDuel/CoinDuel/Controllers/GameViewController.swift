@@ -356,7 +356,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // From https://medium.com/swift-programming/swift-enums-and-uitableview-sections-1806b74b8138
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.game.coins.filter({$0.allocation > 0}).count > 0 {
+        if isGameDisplayMode && self.game.coins.filter({$0.allocation > 0}).count > 0 {
             return 2
         } else {
             return 1
@@ -377,15 +377,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // From https://medium.com/swift-programming/swift-enums-and-uitableview-sections-1806b74b8138
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-
-//        if section == 0 && isGameDisplayMode && (self.game.coins.filter({$0.allocation > 0}).count > 0) {
-//            return SectionHeaderHeight
-//        } else if section == 1 {
-//            return SectionHeaderHeight
-//        } else {
-//            return 0
-//        }
-        return SectionHeaderHeight
+        if section == 0 && isGameDisplayMode && (self.game.coins.filter({$0.allocation > 0}).count > 0) {
+            return SectionHeaderHeight
+        } else if section == 1 {
+            return SectionHeaderHeight
+        } else {
+            return 0
+        }
     }
     
     // From https://medium.com/swift-programming/swift-enums-and-uitableview-sections-1806b74b8138
