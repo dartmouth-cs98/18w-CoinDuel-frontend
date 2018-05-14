@@ -202,6 +202,8 @@ class Game {
                         let percent = coin.1["percent"].doubleValue
                         self.coins.append(Coin(ticker, initialPrice, currentPrice, allocation, capCoin, percent))
                     }
+                    
+                    self.coins.sort(by: {$0.allocation > $1.allocation})
                 
                     completion(true)
                 case .failure(let error):
