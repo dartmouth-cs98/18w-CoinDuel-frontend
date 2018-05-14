@@ -190,7 +190,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FKk-Hh-yoa" kind="show" id="GlX-ij-NE1"/>
+                                    <segue destination="FKk-Hh-yoa" kind="presentation" modalTransitionStyle="flipHorizontal" id="GlX-ij-NE1"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="AgM-1h-gfb">
