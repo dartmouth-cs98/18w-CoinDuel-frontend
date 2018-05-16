@@ -1,44 +1,51 @@
 //
-//  SlideViewController.swift
-//  CoinDuel
+//  ViewController.swift
+//  HorizontalScrollView
 //
-//  Created by Anish Chadalavada on 5/13/18.
-//  Copyright © 2018 Capitalize. All rights reserved.
-//
+//  Created by Yash Patel on 04/10/17.
+//  Copyright © 2017 Yash Patel. All rights reserved.
+//  Code from http://iamyash.com/tag/horizontal-scroll-view-swift-3/
 
 import UIKit
 
-// Below code from tutorial at
-// https://www.youtube.com/watch?v=X2Wr4TtMG6Q
-
 class SlideViewController: UIViewController, UIScrollViewDelegate {
     
-    // Code from https://stackoverflow.com/questions/29074454/how-to-create-a-scroll-view-with-a-page-control-using-swift
+    //@IBOutlet weak var scrollView: UIScrollView!
+    //@IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
-    
-    @IBOutlet weak var imgScrollView: UIScrollView!
-    @IBOutlet weak var imgPageController: UIPageControl!
-    var sliderImagesArray = NSMutableArray()
-    
-    let imagelist = ["1", "2", "3", "4", "5"]
-    var scrollView = UIScrollView()
-    
-    var pageControl : UIPageControl = UIPageControl(frame:CGRect(x: 50, y: 300, width: 200, height: 50))
-    
-    var yPosition:CGFloat = 0
-    var scrollViewContentSize:CGFloat=0;
+    var contentWidth:CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView.delegate = self
+        
+        for image in 0...2 {
+            let imageToDisplay = UIImage(named: "\(image).png")
+            let imageView = UIImageView(image: imageToDisplay)
+            
+            let xCoordinate = view.frame.midX + view.frame.width * CGFloat(image)
+            contentWidth += view.frame.width
+            scrollView.addSubview(imageView)
+            imageView.frame = CGRect(x: xCoordinate - 50, y: (view.frame.height / 2) + 50, width: 100, height: 100)
+        }
+        
+        scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x / CGFloat(414))
         
     }
     
-   
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
 }
+
+
