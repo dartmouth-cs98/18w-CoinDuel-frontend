@@ -57,7 +57,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.coinPercentChangeLabel.text = ""
-        self.nameHeaderLabel.text = coinSymbolLabel
         self.coinPriceLabel.text = "$" + currentCoinPrice.description
         
         self.tableView.delegate = self
@@ -94,6 +93,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                         let innerJson = JSON(value)
                         let newsArray = innerJson["Data"].arrayValue
                         self.coinName.text = json["name"].stringValue + " News"
+                        self.nameHeaderLabel.text = json["name"].stringValue
                         for i in 0 ..< self.maxArticles {
                             self.newsHeaders.append(newsArray[i]["title"].stringValue)
                             self.newsDates.append(newsArray[i]["published_on"].stringValue)
