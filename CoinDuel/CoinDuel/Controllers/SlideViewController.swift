@@ -12,52 +12,33 @@ import UIKit
 // https://www.youtube.com/watch?v=X2Wr4TtMG6Q
 
 class SlideViewController: UIViewController, UIScrollViewDelegate {
-
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
     
-    var contentWidth:CGFloat = 0.0
+    // Code from https://stackoverflow.com/questions/29074454/how-to-create-a-scroll-view-with-a-page-control-using-swift
+    
+    
+    @IBOutlet weak var imgScrollView: UIScrollView!
+    @IBOutlet weak var imgPageController: UIPageControl!
+    var sliderImagesArray = NSMutableArray()
+    
+    let imagelist = ["1", "2", "3", "4", "5"]
+    var scrollView = UIScrollView()
+    
+    var pageControl : UIPageControl = UIPageControl(frame:CGRect(x: 50, y: 300, width: 200, height: 50))
+    
+    var yPosition:CGFloat = 0
+    var scrollViewContentSize:CGFloat=0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
         
-        for image in 0...2 {
-            let image2 = String(image)
-            let imageToDisplay = UIImage(named: image2)
-            print(type(of: image))
-            let imageView = UIImageView(image: imageToDisplay)
-            let xCoordinate = view.frame.midX + view.frame.width * CGFloat(image)
-            contentWidth += view.frame.width
-            scrollView.addSubview(imageView)
-            imageView.frame = CGRect(x: xCoordinate - 50, y: (view.frame.height / 2) - 50, width: 100, height: 100)
-        }
-        
-        scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
-
-        // Do any additional setup after loading the view.
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-        //pageControl.currentPage =
-    }
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -11,8 +11,13 @@
 import UIKit
 
 class ViewController: UIViewController, UIScrollViewDelegate {
-
-    let scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:320,height: 300))
+    
+    // From https://stackoverflow.com/questions/24110762/swift-determine-ios-screen-size
+    lazy var screenSize = UIScreen.main.bounds
+    lazy var screenWidth = screenSize.width
+    lazy var screenHeight = screenSize.height
+    
+    let scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:150, height: 300))
     var colors:[UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
     var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
     var pageControl : UIPageControl = UIPageControl(frame: CGRect(x:50,y: 300, width:200, height:50))
@@ -34,6 +39,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             let subView = UIView(frame: frame)
             subView.backgroundColor = colors[index]
             self.scrollView .addSubview(subView)
+            
+            
         }
         
         self.scrollView.contentSize = CGSize(width:self.scrollView.frame.size.width * 4,height: self.scrollView.frame.size.height)

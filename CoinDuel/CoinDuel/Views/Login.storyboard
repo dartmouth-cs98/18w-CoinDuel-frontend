@@ -615,6 +615,8 @@
                         <viewLayoutGuide key="safeArea" id="PcP-Oj-S53"/>
                     </view>
                     <connections>
+                        <outlet property="imgPageController" destination="D6S-0b-H9Q" id="MrW-ed-pbh"/>
+                        <outlet property="imgScrollView" destination="Mxp-nc-hc5" id="MeL-oQ-gWk"/>
                         <outlet property="scrollView" destination="Mxp-nc-hc5" id="5pF-Wt-5nR"/>
                     </connections>
                 </viewController>
