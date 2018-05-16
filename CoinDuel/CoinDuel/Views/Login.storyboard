@@ -1273,21 +1273,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_2" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-uM-TwL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-uM-TwL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrk-Ww-9in">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="N42-fV-tNr">
-                                <rect key="frame" x="167.5" y="627" width="40" height="40"/>
+                                <rect key="frame" x="167" y="627" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2IS-2p-WKz"/>
                                     <constraint firstAttribute="width" constant="40" id="GVy-4A-xb0"/>
                                 </constraints>
                             </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrk-Ww-9in">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qcI-4p-J7i" firstAttribute="trailing" secondItem="lHb-uM-TwL" secondAttribute="trailing" id="Ben-9g-bVc"/>
                             <constraint firstItem="qcI-4p-J7i" firstAttribute="bottom" secondItem="xrk-Ww-9in" secondAttribute="bottom" id="DPl-1j-MAa"/>
@@ -1309,11 +1311,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhN-92-WXS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415" y="1997"/>
+            <point key="canvasLocation" x="2413.5999999999999" y="1996.5517241379312"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Background_2" width="16" height="16"/>
         <image name="Logo3" width="638" height="460"/>
         <image name="facebook" width="256" height="256"/>
         <image name="float" width="48" height="48"/>
