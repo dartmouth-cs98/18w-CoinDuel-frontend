@@ -1273,7 +1273,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colors1" translatesAutoresizingMaskIntoConstraints="NO" id="PSp-MA-Sfi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PSp-MA-Sfi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-c1-UrL">
@@ -1309,12 +1309,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EfY-bi-lLx" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="1999"/>
+            <point key="canvasLocation" x="1166" y="2004"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo3" width="638" height="460"/>
-        <image name="colors1" width="800" height="600"/>
         <image name="facebook" width="256" height="256"/>
         <image name="float" width="48" height="48"/>
         <image name="football" width="50" height="50"/>
