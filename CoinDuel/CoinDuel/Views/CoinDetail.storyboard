@@ -45,8 +45,11 @@
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COIN NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntR-V5-bE0" userLabel="Coin Name">
-                                        <rect key="frame" x="135" y="29" width="145.5" height="32.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntR-V5-bE0" userLabel="Coin Name">
+                                        <rect key="frame" x="208" y="29" width="0.0" height="32.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32.5" id="MhW-Cg-5RL"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
