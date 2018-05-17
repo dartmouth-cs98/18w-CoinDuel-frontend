@@ -111,6 +111,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="bQv-f4-rlo"/>
                                                     <action selector="oneDayChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="dFE-cR-6rU"/>
                                                 </connections>
                                             </button>
@@ -132,6 +133,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="K5W-R3-pCm"/>
                                                     <action selector="oneWeekChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="N7M-DI-OcF"/>
                                                 </connections>
                                             </button>
@@ -153,6 +155,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="LVx-Dh-E8O"/>
                                                     <action selector="oneMonthChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="CaG-gg-qmh"/>
                                                 </connections>
                                             </button>
@@ -174,6 +177,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="I8j-OB-3XT"/>
                                                     <action selector="oneYearChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="oMs-Ta-ylo"/>
                                                 </connections>
                                             </button>
@@ -201,6 +205,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="currentGameChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="ZQu-ju-0VX"/>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="4EM-3q-eAV"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-Ay-6cg">
@@ -221,6 +226,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="ub2-bi-efj"/>
                                                     <action selector="oneDayChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="bZA-Mf-wBJ"/>
                                                 </connections>
                                             </button>
@@ -242,6 +248,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="21s-ej-jTg"/>
                                                     <action selector="oneWeekChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="TY1-yg-DUb"/>
                                                 </connections>
                                             </button>
@@ -263,12 +270,13 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="2WM-Ng-5lW"/>
                                                     <action selector="oneMonthChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="pEm-Qc-e6A"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFX-W2-kWd">
                                                 <rect key="frame" x="280" y="0.0" width="40" height="25"/>
-                                                <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="G6D-32-mcc"/>
                                                     <constraint firstAttribute="height" constant="25" id="zC3-aK-7tf"/>
@@ -284,6 +292,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="gameButtonPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="yDL-XH-AbK"/>
                                                     <action selector="oneYearChart:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="j6k-0B-zoO"/>
                                                 </connections>
                                             </button>

@@ -324,14 +324,15 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         leftYAxis.labelFont = .systemFont(ofSize: 14)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func gameButtonPressed(_ sender: UIButton) {
+        let activeChartButtons = self.activeChartButtons.arrangedSubviews
+        for button in activeChartButtons {
+            button.backgroundColor = UIColor(red: (204/255.0), green: (204/255.0), blue: (204/255.0), alpha: 1.0)
+        }
+        let inactiveChartButtons = self.inactiveChartButtons.arrangedSubviews
+        for button in inactiveChartButtons {
+            button.backgroundColor = UIColor(red: (204/255.0), green: (204/255.0), blue: (204/255.0), alpha: 1.0)
+        }
+        sender.backgroundColor = UIColor.gray
     }
-    */
-
 }
