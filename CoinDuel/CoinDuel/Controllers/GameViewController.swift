@@ -34,7 +34,18 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let numberFormatter = NumberFormatter()
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
     
-    let SectionHeaderHeight: CGFloat = 40
+    var SectionHeaderHeight: CGFloat = 40
+
+
+    //taken from https://stackoverflow.com/questions/664781/change-default-scrolling-behavior-of-uitableview-section-header
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let SectionHeaderHeight: CGFloat = 40;
+        if (scrollView.contentOffset.y<=SectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        } else if (scrollView.contentOffset.y>=SectionHeaderHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(-SectionHeaderHeight, 0, 0, 0);
+        }
+    }
 
 
     override func viewDidLayoutSubviews(){
