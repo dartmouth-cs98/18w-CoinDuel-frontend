@@ -11,8 +11,8 @@ import UIKit
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newVc(viewController: "sbRed"),
-                self.newVc(viewController: "sbBlue")]
+        return [self.newVc(viewController: "sbBlue"),
+                self.newVc(viewController: "sbRed")]
     }()
     
     var pageControl = UIPageControl()
@@ -82,6 +82,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         }
         
         return orderedViewControllers[nextIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        let pageContentViewController = pageViewController.viewControllers![0]
+        self.pageControl.currentPage = orderedViewControllers.index(of: pageContentViewController)!
     }
     
     override func didReceiveMemoryWarning() {
