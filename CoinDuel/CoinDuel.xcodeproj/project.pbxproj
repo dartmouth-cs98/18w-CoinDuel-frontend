@@ -41,6 +41,7 @@
 		F813428F209261DD0031AC42 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F813428E209261DD0031AC42 /* AuthViewController.swift */; };
 		F824B1B220363D95008D1F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* Login.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
+		F8634EFF20B3607300FA1FF2 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8634EFE20B3607300FA1FF2 /* PageViewController.swift */; };
 		F884E58E20A4E7D9000B20F2 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F884E58D20A4E7D9000B20F2 /* Slide.xib */; };
 		F884E59020A4E81F000B20F2 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884E58F20A4E81F000B20F2 /* Slide.swift */; };
 		F884E59720A8C916000B20F2 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884E59620A8C916000B20F2 /* SlideViewController.swift */; };
@@ -135,6 +136,7 @@
 		F813428E209261DD0031AC42 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		F824B1B120363D95008D1F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F8634EFE20B3607300FA1FF2 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		F884E58D20A4E7D9000B20F2 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		F884E58F20A4E81F000B20F2 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		F884E59620A8C916000B20F2 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				F8D17BDA2080639700A3AC2C /* gifbackground.swift */,
 				A07604A52087F0E7003BE65C /* LandingPageViewController.swift */,
 				F884E59620A8C916000B20F2 /* SlideViewController.swift */,
+				F8634EFE20B3607300FA1FF2 /* PageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */,
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
 				A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */,
+				F8634EFF20B3607300FA1FF2 /* PageViewController.swift in Sources */,
 				1E331689203637BD00BEE349 /* GameTableViewCell.swift in Sources */,
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
 				1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */,

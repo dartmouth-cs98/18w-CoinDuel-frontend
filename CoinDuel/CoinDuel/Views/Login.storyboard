@@ -619,6 +619,44 @@
             </objects>
             <point key="canvasLocation" x="1166" y="664"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="g31-dk-cZv">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="uax-b3-Zbh" customClass="PageViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7i-0e-eDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="1894"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="V6j-b7-0IX">
+            <objects>
+                <viewController storyboardIdentifier="sbBlue" id="9Ql-0o-CpU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8iU-94-dTV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="keh-iJ-otw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F8U-fR-Wcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="2562"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wig-Yh-OgG">
+            <objects>
+                <viewController storyboardIdentifier="sbRed" id="dHb-fR-Yvj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="53X-Kw-lhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="QHw-sK-bPi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v2e-CW-rJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1240" y="2556"/>
+        </scene>
         <!--Help View Controller-->
         <scene sceneID="Bg6-Hv-oiQ">
             <objects>
@@ -643,6 +681,9 @@
                                 <state key="normal" title="About Us">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="uax-b3-Zbh" kind="show" id="uJ0-hk-ggs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOY-a8-dOt">
                                 <rect key="frame" x="143" y="203" width="73" height="48"/>
