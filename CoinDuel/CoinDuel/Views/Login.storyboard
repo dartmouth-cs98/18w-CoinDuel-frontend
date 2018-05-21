@@ -671,9 +671,6 @@
                                 <state key="normal" title="Help!">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="Cxg-D9-JJZ" kind="show" id="gnV-Xj-Evs"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tih-e4-df2">
                                 <rect key="frame" x="143" y="271" width="127" height="48"/>
@@ -1305,54 +1302,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4x-5w-aNx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4087" y="228"/>
-        </scene>
-        <!--Slide View Controller-->
-        <scene sceneID="dKD-pG-dSh">
-            <objects>
-                <viewController id="Cxg-D9-JJZ" customClass="SlideViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZXi-qe-bIJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-uM-TwL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrk-Ww-9in">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="N42-fV-tNr">
-                                <rect key="frame" x="167" y="627" width="40" height="40"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2IS-2p-WKz"/>
-                                    <constraint firstAttribute="width" constant="40" id="GVy-4A-xb0"/>
-                                </constraints>
-                            </pageControl>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="qcI-4p-J7i" firstAttribute="trailing" secondItem="lHb-uM-TwL" secondAttribute="trailing" id="Ben-9g-bVc"/>
-                            <constraint firstItem="qcI-4p-J7i" firstAttribute="bottom" secondItem="xrk-Ww-9in" secondAttribute="bottom" id="DPl-1j-MAa"/>
-                            <constraint firstItem="xrk-Ww-9in" firstAttribute="top" secondItem="ZXi-qe-bIJ" secondAttribute="top" id="FT2-Uv-3z6"/>
-                            <constraint firstItem="N42-fV-tNr" firstAttribute="bottom" secondItem="lHb-uM-TwL" secondAttribute="bottom" id="JzZ-rT-Pg1"/>
-                            <constraint firstItem="qcI-4p-J7i" firstAttribute="bottom" secondItem="lHb-uM-TwL" secondAttribute="bottom" id="MqN-wf-CAC"/>
-                            <constraint firstItem="qcI-4p-J7i" firstAttribute="trailing" secondItem="xrk-Ww-9in" secondAttribute="trailing" id="Tmm-Yi-jyq"/>
-                            <constraint firstItem="lHb-uM-TwL" firstAttribute="top" secondItem="ZXi-qe-bIJ" secondAttribute="top" id="ZO5-Qp-8wu"/>
-                            <constraint firstItem="N42-fV-tNr" firstAttribute="centerX" secondItem="ZXi-qe-bIJ" secondAttribute="centerX" id="hhU-bT-8Md"/>
-                            <constraint firstItem="lHb-uM-TwL" firstAttribute="leading" secondItem="qcI-4p-J7i" secondAttribute="leading" id="mBk-IC-aU7"/>
-                            <constraint firstItem="xrk-Ww-9in" firstAttribute="leading" secondItem="qcI-4p-J7i" secondAttribute="leading" id="qTp-gL-0Eg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qcI-4p-J7i"/>
-                    </view>
-                    <connections>
-                        <outlet property="pageControl" destination="N42-fV-tNr" id="B2A-F2-CdY"/>
-                        <outlet property="scrollView" destination="xrk-Ww-9in" id="53f-d1-JYT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rhN-92-WXS" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2413.5999999999999" y="1996.5517241379312"/>
         </scene>
     </scenes>
     <resources>
