@@ -162,7 +162,7 @@ class LandingPageViewController: UIViewController {
         self.enterGameButton.isHidden = false
         
         // set button
-        self.enterGameButton.setTitle("Set Lineup", for: .normal)
+        self.enterGameButton.setTitle("Preview Game", for: .normal)
         self.enterGameButton.layer.masksToBounds = true
         self.enterGameButton.layer.cornerRadius = self.enterGameButton.frame.height / 2
 //        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor

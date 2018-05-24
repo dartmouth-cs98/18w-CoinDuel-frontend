@@ -27,7 +27,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var activeChartButtons: UIStackView!
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
     @IBOutlet weak var coinPercentChangeLabel: UILabel!
@@ -35,6 +37,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var coinName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var sellButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!
+    
+    @IBOutlet weak var allocationAbilityLabel: UILabel!
     var game: Game = Game()
     var coinSymbolLabel: String = ""
     var currentCoinPrice: Double = 0.0
@@ -49,6 +55,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var granularity = 20000
     var currentTimeFrame = 0
     var maxArticles = 3
+    var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
+
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -58,24 +66,39 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         self.coinPercentChangeLabel.text = ""
         self.coinPriceLabel.text = "$" + currentCoinPrice.description
+
+        // Button styling
+        self.buyButton.layer.masksToBounds = true
+        self.buyButton.layer.cornerRadius = 15
+        self.sellButton.layer.masksToBounds = true
+        self.sellButton.layer.cornerRadius = 15
         
+        // Retrieve news
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.reloadData()
 
+        
         if self.allocation != "0.0" {
             self.capCoinAllocationLabel.text = allocation + " CC"
         } else {
             self.capCoinAllocationLabel.text = ""
         }
 
-//        toggle buttons if game is active or not
         if(self.game.isActive){
             self.activeChartButtons.isHidden = false
             self.inactiveChartButtons.isHidden = true
         } else {
             self.activeChartButtons.isHidden = true
             self.inactiveChartButtons.isHidden = false
+            self.allocationAbilityLabel.text = "Trading disabled until game starts"
+            self.buyButton.setTitle("BUY", for: UIControlState.normal)
+            self.buyButton.isEnabled = false
+            self.buyButton.alpha = 0.35
+            self.sellButton.isEnabled = false
+            self.sellButton.alpha = 0.35
+            self.sellButton.setTitle("SELL", for: UIControlState.normal)
+
         }
 
 //        setup chart and call it for one day values
