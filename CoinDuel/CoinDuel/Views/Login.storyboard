@@ -627,20 +627,34 @@
             </objects>
             <point key="canvasLocation" x="526" y="1894"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="V6j-b7-0IX">
             <objects>
-                <viewController storyboardIdentifier="sbBlue" id="9Ql-0o-CpU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbBlue" id="9Ql-0o-CpU" customClass="OnboardingViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8iU-94-dTV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="39o-Fy-fXo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="39o-Fy-fXo" firstAttribute="bottom" secondItem="keh-iJ-otw" secondAttribute="bottom" id="8LA-0A-4bP"/>
+                            <constraint firstItem="39o-Fy-fXo" firstAttribute="top" secondItem="8iU-94-dTV" secondAttribute="top" id="Ay9-L2-AIa"/>
+                            <constraint firstItem="39o-Fy-fXo" firstAttribute="trailing" secondItem="keh-iJ-otw" secondAttribute="trailing" id="FK8-Gf-9ZY"/>
+                            <constraint firstItem="39o-Fy-fXo" firstAttribute="leading" secondItem="keh-iJ-otw" secondAttribute="leading" id="Gj2-57-VmA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="keh-iJ-otw"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="39o-Fy-fXo" id="PgG-D5-jTj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F8U-fR-Wcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="526" y="2562"/>
+            <point key="canvasLocation" x="525.60000000000002" y="2561.4692653673164"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wig-Yh-OgG">
@@ -649,7 +663,18 @@
                     <view key="view" contentMode="scaleToFill" id="53X-Kw-lhQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n0x-VH-MDQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="top" secondItem="53X-Kw-lhQ" secondAttribute="top" id="Nuz-af-zkW"/>
+                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="bottom" secondItem="QHw-sK-bPi" secondAttribute="bottom" id="Rvz-v6-vhD"/>
+                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="trailing" secondItem="QHw-sK-bPi" secondAttribute="trailing" id="X9O-cV-uwn"/>
+                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="leading" secondItem="QHw-sK-bPi" secondAttribute="leading" id="hQb-Z1-1Nm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QHw-sK-bPi"/>
                     </view>
                 </viewController>

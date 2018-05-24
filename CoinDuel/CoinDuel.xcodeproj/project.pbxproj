@@ -45,6 +45,7 @@
 		F884E58E20A4E7D9000B20F2 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F884E58D20A4E7D9000B20F2 /* Slide.xib */; };
 		F884E59020A4E81F000B20F2 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884E58F20A4E81F000B20F2 /* Slide.swift */; };
 		F884E59720A8C916000B20F2 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884E59620A8C916000B20F2 /* SlideViewController.swift */; };
+		F88DE82B20B76E3B00CCC093 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */; };
 		F8A7FDE1208E7AA500FA5E30 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */; };
 		F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BD62080553500A3AC2C /* HelpViewController.swift */; };
 		F8D17BDB2080639700A3AC2C /* gifbackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BDA2080639700A3AC2C /* gifbackground.swift */; };
@@ -140,6 +141,7 @@
 		F884E58D20A4E7D9000B20F2 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		F884E58F20A4E81F000B20F2 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		F884E59620A8C916000B20F2 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
+		F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		F8D17BD62080553500A3AC2C /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		F8D17BDA2080639700A3AC2C /* gifbackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifbackground.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				A07604A52087F0E7003BE65C /* LandingPageViewController.swift */,
 				F884E59620A8C916000B20F2 /* SlideViewController.swift */,
 				F8634EFE20B3607300FA1FF2 /* PageViewController.swift */,
+				F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				1EB504C5201A7B8700BB76AA /* GameViewController.swift in Sources */,
 				1E93AE46203CEACB006CE5E5 /* Coin.swift in Sources */,
 				1E17A6332040A801007A341C /* ResultsViewController.swift in Sources */,
+				F88DE82B20B76E3B00CCC093 /* OnboardingViewController.swift in Sources */,
 				A07604A62087F0E7003BE65C /* LandingPageViewController.swift in Sources */,
 				F813428F209261DD0031AC42 /* AuthViewController.swift in Sources */,
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
