@@ -20,6 +20,7 @@ class Game {
     var finishDate:String
     var rawStartDate:String
     var coinBalance:Double
+    var unusedCoinBalance:Double
     
     init() {
         self.id = ""
@@ -31,6 +32,7 @@ class Game {
         self.finishDate = ""
         self.rawStartDate = ""
         self.coinBalance = 0.0
+        self.unusedCoinBalance = 0.0
     }
     
     // Returns total CapCoin allocated so far
@@ -122,6 +124,7 @@ class Game {
                     }
                     
                     self.coinBalance = json["coin_balance"].doubleValue
+                    self.unusedCoinBalance = json["unallocated_capcoin"].doubleValue
                 
                     completion("entry")
                 case .failure(let error):

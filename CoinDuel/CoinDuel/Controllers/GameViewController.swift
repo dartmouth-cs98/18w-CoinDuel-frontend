@@ -124,23 +124,37 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 }
                             }
                         } else {
-                            print("See if we have an entry")
-                            // See if we have an entry
-                            self.game.getEntry() { (entryStatus) -> Void in
-                                if entryStatus != "entry" {
-                                    self.game.submitEntry() { (success) -> Void in
-                                        if success {
-                                            self.startup()
-                                            return
-                                        } else {
-                                            self.networkError("Unable to submit empty entry")
+                            // Case 1: Game upcoming
+                            if !self.game.isActive {
+                                // Update prices
+                                self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                                    if coinSuccess {
+                                        // Show game mode (with prices/returns for coins)
+                                        self.displayEntryMode()
+                                        DispatchQueue.main.async() {
+                                            self.refreshControl.endRefreshing()
+                                            self.loadingActivityIndicatorView.stopAnimating()
+                                            self.loadingActivityIndicatorView.isHidden = true
                                         }
+                                    } else {
+                                        self.networkError("Unable to update coin prices")
                                     }
                                 }
-                                print("Got here")
-                                self.hasEntry = true
-                                // Already has an entry for this game, check if it's started already
-                                if self.game.isActive {
+                            } else {
+                                // Case 2: Game in progress
+                                // Enforce an entry
+                                self.game.getEntry() { (entryStatus) -> Void in
+                                    if entryStatus != "entry" {
+                                        self.game.submitEntry() { (success) -> Void in
+                                            if success {
+                                                self.startup()
+                                                return
+                                            } else {
+                                                self.networkError("Unable to submit empty entry")
+                                            }
+                                        }
+                                    }
+                                    self.hasEntry = true
                                     // Update prices
                                     self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
                                         if coinSuccess {
@@ -159,33 +173,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                             self.networkError("Unable to update coin prices")
                                         }
                                     }
-                                    // If the game is finished, display the results popup (since we had an entry)
-                                } else if !self.game.isActive && self.game.hasFinished {
-                                    self.game = Game()
-                                    self.displayNoGameMode()
-                                    DispatchQueue.main.async() {
-                                        self.refreshControl.endRefreshing()
-                                        self.loadingActivityIndicatorView.stopAnimating()
-                                        self.loadingActivityIndicatorView.isHidden = true
-                                    }
                                 }
-                                else if !self.game.hasFinished {
-                                    // Update prices
-                                    self.game.updateCoinPrices() { (coinSuccess) -> Void in
-                                        if coinSuccess {
-                                            // Show game mode (with prices/returns for coins)
-                                            self.displayEntryMode()
-                                            DispatchQueue.main.async() {
-                                                self.refreshControl.endRefreshing()
-                                                self.loadingActivityIndicatorView.stopAnimating()
-                                                self.loadingActivityIndicatorView.isHidden = true
-                                            }
-                                        } else {
-                                            self.networkError("Unable to update coin prices")
-                                        }
-                                    }
-                                }
-                            
                             }
                         }
                     } else {
@@ -227,7 +215,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         nextGameLabel.isHidden = true
         gameTimeLabel.isHidden = false
-//        self.tradeButton.isHidden = false
         
         DispatchQueue.main.async() {
             self.gameTableView.reloadData()
@@ -424,10 +411,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
                         if let destinationVC = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController") as? CoinDetailViewController {
                             destinationVC.coinSymbolLabel = coin.ticker
-                            destinationVC.game = self.game
-                            destinationVC.currentCoinPrice = coin.currentPrice
-                            destinationVC.allocation = coin.allocation.description
-                            destinationVC.initialCoinPrice = coin.initialPrice
+                            destinationVC.gameId = self.game.id
                             self.present(destinationVC, animated: true, completion: nil)
                             print("showing coinDetail")
                         }

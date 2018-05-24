@@ -42,6 +42,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var allocationAbilityLabel: UILabel!
     var game: Game = Game()
+    var gameId: String = ""
     var coinSymbolLabel: String = ""
     var currentCoinPrice: Double = 0.0
     var allocation: String = ""
@@ -64,9 +65,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.coinPercentChangeLabel.text = ""
-        self.coinPriceLabel.text = "$" + currentCoinPrice.description
-
+        
         // Button styling
         self.buyButton.layer.masksToBounds = true
         self.buyButton.layer.cornerRadius = 15
@@ -77,31 +76,25 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.reloadData()
-
         
-        if self.allocation != "0.0" {
-            self.capCoinAllocationLabel.text = allocation + " CC"
-        } else {
-            self.capCoinAllocationLabel.text = ""
-        }
-
-        if(self.game.isActive){
-            self.activeChartButtons.isHidden = false
-            self.inactiveChartButtons.isHidden = true
-        } else {
-            self.activeChartButtons.isHidden = true
-            self.inactiveChartButtons.isHidden = false
-            self.allocationAbilityLabel.text = "Trading disabled until game starts"
-            self.buyButton.setTitle("BUY", for: UIControlState.normal)
-            self.buyButton.isEnabled = false
-            self.buyButton.alpha = 0.35
-            self.sellButton.isEnabled = false
-            self.sellButton.alpha = 0.35
-            self.sellButton.setTitle("SELL", for: UIControlState.normal)
-
-        }
-
-//        setup chart and call it for one day values
+        // Start with labels hidden
+        self.nameHeaderLabel.isHidden = true
+        self.coinPriceLabel.isHidden = true
+        self.coinPercentChangeLabel.isHidden = true
+        
+        self.startup()
+    }
+    
+    func chart() {
+        self.nameHeaderLabel.isHidden = false
+        self.coinPriceLabel.isHidden = false
+        self.coinPercentChangeLabel.isHidden = false
+        
+        // chart setup
+        self.activeChartButtons.isHidden = false
+        self.inactiveChartButtons.isHidden = true
+        
+        //        setup chart and call it for one day values
         self.oneDayChart((Any).self)
         
         let apiUrl = Constants.API + "coin/" + coinSymbolLabel
@@ -130,6 +123,100 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func startup() {
+        // Retrieve user balance
+        self.user.updateCoinBalance() { (completion) -> Void in
+            if completion {
+                // Try and get the current game from the database
+                self.game.getCurrentGame() { (success) -> Void in
+                    if success {
+                        // See if we need to display results
+                        if self.game.id != self.gameId {
+                            print("Should display results popup")
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            // Case 1: Game upcoming
+                            if !self.game.isActive {
+                                // Update prices
+                                self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                                    if coinSuccess {
+                                        // Show game mode (with prices/returns for coins)
+                                        for coin in self.game.coins {
+                                            if coin.ticker == self.coinSymbolLabel {
+                                                self.currentCoinPrice = coin.currentPrice
+                                                self.allocation = String(coin.allocation)
+                                                self.initialCoinPrice = coin.initialPrice
+                                            }
+                                        }
+                                        self.activeChartButtons.isHidden = true
+                                        self.inactiveChartButtons.isHidden = false
+                                        self.allocationAbilityLabel.text = "Trading disabled until game starts"
+                                        self.buyButton.setTitle("BUY", for: UIControlState.normal)
+                                        self.buyButton.isEnabled = false
+                                        self.buyButton.alpha = 0.35
+                                        self.sellButton.isEnabled = false
+                                        self.sellButton.alpha = 0.35
+                                        self.sellButton.setTitle("SELL", for: UIControlState.normal)
+                                        self.coinPercentChangeLabel.text = ""
+                                        self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
+
+                                        self.chart()
+                                    } else {
+                                        self.dismiss(animated: true, completion: nil)
+                                    }
+                                }
+                            } else {
+                                // Case 2: Game in progress
+                                // Enforce an entry
+                                self.game.getEntry() { (entryStatus) -> Void in
+                                    if entryStatus != "entry" {
+                                        self.dismiss(animated: true, completion: nil)
+                                    }
+                                    // Update prices
+                                    self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
+                                        if coinSuccess {
+                                            // Show game mode (with prices/returns for coins)
+                                            for coin in self.game.coins {
+                                                if coin.ticker == self.coinSymbolLabel {
+                                                    self.currentCoinPrice = coin.currentPrice
+                                                    self.allocation = String(coin.allocation)
+                                                    self.initialCoinPrice = coin.initialPrice
+                                                }
+                                            }
+                                            
+                                            if self.allocation != "0.0" {
+                                                self.capCoinAllocationLabel.text = self.allocation + " CC"
+                                            } else {
+                                                self.capCoinAllocationLabel.text = ""
+                                            }
+                                            self.buyButton.isEnabled = true
+                                            self.buyButton.alpha = 1.0
+                                            self.sellButton.isEnabled = false
+                                            self.sellButton.alpha = 0.35
+                                            self.buyButton.setTitle("Buy 1 CC", for: UIControlState.normal)
+                                            self.sellButton.setTitle("Sell 1 CC", for: UIControlState.normal)
+                                            self.allocationAbilityLabel.text = String(self.game.unusedCoinBalance) + " CC available"
+                                            self.coinPercentChangeLabel.text = ""
+                                            self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
+
+                                            self.chart()
+                                        } else {
+                                            self.dismiss(animated: true, completion: nil)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            } else {
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
