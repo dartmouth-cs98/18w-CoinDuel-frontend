@@ -480,6 +480,8 @@
                         <outlet property="sellButton" destination="Fxp-RC-lNl" id="dzG-3D-RIG"/>
                         <outlet property="tableView" destination="vzh-cX-e9d" id="Y1D-nl-10j"/>
                         <outlet property="tradeErrorLabel" destination="una-sD-WMn" id="8t1-3d-znM"/>
+                        <outlet property="tradePriceLabel" destination="FYM-qi-9zR" id="dqn-a7-TvR"/>
+                        <outlet property="tradeStepper" destination="1XZ-FK-ZtG" id="R7p-Hi-pMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tu6-b1-Y36" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,7 +498,7 @@
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount of CapCoin to invest:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxx-s8-thD">
-                            <rect key="frame" x="24" y="52" width="215" height="19"/>
+                            <rect key="frame" x="24" y="52" width="200.5" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="XlA-Mt-Fzm"/>
                             </constraints>
@@ -510,15 +512,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-8t-mF4">
-                            <rect key="frame" x="306" y="45" width="61" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="61" id="fln-xZ-yAH"/>
-                            </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
-                        </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYM-qi-9zR">
                             <rect key="frame" x="324" y="92" width="43" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -556,6 +549,11 @@
                             <color key="textColor" red="0.78313669220000004" green="0.17426245077318525" blue="0.20158479118291153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1XZ-FK-ZtG" customClass="GMStepper" customModule="GMStepper">
+                            <rect key="frame" x="251" y="52" width="116" height="19"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -569,8 +567,6 @@
                         <constraint firstItem="Wx4-sR-37j" firstAttribute="leading" secondItem="muu-LW-yO7" secondAttribute="trailing" constant="63" id="CS3-DR-ESG"/>
                         <constraint firstItem="Wx4-sR-37j" firstAttribute="baseline" secondItem="FYM-qi-9zR" secondAttribute="baseline" id="F1v-bW-aHf"/>
                         <constraint firstItem="Wx4-sR-37j" firstAttribute="top" secondItem="hKn-m4-hel" secondAttribute="bottom" constant="8" symbolic="YES" id="Hxd-CE-jqq"/>
-                        <constraint firstItem="0Ar-8t-mF4" firstAttribute="top" secondItem="Yis-kR-rgZ" secondAttribute="top" constant="45" id="Igq-65-atG"/>
-                        <constraint firstItem="Uxx-s8-thD" firstAttribute="centerY" secondItem="0Ar-8t-mF4" secondAttribute="centerY" id="LqG-lS-NNY"/>
                         <constraint firstItem="ZJr-69-rsa" firstAttribute="centerX" secondItem="ymt-YF-xv5" secondAttribute="centerX" id="M0f-YP-V1Q"/>
                         <constraint firstItem="hKn-m4-hel" firstAttribute="trailing" secondItem="FYM-qi-9zR" secondAttribute="trailing" id="PEY-4K-hvT"/>
                         <constraint firstItem="oGN-z4-ma0" firstAttribute="top" secondItem="Yis-kR-rgZ" secondAttribute="top" id="QEW-Qu-MCU"/>
@@ -578,9 +574,7 @@
                         <constraint firstItem="FYM-qi-9zR" firstAttribute="trailing" secondItem="ZJr-69-rsa" secondAttribute="trailing" id="Ubf-6n-29e"/>
                         <constraint firstItem="hKn-m4-hel" firstAttribute="top" secondItem="Uxx-s8-thD" secondAttribute="bottom" constant="8" symbolic="YES" id="Vmg-7z-mRo"/>
                         <constraint firstItem="Uxx-s8-thD" firstAttribute="leading" secondItem="hKn-m4-hel" secondAttribute="leading" id="bUf-KR-b3Y"/>
-                        <constraint firstItem="0Ar-8t-mF4" firstAttribute="trailing" secondItem="hKn-m4-hel" secondAttribute="trailing" id="cOs-Q6-vIJ"/>
                         <constraint firstItem="muu-LW-yO7" firstAttribute="leading" secondItem="ZJr-69-rsa" secondAttribute="leading" id="cgA-ev-agU"/>
-                        <constraint firstItem="0Ar-8t-mF4" firstAttribute="leading" secondItem="Uxx-s8-thD" secondAttribute="trailing" constant="67" id="eTf-Tf-Lkv"/>
                         <constraint firstItem="Uxx-s8-thD" firstAttribute="top" secondItem="oGN-z4-ma0" secondAttribute="bottom" constant="22" id="gC2-qC-caV"/>
                         <constraint firstItem="hKn-m4-hel" firstAttribute="centerX" secondItem="zJm-2B-Qz9" secondAttribute="centerX" id="m4A-S5-5qZ"/>
                         <constraint firstItem="FYM-qi-9zR" firstAttribute="top" secondItem="hKn-m4-hel" secondAttribute="bottom" constant="11" id="nIE-hQ-AB0"/>

@@ -10,6 +10,8 @@
 
 
 import UIKit
+import GMStepper
+
 import Charts
 import Alamofire
 import SwiftyJSON
@@ -27,6 +29,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var tradePriceLabel: UILabel!
     @IBOutlet weak var blurBackgroundView: UIView!
     @IBOutlet var popOverView: UIView!
     @IBOutlet var mainView: UIView!
@@ -44,11 +47,13 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tradeErrorLabel: UILabel!
 
-
+    @IBOutlet weak var tradeStepper: GMStepper!
+    
     var game: Game = Game()
     var gameId: String = ""
     var coinSymbolLabel: String = ""
     var currentCoinPrice: Double = 0.0
+    var coinIndex: Int = 0
     var allocation: String = ""
     var initialCoinPrice: Double = Double()
     var tempInitialPrice: Double = 0.0
@@ -59,7 +64,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
     var currentTimeFrame = 0
-    var maxArticles = 3
+    var maxArticles = 5
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
     var isTradeViewEnabled = false
 
@@ -71,8 +76,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
+        //Stepper styling, see here https://cocoapods.org/pods/GMStepper
 
         // Button styling
         self.buyButton.layer.masksToBounds = true
@@ -489,6 +493,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             self.popOverView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         });
         self.isTradeViewEnabled = true
+        self.tradePriceLabel.text = self.coinPriceLabel.text
     }
 
     @IBAction func leaveTradeButtonPressed(_ sender: Any) {
@@ -502,9 +507,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             }
         });
         self.view.sendSubview(toBack: self.blurBackgroundView)
+        self.isTradeViewEnabled = false
     }
 
     @IBAction func placeOrderPressed(_ sender: Any) {
+        
     }
 
 }
