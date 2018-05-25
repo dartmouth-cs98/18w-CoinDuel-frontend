@@ -619,6 +619,44 @@
             </objects>
             <point key="canvasLocation" x="1166" y="664"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="RAr-lx-skn">
+            <objects>
+                <viewController id="PPl-yp-F4w" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kwt-Ap-bNJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0r-yt-Q0m">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="606"/>
+                                <connections>
+                                    <segue destination="uax-b3-Zbh" kind="embed" id="43i-vd-Jn9"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC4-Gj-dvD">
+                                <rect key="frame" x="0.0" y="614" width="375" height="53"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sign In"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pGa-G5-5Zh" firstAttribute="bottom" secondItem="P0r-yt-Q0m" secondAttribute="bottom" constant="61" id="2XM-0m-D7h"/>
+                            <constraint firstItem="iC4-Gj-dvD" firstAttribute="trailing" secondItem="pGa-G5-5Zh" secondAttribute="trailing" id="9ep-i6-2K1"/>
+                            <constraint firstItem="iC4-Gj-dvD" firstAttribute="leading" secondItem="pGa-G5-5Zh" secondAttribute="leading" id="CQS-Mf-7L8"/>
+                            <constraint firstItem="P0r-yt-Q0m" firstAttribute="top" secondItem="Kwt-Ap-bNJ" secondAttribute="top" id="Q1x-MI-Wau"/>
+                            <constraint firstItem="iC4-Gj-dvD" firstAttribute="bottom" secondItem="pGa-G5-5Zh" secondAttribute="bottom" id="eDf-mC-eOX"/>
+                            <constraint firstItem="P0r-yt-Q0m" firstAttribute="trailing" secondItem="pGa-G5-5Zh" secondAttribute="trailing" id="lLM-6V-JYy"/>
+                            <constraint firstItem="P0r-yt-Q0m" firstAttribute="leading" secondItem="pGa-G5-5Zh" secondAttribute="leading" id="nsP-CM-eGG"/>
+                            <constraint firstItem="iC4-Gj-dvD" firstAttribute="top" secondItem="P0r-yt-Q0m" secondAttribute="bottom" constant="8" id="nxm-8h-rcA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pGa-G5-5Zh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NdB-bF-zdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1100" y="1920.089955022489"/>
+        </scene>
         <!--Page View Controller-->
         <scene sceneID="g31-dk-cZv">
             <objects>
@@ -638,6 +676,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="39o-Fy-fXo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="PIk-AD-dmt">
+                                <rect key="frame" x="37" y="69" width="300" height="529"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -656,31 +698,38 @@
             </objects>
             <point key="canvasLocation" x="525.60000000000002" y="2561.4692653673164"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding2 View Controller-->
         <scene sceneID="wig-Yh-OgG">
             <objects>
-                <viewController storyboardIdentifier="sbRed" id="dHb-fR-Yvj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbRed" id="dHb-fR-Yvj" customClass="Onboarding2ViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="53X-Kw-lhQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n0x-VH-MDQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5BF-TZ-Ije">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onboarding2" translatesAutoresizingMaskIntoConstraints="NO" id="esj-hw-b4p">
+                                <rect key="frame" x="37" y="67" width="300" height="532"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="top" secondItem="53X-Kw-lhQ" secondAttribute="top" id="Nuz-af-zkW"/>
-                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="bottom" secondItem="QHw-sK-bPi" secondAttribute="bottom" id="Rvz-v6-vhD"/>
-                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="trailing" secondItem="QHw-sK-bPi" secondAttribute="trailing" id="X9O-cV-uwn"/>
-                            <constraint firstItem="n0x-VH-MDQ" firstAttribute="leading" secondItem="QHw-sK-bPi" secondAttribute="leading" id="hQb-Z1-1Nm"/>
+                            <constraint firstItem="5BF-TZ-Ije" firstAttribute="top" secondItem="53X-Kw-lhQ" secondAttribute="top" id="N8N-JE-vef"/>
+                            <constraint firstItem="5BF-TZ-Ije" firstAttribute="trailing" secondItem="QHw-sK-bPi" secondAttribute="trailing" id="V1D-8b-YSX"/>
+                            <constraint firstItem="5BF-TZ-Ije" firstAttribute="leading" secondItem="QHw-sK-bPi" secondAttribute="leading" id="owo-8S-ZGb"/>
+                            <constraint firstItem="5BF-TZ-Ije" firstAttribute="bottom" secondItem="QHw-sK-bPi" secondAttribute="bottom" id="zod-Dq-8bU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QHw-sK-bPi"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="5BF-TZ-Ije" id="fKu-sZ-gWP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2e-CW-rJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240" y="2556"/>
+            <point key="canvasLocation" x="1237.5999999999999" y="2559.6701649175416"/>
         </scene>
         <!--Help View Controller-->
         <scene sceneID="Bg6-Hv-oiQ">
@@ -704,7 +753,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uax-b3-Zbh" kind="show" id="uJ0-hk-ggs"/>
+                                    <segue destination="PPl-yp-F4w" kind="show" id="mJP-ZM-I8l"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOY-a8-dOt">
@@ -1339,11 +1388,14 @@
         <image name="help7" width="256" height="256"/>
         <image name="help9" width="256" height="256"/>
         <image name="instagram" width="256" height="256"/>
+        <image name="onboarding" width="720" height="1270"/>
+        <image name="onboarding2" width="606" height="1074"/>
         <image name="play" width="64" height="64"/>
         <image name="question" width="50" height="50"/>
         <image name="twitter" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="62B-Zz-NSK"/>
         <segue reference="u0n-WX-2HM"/>
         <segue reference="RrX-yt-mxB"/>
         <segue reference="RMK-eE-SZz"/>
