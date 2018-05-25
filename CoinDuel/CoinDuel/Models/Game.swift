@@ -179,10 +179,6 @@ class Game {
                 }
                 completion(false)
             }
-
-
-
-            print(response.response?.statusCode)
         }
     }
 

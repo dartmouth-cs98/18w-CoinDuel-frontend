@@ -22,13 +22,13 @@ private class CubicLineSampleFillFormatter: IFillFormatter {
     }
 }
 
-class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var blurBackgroundView: UIView!
+    @IBOutlet var popOverView: UIView!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var activeChartButtons: UIStackView!
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
@@ -41,6 +41,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var buyButton: UIButton!
     
     @IBOutlet weak var allocationAbilityLabel: UILabel!
+
+    @IBOutlet weak var tradeErrorLabel: UILabel!
+
+
     var game: Game = Game()
     var gameId: String = ""
     var coinSymbolLabel: String = ""
@@ -57,6 +61,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var currentTimeFrame = 0
     var maxArticles = 3
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
+    var isTradeViewEnabled = false
 
 
     override func viewDidLayoutSubviews(){
@@ -65,7 +70,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+
+
+
         // Button styling
         self.buyButton.layer.masksToBounds = true
         self.buyButton.layer.cornerRadius = 15
@@ -83,7 +91,14 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.coinPercentChangeLabel.isHidden = true
         
         self.startup()
+
+        self.buyButton.isEnabled = true
+
+        //round popover edges
+        self.popOverView.layer.masksToBounds = true
+        self.popOverView.layer.cornerRadius = 10
     }
+
     
     func chart() {
         self.nameHeaderLabel.isHidden = false
@@ -197,8 +212,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             self.buyButton.alpha = 1.0
                                             self.sellButton.isEnabled = false
                                             self.sellButton.alpha = 0.35
-                                            self.buyButton.setTitle("Buy 1 CC", for: UIControlState.normal)
-                                            self.sellButton.setTitle("Sell 1 CC", for: UIControlState.normal)
+                                            self.buyButton.setTitle("Buy", for: UIControlState.normal)
+                                            self.sellButton.setTitle("Sell", for: UIControlState.normal)
                                             self.allocationAbilityLabel.text = String(self.game.unusedCoinBalance) + " CC available"
                                             self.coinPercentChangeLabel.text = ""
                                             self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
@@ -445,4 +460,51 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
         sender.backgroundColor = UIColor.gray
     }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // return UIModalPresentationStyle.FullScreen
+        return UIModalPresentationStyle.none
+    }
+
+    @IBAction func buyButtonPressed(_ sender: Any) {
+        self.presentTradeView(orderType: "buy")
+    }
+
+    @IBAction func sellButtonPressed(_ sender: Any) {
+        self.presentTradeView(orderType: "sell")
+    }
+    func presentTradeView(orderType: String) {
+        //make background faded out.
+        self.view.bringSubview(toFront: self.blurBackgroundView)
+        self.blurBackgroundView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
+
+        self.view.addSubview(self.popOverView)
+        self.popOverView.center = self.view.center
+
+
+        self.popOverView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.popOverView.alpha = 0.0;
+        UIView.animate(withDuration: 0.50, animations: {
+            self.popOverView.alpha = 1.0
+            self.popOverView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        });
+        self.isTradeViewEnabled = true
+    }
+
+    @IBAction func leaveTradeButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.20, animations: {
+            self.popOverView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            self.popOverView.alpha = 0.0;
+        }, completion:{(finished : Bool)  in
+            if (finished)
+            {
+                self.popOverView.removeFromSuperview()
+            }
+        });
+        self.view.sendSubview(toBack: self.blurBackgroundView)
+    }
+
+    @IBAction func placeOrderPressed(_ sender: Any) {
+    }
+
 }
