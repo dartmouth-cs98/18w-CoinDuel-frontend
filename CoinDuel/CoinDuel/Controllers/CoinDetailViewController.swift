@@ -511,7 +511,17 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     @IBAction func placeOrderPressed(_ sender: Any) {
-        
+        if (self.tradeStepper.value <= self.game.unusedCoinBalance){
+            self.game.coins[coinIndex].allocation = self.tradeStepper.value
+            //add activity indicator of some sort
+            self.game.submitEntry(completion: { (result) in
+                if (result){
+                    print("success")
+                } else{
+                    print("submission error")
+                }
+            })
+        }
     }
 
 }
