@@ -16,6 +16,7 @@ class Game {
     var isActive:Bool
     var hasFinished:Bool
     var finishedAndProcessed:Bool
+    var numberOfUsers: Int
     var startDate:String
     var finishDate:String
     var rawStartDate:String
@@ -33,6 +34,7 @@ class Game {
         self.rawStartDate = ""
         self.coinBalance = 0.0
         self.unusedCoinBalance = 0.0
+        self.numberOfUsers = 0
     }
     
     // Returns total CapCoin allocated so far
@@ -73,7 +75,7 @@ class Game {
                     self.isActive = json[0]["is_active"].boolValue
                     self.hasFinished = json[0]["game_finished"].boolValue
                     self.finishedAndProcessed = json[0]["has_ended"].boolValue
-                    
+                    self.numberOfUsers = json[0]["users"].intValue
                     // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
