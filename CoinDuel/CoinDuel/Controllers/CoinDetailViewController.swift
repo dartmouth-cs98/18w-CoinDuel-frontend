@@ -467,6 +467,13 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     @IBAction func buyButtonPressed(_ sender: Any) {
+        self.presentTradeView(orderType: "buy")
+    }
+
+    @IBAction func sellButtonPressed(_ sender: Any) {
+        self.presentTradeView(orderType: "sell")
+    }
+    func presentTradeView(orderType: String) {
         //make background faded out.
         self.view.bringSubview(toFront: self.blurBackgroundView)
         self.blurBackgroundView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
@@ -482,10 +489,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             self.popOverView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         });
         self.isTradeViewEnabled = true
-    }
-
-    @IBAction func sellButtonPressed(_ sender: Any) {
-
     }
 
     @IBAction func leaveTradeButtonPressed(_ sender: Any) {
