@@ -121,6 +121,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     // Could not get results for this game
                                     print("No results available")
                                     self.networkError("Could not retrieve game results")
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(nil, forKey: "gameId")
                                 }
                             }
                         } else {

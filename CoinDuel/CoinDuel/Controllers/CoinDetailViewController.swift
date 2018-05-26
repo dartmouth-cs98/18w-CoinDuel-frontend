@@ -525,11 +525,19 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 //                }
 //            })
 //        }
-        
+
         let requestedAmount = Double(self.amountTextField.text!)
         if requestedAmount != nil {
 //            let roundedAmount = Round(100.0 * requestedAmount) / 100.0
-            print(roundedAmount)
+            self.game.coins[coinIndex].allocation = requestedAmount!
+            //add activity indicator of some sort
+            self.game.submitEntry(completion: { (result) in
+                if (result){
+                    print("success")
+                } else{
+                    print("submission error")
+                }
+            })
         }
 //        let roundedRequestedAmount = requestedAmount
 //        print(requestedAmount)

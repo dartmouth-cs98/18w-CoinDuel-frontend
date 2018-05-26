@@ -111,7 +111,7 @@ class Game {
     // Retrieves an entry by this user for this game, if it exists
     func getEntry(completion: @escaping (_ entryStatus: String) -> Void) {
         let url = Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
-        
+        print(url)
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
                 case .success(let value):
@@ -159,8 +159,8 @@ class Game {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json)
-                
+//                print(json)
+
                 // check for insufficient funds
                 if (json["error"].exists() && json["error"] == "insufficient funds") {
                     completion(false)
@@ -198,7 +198,7 @@ class Game {
                     // Get all coin prices, default CapCoin allocation to 0
                     for coin in json["returns"] {
                         let ticker = coin.0
-                        print(ticker)
+//                        print(ticker)
                         let initialPrice = coin.1["initialPrice"].doubleValue
                         let currentPrice = coin.1["currentPrice"].doubleValue
                         let allocation = coin.1["allocation"].doubleValue
