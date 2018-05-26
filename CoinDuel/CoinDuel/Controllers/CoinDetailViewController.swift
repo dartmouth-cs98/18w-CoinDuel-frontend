@@ -39,8 +39,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var inactiveChartButtons: UIStackView!
     @IBOutlet weak var coinName: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var availableCCLabel: UILabel!
     
-    @IBOutlet weak var sellButton: UIButton!
+    @IBOutlet weak var tradeBottomView: UIView!
     @IBOutlet weak var buyButton: UIButton!
     
     @IBOutlet weak var allocationAbilityLabel: UILabel!
@@ -81,8 +82,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Button styling
         self.buyButton.layer.masksToBounds = true
         self.buyButton.layer.cornerRadius = 15
-        self.sellButton.layer.masksToBounds = true
-        self.sellButton.layer.cornerRadius = 15
         
         // Retrieve news
         self.tableView.delegate = self
@@ -93,6 +92,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.nameHeaderLabel.isHidden = true
         self.coinPriceLabel.isHidden = true
         self.coinPercentChangeLabel.isHidden = true
+        self.tradeBottomView.isHidden = true
         
         self.startup()
 
@@ -173,13 +173,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                         }
                                         self.activeChartButtons.isHidden = true
                                         self.inactiveChartButtons.isHidden = false
-                                        self.allocationAbilityLabel.text = "Trading disabled until game starts"
-                                        self.buyButton.setTitle("BUY", for: UIControlState.normal)
-                                        self.buyButton.isEnabled = false
-                                        self.buyButton.alpha = 0.35
-                                        self.sellButton.isEnabled = false
-                                        self.sellButton.alpha = 0.35
-                                        self.sellButton.setTitle("SELL", for: UIControlState.normal)
                                         self.coinPercentChangeLabel.text = ""
                                         self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
 
@@ -212,16 +205,12 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             } else {
                                                 self.capCoinAllocationLabel.text = ""
                                             }
-                                            self.buyButton.isEnabled = true
-                                            self.buyButton.alpha = 1.0
-                                            self.sellButton.isEnabled = false
-                                            self.sellButton.alpha = 0.35
-                                            self.buyButton.setTitle("Buy", for: UIControlState.normal)
-                                            self.sellButton.setTitle("Sell", for: UIControlState.normal)
-                                            self.allocationAbilityLabel.text = String(self.game.unusedCoinBalance) + " CC available"
                                             self.coinPercentChangeLabel.text = ""
                                             self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
+                                            
+                                            self.availableCCLabel.text = String(self.game.unusedCoinBalance) + " CC"
 
+                                            self.tradeBottomView.isHidden = false
                                             self.chart()
                                         } else {
                                             self.dismiss(animated: true, completion: nil)
@@ -474,9 +463,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.presentTradeView(orderType: "buy")
     }
 
-    @IBAction func sellButtonPressed(_ sender: Any) {
-        self.presentTradeView(orderType: "sell")
-    }
     func presentTradeView(orderType: String) {
         //make background faded out.
         self.view.bringSubview(toFront: self.blurBackgroundView)
