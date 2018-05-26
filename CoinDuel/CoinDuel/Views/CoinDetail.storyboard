@@ -459,23 +459,27 @@
                     <connections>
                         <outlet property="activeChartButtons" destination="hTA-E8-wgV" id="KIb-UY-hEZ"/>
                         <outlet property="allocationAbilityLabel" destination="FMv-wN-LsG" id="V7E-kn-fXR"/>
+                        <outlet property="amountTextField" destination="n0j-2L-CFI" id="4DR-EP-xGt"/>
                         <outlet property="availableCCLabel" destination="5bg-Ke-OEz" id="Usd-eO-28L"/>
                         <outlet property="backgroundImageView" destination="fdg-bv-Bbw" id="h40-4h-gaO"/>
                         <outlet property="blurBackgroundView" destination="lvl-hK-Di7" id="ZTk-ce-Dae"/>
                         <outlet property="buyButton" destination="ein-xW-NZg" id="DKv-5w-fdz"/>
+                        <outlet property="buySellControl" destination="IqU-ij-ytS" id="6BG-mV-pyv"/>
                         <outlet property="capCoinAllocationLabel" destination="rp1-QJ-YGh" id="HFk-AG-NRl"/>
                         <outlet property="chartView" destination="XIP-tQ-g9N" id="91K-NV-P7W"/>
                         <outlet property="coinName" destination="xdy-N5-HHs" id="KiA-I6-Ehs"/>
                         <outlet property="coinPercentChangeLabel" destination="oc6-PC-XQu" id="ueF-w8-PIv"/>
                         <outlet property="coinPriceLabel" destination="ABb-ja-HlS" id="ybj-Xv-kiW"/>
+                        <outlet property="currentHoldingsLabel" destination="nIJ-8b-jRe" id="tYy-Mc-ok3"/>
                         <outlet property="inactiveChartButtons" destination="knE-gU-Knr" id="uqn-05-bGR"/>
                         <outlet property="mainView" destination="Vsi-9D-uT6" id="Mu0-6I-zuC"/>
                         <outlet property="nameHeaderLabel" destination="ntR-V5-bE0" id="lqZ-ca-VeY"/>
                         <outlet property="popOverView" destination="zJm-2B-Qz9" id="GNM-QU-0jd"/>
                         <outlet property="tableView" destination="vzh-cX-e9d" id="Y1D-nl-10j"/>
+                        <outlet property="tradeAvailableCCLabel" destination="FYM-qi-9zR" id="6PO-BF-g2i"/>
                         <outlet property="tradeBottomView" destination="62R-lx-xWl" id="lE6-xr-Fm0"/>
                         <outlet property="tradeErrorLabel" destination="una-sD-WMn" id="8t1-3d-znM"/>
-                        <outlet property="tradePriceLabel" destination="FYM-qi-9zR" id="dqn-a7-TvR"/>
+                        <outlet property="tradePriceLabel" destination="p7F-33-qeq" id="rg1-Dz-MiB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tu6-b1-Y36" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -625,11 +629,14 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n0j-2L-CFI">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n0j-2L-CFI">
                             <rect key="frame" x="246" y="86.5" width="120" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            <connections>
+                                <action selector="editingChanged:" destination="7gg-YM-4Fw" eventType="editingChanged" id="AHk-gT-UAd"/>
+                            </connections>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Holdings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muu-LW-yO7">
                             <rect key="frame" x="24" y="128.5" width="117" height="19"/>

@@ -24,12 +24,11 @@ private class CubicLineSampleFillFormatter: IFillFormatter {
     }
 }
 
-class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
+class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var tradePriceLabel: UILabel!
     @IBOutlet weak var blurBackgroundView: UIView!
     @IBOutlet var popOverView: UIView!
     @IBOutlet var mainView: UIView!
@@ -40,7 +39,12 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var coinName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var availableCCLabel: UILabel!
+    @IBOutlet weak var buySellControl: UISegmentedControl!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var tradePriceLabel: UILabel!
+    @IBOutlet weak var currentHoldingsLabel: UILabel!
     
+    @IBOutlet weak var tradeAvailableCCLabel: UILabel!
     @IBOutlet weak var tradeBottomView: UIView!
     @IBOutlet weak var buyButton: UIButton!
     
@@ -68,6 +72,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var maxArticles = 5
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
     var isTradeViewEnabled = false
+    let numberFormatter = NumberFormatter()
 
 
     override func viewDidLayoutSubviews(){
@@ -88,6 +93,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.dataSource = self
         self.tableView.reloadData()
         
+        // Number format
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        
         // Start with labels hidden
         self.nameHeaderLabel.isHidden = true
         self.coinPriceLabel.isHidden = true
@@ -97,6 +107,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.startup()
 
         self.buyButton.isEnabled = true
+        
+        self.amountTextField.becomeFirstResponder()
+        self.amountTextField.delegate = self
 
         //round popover edges
         self.popOverView.layer.masksToBounds = true
@@ -208,7 +221,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             self.coinPercentChangeLabel.text = ""
                                             self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
                                             
-                                            self.availableCCLabel.text = String(self.game.unusedCoinBalance) + " CC"
+                                            self.availableCCLabel.text = self.numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
 
                                             self.tradeBottomView.isHidden = false
                                             self.chart()
@@ -465,6 +478,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     func presentTradeView(orderType: String) {
         //make background faded out.
+        self.tradePriceLabel.text = self.coinPriceLabel.text
+        self.currentHoldingsLabel.text = numberFormatter.string(from: NSNumber(value: self.game.coins[coinIndex].allocation))! + " CC"
+        self.tradeAvailableCCLabel.text = numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
+
         self.view.bringSubview(toFront: self.blurBackgroundView)
         self.blurBackgroundView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
 
@@ -479,7 +496,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             self.popOverView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         });
         self.isTradeViewEnabled = true
-        self.tradePriceLabel.text = self.coinPriceLabel.text
     }
 
     @IBAction func leaveTradeButtonPressed(_ sender: Any) {
@@ -497,17 +513,45 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     @IBAction func placeOrderPressed(_ sender: Any) {
-        if (self.tradeStepper.value <= self.game.unusedCoinBalance){
-            self.game.coins[coinIndex].allocation = self.tradeStepper.value
-            //add activity indicator of some sort
-            self.game.submitEntry(completion: { (result) in
-                if (result){
-                    print("success")
-                } else{
-                    print("submission error")
-                }
-            })
+//        let requestedAmount = self.amountTextField.value
+//        if (self.tradeStepper.value <= self.game.unusedCoinBalance){
+//            self.game.coins[coinIndex].allocation = self.tradeStepper.value
+//            //add activity indicator of some sort
+//            self.game.submitEntry(completion: { (result) in
+//                if (result){
+//                    print("success")
+//                } else{
+//                    print("submission error")
+//                }
+//            })
+//        }
+        
+        let requestedAmount = Double(self.amountTextField.text!)
+        if requestedAmount != nil {
+//            let roundedAmount = Round(100.0 * requestedAmount) / 100.0
+            print(roundedAmount)
         }
+//        let roundedRequestedAmount = requestedAmount
+//        print(requestedAmount)
+//        if requestedAmount =  {
+//            print("Got here")
+//        }
+        
+    }
+    
+    @IBAction func editingChanged(_ sender: Any) {
+    }
+    
+    
+    // https://www.markusbodner.com/2017/06/20/how-to-verify-and-limit-decimal-number-inputs-in-ios-with-swift/
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty {
+            return true
+        }
+        
+        let currentText = textField.text ?? ""
+        let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        return replacementText.isValidDouble(maxDecimalPlaces: 2)
     }
 
 }
