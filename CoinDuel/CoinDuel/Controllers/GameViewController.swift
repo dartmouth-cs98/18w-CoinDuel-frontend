@@ -368,7 +368,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.coinNameLabel.text = coin.ticker
             
             if coin.allocation > 0 {
-                cell.coinNameLabel.text = coin.ticker + " (" + String(Int(coin.allocation)) + " CC)"
+                cell.coinNameLabel.text = coin.ticker + " (" + numberFormatter.string(from: NSNumber(value: coin.allocation))! + " CC)"
             }
             
             cell.coinPriceLabel.text = "$" + numberFormatter.string(from: NSNumber(value: coin.currentPrice))!

@@ -393,7 +393,7 @@
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="oc6-PC-XQu" secondAttribute="centerX" id="wze-HA-nqd"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62R-lx-xWl">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62R-lx-xWl">
                                 <rect key="frame" x="0.0" y="930" width="415" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available CapCoin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMv-wN-LsG">

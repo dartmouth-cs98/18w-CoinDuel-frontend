@@ -59,7 +59,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var coinSymbolLabel: String = ""
     var currentCoinPrice: Double = 0.0
     var coinIndex: Int = 0
-    var allocation: String = ""
+    var allocation: Double = 0.0
     var initialCoinPrice: Double = Double()
     var tempInitialPrice: Double = 0.0
     var priceData : [Double] = []
@@ -180,7 +180,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                         for coin in self.game.coins {
                                             if coin.ticker == self.coinSymbolLabel {
                                                 self.currentCoinPrice = coin.currentPrice
-                                                self.allocation = String(coin.allocation)
+                                                self.allocation = coin.allocation
                                                 self.initialCoinPrice = coin.initialPrice
                                             }
                                         }
@@ -188,7 +188,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                         self.inactiveChartButtons.isHidden = false
                                         self.coinPercentChangeLabel.text = ""
                                         self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
-
+                                        self.buyButton.isEnabled = false
+                                        self.tradeBottomView.isHidden = true
                                         self.chart()
                                     } else {
                                         self.dismiss(animated: true, completion: nil)
@@ -208,13 +209,13 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             for coin in self.game.coins {
                                                 if coin.ticker == self.coinSymbolLabel {
                                                     self.currentCoinPrice = coin.currentPrice
-                                                    self.allocation = String(coin.allocation)
+                                                    self.allocation = coin.allocation
                                                     self.initialCoinPrice = coin.initialPrice
                                                 }
                                             }
                                             
-                                            if self.allocation != "0.0" {
-                                                self.capCoinAllocationLabel.text = self.allocation + " CC"
+                                            if self.allocation > 0.0 {
+                                                self.capCoinAllocationLabel.text = self.numberFormatter.string(from: NSNumber(value: self.allocation))! + " CC"
                                             } else {
                                                 self.capCoinAllocationLabel.text = ""
                                             }
@@ -224,6 +225,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             self.availableCCLabel.text = self.numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
 
                                             self.tradeBottomView.isHidden = false
+                                            self.buyButton.isEnabled = true
                                             self.chart()
                                         } else {
                                             self.dismiss(animated: true, completion: nil)
