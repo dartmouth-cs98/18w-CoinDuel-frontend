@@ -147,10 +147,11 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 // Enforce an entry
                                 self.game.getEntry() { (entryStatus) -> Void in
                                     if entryStatus != "entry" {
+                                        print("submitting empty entry")
                                         self.game.submitEntry() { (success) -> Void in
                                             if success {
                                                 self.startup()
-                                                return
+                                                returng
                                             } else {
                                                 self.networkError("Unable to submit empty entry")
                                             }
