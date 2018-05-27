@@ -344,15 +344,22 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // load coin logo
         if (coin.logoUrl == "") {
-            coin.getCoinLogo { (success) in
-                if (success){
-                    
-                    // adapted from https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
-                    let url = URL(string: coin.logoUrl)
-                    let image = try? Data(contentsOf: url!)
-                    cell.coinLogo.image = UIImage(data: image!)
-                    cell.coinLogo.layer.masksToBounds = true
-                    cell.coinLogo.layer.cornerRadius = 15
+            if let cachedImage = Constants.imageCache.object(forKey: coin.ticker as NSString) {
+                cell.coinLogo.image = cachedImage
+                cell.coinLogo.layer.masksToBounds = true
+                cell.coinLogo.layer.cornerRadius = 15
+            } else {
+                coin.getCoinLogo { (success) in
+                    if (success){
+                        
+                        // adapted from https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+                        let url = URL(string: coin.logoUrl)
+                        let image = try? Data(contentsOf: url!)
+                        cell.coinLogo.image = UIImage(data: image!)
+                        cell.coinLogo.layer.masksToBounds = true
+                        cell.coinLogo.layer.cornerRadius = 15
+                        Constants.imageCache.setObject(cell.coinLogo.image!, forKey: coin.ticker as NSString)
+                    }
                 }
             }
         }
