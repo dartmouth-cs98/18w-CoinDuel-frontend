@@ -21,6 +21,8 @@ struct Constants {
     static let lightBlueColor = UIColor(red:CGFloat(56.0/255.0), green:CGFloat(143.0/255.0), blue:CGFloat(201.0/255.0), alpha:1.0)
     static let darkRedColor = UIColor(red:CGFloat(232/255.0), green:CGFloat(60.0/255.0), blue:CGFloat(48.0/255.0), alpha:1.0)
     static let lightGrayColor = UIColor(red:CGFloat(192/255.0), green:CGFloat(192/255.0), blue:CGFloat(192/255.0), alpha:1.0)
+    
+    static let imageCache = NSCache<NSString, UIImage>()
 }
 
 // Copying this extension from https://www.markusbodner.com/2017/06/20/how-to-verify-and-limit-decimal-number-inputs-in-ios-with-swift/
