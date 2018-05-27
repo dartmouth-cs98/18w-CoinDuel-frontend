@@ -151,7 +151,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         self.game.submitEntry() { (success) -> Void in
                                             if success {
                                                 self.startup()
-                                                returng
                                             } else {
                                                 self.networkError("Unable to submit empty entry")
                                             }
