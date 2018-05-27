@@ -25,6 +25,7 @@
 		509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509BC41C2030DF7B00702226 /* UserTableViewCell.swift */; };
 		50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA672D20241D2000C7DFD8 /* LeaderboardViewController.swift */; };
 		50E499402038B64500DBCC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4993F2038B64500DBCC42 /* User.swift */; };
+		A01D9C5320B79E8D008E6F11 /* TradeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D9C5220B79E8D008E6F11 /* TradeOrderViewController.swift */; };
 		A04F235D2092B2D00067E159 /* TradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04F235C2092B2D00067E159 /* TradesViewController.swift */; };
 		A050E8492048B4310009A96E /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050E8482048B4310009A96E /* DateValueFormatter.swift */; };
 		A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F1E08204376640070D305 /* CoinDetailViewController.swift */; };
@@ -119,6 +120,7 @@
 		6CF9FE990D12B475C5C39DB8 /* Pods_CoinDuel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinDuel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89187AAAA8FD4FE99707A675 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5067DC7B8017C991D24E28 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		A01D9C5220B79E8D008E6F11 /* TradeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeOrderViewController.swift; sourceTree = "<group>"; };
 		A04F235C2092B2D00067E159 /* TradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesViewController.swift; sourceTree = "<group>"; };
 		A050E8482048B4310009A96E /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		A06F1E08204376640070D305 /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			children = (
 				F884E58C20A4E7AD000B20F2 /* View */,
 				F813428E209261DD0031AC42 /* AuthViewController.swift */,
+				A01D9C5220B79E8D008E6F11 /* TradeOrderViewController.swift */,
 				A0B35E3A2097ABC900EBA236 /* ProfileViewController.swift */,
 				F824B1B320363F88008D1F14 /* LoginViewController.swift */,
 				1EB504C4201A7B8700BB76AA /* GameViewController.swift */,
@@ -346,6 +349,7 @@
 				1EB504BD201A7B8700BB76AA /* Resources */,
 				A7891779FB54B95880422EEB /* [CP] Embed Pods Frameworks */,
 				A0BCF92E207BFBA3005664A3 /* Embed App Extensions */,
+				0055B66D9A4681C49DB3DBFF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,6 +405,7 @@
 				A0BCF91F207BFBA3005664A3 /* Sources */,
 				A0BCF920207BFBA3005664A3 /* Frameworks */,
 				A0BCF921207BFBA3005664A3 /* Resources */,
+				BA29082B2BC1FFF86410D68D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -524,6 +529,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0055B66D9A4681C49DB3DBFF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinDuel/Pods-CoinDuel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4380D4264A4C593C8CC793E9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -557,6 +577,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FeedbackEffect/FeedbackEffect.framework",
+				"${BUILT_PRODUCTS_DIR}/GMStepper/GMStepper.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -570,6 +591,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedbackEffect.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GMStepper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -596,6 +618,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BA29082B2BC1FFF86410D68D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -617,6 +654,7 @@
 				1E17A6332040A801007A341C /* ResultsViewController.swift in Sources */,
 				F88DE82B20B76E3B00CCC093 /* OnboardingViewController.swift in Sources */,
 				A07604A62087F0E7003BE65C /* LandingPageViewController.swift in Sources */,
+				A01D9C5320B79E8D008E6F11 /* TradeOrderViewController.swift in Sources */,
 				F813428F209261DD0031AC42 /* AuthViewController.swift in Sources */,
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,

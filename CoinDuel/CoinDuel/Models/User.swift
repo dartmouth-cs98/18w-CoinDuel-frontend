@@ -14,6 +14,7 @@ class User {
     var username: String
     var coinBalance: Double
     var rank: Int
+    var otherUsers: Int
     var profilePicture: String
 
     init() {
@@ -21,6 +22,7 @@ class User {
         self.coinBalance = 0
         self.rank = 0
         self.profilePicture = ""
+        self.otherUsers = 0
     }
     
     init(username: String?, coinBalance: Double, rank: Int, profilePicture: String) {
@@ -28,6 +30,7 @@ class User {
         self.coinBalance = coinBalance
         self.rank = rank
         self.profilePicture = profilePicture
+        self.otherUsers = 0
     }
     
     // retrieves user's all time rank
@@ -47,6 +50,7 @@ class User {
                 case .success(let value):
                     let jsonArray = JSON(value).arrayValue
                     var rank = 1
+                    self.otherUsers = jsonArray.count
                     for obj in jsonArray {
                         if (obj["username"].stringValue == self.username) {
                             self.rank = rank

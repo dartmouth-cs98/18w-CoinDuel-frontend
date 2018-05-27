@@ -10,6 +10,7 @@ target 'CoinDuel' do
 	pod 'NVActivityIndicatorView'
 	pod 'OneSignal', '>= 2.5.2', '< 3.0'
   pod 'FacebookCore'
+  pod 'GMStepper', '~> 2.1'
   pod 'FacebookLogin'
 end
 

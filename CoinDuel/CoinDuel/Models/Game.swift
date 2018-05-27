@@ -15,20 +15,26 @@ class Game {
     var coins:[Coin] = [Coin]()
     var isActive:Bool
     var hasFinished:Bool
+    var finishedAndProcessed:Bool
+    var numberOfUsers: Int
     var startDate:String
     var finishDate:String
     var rawStartDate:String
     var coinBalance:Double
+    var unusedCoinBalance:Double
     
     init() {
         self.id = ""
         self.coins = [Coin]()
         self.isActive = false
         self.hasFinished = false
+        self.finishedAndProcessed = false
         self.startDate = ""
         self.finishDate = ""
         self.rawStartDate = ""
         self.coinBalance = 0.0
+        self.unusedCoinBalance = 0.0
+        self.numberOfUsers = 0
     }
     
     // Returns total CapCoin allocated so far
@@ -68,7 +74,8 @@ class Game {
                     self.id = json[0]["_id"].stringValue
                     self.isActive = json[0]["is_active"].boolValue
                     self.hasFinished = json[0]["game_finished"].boolValue
-                    
+                    self.finishedAndProcessed = json[0]["has_ended"].boolValue
+                    self.numberOfUsers = json[0]["users"].intValue
                     // Get the date (https://stackoverflow.com/questions/24777496/how-can-i-convert-string-date-to-nsdate)
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
@@ -104,7 +111,7 @@ class Game {
     // Retrieves an entry by this user for this game, if it exists
     func getEntry(completion: @escaping (_ entryStatus: String) -> Void) {
         let url = Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!
-        
+        print(url)
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
                 case .success(let value):
@@ -119,6 +126,7 @@ class Game {
                     }
                     
                     self.coinBalance = json["coin_balance"].doubleValue
+                    self.unusedCoinBalance = json["unallocated_capcoin"].doubleValue
                 
                     completion("entry")
                 case .failure(let error):
@@ -151,8 +159,8 @@ class Game {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json)
-                
+//                print(json)
+
                 // check for insufficient funds
                 if (json["error"].exists() && json["error"] == "insufficient funds") {
                     completion(false)
@@ -173,10 +181,6 @@ class Game {
                 }
                 completion(false)
             }
-
-
-
-            print(response.response?.statusCode)
         }
     }
 
@@ -194,7 +198,7 @@ class Game {
                     // Get all coin prices, default CapCoin allocation to 0
                     for coin in json["returns"] {
                         let ticker = coin.0
-                        print(ticker)
+//                        print(ticker)
                         let initialPrice = coin.1["initialPrice"].doubleValue
                         let currentPrice = coin.1["currentPrice"].doubleValue
                         let allocation = coin.1["allocation"].doubleValue

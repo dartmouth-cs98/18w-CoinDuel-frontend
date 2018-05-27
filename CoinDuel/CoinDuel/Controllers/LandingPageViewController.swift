@@ -83,7 +83,7 @@ class LandingPageViewController: UIViewController {
         // set rank view
         self.user.updateRankAllTime { (success) in
             if (success){
-                self.rankLabel.text = "#" + String(self.user.rank)
+                self.rankLabel.text = "#" + String(self.user.rank) + "/" + String(self.user.otherUsers)
             }
             self.rankActivityIndicator.isHidden = true
         }
@@ -162,7 +162,7 @@ class LandingPageViewController: UIViewController {
         self.enterGameButton.isHidden = false
         
         // set button
-        self.enterGameButton.setTitle("Set Lineup", for: .normal)
+        self.enterGameButton.setTitle("Preview Game", for: .normal)
         self.enterGameButton.layer.masksToBounds = true
         self.enterGameButton.layer.cornerRadius = self.enterGameButton.frame.height / 2
 //        self.enterGameButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.5).cgColor

@@ -10,6 +10,8 @@
 
 
 import UIKit
+import GMStepper
+
 import Charts
 import Alamofire
 import SwiftyJSON
@@ -22,22 +24,41 @@ private class CubicLineSampleFillFormatter: IFillFormatter {
     }
 }
 
-class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var nameHeaderLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var coinPriceLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
-
+    @IBOutlet weak var blurBackgroundView: UIView!
+    @IBOutlet var popOverView: UIView!
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var activeChartButtons: UIStackView!
     @IBOutlet weak var capCoinAllocationLabel: UILabel!
     @IBOutlet weak var coinPercentChangeLabel: UILabel!
     @IBOutlet weak var inactiveChartButtons: UIStackView!
     @IBOutlet weak var coinName: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var availableCCLabel: UILabel!
+    @IBOutlet weak var buySellControl: UISegmentedControl!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var tradePriceLabel: UILabel!
+    @IBOutlet weak var currentHoldingsLabel: UILabel!
+    
+    @IBOutlet weak var tradeAvailableCCLabel: UILabel!
+    @IBOutlet weak var tradeBottomView: UIView!
+    @IBOutlet weak var buyButton: UIButton!
+    
+    @IBOutlet weak var allocationAbilityLabel: UILabel!
+
+    @IBOutlet weak var tradeErrorLabel: UILabel!
+
+    @IBOutlet weak var tradeStepper: GMStepper!
     
     var game: Game = Game()
+    var gameId: String = ""
     var coinSymbolLabel: String = ""
     var currentCoinPrice: Double = 0.0
+    var coinIndex: Int = 0
     var allocation: String = ""
     var initialCoinPrice: Double = Double()
     var tempInitialPrice: Double = 0.0
@@ -48,7 +69,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
     var currentTimeFrame = 0
-    var maxArticles = 3
+    var maxArticles = 5
+    var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
+    var isTradeViewEnabled = false
+    let numberFormatter = NumberFormatter()
+
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -56,29 +81,52 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.coinPercentChangeLabel.text = ""
-        self.coinPriceLabel.text = "$" + currentCoinPrice.description
+
+        //Stepper styling, see here https://cocoapods.org/pods/GMStepper
+
+        // Button styling
+        self.buyButton.layer.masksToBounds = true
+        self.buyButton.layer.cornerRadius = 15
         
+        // Retrieve news
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.reloadData()
+        
+        // Number format
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        
+        // Start with labels hidden
+        self.nameHeaderLabel.isHidden = true
+        self.coinPriceLabel.isHidden = true
+        self.coinPercentChangeLabel.isHidden = true
+        self.tradeBottomView.isHidden = true
+        
+        self.startup()
 
-        if self.allocation != "0.0" {
-            self.capCoinAllocationLabel.text = allocation + " CC"
-        } else {
-            self.capCoinAllocationLabel.text = ""
-        }
+        self.buyButton.isEnabled = true
+        
+        self.amountTextField.becomeFirstResponder()
+        self.amountTextField.delegate = self
 
-//        toggle buttons if game is active or not
-        if(self.game.isActive){
-            self.activeChartButtons.isHidden = false
-            self.inactiveChartButtons.isHidden = true
-        } else {
-            self.activeChartButtons.isHidden = true
-            self.inactiveChartButtons.isHidden = false
-        }
+        //round popover edges
+        self.popOverView.layer.masksToBounds = true
+        self.popOverView.layer.cornerRadius = 10
+    }
 
-//        setup chart and call it for one day values
+    
+    func chart() {
+        self.nameHeaderLabel.isHidden = false
+        self.coinPriceLabel.isHidden = false
+        self.coinPercentChangeLabel.isHidden = false
+        
+        // chart setup
+        self.activeChartButtons.isHidden = false
+        self.inactiveChartButtons.isHidden = true
+        
+        //        setup chart and call it for one day values
         self.oneDayChart((Any).self)
         
         let apiUrl = Constants.API + "coin/" + coinSymbolLabel
@@ -107,6 +155,89 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func startup() {
+        // Retrieve user balance
+        self.user.updateCoinBalance() { (completion) -> Void in
+            if completion {
+                // Try and get the current game from the database
+                self.game.getCurrentGame() { (success) -> Void in
+                    if success {
+                        // See if we need to display results
+                        if self.game.id != self.gameId {
+                            print("Should display results popup")
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            // Case 1: Game upcoming
+                            if !self.game.isActive {
+                                // Update prices
+                                self.game.updateCoinPrices() { (coinSuccess) -> Void in
+                                    if coinSuccess {
+                                        // Show game mode (with prices/returns for coins)
+                                        for coin in self.game.coins {
+                                            if coin.ticker == self.coinSymbolLabel {
+                                                self.currentCoinPrice = coin.currentPrice
+                                                self.allocation = String(coin.allocation)
+                                                self.initialCoinPrice = coin.initialPrice
+                                            }
+                                        }
+                                        self.activeChartButtons.isHidden = true
+                                        self.inactiveChartButtons.isHidden = false
+                                        self.coinPercentChangeLabel.text = ""
+                                        self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
+
+                                        self.chart()
+                                    } else {
+                                        self.dismiss(animated: true, completion: nil)
+                                    }
+                                }
+                            } else {
+                                // Case 2: Game in progress
+                                // Enforce an entry
+                                self.game.getEntry() { (entryStatus) -> Void in
+                                    if entryStatus != "entry" {
+                                        self.dismiss(animated: true, completion: nil)
+                                    }
+                                    // Update prices
+                                    self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
+                                        if coinSuccess {
+                                            // Show game mode (with prices/returns for coins)
+                                            for coin in self.game.coins {
+                                                if coin.ticker == self.coinSymbolLabel {
+                                                    self.currentCoinPrice = coin.currentPrice
+                                                    self.allocation = String(coin.allocation)
+                                                    self.initialCoinPrice = coin.initialPrice
+                                                }
+                                            }
+                                            
+                                            if self.allocation != "0.0" {
+                                                self.capCoinAllocationLabel.text = self.allocation + " CC"
+                                            } else {
+                                                self.capCoinAllocationLabel.text = ""
+                                            }
+                                            self.coinPercentChangeLabel.text = ""
+                                            self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
+                                            
+                                            self.availableCCLabel.text = self.numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
+
+                                            self.tradeBottomView.isHidden = false
+                                            self.chart()
+                                        } else {
+                                            self.dismiss(animated: true, completion: nil)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            } else {
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -335,4 +466,100 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
         sender.backgroundColor = UIColor.gray
     }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // return UIModalPresentationStyle.FullScreen
+        return UIModalPresentationStyle.none
+    }
+
+    @IBAction func buyButtonPressed(_ sender: Any) {
+        self.presentTradeView(orderType: "buy")
+    }
+
+    func presentTradeView(orderType: String) {
+        //make background faded out.
+        self.tradePriceLabel.text = self.coinPriceLabel.text
+        self.currentHoldingsLabel.text = numberFormatter.string(from: NSNumber(value: self.game.coins[coinIndex].allocation))! + " CC"
+        self.tradeAvailableCCLabel.text = numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
+
+        self.view.bringSubview(toFront: self.blurBackgroundView)
+        self.blurBackgroundView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
+
+        self.view.addSubview(self.popOverView)
+        self.popOverView.center = self.view.center
+
+
+        self.popOverView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.popOverView.alpha = 0.0;
+        UIView.animate(withDuration: 0.50, animations: {
+            self.popOverView.alpha = 1.0
+            self.popOverView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        });
+        self.isTradeViewEnabled = true
+    }
+
+    @IBAction func leaveTradeButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.20, animations: {
+            self.popOverView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            self.popOverView.alpha = 0.0;
+        }, completion:{(finished : Bool)  in
+            if (finished)
+            {
+                self.popOverView.removeFromSuperview()
+            }
+        });
+        self.view.sendSubview(toBack: self.blurBackgroundView)
+        self.isTradeViewEnabled = false
+    }
+
+    @IBAction func placeOrderPressed(_ sender: Any) {
+//        let requestedAmount = self.amountTextField.value
+//        if (self.tradeStepper.value <= self.game.unusedCoinBalance){
+//            self.game.coins[coinIndex].allocation = self.tradeStepper.value
+//            //add activity indicator of some sort
+//            self.game.submitEntry(completion: { (result) in
+//                if (result){
+//                    print("success")
+//                } else{
+//                    print("submission error")
+//                }
+//            })
+//        }
+
+        let requestedAmount = Double(self.amountTextField.text!)
+        if requestedAmount != nil {
+//            let roundedAmount = Round(100.0 * requestedAmount) / 100.0
+            self.game.coins[coinIndex].allocation = requestedAmount!
+            //add activity indicator of some sort
+            self.game.submitEntry(completion: { (result) in
+                if (result){
+                    print("success")
+                } else{
+                    print("submission error")
+                }
+            })
+        }
+//        let roundedRequestedAmount = requestedAmount
+//        print(requestedAmount)
+//        if requestedAmount =  {
+//            print("Got here")
+//        }
+        
+    }
+    
+    @IBAction func editingChanged(_ sender: Any) {
+    }
+    
+    
+    // https://www.markusbodner.com/2017/06/20/how-to-verify-and-limit-decimal-number-inputs-in-ios-with-swift/
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty {
+            return true
+        }
+        
+        let currentText = textField.text ?? ""
+        let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        return replacementText.isValidDouble(maxDecimalPlaces: 2)
+    }
+
 }
