@@ -416,11 +416,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let segID = segue.identifier {
                 if (segID == "coinDetailSegue"){
                     if let indexPath = gameTableView.indexPathForSelectedRow{
-                        let coin = self.game.coins[indexPath.row]
+                        var indexPathRow = indexPath.row
+                        if (indexPath.section == 1 && self.isGameDisplayMode ){
+                            indexPathRow = indexPathRow + 1
+                        }
+                        let coin = self.game.coins[indexPathRow]
+
                         let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
                         if let destinationVC = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController") as? CoinDetailViewController {
                             destinationVC.coinSymbolLabel = coin.ticker
-                            destinationVC.coinIndex = indexPath.row
+                            destinationVC.coinIndex = indexPathRow
                             destinationVC.gameId = self.game.id
                             self.present(destinationVC, animated: true, completion: nil)
                             print("showing coinDetail")
