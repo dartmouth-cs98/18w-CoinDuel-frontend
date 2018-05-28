@@ -155,24 +155,25 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                 self.networkError("Unable to submit empty entry")
                                             }
                                         }
-                                    }
-                                    self.hasEntry = true
-                                    // Update prices
-                                    self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
-                                        if coinSuccess {
-                                            // Store the current game ID (for showing results later)
-                                            let defaults = UserDefaults.standard
-                                            defaults.set(self.game.id, forKey: "gameId")
-                                            
-                                            // Show game mode (with prices/returns for coins)
-                                            self.displayGameMode()
-                                            DispatchQueue.main.async() {
-                                                self.refreshControl.endRefreshing()
-                                                self.loadingActivityIndicatorView.stopAnimating()
-                                                self.loadingActivityIndicatorView.isHidden = true
+                                    } else {
+                                        self.hasEntry = true
+                                        // Update prices
+                                        self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
+                                            if coinSuccess {
+                                                // Store the current game ID (for showing results later)
+                                                let defaults = UserDefaults.standard
+                                                defaults.set(self.game.id, forKey: "gameId")
+
+                                                // Show game mode (with prices/returns for coins)
+                                                self.displayGameMode()
+                                                DispatchQueue.main.async() {
+                                                    self.refreshControl.endRefreshing()
+                                                    self.loadingActivityIndicatorView.stopAnimating()
+                                                    self.loadingActivityIndicatorView.isHidden = true
+                                                }
+                                            } else {
+                                                self.networkError("Unable to update coin prices")
                                             }
-                                        } else {
-                                            self.networkError("Unable to update coin prices")
                                         }
                                     }
                                 }
