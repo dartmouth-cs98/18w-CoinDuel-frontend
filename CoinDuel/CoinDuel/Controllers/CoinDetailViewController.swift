@@ -527,6 +527,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 //                }
 //            })
 //        }
+        
+        print(self.game.coins)
 
         let requestedAmount = Double(self.amountTextField.text!)
         if requestedAmount != nil {

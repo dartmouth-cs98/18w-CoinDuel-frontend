@@ -151,6 +151,9 @@ class Game {
             choices.append(thisChoice)
         }
         
+        print("Choices")
+        print(choices)
+        
         let json = ["choices": choices]
 
         let url = URL(string: Constants.API + "game/" + self.id + "/" + UserDefaults.standard.string(forKey:"id")!)!
@@ -168,6 +171,7 @@ class Game {
                 }
                 
                 // Get all coin names, default CapCoin allocation to 0
+                self.coins = [Coin]()
                 for coin in json["currentChoices"] {
                     self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue, coin.1["startPrice"].doubleValue))
                 }
