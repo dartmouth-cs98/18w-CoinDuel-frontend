@@ -87,6 +87,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Button styling
         self.buyButton.layer.masksToBounds = true
         self.buyButton.layer.cornerRadius = 15
+        self.buyButton.alpha = 1.0
         
         // Retrieve news
         self.tableView.delegate = self
@@ -102,7 +103,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.nameHeaderLabel.isHidden = true
         self.coinPriceLabel.isHidden = true
         self.coinPercentChangeLabel.isHidden = true
-        self.tradeBottomView.isHidden = true
+        
+        // Bottom trading area
+        self.allocationAbilityLabel.text = ""
+        self.availableCCLabel.text = ""
         
         self.startup()
 
@@ -189,7 +193,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                         self.coinPercentChangeLabel.text = ""
                                         self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
                                         self.buyButton.isEnabled = false
-                                        self.tradeBottomView.isHidden = true
+                                        self.buyButton.alpha = 0.3
+                                        self.allocationAbilityLabel.text = "Trading Closed"
+                                        self.availableCCLabel.text = "Game preview mode"
                                         self.chart()
                                     } else {
                                         self.dismiss(animated: true, completion: nil)
@@ -223,9 +229,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
                                             
                                             self.availableCCLabel.text = self.numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
-
-                                            self.tradeBottomView.isHidden = false
+                                            self.allocationAbilityLabel.text = "Available CapCoin"
                                             self.buyButton.isEnabled = true
+                                            self.buyButton.alpha = 1.0
                                             self.chart()
                                         } else {
                                             self.dismiss(animated: true, completion: nil)
@@ -501,17 +507,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     @IBAction func leaveTradeButtonPressed(_ sender: Any) {
-        UIView.animate(withDuration: 0.20, animations: {
-            self.popOverView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-            self.popOverView.alpha = 0.0;
-        }, completion:{(finished : Bool)  in
-            if (finished)
-            {
-                self.popOverView.removeFromSuperview()
-            }
-        });
-        self.view.sendSubview(toBack: self.blurBackgroundView)
-        self.isTradeViewEnabled = false
+        self.dismissPopup()
     }
 
     @IBAction func placeOrderPressed(_ sender: Any) {
@@ -532,12 +528,25 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
         let requestedAmount = Double(self.amountTextField.text!)
         if requestedAmount != nil {
-//            let roundedAmount = Round(100.0 * requestedAmount) / 100.0
-            self.game.coins[coinIndex].allocation = requestedAmount!
+            var requestedAmountRounded = round(100.0 * requestedAmount!) / 100.0
+            
+            if self.buySellControl.selectedSegmentIndex == 1 {
+                requestedAmountRounded *= -1.0
+            }
+        
+            self.game.coins[self.coinIndex].allocation += requestedAmountRounded
             //add activity indicator of some sort
             self.game.submitEntry(completion: { (result) in
                 if (result){
                     print("success")
+                    var msg = "Successfully "
+                    if self.buySellControl.selectedSegmentIndex == 0 {
+                        msg += "bought "
+                    } else {
+                        msg += "sold "
+                    }
+                    msg += self.game.coins[self.coinIndex].ticker
+                    self.successMessage(msg)
                 } else{
                     print("submission error")
                 }
@@ -565,5 +574,33 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string)
         return replacementText.isValidDouble(maxDecimalPlaces: 2)
     }
+    
+    func successMessage(_ msg:String) {
+        // from: https://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
+        
+        let alert = UIAlertController(title: "Order Filled", message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.dismissPopup()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func dismissPopup() {
+        UIView.animate(withDuration: 0.20, animations: {
+            self.popOverView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            self.popOverView.alpha = 0.0;
+        }, completion:{(finished : Bool)  in
+            if (finished)
+            {
+                self.popOverView.removeFromSuperview()
+                self.startup()
+            }
+        });
+        self.view.sendSubview(toBack: self.blurBackgroundView)
+        self.isTradeViewEnabled = false
+    }
+    
 
 }
