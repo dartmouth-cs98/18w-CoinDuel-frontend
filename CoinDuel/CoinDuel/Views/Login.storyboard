@@ -683,6 +683,37 @@
             </objects>
             <point key="canvasLocation" x="526" y="1894"/>
         </scene>
+        <!--Onboarding3 View Controller-->
+        <scene sceneID="Ghm-Cs-Ju8">
+            <objects>
+                <viewController storyboardIdentifier="sb1" id="0lL-dv-C71" customClass="Onboarding3ViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WUP-he-0DV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="k53-Gk-NcH">
+                                <rect key="frame" x="67" y="220" width="240" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="7nd-Uf-CMS"/>
+                                    <constraint firstAttribute="height" constant="256" id="KL7-pv-tsa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k53-Gk-NcH" firstAttribute="top" secondItem="eW2-Fx-5SI" secondAttribute="top" constant="200" id="cxu-7I-1aG"/>
+                            <constraint firstItem="k53-Gk-NcH" firstAttribute="centerX" secondItem="WUP-he-0DV" secondAttribute="centerX" id="xby-AX-jYI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eW2-Fx-5SI"/>
+                    </view>
+                    <connections>
+                        <outlet property="sampleConstraint" destination="cxu-7I-1aG" id="TOT-g6-bbh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVu-bM-kk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-207" y="2561"/>
+        </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="V6j-b7-0IX">
             <objects>
@@ -1407,6 +1438,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="4" width="256" height="256"/>
         <image name="Logo3" width="638" height="460"/>
         <image name="facebook" width="256" height="256"/>
         <image name="float" width="48" height="48"/>
@@ -1425,7 +1457,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="ItM-AD-zS1"/>
         <segue reference="RrX-yt-mxB"/>
-        <segue reference="mkH-uc-JAS"/>
+        <segue reference="RMK-eE-SZz"/>
         <segue reference="Sum-gf-KeX"/>
     </inferredMetricsTieBreakers>
 </document>
