@@ -417,8 +417,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if (segID == "coinDetailSegue"){
                     if let indexPath = gameTableView.indexPathForSelectedRow{
                         var indexPathRow = indexPath.row
+                        print(indexPath)
                         if (indexPath.section == 1 && self.isGameDisplayMode ){
-                            indexPathRow = indexPathRow + 1
+                            indexPathRow = indexPathRow + self.game.coins.filter({$0.allocation > 0}).count
                         }
                         let coin = self.game.coins[indexPathRow]
 
