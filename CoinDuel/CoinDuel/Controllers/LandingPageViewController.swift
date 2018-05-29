@@ -130,6 +130,21 @@ class LandingPageViewController: UIViewController {
                     self.displayUpcomingGameMode()
                 }
             } else {
+//                // TODO: DELETE AFTER TESTING – FOR DEBUG
+//                // Display results pop up if the user had an entry
+//                let resultsGame = Game()
+//                resultsGame.id = "5a99b4944ca7a11092a9e971"
+//                resultsGame.getEntry() { (entryStatus) -> Void in
+//                    if entryStatus == "entry" {
+//
+//                        // display results view
+//                        let storyboard = UIStoryboard(name: "Results", bundle: nil)
+//                        let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
+//                        resultsVC.game = resultsGame
+//                        self.present(resultsVC, animated: true, completion: nil)
+//                    }
+//                }
+
                 // No games are scheduled
                 self.displayNoGameMode()
             }
