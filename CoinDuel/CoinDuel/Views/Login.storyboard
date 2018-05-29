@@ -751,15 +751,23 @@
                                     <constraint firstAttribute="height" constant="438" id="s6p-AR-jjG"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See how you stack up against competitors!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5i-ZO-fXl">
+                                <rect key="frame" x="31" y="518" width="314" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="PIk-AD-dmt" firstAttribute="centerX" secondItem="8iU-94-dTV" secondAttribute="centerX" id="4m4-b7-hf1"/>
                             <constraint firstItem="39o-Fy-fXo" firstAttribute="bottom" secondItem="keh-iJ-otw" secondAttribute="bottom" id="8LA-0A-4bP"/>
+                            <constraint firstItem="keh-iJ-otw" firstAttribute="bottom" secondItem="Z5i-ZO-fXl" secondAttribute="bottom" constant="131" id="9Gm-ix-Jo4"/>
                             <constraint firstItem="39o-Fy-fXo" firstAttribute="top" secondItem="8iU-94-dTV" secondAttribute="top" id="Ay9-L2-AIa"/>
                             <constraint firstItem="39o-Fy-fXo" firstAttribute="trailing" secondItem="keh-iJ-otw" secondAttribute="trailing" id="FK8-Gf-9ZY"/>
                             <constraint firstItem="39o-Fy-fXo" firstAttribute="leading" secondItem="keh-iJ-otw" secondAttribute="leading" id="Gj2-57-VmA"/>
                             <constraint firstItem="PIk-AD-dmt" firstAttribute="top" secondItem="8iU-94-dTV" secondAttribute="top" constant="50" id="Pr2-Ai-O0Q"/>
+                            <constraint firstItem="Z5i-ZO-fXl" firstAttribute="centerX" secondItem="8iU-94-dTV" secondAttribute="centerX" id="XvE-3Z-nOk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="keh-iJ-otw"/>
                     </view>
@@ -790,12 +798,20 @@
                                     <constraint firstAttribute="width" constant="250" id="bk3-R8-y3Y"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor your crypto picks in-game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9d-Zj-xMT">
+                                <rect key="frame" x="59" y="518" width="258" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="esj-hw-b4p" firstAttribute="centerX" secondItem="53X-Kw-lhQ" secondAttribute="centerX" id="Kus-Ej-1rx"/>
                             <constraint firstItem="5BF-TZ-Ije" firstAttribute="top" secondItem="53X-Kw-lhQ" secondAttribute="top" id="N8N-JE-vef"/>
+                            <constraint firstItem="QHw-sK-bPi" firstAttribute="bottom" secondItem="A9d-Zj-xMT" secondAttribute="bottom" constant="131" id="Ufi-GF-n64"/>
                             <constraint firstItem="5BF-TZ-Ije" firstAttribute="trailing" secondItem="QHw-sK-bPi" secondAttribute="trailing" id="V1D-8b-YSX"/>
+                            <constraint firstItem="A9d-Zj-xMT" firstAttribute="centerX" secondItem="53X-Kw-lhQ" secondAttribute="centerX" id="oUi-Ee-3m1"/>
                             <constraint firstItem="5BF-TZ-Ije" firstAttribute="leading" secondItem="QHw-sK-bPi" secondAttribute="leading" id="owo-8S-ZGb"/>
                             <constraint firstItem="esj-hw-b4p" firstAttribute="top" secondItem="53X-Kw-lhQ" secondAttribute="top" constant="50" id="rWA-x6-5Jk"/>
                             <constraint firstItem="5BF-TZ-Ije" firstAttribute="bottom" secondItem="QHw-sK-bPi" secondAttribute="bottom" id="zod-Dq-8bU"/>
@@ -828,14 +844,22 @@
                                     <constraint firstAttribute="height" constant="432" id="JqF-5J-50z"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trade in-game to stop losses or lock in gains!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxz-Fd-ORv">
+                                <rect key="frame" x="22" y="518" width="331" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Xf0-0y-hjb" firstAttribute="leading" secondItem="xGU-3c-tqy" secondAttribute="leading" id="RTd-U8-reh"/>
                             <constraint firstItem="5lK-S9-wNa" firstAttribute="centerX" secondItem="1Bh-TA-VW1" secondAttribute="centerX" id="Unx-Ti-9OF"/>
+                            <constraint firstItem="Dxz-Fd-ORv" firstAttribute="centerX" secondItem="1Bh-TA-VW1" secondAttribute="centerX" id="ZWb-e9-KDx"/>
                             <constraint firstItem="5lK-S9-wNa" firstAttribute="top" secondItem="1Bh-TA-VW1" secondAttribute="top" constant="50" id="fnE-wd-bil"/>
                             <constraint firstItem="Xf0-0y-hjb" firstAttribute="bottom" secondItem="xGU-3c-tqy" secondAttribute="bottom" id="gfW-fR-wK7"/>
                             <constraint firstItem="Xf0-0y-hjb" firstAttribute="top" secondItem="1Bh-TA-VW1" secondAttribute="top" id="k1R-K6-sPT"/>
+                            <constraint firstItem="xGU-3c-tqy" firstAttribute="bottom" secondItem="Dxz-Fd-ORv" secondAttribute="bottom" constant="131" id="p3F-M1-f8w"/>
                             <constraint firstItem="Xf0-0y-hjb" firstAttribute="trailing" secondItem="xGU-3c-tqy" secondAttribute="trailing" id="y2I-sl-HCV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xGU-3c-tqy"/>
