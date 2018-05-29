@@ -691,28 +691,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="k53-Gk-NcH">
-                                <rect key="frame" x="67" y="220" width="240" height="256"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRI-SP-Uqx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="k53-Gk-NcH">
+                                <rect key="frame" x="81.5" y="220" width="211" height="149"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="7nd-Uf-CMS"/>
-                                    <constraint firstAttribute="height" constant="256" id="KL7-pv-tsa"/>
+                                    <constraint firstAttribute="width" constant="211" id="7nd-Uf-CMS"/>
+                                    <constraint firstAttribute="height" constant="149" id="KL7-pv-tsa"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jRI-SP-Uqx" firstAttribute="leading" secondItem="eW2-Fx-5SI" secondAttribute="leading" id="GYq-pg-7Ck"/>
+                            <constraint firstItem="jRI-SP-Uqx" firstAttribute="trailing" secondItem="eW2-Fx-5SI" secondAttribute="trailing" id="KkJ-xk-aQU"/>
                             <constraint firstItem="k53-Gk-NcH" firstAttribute="top" secondItem="eW2-Fx-5SI" secondAttribute="top" constant="200" id="cxu-7I-1aG"/>
+                            <constraint firstItem="jRI-SP-Uqx" firstAttribute="bottom" secondItem="eW2-Fx-5SI" secondAttribute="bottom" id="dbQ-in-ufk"/>
+                            <constraint firstItem="jRI-SP-Uqx" firstAttribute="top" secondItem="WUP-he-0DV" secondAttribute="top" id="rzJ-rV-0lZ"/>
                             <constraint firstItem="k53-Gk-NcH" firstAttribute="centerX" secondItem="WUP-he-0DV" secondAttribute="centerX" id="xby-AX-jYI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eW2-Fx-5SI"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="jRI-SP-Uqx" id="K9G-fl-DiS"/>
                         <outlet property="sampleConstraint" destination="cxu-7I-1aG" id="TOT-g6-bbh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVu-bM-kk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207" y="2561"/>
+            <point key="canvasLocation" x="-207.19999999999999" y="2560.5697151424288"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="V6j-b7-0IX">
@@ -1438,7 +1446,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="4" width="256" height="256"/>
         <image name="Logo3" width="638" height="460"/>
         <image name="facebook" width="256" height="256"/>
         <image name="float" width="48" height="48"/>
@@ -1457,7 +1464,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="ItM-AD-zS1"/>
         <segue reference="RrX-yt-mxB"/>
-        <segue reference="RMK-eE-SZz"/>
+        <segue reference="mkH-uc-JAS"/>
         <segue reference="Sum-gf-KeX"/>
     </inferredMetricsTieBreakers>
 </document>
