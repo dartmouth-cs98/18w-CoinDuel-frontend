@@ -305,7 +305,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdy-N5-HHs" userLabel="Coin Name">
-                                        <rect key="frame" x="40" y="478" width="335.5" height="22"/>
+                                        <rect key="frame" x="40" y="473" width="335.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="cJQ-gP-4oo"/>
                                         </constraints>
@@ -313,14 +313,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spa-1q-aA2" userLabel="Divider">
-                                        <rect key="frame" x="40" y="510" width="335.5" height="1"/>
+                                        <rect key="frame" x="40" y="505" width="335.5" height="1"/>
                                         <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="4aH-dy-XFH"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="81" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vzh-cX-e9d" userLabel="News Table View">
-                                        <rect key="frame" x="40" y="511" width="335.5" height="243"/>
+                                        <rect key="frame" x="40" y="506" width="335.5" height="243"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="243" id="oAY-Ti-0Zw"/>
@@ -366,12 +366,22 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7y-qV-png">
+                                        <rect key="frame" x="40" y="764" width="335" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="McM-ax-97Z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="vzh-cX-e9d" firstAttribute="leading" secondItem="xdy-N5-HHs" secondAttribute="leading" id="3pd-Gf-2FW"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="hTA-E8-wgV" secondAttribute="centerX" id="681-39-WVf"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="afL-Wf-bWE" secondAttribute="centerX" id="DqP-BS-cgi"/>
+                                    <constraint firstItem="xdy-N5-HHs" firstAttribute="top" secondItem="hTA-E8-wgV" secondAttribute="bottom" constant="10" id="EEM-bm-mvi"/>
                                     <constraint firstItem="xdy-N5-HHs" firstAttribute="trailing" secondItem="spa-1q-aA2" secondAttribute="trailing" id="Fjg-hg-fXq"/>
                                     <constraint firstAttribute="trailing" secondItem="XIP-tQ-g9N" secondAttribute="trailing" constant="5" id="Fw4-zU-Uqf"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="top" secondItem="afL-Wf-bWE" secondAttribute="top" constant="10" id="IFo-PX-33A"/>
@@ -381,16 +391,18 @@
                                     <constraint firstAttribute="trailing" secondItem="xdy-N5-HHs" secondAttribute="trailing" constant="40" id="LuJ-Z4-2O4"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="knE-gU-Knr" secondAttribute="centerX" id="Nji-Vn-Uga"/>
                                     <constraint firstItem="hTA-E8-wgV" firstAttribute="leading" secondItem="afL-Wf-bWE" secondAttribute="leading" constant="40" id="Oyh-Yj-NDP"/>
-                                    <constraint firstAttribute="bottom" secondItem="vzh-cX-e9d" secondAttribute="bottom" constant="40" id="WVw-9E-8oM"/>
+                                    <constraint firstItem="a7y-qV-png" firstAttribute="leading" secondItem="afL-Wf-bWE" secondAttribute="leading" constant="40" id="XAk-YW-GEP"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="XIP-tQ-g9N" secondAttribute="centerX" id="ZHN-0F-Caw"/>
                                     <constraint firstItem="hTA-E8-wgV" firstAttribute="top" secondItem="XIP-tQ-g9N" secondAttribute="bottom" constant="20" id="bfs-Ff-Bjh"/>
-                                    <constraint firstItem="xdy-N5-HHs" firstAttribute="top" secondItem="hTA-E8-wgV" secondAttribute="bottom" constant="15" id="fMK-7t-QOQ"/>
+                                    <constraint firstItem="a7y-qV-png" firstAttribute="top" secondItem="vzh-cX-e9d" secondAttribute="bottom" constant="15" id="esQ-oP-Rzd"/>
                                     <constraint firstItem="knE-gU-Knr" firstAttribute="leading" secondItem="afL-Wf-bWE" secondAttribute="leading" constant="40" id="gly-kb-RQp"/>
                                     <constraint firstItem="vzh-cX-e9d" firstAttribute="top" secondItem="spa-1q-aA2" secondAttribute="bottom" id="hSS-rQ-K0n"/>
                                     <constraint firstItem="spa-1q-aA2" firstAttribute="leading" secondItem="xdy-N5-HHs" secondAttribute="leading" id="haM-fp-NYZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="a7y-qV-png" secondAttribute="bottom" constant="40" id="kMx-Fh-K7s"/>
                                     <constraint firstItem="XIP-tQ-g9N" firstAttribute="top" secondItem="oc6-PC-XQu" secondAttribute="bottom" id="lqX-4h-yIb"/>
                                     <constraint firstItem="XIP-tQ-g9N" firstAttribute="leading" secondItem="afL-Wf-bWE" secondAttribute="leading" constant="5" id="ndU-8k-RtI"/>
                                     <constraint firstItem="xdy-N5-HHs" firstAttribute="trailing" secondItem="vzh-cX-e9d" secondAttribute="trailing" id="p29-6D-8DK"/>
+                                    <constraint firstAttribute="trailing" secondItem="a7y-qV-png" secondAttribute="trailing" constant="40" id="r5y-T2-I3z"/>
                                     <constraint firstItem="xdy-N5-HHs" firstAttribute="leading" secondItem="afL-Wf-bWE" secondAttribute="leading" constant="40" id="vMU-L1-u4u"/>
                                     <constraint firstItem="ABb-ja-HlS" firstAttribute="centerX" secondItem="oc6-PC-XQu" secondAttribute="centerX" id="wze-HA-nqd"/>
                                 </constraints>
@@ -469,6 +481,7 @@
                         <outlet property="buySellControl" destination="IqU-ij-ytS" id="6BG-mV-pyv"/>
                         <outlet property="capCoinAllocationLabel" destination="rp1-QJ-YGh" id="HFk-AG-NRl"/>
                         <outlet property="chartView" destination="XIP-tQ-g9N" id="91K-NV-P7W"/>
+                        <outlet property="coinDescription" destination="a7y-qV-png" id="192-8Z-tAM"/>
                         <outlet property="coinName" destination="xdy-N5-HHs" id="KiA-I6-Ehs"/>
                         <outlet property="coinPercentChangeLabel" destination="oc6-PC-XQu" id="ueF-w8-PIv"/>
                         <outlet property="coinPriceLabel" destination="ABb-ja-HlS" id="ybj-Xv-kiW"/>
