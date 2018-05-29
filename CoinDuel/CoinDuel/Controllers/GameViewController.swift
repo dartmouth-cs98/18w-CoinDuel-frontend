@@ -58,6 +58,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
+            refreshControl.tintColor = UIColor.white
             self.gameTableView.refreshControl = refreshControl
         } else {
             self.gameTableView.addSubview(refreshControl)
@@ -262,7 +263,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func refreshPriceData(_ sender:Any) {
         self.loadingActivityIndicatorView.startAnimating()
-        self.loadingActivityIndicatorView.isHidden = false
+        self.loadingActivityIndicatorView.isHidden = true
         self.startup()
     }
 
