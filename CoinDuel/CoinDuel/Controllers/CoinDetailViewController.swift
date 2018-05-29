@@ -141,7 +141,15 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 self.chartView.isHidden = false
                 let json = JSON(value)
                 let newsArray = json["articles"].arrayValue
-                self.coinDescription.text = json["description"].stringValue
+                let myAttribute = [ NSAttributedStringKey.font: UIFont(name: "Chalkduster", size: 18.0)! ]
+
+
+                let attrStr = try! NSAttributedString(data: json["description"].stringValue.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+
+
+                self.coinDescription.attributedText = attrStr
+//                self.coinDescription.text = json["description"].stringValue
+
 //                self.webViewForInfo.loadHTMLString(json["description"].stringValue, baseURL: nil)
                 self.coinName.text = json["name"].stringValue + " News"
                 self.nameHeaderLabel.text = json["name"].stringValue
