@@ -53,6 +53,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tradeErrorLabel: UILabel!
 
     @IBOutlet weak var tradeStepper: GMStepper!
+    @IBOutlet weak var coinDescription: UILabel!
     
     var game: Game = Game()
     var gameId: String = ""
@@ -138,6 +139,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             case .success(let value):
                 let json = JSON(value)
                 let newsArray = json["articles"].arrayValue
+                self.coinDescription.text = json["description"].stringValue
                 self.coinName.text = json["name"].stringValue + " News"
                 self.nameHeaderLabel.text = json["name"].stringValue
                 for i in 0 ..< newsArray.count {
