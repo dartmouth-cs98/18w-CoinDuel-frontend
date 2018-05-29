@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CoinDuel
 //
-//  Created by Henry Wilson on 1/25/18.
+//  Created by Anish Chadalavada on 1/25/18.
 //  Copyright © 2018 Capitalize. All rights reserved.
 //
 // Facebook code from https://www.simplifiedios.net/facebook-login-swift-3-tutorial/
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let storyName = UserDefaults.standard.string(forKey:"authToken") != nil ? "Main" : "Login"
-        let controllerName = UserDefaults.standard.string(forKey:"authToken") != nil ? "LandingPageViewController" : "LoginViewController"
+        let controllerName = UserDefaults.standard.string(forKey:"authToken") != nil ? "LandingPageViewController" : "EntryViewController"
         
         let storyboard = UIStoryboard(name: storyName, bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: controllerName)

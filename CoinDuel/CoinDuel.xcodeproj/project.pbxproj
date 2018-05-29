@@ -49,6 +49,7 @@
 		F884E59720A8C916000B20F2 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884E59620A8C916000B20F2 /* SlideViewController.swift */; };
 		F88DE82B20B76E3B00CCC093 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */; };
 		F88DE82D20B78D2E00CCC093 /* Onboarding2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88DE82C20B78D2E00CCC093 /* Onboarding2ViewController.swift */; };
+		F89CB00920BDF1CA00BFB2BE /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89CB00820BDF1CA00BFB2BE /* EntryViewController.swift */; };
 		F8A7FDE1208E7AA500FA5E30 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */; };
 		F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BD62080553500A3AC2C /* HelpViewController.swift */; };
 		F8D17BDB2080639700A3AC2C /* gifbackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BDA2080639700A3AC2C /* gifbackground.swift */; };
@@ -148,6 +149,7 @@
 		F884E59620A8C916000B20F2 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F88DE82C20B78D2E00CCC093 /* Onboarding2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2ViewController.swift; sourceTree = "<group>"; };
+		F89CB00820BDF1CA00BFB2BE /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		F8D17BD62080553500A3AC2C /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		F8D17BDA2080639700A3AC2C /* gifbackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifbackground.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */,
 				F88DE82C20B78D2E00CCC093 /* Onboarding2ViewController.swift */,
 				F86B279620BC95920066AE0B /* Onboarding3ViewController.swift */,
+				F89CB00820BDF1CA00BFB2BE /* EntryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				505BCAAB20A5038900414432 /* NewsTableViewCell.swift in Sources */,
 				F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */,
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
+				F89CB00920BDF1CA00BFB2BE /* EntryViewController.swift in Sources */,
 				F88DE82D20B78D2E00CCC093 /* Onboarding2ViewController.swift in Sources */,
 				A06F1E09204376640070D305 /* CoinDetailViewController.swift in Sources */,
 				F8634EFF20B3607300FA1FF2 /* PageViewController.swift in Sources */,
