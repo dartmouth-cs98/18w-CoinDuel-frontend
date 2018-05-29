@@ -107,7 +107,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Bottom trading area
         self.allocationAbilityLabel.text = ""
         self.availableCCLabel.text = ""
-        
+        self.chartView.isHidden = true
+
         self.startup()
 
         self.buyButton.isEnabled = true
@@ -137,6 +138,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         Alamofire.request(apiUrl, method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
+                self.chartView.isHidden = false
                 let json = JSON(value)
                 let newsArray = json["articles"].arrayValue
                 self.coinDescription.text = json["description"].stringValue
