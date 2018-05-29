@@ -694,39 +694,33 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRI-SP-Uqx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="k53-Gk-NcH">
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="k53-Gk-NcH">
                                 <rect key="frame" x="82" y="220" width="211" height="149"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="211" id="7nd-Uf-CMS"/>
                                     <constraint firstAttribute="height" constant="149" id="KL7-pv-tsa"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="25Z-7z-TLD">
-                                <rect key="frame" x="67" y="345" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">CoinDuel is the 21st century version of mock investing. Pick your portfolio of digital currencies, trade as you wish, and may the coins be with you!</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unb-2l-KTV">
-                                <rect key="frame" x="166" y="501" width="127" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unb-2l-KTV">
+                                <rect key="frame" x="82" y="357" width="211" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="211" id="6HB-7O-NFB"/>
+                                    <constraint firstAttribute="height" constant="130" id="xCS-Tr-tR4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="25Z-7z-TLD" firstAttribute="leading" secondItem="eW2-Fx-5SI" secondAttribute="leading" constant="67" id="C8s-3P-Gsi"/>
+                            <constraint firstItem="unb-2l-KTV" firstAttribute="centerX" secondItem="WUP-he-0DV" secondAttribute="centerX" id="4X0-gn-mWs"/>
                             <constraint firstItem="jRI-SP-Uqx" firstAttribute="leading" secondItem="eW2-Fx-5SI" secondAttribute="leading" id="GYq-pg-7Ck"/>
                             <constraint firstItem="jRI-SP-Uqx" firstAttribute="trailing" secondItem="eW2-Fx-5SI" secondAttribute="trailing" id="KkJ-xk-aQU"/>
-                            <constraint firstItem="eW2-Fx-5SI" firstAttribute="bottom" secondItem="25Z-7z-TLD" secondAttribute="bottom" constant="194" id="MPH-tr-iNR"/>
-                            <constraint firstItem="25Z-7z-TLD" firstAttribute="top" secondItem="eW2-Fx-5SI" secondAttribute="top" constant="325" id="ODh-06-E73"/>
+                            <constraint firstItem="eW2-Fx-5SI" firstAttribute="bottom" secondItem="unb-2l-KTV" secondAttribute="bottom" constant="180" id="Slg-yW-iEC"/>
                             <constraint firstItem="k53-Gk-NcH" firstAttribute="top" secondItem="eW2-Fx-5SI" secondAttribute="top" constant="200" id="cxu-7I-1aG"/>
                             <constraint firstItem="jRI-SP-Uqx" firstAttribute="bottom" secondItem="eW2-Fx-5SI" secondAttribute="bottom" id="dbQ-in-ufk"/>
                             <constraint firstItem="jRI-SP-Uqx" firstAttribute="top" secondItem="WUP-he-0DV" secondAttribute="top" id="rzJ-rV-0lZ"/>
-                            <constraint firstItem="25Z-7z-TLD" firstAttribute="centerX" secondItem="WUP-he-0DV" secondAttribute="centerX" id="vVs-HL-bmN"/>
                             <constraint firstItem="k53-Gk-NcH" firstAttribute="centerX" secondItem="WUP-he-0DV" secondAttribute="centerX" id="xby-AX-jYI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eW2-Fx-5SI"/>
@@ -735,7 +729,6 @@
                         <outlet property="imageView" destination="jRI-SP-Uqx" id="K9G-fl-DiS"/>
                         <outlet property="label" destination="unb-2l-KTV" id="ECo-Eb-d2j"/>
                         <outlet property="sampleConstraint" destination="cxu-7I-1aG" id="TOT-g6-bbh"/>
-                        <outlet property="textView" destination="25Z-7z-TLD" id="iyP-PO-5ux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVu-bM-kk6" userLabel="First Responder" sceneMemberID="firstResponder"/>

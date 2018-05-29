@@ -30,22 +30,22 @@ class Onboarding3ViewController: UIViewController {
     // https://stackoverflow.com/questions/28127259/update-the-constant-property-of-a-constraint-programmatically-in-swift
     // https://stackoverflow.com/questions/42097082/run-an-animation-with-delay-in-swift
     override func viewDidAppear(_ animated: Bool) {
+        
         let yourDelay = 1
         let yourDuration = 1.0
-        self.textView.isHidden = true
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(yourDelay), execute: { () -> Void in
             self.view.layoutIfNeeded()
-            self.textView.isHidden = false
             
             UIView.transition(with: self.label,
-                              duration: 0.25,
+                              duration: 0.6,
                               options: [.transitionCrossDissolve],
                               animations: {
-                                self.label.text = "CoinDuel Rules!"
+                                self.label.text = "CoinDuel is the modern version of mock investing, introducing you to the volatile world of cryptocurrencies"
             }, completion: nil)
             
             UIView.animate(withDuration: 1, animations: {
-                self.sampleConstraint.constant = 20
+                self.sampleConstraint.constant = 130
                 self.view.layoutIfNeeded()
             })
             
