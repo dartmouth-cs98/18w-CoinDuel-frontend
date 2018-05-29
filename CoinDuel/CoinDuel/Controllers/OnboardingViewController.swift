@@ -11,6 +11,8 @@ import UIKit
 class OnboardingViewController: UIViewController {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var GifView: UIImageView!
+    
     
     // Color scheme based on instagram and https://stackoverflow.com/questions/47800574/gradient-over-instagram-svg-of-fontawesome-5
     
@@ -20,7 +22,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        GifView.loadGif(asset: "demo1-1")
         // Do any additional setup after loading the view.
     }
 
