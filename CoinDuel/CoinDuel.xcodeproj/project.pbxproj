@@ -43,6 +43,7 @@
 		F824B1B220363D95008D1F14 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F824B1B120363D95008D1F14 /* Login.storyboard */; };
 		F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824B1B320363F88008D1F14 /* LoginViewController.swift */; };
 		F8634EFF20B3607300FA1FF2 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8634EFE20B3607300FA1FF2 /* PageViewController.swift */; };
+		F86B279720BC95920066AE0B /* Onboarding3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B279620BC95920066AE0B /* Onboarding3ViewController.swift */; };
 		F884E58E20A4E7D9000B20F2 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F884E58D20A4E7D9000B20F2 /* Slide.xib */; };
 		F884E59020A4E81F000B20F2 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884E58F20A4E81F000B20F2 /* Slide.swift */; };
 		F884E59720A8C916000B20F2 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884E59620A8C916000B20F2 /* SlideViewController.swift */; };
@@ -141,6 +142,7 @@
 		F824B1B120363D95008D1F14 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F824B1B320363F88008D1F14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F8634EFE20B3607300FA1FF2 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		F86B279620BC95920066AE0B /* Onboarding3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding3ViewController.swift; sourceTree = "<group>"; };
 		F884E58D20A4E7D9000B20F2 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		F884E58F20A4E81F000B20F2 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		F884E59620A8C916000B20F2 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				F8634EFE20B3607300FA1FF2 /* PageViewController.swift */,
 				F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */,
 				F88DE82C20B78D2E00CCC093 /* Onboarding2ViewController.swift */,
+				F86B279620BC95920066AE0B /* Onboarding3ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				A07604A62087F0E7003BE65C /* LandingPageViewController.swift in Sources */,
 				A01D9C5320B79E8D008E6F11 /* TradeOrderViewController.swift in Sources */,
 				F813428F209261DD0031AC42 /* AuthViewController.swift in Sources */,
+				F86B279720BC95920066AE0B /* Onboarding3ViewController.swift in Sources */,
 				50E499402038B64500DBCC42 /* User.swift in Sources */,
 				1EB504C3201A7B8700BB76AA /* AppDelegate.swift in Sources */,
 				509BC41D2030DF7B00702226 /* UserTableViewCell.swift in Sources */,

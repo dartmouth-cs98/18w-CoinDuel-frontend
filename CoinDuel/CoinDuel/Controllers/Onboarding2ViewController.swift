@@ -12,6 +12,8 @@ class Onboarding2ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    // Color scheme based on instagram and https://stackoverflow.com/questions/47800574/gradient-over-instagram-svg-of-fontawesome-5
+    
     override func viewDidLayoutSubviews(){
         self.imageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }

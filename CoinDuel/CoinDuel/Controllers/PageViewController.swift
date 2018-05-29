@@ -11,8 +11,9 @@ import UIKit
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newVc(viewController: "sbBlue"),
-                self.newVc(viewController: "sbRed")]
+        return [self.newVc(viewController: "sb1"),
+                self.newVc(viewController: "sbRed"),
+                self.newVc(viewController: "sbBlue")]
     }()
     
     var pageControl = UIPageControl()
@@ -32,7 +33,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
     
     func configurePageControl() {
-        pageControl = UIPageControl(frame: CGRect(x: 0, y: Int(UIScreen.main.bounds.maxY - 50), width: Int(UIScreen.main.bounds.width), height: 50))
+        pageControl = UIPageControl(frame: CGRect(x: 0, y: Int(UIScreen.main.bounds.maxY - 110), width: Int(UIScreen.main.bounds.width), height: 50))
         
         pageControl.numberOfPages = orderedViewControllers.count
         pageControl.currentPage = 0
