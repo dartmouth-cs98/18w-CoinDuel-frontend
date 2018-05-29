@@ -11,9 +11,9 @@ import UIKit
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newVc(viewController: "sbBlue"),
+        return [self.newVc(viewController: "sb1"),
                 self.newVc(viewController: "sbRed"),
-                self.newVc(viewController: "sb1")]
+                self.newVc(viewController: "sbBlue")]
     }()
     
     var pageControl = UIPageControl()
