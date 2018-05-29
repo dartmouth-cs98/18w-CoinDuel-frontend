@@ -50,6 +50,7 @@
 		F88DE82B20B76E3B00CCC093 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */; };
 		F88DE82D20B78D2E00CCC093 /* Onboarding2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88DE82C20B78D2E00CCC093 /* Onboarding2ViewController.swift */; };
 		F89CB00920BDF1CA00BFB2BE /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89CB00820BDF1CA00BFB2BE /* EntryViewController.swift */; };
+		F89CB00B20BE1A7100BFB2BE /* Onboarding4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89CB00A20BE1A7100BFB2BE /* Onboarding4ViewController.swift */; };
 		F8A7FDE1208E7AA500FA5E30 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */; };
 		F8D17BD72080553500A3AC2C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BD62080553500A3AC2C /* HelpViewController.swift */; };
 		F8D17BDB2080639700A3AC2C /* gifbackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D17BDA2080639700A3AC2C /* gifbackground.swift */; };
@@ -150,6 +151,7 @@
 		F88DE82A20B76E3B00CCC093 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F88DE82C20B78D2E00CCC093 /* Onboarding2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2ViewController.swift; sourceTree = "<group>"; };
 		F89CB00820BDF1CA00BFB2BE /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		F89CB00A20BE1A7100BFB2BE /* Onboarding4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding4ViewController.swift; sourceTree = "<group>"; };
 		F8A7FDE0208E7AA500FA5E30 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		F8D17BD62080553500A3AC2C /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		F8D17BDA2080639700A3AC2C /* gifbackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifbackground.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				F88DE82C20B78D2E00CCC093 /* Onboarding2ViewController.swift */,
 				F86B279620BC95920066AE0B /* Onboarding3ViewController.swift */,
 				F89CB00820BDF1CA00BFB2BE /* EntryViewController.swift */,
+				F89CB00A20BE1A7100BFB2BE /* Onboarding4ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 			files = (
 				A0B615CD2039FCA600F9EF00 /* SignUpViewController.swift in Sources */,
 				1E33168B203672BF00BEE349 /* Constant.swift in Sources */,
+				F89CB00B20BE1A7100BFB2BE /* Onboarding4ViewController.swift in Sources */,
 				505BCAAB20A5038900414432 /* NewsTableViewCell.swift in Sources */,
 				F824B1B420363F88008D1F14 /* LoginViewController.swift in Sources */,
 				50AA672E20241D2000C7DFD8 /* LeaderboardViewController.swift in Sources */,
