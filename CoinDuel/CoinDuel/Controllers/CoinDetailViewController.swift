@@ -140,6 +140,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 let json = JSON(value)
                 let newsArray = json["articles"].arrayValue
                 self.coinDescription.text = json["description"].stringValue
+//                self.webViewForInfo.loadHTMLString(json["description"].stringValue, baseURL: nil)
                 self.coinName.text = json["name"].stringValue + " News"
                 self.nameHeaderLabel.text = json["name"].stringValue
                 for i in 0 ..< newsArray.count {
