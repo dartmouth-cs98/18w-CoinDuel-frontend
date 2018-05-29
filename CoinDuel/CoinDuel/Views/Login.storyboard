@@ -85,7 +85,7 @@
                                     <color key="titleColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="XeG-tn-Gsn"/>
+                                    <segue destination="PPl-yp-F4w" kind="show" id="uaw-9m-55C"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="yAs-6a-2tY">
@@ -383,7 +383,7 @@
                                     <color key="titleColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="RrX-yt-mxB"/>
+                                    <segue destination="PPl-yp-F4w" kind="show" id="her-xr-dgh"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ys9-BC-sd9">
@@ -500,9 +500,6 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.79949700342465757" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="x3h-7b-ihK" kind="show" id="Sum-gf-KeX"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V30-gp-o4F">
                                 <rect key="frame" x="82" y="479" width="211" height="42"/>
@@ -514,9 +511,6 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="0.80233304794520544" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="eLU-vL-l5w" kind="show" id="mkH-uc-JAS"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo3" translatesAutoresizingMaskIntoConstraints="NO" id="cCR-h9-z1Y">
                                 <rect key="frame" x="82" y="114" width="211" height="149"/>
@@ -535,9 +529,6 @@
                                 <state key="normal" title="Use Facebook">
                                     <color key="titleColor" white="1" alpha="0.80233304790000004" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="rdR-iz-Shz" kind="show" id="OxU-38-ITF"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -571,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZL-rf-jYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165.5999999999999" y="-99.400299850074973"/>
+            <point key="canvasLocation" x="-958" y="-283"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="VTw-FW-83x">
@@ -591,9 +582,6 @@
                                 <state key="normal" title="×">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="C4o-cu-rai" kind="presentation" modalTransitionStyle="crossDissolve" id="G0s-Y7-b8U"/>
-                                </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="k6O-HD-2dV">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
@@ -641,6 +629,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="eLU-vL-l5w" kind="show" id="h2r-w3-bC9"/>
+                                </connections>
                             </button>
                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzw-z6-YW1">
                                 <rect key="frame" x="193" y="605" width="182" height="61"/>
@@ -652,6 +643,9 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="x3h-7b-ihK" kind="show" id="3Zt-9T-Or1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -673,7 +667,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NdB-bF-zdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1100" y="1920.089955022489"/>
+            <point key="canvasLocation" x="1166" y="-67"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="g31-dk-cZv">
@@ -1472,10 +1466,9 @@
         <image name="twitter" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OxU-38-ITF"/>
         <segue reference="ItM-AD-zS1"/>
-        <segue reference="G0s-Y7-b8U"/>
-        <segue reference="mkH-uc-JAS"/>
-        <segue reference="Sum-gf-KeX"/>
+        <segue reference="her-xr-dgh"/>
+        <segue reference="h2r-w3-bC9"/>
+        <segue reference="3Zt-9T-Or1"/>
     </inferredMetricsTieBreakers>
 </document>
