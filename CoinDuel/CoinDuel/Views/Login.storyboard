@@ -731,7 +731,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVu-bM-kk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207.19999999999999" y="2559.6701649175416"/>
+            <point key="canvasLocation" x="-206" y="2561"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="V6j-b7-0IX">
@@ -809,6 +809,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2e-CW-rJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1237.5999999999999" y="2559.6701649175416"/>
+        </scene>
+        <!--Onboarding4 View Controller-->
+        <scene sceneID="FXn-NN-R8j">
+            <objects>
+                <viewController storyboardIdentifier="sb3" id="pGF-Sv-LT1" customClass="Onboarding4ViewController" customModule="CoinDuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Bh-TA-VW1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xf0-0y-hjb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding3" translatesAutoresizingMaskIntoConstraints="NO" id="5lK-S9-wNa">
+                                <rect key="frame" x="62" y="50" width="250" height="432"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="H7Y-Nk-1Ff"/>
+                                    <constraint firstAttribute="height" constant="432" id="JqF-5J-50z"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xf0-0y-hjb" firstAttribute="leading" secondItem="xGU-3c-tqy" secondAttribute="leading" id="RTd-U8-reh"/>
+                            <constraint firstItem="5lK-S9-wNa" firstAttribute="centerX" secondItem="1Bh-TA-VW1" secondAttribute="centerX" id="Unx-Ti-9OF"/>
+                            <constraint firstItem="5lK-S9-wNa" firstAttribute="top" secondItem="1Bh-TA-VW1" secondAttribute="top" constant="50" id="fnE-wd-bil"/>
+                            <constraint firstItem="Xf0-0y-hjb" firstAttribute="bottom" secondItem="xGU-3c-tqy" secondAttribute="bottom" id="gfW-fR-wK7"/>
+                            <constraint firstItem="Xf0-0y-hjb" firstAttribute="top" secondItem="1Bh-TA-VW1" secondAttribute="top" id="k1R-K6-sPT"/>
+                            <constraint firstItem="Xf0-0y-hjb" firstAttribute="trailing" secondItem="xGU-3c-tqy" secondAttribute="trailing" id="y2I-sl-HCV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xGU-3c-tqy"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Xf0-0y-hjb" id="LjI-KY-R5c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uv1-23-2gG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952.8" y="2559.6701649175416"/>
         </scene>
         <!--Help View Controller-->
         <scene sceneID="Bg6-Hv-oiQ">
@@ -1466,6 +1504,7 @@
         <image name="instagram" width="256" height="256"/>
         <image name="onboarding1" width="634" height="926"/>
         <image name="onboarding2" width="630" height="1146"/>
+        <image name="onboarding3" width="662" height="1144"/>
         <image name="play" width="64" height="64"/>
         <image name="question" width="50" height="50"/>
         <image name="twitter" width="256" height="256"/>
