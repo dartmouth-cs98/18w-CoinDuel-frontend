@@ -518,31 +518,43 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         print(self.game.coins)
 
-        let requestedAmount = Double(self.amountTextField.text!)
+        var requestedAmount = Double(self.amountTextField.text!)
         if requestedAmount != nil {
+            print(self.buySellControl.description)
             var requestedAmountRounded = round(100.0 * requestedAmount!) / 100.0
             
             if self.buySellControl.selectedSegmentIndex == 1 {
+                print("sell order")
                 requestedAmountRounded *= -1.0
             }
-        
+            print(requestedAmountRounded)
+            print(self.game.coins[self.coinIndex].allocation)
+            var oldAllocation = self.game.coins[self.coinIndex].allocation
             self.game.coins[self.coinIndex].allocation += requestedAmountRounded
-            //add activity indicator of some sort
-            self.game.submitEntry(completion: { (result) in
-                if (result){
-                    print("success")
-                    var msg = "Successfully "
-                    if self.buySellControl.selectedSegmentIndex == 0 {
-                        msg += "bought "
-                    } else {
-                        msg += "sold "
+
+            if (self.game.coins[self.coinIndex].allocation < 0 || requestedAmountRounded == 0){
+                self.errorMessage("You do not have enough CC in this position to sell " + requestedAmount!.description + "CC")
+                self.game.coins[self.coinIndex].allocation = oldAllocation
+            } else {
+                //add activity indicator of some sort
+                self.game.submitEntry(completion: { (result) in
+                    if (result){
+                        print("success")
+                        var msg = "Successfully "
+                        if self.buySellControl.selectedSegmentIndex == 0 {
+                            msg += "bought "
+                        } else {
+                            msg += "sold "
+                        }
+                        msg += self.game.coins[self.coinIndex].ticker
+                        requestedAmount = 0
+                        self.successMessage(msg)
+                    } else{
+                        print()
+                        print("submission error")
                     }
-                    msg += self.game.coins[self.coinIndex].ticker
-                    self.successMessage(msg)
-                } else{
-                    print("submission error")
-                }
-            })
+                })
+            }
         }
 //        let roundedRequestedAmount = requestedAmount
 //        print(requestedAmount)
@@ -576,6 +588,18 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             self.dismissPopup()
         }))
         
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func errorMessage(_ msg:String) {
+        // from: https://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
+
+        let alert = UIAlertController(title: "Order Failed", message: msg, preferredStyle: UIAlertControllerStyle.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.dismissPopup()
+        }))
+
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -163,7 +163,8 @@ class Game {
             case .success(let value):
                 let json = JSON(value)
 //                print(json)
-
+                print("THE ERROR FROM JSON")
+                print (json["error"])
                 // check for insufficient funds
                 if (json["error"].exists() && json["error"] == "insufficient funds") {
                     completion(false)

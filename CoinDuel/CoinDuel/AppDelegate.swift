@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         settings: onesignalInitSettings)
 
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
-        OneSignal.setEmail("example@domain.com");
+//        OneSignal.setEmail("example@domain.com");
 
         // Recommend moving the below line to prompt for push after informing the user about
         //   how your app will use them.
