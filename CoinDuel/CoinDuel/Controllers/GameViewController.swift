@@ -17,13 +17,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var nextGameLabel: UILabel!
     @IBOutlet weak var gameTimeLabel: UILabel!
     @IBOutlet weak var gameTableView: UITableView!
-    @IBOutlet weak var tradeButton: UIButton!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var submitIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
 
-
+    @IBOutlet weak var unallocatedCCLabel: UILabel!
+    
     var game: Game = Game()
     var isGameDisplayMode: Bool = false
     var isPercentReturnMode: Bool = true
@@ -50,11 +50,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
-        
-        // trade button
-        self.tradeButton.isHidden = true
-        self.tradeButton.layer.masksToBounds = true
-        self.tradeButton.layer.cornerRadius = self.tradeButton.frame.height / 2
     }
     
     // Completion blocks from https://stackoverflow.com/questions/35357807/running-one-function-after-another-completes
@@ -63,6 +58,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
+            refreshControl.tintColor = UIColor.white
             self.gameTableView.refreshControl = refreshControl
         } else {
             self.gameTableView.addSubview(refreshControl)
@@ -79,18 +75,17 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // hide submit activity
         self.submitIndicator.isHidden = true
         
-        // hide trades until game starts
-        self.tradeButton.isHidden = true
-        
         // format text
         self.gameTimeLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         self.startup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.startup()
+    }
+    
     func startup() {
-        self.tradeButton.isHidden = true
-
         // Retrieve user balance
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
@@ -193,6 +188,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func displayEntryMode() {
         self.isGameDisplayMode = false
         self.submitIndicator.isHidden = true
+        self.unallocatedCCLabel.isHidden = true
 
         nextGameLabel.isHidden = false
         gameTimeLabel.isHidden = false
@@ -258,13 +254,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         gameTimeLabel.text = "Game ends " + self.game.finishDate
         
+        self.unallocatedCCLabel.isHidden = false
+        self.unallocatedCCLabel.text = numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC Available"
+        
         // hide spinner
         self.submitIndicator.isHidden = true
     }
     
     @objc func refreshPriceData(_ sender:Any) {
         self.loadingActivityIndicatorView.startAnimating()
-        self.loadingActivityIndicatorView.isHidden = false
+        self.loadingActivityIndicatorView.isHidden = true
         self.startup()
     }
 
