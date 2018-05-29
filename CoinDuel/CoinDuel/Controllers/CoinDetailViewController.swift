@@ -69,7 +69,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var lineChartEntry  = [ChartDataEntry]()
     var granularity = 20000
     var currentTimeFrame = 0
-    var maxArticles = 5
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
     var isTradeViewEnabled = false
     let numberFormatter = NumberFormatter()
@@ -138,24 +137,15 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let apiURL = "https://min-api.cryptocompare.com/data/v2/news/?categories=" + json["name"].stringValue + "&excludeCategories=Sponsored"
-                Alamofire.request(apiURL, method: .get).validate().responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        let innerJson = JSON(value)
-                        let newsArray = innerJson["Data"].arrayValue
-                        self.coinName.text = json["name"].stringValue + " News"
-                        self.nameHeaderLabel.text = json["name"].stringValue
-                        for i in 0 ..< self.maxArticles {
-                            self.newsHeaders.append(newsArray[i]["title"].stringValue)
-                            self.newsDates.append(newsArray[i]["published_on"].stringValue)
-                            self.newsUrls.append(newsArray[i]["url"].stringValue)
-                        }
-                        self.tableView.reloadData()
-                    case .failure(let error):
-                        print(error)
-                    }
+                let newsArray = json["articles"].arrayValue
+                self.coinName.text = json["name"].stringValue + " News"
+                self.nameHeaderLabel.text = json["name"].stringValue
+                for i in 0 ..< newsArray.count {
+                    self.newsHeaders.append(newsArray[i]["title"].stringValue)
+                    self.newsDates.append(newsArray[i]["published_on"].stringValue)
+                    self.newsUrls.append(newsArray[i]["url"].stringValue)
                 }
+                self.tableView.reloadData()
                 
             case .failure(let error):
                 print(error)
