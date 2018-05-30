@@ -403,6 +403,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! GameTableViewCell
+//        var tick = cell.coinNameLabel.text
+//        var newIndexPath = indexPath
+        
+        print(indexPath.row)
+        print(indexPath.section)
+        for coin in self.game.coins {
+            print(coin.ticker)
+        }
+        
         self.performSegue(withIdentifier: "coinDetailSegue", sender: self.tableView(tableView, cellForRowAt: indexPath) as! GameTableViewCell)
     }
 
@@ -417,7 +427,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         print(indexPath)
                         if (indexPath.section == 1 && self.isGameDisplayMode ){
                             indexPathRow = indexPathRow + self.game.coins.filter({$0.allocation > 0}).count
+                            print("New row is")
+                            print(indexPathRow)
                         }
+                        
                         let coin = self.game.coins[indexPathRow]
 
                         let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)

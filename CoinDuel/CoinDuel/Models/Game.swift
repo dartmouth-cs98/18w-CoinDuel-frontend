@@ -99,6 +99,10 @@ class Game {
                         self.coins.append(Coin(coin.1["name"].stringValue, 0.0, coin.1["startPrice"].doubleValue))
                     }
                     
+                    self.coins.sort(by: {$0.ticker < $1.ticker})
+                    self.coins.sort(by: {$0.allocation > $1.allocation})
+
+                    
                     // Update game (get entry if have one)
                     completion(true)
                 case .failure(let error):
@@ -124,6 +128,9 @@ class Game {
                     for coin in json["currentChoices"] {
                         self.coins.append(Coin(coin.1["symbol"].stringValue, coin.1["allocation"].doubleValue, coin.1["startPrice"].doubleValue))
                     }
+                    
+                    self.coins.sort(by: {$0.ticker < $1.ticker})
+                    self.coins.sort(by: {$0.allocation > $1.allocation})
                     
                     self.coinBalance = json["coin_balance"].doubleValue
                     self.unusedCoinBalance = json["unallocated_capcoin"].doubleValue
@@ -210,7 +217,7 @@ class Game {
                         self.coins.append(Coin(ticker, initialPrice, currentPrice, allocation, capCoin, percent))
                     }
                     
-//                    self.coins.sort(by: {$0.percentReturn > $1.percentReturn})
+                    self.coins.sort(by: {$0.ticker < $1.ticker})
                     self.coins.sort(by: {$0.allocation > $1.allocation})
 
                 
@@ -244,6 +251,9 @@ class Game {
                         x += 1
                     }
                 }
+                
+                self.coins.sort(by: {$0.ticker < $1.ticker})
+                self.coins.sort(by: {$0.allocation > $1.allocation})
                 
                 completion(true)
             case .failure(let error):
