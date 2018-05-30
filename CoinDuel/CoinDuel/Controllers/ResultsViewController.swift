@@ -24,7 +24,12 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var shakeGif: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var placeActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var miningProgressView: UIProgressView!
+    
+    // capcoin block
+    @IBOutlet weak var capcoinBlockTitle: UILabel!
+    @IBOutlet weak var hashLabel: UILabel!
+    @IBOutlet weak var proofOfWorkLabel: UILabel!
+    @IBOutlet weak var capcoinBlockView: UIView!
     
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -48,15 +53,16 @@ class ResultsViewController: UIViewController {
             shakeGif.clipsToBounds = true
         }
         
+        // prep for capcoin results
+        self.capcoinBlockView.layer.cornerRadius = 4.0
+        self.capcoinBlockView.clipsToBounds = true
+        self.hashLabel.lineBreakMode = .byWordWrapping
+        self.hashLabel.numberOfLines = 0
+        
         // let gif display for a delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
             self.displayResults()
         })
-        
-        // activate progress bar for delay
-        DispatchQueue.main.async() {
-            self.setProgress(val: 0)
-        }
     }
     
     // get and display game results from blockchain
@@ -73,7 +79,6 @@ class ResultsViewController: UIViewController {
                         var json = try JSON(data: response.data!)       // parse to json
                         
                         // load presets
-                        self.miningProgressView.isHidden = true
                         self.shakeGif.isHidden = true
                         self.placeActivityIndicator.isHidden = false
                         self.submitButton.setTitle("COLLECT WINNINGS", for: .normal)
@@ -106,7 +111,17 @@ class ResultsViewController: UIViewController {
                         if (json["success"].boolValue) {
                             print(json)
                             let balance = json["response"]["data"]["balances"][0]["capcoin"].floatValue
+                            let hash = json["response"]["hash"].stringValue
+                            let proofOfWork = json["response"]["data"]["proof-of-work"].stringValue
+                            
+                            // set block view labels
+                            self.hashLabel.text = hash
+                            self.proofOfWorkLabel.text = proofOfWork
+                            self.capcoinBlockView.isHidden = false
+                            self.capcoinBlockTitle.isHidden = false
                             self.capcoinResultLabel.text = "You received " + self.numberFormatter.string(from: NSNumber(value: balance))! + " CC"
+                        } else {
+                            self.capcoinResultLabel.text = "Capcoin mining complete"
                         }
                         
                         // unable to parse json
@@ -119,21 +134,6 @@ class ResultsViewController: UIViewController {
                     print(response.data)
                 }
             }
-        })
-    }
-    
-    // set progress of capcoin mining
-    func setProgress(val: Float) {
-        self.miningProgressView.setProgress(val, animated: true)
-        
-        // break if progress is full
-        if (val >= 1) {
-            return
-        }
-        
-        // increase progress async
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.04, execute: {
-            self.setProgress(val: val + 0.011)
         })
     }
     
