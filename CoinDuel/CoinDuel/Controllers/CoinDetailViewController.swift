@@ -155,8 +155,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 let attrStr = try! NSAttributedString(data: json["description"].stringValue.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
 
 
-                self.coinDescription.attributedText = attrStr
-//                self.coinDescription.text = json["description"].stringValue
+                //self.coinDescription.attributedText = attrStr
+                self.coinDescription.text = attrStr.string
 
 //                self.webViewForInfo.loadHTMLString(json["description"].stringValue, baseURL: nil)
                 self.coinName.text = json["name"].stringValue + " News"
