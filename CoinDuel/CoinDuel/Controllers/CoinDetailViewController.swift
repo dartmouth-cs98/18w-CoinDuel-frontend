@@ -54,6 +54,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tradeStepper: GMStepper!
     @IBOutlet weak var coinDescription: UILabel!
+    @IBOutlet weak var downArrow: UIButton!
     
     var game: Game = Game()
     var gameId: String = ""
@@ -141,8 +142,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 self.chartView.isHidden = false
                 let json = JSON(value)
                 let newsArray = json["articles"].arrayValue
-                let myAttribute = [ NSAttributedStringKey.font: UIFont(name: "Chalkduster", size: 18.0)! ]
-
 
                 let attrStr = try! NSAttributedString(data: json["description"].stringValue.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
 
@@ -629,5 +628,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.isTradeViewEnabled = false
     }
     
-
+    @IBAction func expandDescription(_ sender: Any) {
+        downArrow.setBackgroundImage(nil, for: UIControlState.normal)
+        coinDescription.numberOfLines = 0;
+    }
+    
 }
