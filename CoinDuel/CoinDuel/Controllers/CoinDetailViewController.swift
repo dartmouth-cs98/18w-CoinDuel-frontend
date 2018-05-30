@@ -674,6 +674,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Order Failed", message: msg, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.hideActivityIndicator(uiView: self.view)
 //            self.showActivityIndicator(uiView: self.view)
 //            self.dismissPopup()
         }))
