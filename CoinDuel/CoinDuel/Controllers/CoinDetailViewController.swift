@@ -564,6 +564,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     @IBAction func placeOrderPressed(_ sender: Any) {
+        self.showActivityIndicator(uiView: self.view)
 //        let requestedAmount = self.amountTextField.value
 //        if (self.tradeStepper.value <= self.game.unusedCoinBalance){
 //            self.game.coins[coinIndex].allocation = self.tradeStepper.value
@@ -580,10 +581,13 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         print(self.game.coins)
 
         var requestedAmount = Double(self.amountTextField.text!)
-        if requestedAmount != nil {
+        print("here sis afsdasdf")
+        print(requestedAmount)
+        if (requestedAmount != nil && requestedAmount != 0) {
             print(self.buySellControl.description)
             var requestedAmountRounded = round(100.0 * requestedAmount!) / 100.0
-            
+//            var requestedAmountRounded = requestedAmount?.truncate(places: 2)
+
             if self.buySellControl.selectedSegmentIndex == 1 {
                 print("sell order")
                 requestedAmountRounded *= -1.0
@@ -593,8 +597,13 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             var oldAllocation = self.game.coins[self.coinIndex].allocation
             self.game.coins[self.coinIndex].allocation += requestedAmountRounded
 
-            if (self.game.coins[self.coinIndex].allocation < 0 || requestedAmountRounded == 0){
-                self.errorMessage("You do not have enough CC in this position to sell " + requestedAmount!.description + "CC")
+            if (self.game.coins[self.coinIndex].allocation < 0){
+                if self.buySellControl.selectedSegmentIndex == 1 {
+                    self.errorMessage("You do not have enough CapCoin in this position to sell " + requestedAmount!.description + "CC")
+                } else {
+                    self.errorMessage("Please enter a non-zero amount to buy or sell!")
+                }
+
                 self.game.coins[self.coinIndex].allocation = oldAllocation
             } else {
                 //add activity indicator of some sort
@@ -608,22 +617,25 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                             msg += "sold "
                         }
                         msg += self.game.coins[self.coinIndex].ticker
+                        self.hideActivityIndicator(uiView: self.view)
                         self.successMessage(msg)
                     } else{
                         print()
                         print("submission error")
+                        self.hideActivityIndicator(uiView: self.view)
                         self.errorMessage("Your order could not be placed. Insufficient Funds ")
                         self.game.coins[self.coinIndex].allocation = oldAllocation
                     }
                     requestedAmount = 0
                 })
             }
+        } else if ( requestedAmount == nil ){
+            self.errorMessage("Please enter a valid amount to buy or sell!")
+            self.hideActivityIndicator(uiView: self.view)
+        } else {
+            self.errorMessage("Please enter a non-zero amount to buy or sel!")
+            self.hideActivityIndicator(uiView: self.view)
         }
-//        let roundedRequestedAmount = requestedAmount
-//        print(requestedAmount)
-//        if requestedAmount =  {
-//            print("Got here")
-//        }
         
     }
     
@@ -649,6 +661,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
             self.dismissPopup()
+            self.showActivityIndicator(uiView: self.view)
+
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -660,7 +674,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Order Failed", message: msg, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-            self.dismissPopup()
+//            self.showActivityIndicator(uiView: self.view)
+//            self.dismissPopup()
         }))
 
         self.present(alert, animated: true, completion: nil)
