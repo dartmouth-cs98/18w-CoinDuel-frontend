@@ -107,7 +107,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Number format
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits =
+        numberFormatter.maximumFractionDigits = 2
         
         // Start with labels hidden
         self.nameHeaderLabel.isHidden = true
@@ -499,7 +499,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         //make background faded out.
         self.tradePriceLabel.text = self.coinPriceLabel.text
 //        self.currentHoldingsLabel.text = numberFormatter.string(from: NSNumber(value: self.game.coins[coinIndex].allocation))! + " CC"
-        self.currentHoldingsLabel.text = String(self.game.coins[coinIndex].allocation.truncate(places: 2)) + " CC"
+        self.currentHoldingsLabel.text = String(self.game.coins[coinIndex].allocation.truncate(places: 3)) + " CC"
         self.tradeAvailableCCLabel.text = numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
 
         self.view.bringSubview(toFront: self.blurBackgroundView)
