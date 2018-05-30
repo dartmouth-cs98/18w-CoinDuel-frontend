@@ -564,6 +564,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     @IBAction func placeOrderPressed(_ sender: Any) {
+        self.showActivityIndicator(uiView: self.view)
 //        let requestedAmount = self.amountTextField.value
 //        if (self.tradeStepper.value <= self.game.unusedCoinBalance){
 //            self.game.coins[coinIndex].allocation = self.tradeStepper.value
@@ -580,6 +581,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         print(self.game.coins)
 
         var requestedAmount = Double(self.amountTextField.text!)
+        print("here sis afsdasdf")
+        print(requestedAmount)
         if requestedAmount != nil {
             print(self.buySellControl.description)
             var requestedAmountRounded = round(100.0 * requestedAmount!) / 100.0
@@ -618,6 +621,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                     requestedAmount = 0
                 })
             }
+        } else if ( requestedAmount == nil ){
+            self.errorMessage("Please enter a valid amount to sell or buy!")
+        } else {
+            self.errorMessage("Please enter a non-zero amount to sell or buy!")
         }
 //        let roundedRequestedAmount = requestedAmount
 //        print(requestedAmount)
@@ -648,6 +655,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Order Filled", message: msg, preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.hideActivityIndicator(uiView: self.view)
             self.dismissPopup()
         }))
         
@@ -660,7 +668,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Order Failed", message: msg, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-            self.dismissPopup()
+            self.hideActivityIndicator(uiView: self.view)
+//            self.dismissPopup()
         }))
 
         self.present(alert, animated: true, completion: nil)
