@@ -674,6 +674,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             if (finished)
             {
                 self.popOverView.removeFromSuperview()
+                self.showActivityIndicator(uiView: self.view)
                 self.startup()
             }
         });
