@@ -83,7 +83,7 @@ class LandingPageViewController: UIViewController {
         // set rank view
         self.user.updateRankAllTime { (success) in
             if (success){
-                self.rankLabel.text = "#" + String(self.user.rank) + "/" + String(self.user.otherUsers)
+                self.rankLabel.text = String(self.user.rank) + " of " + String(self.user.otherUsers)
             }
             self.rankActivityIndicator.isHidden = true
         }
