@@ -597,7 +597,12 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             self.game.coins[self.coinIndex].allocation += requestedAmountRounded
 
             if (self.game.coins[self.coinIndex].allocation < 0 || requestedAmountRounded == 0){
-                self.errorMessage("You do not have enough CC in this position to sell " + requestedAmount!.description + "CC")
+                if self.buySellControl.selectedSegmentIndex == 1 {
+                    self.errorMessage("You do not have enough CapCoin in this position to sell " + requestedAmount!.description + "CC")
+                } else {
+                    self.errorMessage("Please enter a non-zero amount to buy or sell!")
+                }
+
                 self.game.coins[self.coinIndex].allocation = oldAllocation
             } else {
                 //add activity indicator of some sort
