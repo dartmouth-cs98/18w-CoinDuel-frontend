@@ -636,11 +636,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             self.errorMessage("Please enter a non-zero amount to buy or sel!")
             self.hideActivityIndicator(uiView: self.view)
         }
-//        let roundedRequestedAmount = requestedAmount
-//        print(requestedAmount)
-//        if requestedAmount =  {
-//            print("Got here")
-//        }
         
     }
     
