@@ -101,11 +101,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.placeOrderButton.layer.masksToBounds = true
         self.placeOrderButton.layer.cornerRadius = 15
         
-        // Retrieve news
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.reloadData()
-        
         // Number format
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         numberFormatter.minimumFractionDigits = 2
@@ -115,11 +110,18 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.nameHeaderLabel.isHidden = true
         self.coinPriceLabel.isHidden = true
         self.coinPercentChangeLabel.isHidden = true
+        self.activeChartButtons.isHidden = true
+        self.inactiveChartButtons.isHidden = true
         
         // Bottom trading area
         self.allocationAbilityLabel.text = ""
         self.availableCCLabel.text = ""
         self.chartView.isHidden = true
+        
+        // Retrieve news
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
 
         self.startup()
 
@@ -138,10 +140,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.nameHeaderLabel.isHidden = false
         self.coinPriceLabel.isHidden = false
         self.coinPercentChangeLabel.isHidden = false
-        
-        // chart setup
-        self.activeChartButtons.isHidden = false
-        self.inactiveChartButtons.isHidden = true
         
         //        setup chart and call it for one day values
         self.oneDayChart((Any).self)
@@ -253,6 +251,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             self.allocationAbilityLabel.text = "Available CapCoin"
                                             self.buyButton.isEnabled = true
                                             self.buyButton.alpha = 1.0
+                                            self.activeChartButtons.isHidden = false
+                                            self.inactiveChartButtons.isHidden = true
                                             self.chart()
                                         } else {
                                             self.dismiss(animated: true, completion: nil)
