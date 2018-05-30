@@ -23,6 +23,14 @@ private class CubicLineSampleFillFormatter: IFillFormatter {
         return -10
     }
 }
+//    truncate source: https://stackoverflow.com/questions/35946499/how-to-truncate-decimals-to-x-places-in-swift/35946921
+extension Double
+{
+    func truncate(places : Int)-> Double
+    {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+    }
+}
 
 class CoinDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var nameHeaderLabel: UILabel!
@@ -54,6 +62,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tradeStepper: GMStepper!
     @IBOutlet weak var coinDescription: UILabel!
+    @IBOutlet weak var downArrow: UIButton!
     
     var game: Game = Game()
     var gameId: String = ""
@@ -78,6 +87,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,7 +151,13 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 self.chartView.isHidden = false
                 let json = JSON(value)
                 let newsArray = json["articles"].arrayValue
-                self.coinDescription.text = json["description"].stringValue
+
+                let attrStr = try! NSAttributedString(data: json["description"].stringValue.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+
+
+                //self.coinDescription.attributedText = attrStr
+                self.coinDescription.text = attrStr.string
+
 //                self.webViewForInfo.loadHTMLString(json["description"].stringValue, baseURL: nil)
                 self.coinName.text = json["name"].stringValue + " News"
                 self.nameHeaderLabel.text = json["name"].stringValue
@@ -482,7 +498,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     func presentTradeView(orderType: String) {
         //make background faded out.
         self.tradePriceLabel.text = self.coinPriceLabel.text
-        self.currentHoldingsLabel.text = numberFormatter.string(from: NSNumber(value: self.game.coins[coinIndex].allocation))! + " CC"
+//        self.currentHoldingsLabel.text = numberFormatter.string(from: NSNumber(value: self.game.coins[coinIndex].allocation))! + " CC"
+        self.currentHoldingsLabel.text = String(self.game.coins[coinIndex].allocation.truncate(places: 3)) + " CC"
         self.tradeAvailableCCLabel.text = numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
 
         self.view.bringSubview(toFront: self.blurBackgroundView)
@@ -550,12 +567,14 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                             msg += "sold "
                         }
                         msg += self.game.coins[self.coinIndex].ticker
-                        requestedAmount = 0
                         self.successMessage(msg)
                     } else{
                         print()
                         print("submission error")
+                        self.errorMessage("Your order could not be placed. Insufficient Funds ")
+                        self.game.coins[self.coinIndex].allocation = oldAllocation
                     }
+                    requestedAmount = 0
                 })
             }
         }
@@ -621,5 +640,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.isTradeViewEnabled = false
     }
     
-
+    @IBAction func expandDescription(_ sender: Any) {
+        downArrow.setBackgroundImage(nil, for: UIControlState.normal)
+        coinDescription.numberOfLines = 0;
+    }
+    
 }
