@@ -102,7 +102,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="V3D-o2-tJs" firstAttribute="leading" secondItem="VrF-oW-cpo" secondAttribute="leading" constant="8" id="0Yg-UN-TAh"/>
                                     <constraint firstItem="uue-RC-Qu7" firstAttribute="top" secondItem="VrF-oW-cpo" secondAttribute="top" constant="8" id="1wh-aG-gmA"/>
