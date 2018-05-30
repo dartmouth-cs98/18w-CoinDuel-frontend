@@ -116,7 +116,7 @@ class Game {
             switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                                        
+                                                            
                     // Reset coins since we have an entry
                     self.coins = [Coin]()
                 
@@ -162,9 +162,7 @@ class Game {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-//                print(json)
-                print("THE ERROR FROM JSON")
-                print (json["error"])
+
                 // check for insufficient funds
                 if (json["error"].exists() && json["error"] == "insufficient funds") {
                     completion(false)
@@ -212,7 +210,7 @@ class Game {
                         self.coins.append(Coin(ticker, initialPrice, currentPrice, allocation, capCoin, percent))
                     }
                     
-                    self.coins.sort(by: {$0.percentReturn > $1.percentReturn})
+//                    self.coins.sort(by: {$0.percentReturn > $1.percentReturn})
                     self.coins.sort(by: {$0.allocation > $1.allocation})
 
                 

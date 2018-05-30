@@ -53,6 +53,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
+            refreshControl.tintColor = UIColor.white
             self.leaderboardTable.refreshControl = refreshControl
         } else {
             self.leaderboardTable.addSubview(refreshControl)
@@ -148,8 +149,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     @objc func refreshLeaderboardData(_ sender:Any) {
         // show activity indicator
-        self.loadingActivityIndicatorView.startAnimating()
-        self.loadingActivityIndicatorView.isHidden = false
+//        self.loadingActivityIndicatorView.startAnimating()
+//        self.loadingActivityIndicatorView.isHidden = false
         
         // load leadboard
         if self.isCurrent {
@@ -168,8 +169,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         // load all time leaderboard
         if self.isCurrent {
             // show activity indicator
-            self.loadingActivityIndicatorView.startAnimating()
-            self.loadingActivityIndicatorView.isHidden = false
+//            self.loadingActivityIndicatorView.startAnimating()
+//            self.loadingActivityIndicatorView.isHidden = false
             
             // reset views
             allTimeButton.backgroundColor = activeButtonColor
@@ -187,8 +188,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         // load current leaderboard
         if !self.isCurrent {
             // show activity indicator
-            self.loadingActivityIndicatorView.startAnimating()
-            self.loadingActivityIndicatorView.isHidden = false
+//            self.loadingActivityIndicatorView.startAnimating()
+//            self.loadingActivityIndicatorView.isHidden = false
             
             // reset views
             allTimeButton.backgroundColor = UIColor.clear

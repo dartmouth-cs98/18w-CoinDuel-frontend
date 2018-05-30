@@ -22,7 +22,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GifView.loadGif(asset: "demo1-1")
+        // GifView.loadGif(asset: "demo1-1")
         // Do any additional setup after loading the view.
     }
 

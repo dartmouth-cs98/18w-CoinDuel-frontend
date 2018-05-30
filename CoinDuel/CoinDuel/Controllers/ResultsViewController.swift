@@ -24,6 +24,7 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var shakeGif: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var placeActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var miningProgressView: UIProgressView!
     
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -47,6 +48,19 @@ class ResultsViewController: UIViewController {
             shakeGif.clipsToBounds = true
         }
         
+        // let gif display for a delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+            self.displayResults()
+        })
+        
+        // activate progress bar for delay
+        DispatchQueue.main.async() {
+            self.setProgress(val: 0)
+        }
+    }
+    
+    // get and display game results from blockchain
+    func displayResults() {
         // mine for user's balance
         let apiUrl = URL(string: Constants.blockchainUrl + "mine")
         let params = ["user": UserDefaults.standard.string(forKey:"id")!]
@@ -57,9 +71,9 @@ class ResultsViewController: UIViewController {
                 if (statusCode == 200){
                     do{
                         var json = try JSON(data: response.data!)       // parse to json
-                        sleep(3)
                         
                         // load presets
+                        self.miningProgressView.isHidden = true
                         self.shakeGif.isHidden = true
                         self.placeActivityIndicator.isHidden = false
                         self.submitButton.setTitle("COLLECT WINNINGS", for: .normal)
@@ -94,17 +108,32 @@ class ResultsViewController: UIViewController {
                             let balance = json["response"]["data"]["balances"][0]["capcoin"].floatValue
                             self.capcoinResultLabel.text = "You received " + self.numberFormatter.string(from: NSNumber(value: balance))! + " CC"
                         }
-    
+                        
                         // unable to parse json
                     } catch{
                         print("error loading json")
                     }
-                
-                // unidentified error sent back
+                    
+                    // unidentified error sent back
                 } else {
                     print(response.data)
                 }
             }
+        })
+    }
+    
+    // set progress of capcoin mining
+    func setProgress(val: Float) {
+        self.miningProgressView.setProgress(val, animated: true)
+        
+        // break if progress is full
+        if (val >= 1) {
+            return
+        }
+        
+        // increase progress async
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.04, execute: {
+            self.setProgress(val: val + 0.011)
         })
     }
     

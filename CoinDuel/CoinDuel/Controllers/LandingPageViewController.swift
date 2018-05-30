@@ -83,7 +83,7 @@ class LandingPageViewController: UIViewController {
         // set rank view
         self.user.updateRankAllTime { (success) in
             if (success){
-                self.rankLabel.text = "#" + String(self.user.rank) + "/" + String(self.user.otherUsers)
+                self.rankLabel.text = String(self.user.rank) + " of " + String(self.user.otherUsers)
             }
             self.rankActivityIndicator.isHidden = true
         }
@@ -198,14 +198,24 @@ class LandingPageViewController: UIViewController {
     /*
      * Present profile upon button press.
      */
-    @IBAction func onProfilePressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+    @IBAction func onLogoutPressed(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
         
-        // present profile
-        if let ProfileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-            ProfileVC.user = user
-            self.present(ProfileVC, animated: true, completion: nil)
+        // reset all user defaults except username
+        dictionary.keys.forEach { key in
+            if (key != "username") {
+                defaults.removeObject(forKey: key)
+            }
         }
+        
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "EntryViewController") as UIViewController
+        self.present(gameVC, animated: true, completion: nil)
+        
+        // From https://stackoverflow.com/questions/29374235/facebook-sdk-4-0-ios-swift-log-a-user-out-programmatically
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut() // this is an instance function
     }
 
     @IBAction func onRefreshPressed(_ sender: Any) {

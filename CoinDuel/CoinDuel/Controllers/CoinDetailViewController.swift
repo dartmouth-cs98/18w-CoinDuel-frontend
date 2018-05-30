@@ -7,6 +7,7 @@
 //
 
 //Learned to use Charts in swift from : https://github.com/osianSmith/LineChartExample/tree/master
+//Activity indicator from https://github.com/erangaeb/dev-notes/blob/master/swift/ViewControllerUtils.swift
 
 
 import UIKit
@@ -21,6 +22,14 @@ import NVActivityIndicatorView
 private class CubicLineSampleFillFormatter: IFillFormatter {
     func getFillLinePosition(dataSet: ILineChartDataSet, dataProvider: LineChartDataProvider) -> CGFloat {
         return -10
+    }
+}
+//    truncate source: https://stackoverflow.com/questions/35946499/how-to-truncate-decimals-to-x-places-in-swift/35946921
+extension Double
+{
+    func truncate(places : Int)-> Double
+    {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
     }
 }
 
@@ -44,6 +53,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tradePriceLabel: UILabel!
     @IBOutlet weak var currentHoldingsLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var tradeAvailableCCLabel: UILabel!
     @IBOutlet weak var tradeBottomView: UIView!
     @IBOutlet weak var buyButton: UIButton!
@@ -54,6 +65,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tradeStepper: GMStepper!
     @IBOutlet weak var coinDescription: UILabel!
+    @IBOutlet weak var downArrow: UIButton!
+    @IBOutlet weak var aboutLabel: UILabel!
     
     var game: Game = Game()
     var gameId: String = ""
@@ -73,52 +86,50 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
     var isTradeViewEnabled = false
     let numberFormatter = NumberFormatter()
+    let refreshControl = UIRefreshControl()
 
+    //ACTIVITY INDICATOR
+//    Taken from : https://github.com/erangaeb/dev-notes/blob/master/swift/ViewControllerUtils.swift
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Stepper styling, see here https://cocoapods.org/pods/GMStepper
+        self.showActivityIndicator(uiView: self.view)
+        // Refresh
+        // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
+        if #available(iOS 10.0, *) {
+            refreshControl.tintColor = UIColor.black
+            self.scrollView.refreshControl = refreshControl
+        } else {
+            self.scrollView.addSubview(refreshControl)
+        }
+        
+        // Add refresh control function
+        refreshControl.addTarget(self, action: #selector(self.startup), for: .valueChanged)
 
-        // Button styling
-        self.buyButton.layer.masksToBounds = true
-        self.buyButton.layer.cornerRadius = 15
-        self.buyButton.alpha = 1.0
-        
-        // Retrieve news
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.reloadData()
-        
-        // Number format
-        numberFormatter.numberStyle = NumberFormatter.Style.decimal
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
-        
         // Start with labels hidden
-        self.nameHeaderLabel.isHidden = true
         self.coinPriceLabel.isHidden = true
         self.coinPercentChangeLabel.isHidden = true
-        
+        self.activeChartButtons.isHidden = true
+        self.inactiveChartButtons.isHidden = true
+        self.nameHeaderLabel.isHidden = true
+
         // Bottom trading area
         self.allocationAbilityLabel.text = ""
         self.availableCCLabel.text = ""
+        self.coinPercentChangeLabel.text = ""
+        
         self.chartView.isHidden = true
 
         self.startup()
-
-        self.buyButton.isEnabled = true
-        
-        self.amountTextField.becomeFirstResponder()
-        self.amountTextField.delegate = self
-
-        //round popover edges
-        self.popOverView.layer.masksToBounds = true
-        self.popOverView.layer.cornerRadius = 10
     }
 
     
@@ -126,10 +137,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.nameHeaderLabel.isHidden = false
         self.coinPriceLabel.isHidden = false
         self.coinPercentChangeLabel.isHidden = false
-        
-        // chart setup
-        self.activeChartButtons.isHidden = false
-        self.inactiveChartButtons.isHidden = true
         
         //        setup chart and call it for one day values
         self.oneDayChart((Any).self)
@@ -141,8 +148,23 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 self.chartView.isHidden = false
                 let json = JSON(value)
                 let newsArray = json["articles"].arrayValue
-                self.coinDescription.text = json["description"].stringValue
+
+                let attrStr = try! NSAttributedString(data: json["description"].stringValue.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+
+
+                //self.coinDescription.attributedText = attrStr
+                var description = attrStr.string
+                while (description.first == "\n") {
+                    description.remove(at: description.startIndex)
+                }
+                while let rangeToReplace = description.range(of: "\n") {
+                    description.replaceSubrange(rangeToReplace, with: " ")
+                }
+                self.coinDescription.text = description
+
+//                self.webViewForInfo.loadHTMLString(json["description"].stringValue, baseURL: nil)
                 self.coinName.text = json["name"].stringValue + " News"
+                self.aboutLabel.text = "About " + json["name"].stringValue
                 self.nameHeaderLabel.text = json["name"].stringValue
                 for i in 0 ..< newsArray.count {
                     self.newsHeaders.append(newsArray[i]["title"].stringValue)
@@ -150,6 +172,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                     self.newsUrls.append(newsArray[i]["url"].stringValue)
                 }
                 self.tableView.reloadData()
+
+                self.hideActivityIndicator(uiView: self.view)
                 
             case .failure(let error):
                 print(error)
@@ -157,7 +181,35 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func startup() {
+    @objc func startup() {
+        // Button styling
+        self.buyButton.layer.masksToBounds = true
+        self.buyButton.layer.cornerRadius = 15
+        self.buyButton.alpha = 1.0
+        self.placeOrderButton.layer.masksToBounds = true
+        self.placeOrderButton.layer.cornerRadius = 15
+        
+        // Number format
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        
+        // Retrieve news
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        DispatchQueue.main.async() {
+            self.tableView.reloadData()
+        }
+        
+        self.buyButton.isEnabled = true
+        
+        self.amountTextField.becomeFirstResponder()
+        self.amountTextField.delegate = self
+        
+        //round popover edges
+        self.popOverView.layer.masksToBounds = true
+        self.popOverView.layer.cornerRadius = 10
+        
         // Retrieve user balance
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
@@ -184,13 +236,15 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                         }
                                         self.activeChartButtons.isHidden = true
                                         self.inactiveChartButtons.isHidden = false
-                                        self.coinPercentChangeLabel.text = ""
                                         self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
                                         self.buyButton.isEnabled = false
                                         self.buyButton.alpha = 0.3
                                         self.allocationAbilityLabel.text = "Trading Closed"
                                         self.availableCCLabel.text = "Game preview mode"
-                                        self.chart()
+                                        DispatchQueue.main.async() {
+                                            self.chart()
+                                            self.refreshControl.endRefreshing()
+                                        }
                                     } else {
                                         self.dismiss(animated: true, completion: nil)
                                     }
@@ -219,14 +273,18 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             } else {
                                                 self.capCoinAllocationLabel.text = ""
                                             }
-                                            self.coinPercentChangeLabel.text = ""
                                             self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
                                             
                                             self.availableCCLabel.text = self.numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
                                             self.allocationAbilityLabel.text = "Available CapCoin"
                                             self.buyButton.isEnabled = true
                                             self.buyButton.alpha = 1.0
-                                            self.chart()
+                                            self.activeChartButtons.isHidden = false
+                                            self.inactiveChartButtons.isHidden = true
+                                            DispatchQueue.main.async() {
+                                                self.chart()
+                                                self.refreshControl.endRefreshing()
+                                            }
                                         } else {
                                             self.dismiss(animated: true, completion: nil)
                                         }
@@ -481,7 +539,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     func presentTradeView(orderType: String) {
         //make background faded out.
         self.tradePriceLabel.text = self.coinPriceLabel.text
-        self.currentHoldingsLabel.text = numberFormatter.string(from: NSNumber(value: self.game.coins[coinIndex].allocation))! + " CC"
+//        self.currentHoldingsLabel.text = numberFormatter.string(from: NSNumber(value: self.game.coins[coinIndex].allocation))! + " CC"
+        self.currentHoldingsLabel.text = String(self.game.coins[coinIndex].allocation.truncate(places: 3)) + " CC"
         self.tradeAvailableCCLabel.text = numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
 
         self.view.bringSubview(toFront: self.blurBackgroundView)
@@ -489,7 +548,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
         self.view.addSubview(self.popOverView)
         self.popOverView.center = self.view.center
-
+        self.popOverView.frame.origin.y -= 30
 
         self.popOverView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.popOverView.alpha = 0.0;
@@ -549,12 +608,14 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                             msg += "sold "
                         }
                         msg += self.game.coins[self.coinIndex].ticker
-                        requestedAmount = 0
                         self.successMessage(msg)
                     } else{
                         print()
                         print("submission error")
+                        self.errorMessage("Your order could not be placed. Insufficient Funds ")
+                        self.game.coins[self.coinIndex].allocation = oldAllocation
                     }
+                    requestedAmount = 0
                 })
             }
         }
@@ -613,6 +674,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             if (finished)
             {
                 self.popOverView.removeFromSuperview()
+                self.showActivityIndicator(uiView: self.view)
                 self.startup()
             }
         });
@@ -620,5 +682,38 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.isTradeViewEnabled = false
     }
     
+    @IBAction func expandDescription(_ sender: Any) {
+        downArrow.setBackgroundImage(nil, for: UIControlState.normal)
+        coinDescription.numberOfLines = 0;
+    }
+
+//    Activity methods from: https://github.com/erangaeb/dev-notes/blob/master/swift/ViewControllerUtils.swift
+    func showActivityIndicator(uiView: UIView) {
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+
+        loadingView.frame = CGRect.init(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+
+        //        loadingView.backgroundColor = UIColorFromHex(0x444444, alpha: 0.7)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+
+        activityIndicator.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = CGPoint.init(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+
+        loadingView.addSubview(activityIndicator)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        activityIndicator.startAnimating()
+    }
+
+    func hideActivityIndicator(uiView: UIView) {
+        activityIndicator.stopAnimating()
+        container.removeFromSuperview()
+    }
 
 }
