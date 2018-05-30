@@ -86,6 +86,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func startup() {
+        self.refreshControl.beginRefreshing()
+        
         // Retrieve user balance
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
