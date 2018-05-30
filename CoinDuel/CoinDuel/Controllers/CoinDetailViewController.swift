@@ -7,6 +7,7 @@
 //
 
 //Learned to use Charts in swift from : https://github.com/osianSmith/LineChartExample/tree/master
+//Activity indicator from https://github.com/erangaeb/dev-notes/blob/master/swift/ViewControllerUtils.swift
 
 
 import UIKit
@@ -87,6 +88,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     let numberFormatter = NumberFormatter()
     let refreshControl = UIRefreshControl()
 
+    //ACTIVITY INDICATOR
+//    Taken from : https://github.com/erangaeb/dev-notes/blob/master/swift/ViewControllerUtils.swift
+    var container: UIView = UIView()
+    var loadingView: UIView = UIView()
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     override func viewDidLayoutSubviews(){
         self.backgroundImageView.applyGradient(colours: [UIColor(red:0.43, green:0.29, blue:0.63, alpha:1.0), UIColor(red:0.18, green:0.47, blue:0.75, alpha:1.0)])
@@ -95,7 +101,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.showActivityIndicator(uiView: self.view)
         // Refresh
         // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
         if #available(iOS 10.0, *) {
@@ -165,6 +172,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                     self.newsUrls.append(newsArray[i]["url"].stringValue)
                 }
                 self.tableView.reloadData()
+
+                self.hideActivityIndicator(uiView: self.view)
                 
             case .failure(let error):
                 print(error)
@@ -665,6 +674,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             if (finished)
             {
                 self.popOverView.removeFromSuperview()
+                self.showActivityIndicator(uiView: self.view)
                 self.startup()
             }
         });
@@ -675,6 +685,35 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func expandDescription(_ sender: Any) {
         downArrow.setBackgroundImage(nil, for: UIControlState.normal)
         coinDescription.numberOfLines = 0;
+    }
+
+//    Activity methods from: https://github.com/erangaeb/dev-notes/blob/master/swift/ViewControllerUtils.swift
+    func showActivityIndicator(uiView: UIView) {
+        container.frame = uiView.frame
+        container.center = uiView.center
+        container.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+
+        loadingView.frame = CGRect.init(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = uiView.center
+        loadingView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+
+        //        loadingView.backgroundColor = UIColorFromHex(0x444444, alpha: 0.7)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+
+        activityIndicator.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = CGPoint.init(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+
+        loadingView.addSubview(activityIndicator)
+        container.addSubview(loadingView)
+        uiView.addSubview(container)
+        activityIndicator.startAnimating()
+    }
+
+    func hideActivityIndicator(uiView: UIView) {
+        activityIndicator.stopAnimating()
+        container.removeFromSuperview()
     }
 
 }
