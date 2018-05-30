@@ -52,6 +52,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tradePriceLabel: UILabel!
     @IBOutlet weak var currentHoldingsLabel: UILabel!
     
+    @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var tradeAvailableCCLabel: UILabel!
     @IBOutlet weak var tradeBottomView: UIView!
     @IBOutlet weak var buyButton: UIButton!
@@ -93,17 +94,12 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Stepper styling, see here https://cocoapods.org/pods/GMStepper
-
         // Button styling
         self.buyButton.layer.masksToBounds = true
         self.buyButton.layer.cornerRadius = 15
         self.buyButton.alpha = 1.0
-        
-        // Retrieve news
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.reloadData()
+        self.placeOrderButton.layer.masksToBounds = true
+        self.placeOrderButton.layer.cornerRadius = 15
         
         // Number format
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
@@ -114,11 +110,18 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.nameHeaderLabel.isHidden = true
         self.coinPriceLabel.isHidden = true
         self.coinPercentChangeLabel.isHidden = true
+        self.activeChartButtons.isHidden = true
+        self.inactiveChartButtons.isHidden = true
         
         // Bottom trading area
         self.allocationAbilityLabel.text = ""
         self.availableCCLabel.text = ""
         self.chartView.isHidden = true
+        
+        // Retrieve news
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
 
         self.startup()
 
@@ -137,10 +140,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.nameHeaderLabel.isHidden = false
         self.coinPriceLabel.isHidden = false
         self.coinPercentChangeLabel.isHidden = false
-        
-        // chart setup
-        self.activeChartButtons.isHidden = false
-        self.inactiveChartButtons.isHidden = true
         
         //        setup chart and call it for one day values
         self.oneDayChart((Any).self)
@@ -252,6 +251,8 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             self.allocationAbilityLabel.text = "Available CapCoin"
                                             self.buyButton.isEnabled = true
                                             self.buyButton.alpha = 1.0
+                                            self.activeChartButtons.isHidden = false
+                                            self.inactiveChartButtons.isHidden = true
                                             self.chart()
                                         } else {
                                             self.dismiss(animated: true, completion: nil)
@@ -516,7 +517,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
         self.view.addSubview(self.popOverView)
         self.popOverView.center = self.view.center
-
+        self.popOverView.frame.origin.y -= 30
 
         self.popOverView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.popOverView.alpha = 0.0;
@@ -653,5 +654,5 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         downArrow.setBackgroundImage(nil, for: UIControlState.normal)
         coinDescription.numberOfLines = 0;
     }
-    
+
 }
