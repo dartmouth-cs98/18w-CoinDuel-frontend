@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7gg-YM-4Fw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7gg-YM-4Fw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -45,8 +45,8 @@
                                             <action selector="onBackPressed:" destination="7gg-YM-4Fw" eventType="touchUpInside" id="06Y-uT-k4y"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 CC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rp1-QJ-YGh" userLabel="Cap Coin">
-                                        <rect key="frame" x="337" y="33" width="63" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rp1-QJ-YGh" userLabel="Cap Coin">
+                                        <rect key="frame" x="400" y="45" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.11 (10.48%)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc6-PC-XQu">
-                                        <rect key="frame" x="160.5" y="53" width="95" height="25"/>
+                                        <rect key="frame" x="161" y="53" width="94.5" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="obR-tc-myP"/>
                                         </constraints>
@@ -512,6 +512,7 @@
                         <outlet property="inactiveChartButtons" destination="knE-gU-Knr" id="uqn-05-bGR"/>
                         <outlet property="mainView" destination="Vsi-9D-uT6" id="Mu0-6I-zuC"/>
                         <outlet property="nameHeaderLabel" destination="ntR-V5-bE0" id="lqZ-ca-VeY"/>
+                        <outlet property="placeOrderButton" destination="ymt-YF-xv5" id="gR3-Ol-ezX"/>
                         <outlet property="popOverView" destination="zJm-2B-Qz9" id="GNM-QU-0jd"/>
                         <outlet property="tableView" destination="vzh-cX-e9d" id="Y1D-nl-10j"/>
                         <outlet property="tradeAvailableCCLabel" destination="FYM-qi-9zR" id="6PO-BF-g2i"/>
@@ -549,10 +550,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymt-YF-xv5">
-                            <rect key="frame" x="145" y="237.5" width="100" height="30"/>
+                            <rect key="frame" x="107.5" y="238" width="175" height="35"/>
                             <color key="backgroundColor" red="0.34901960780000002" green="0.92156862750000001" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="65e-mZ-MIV"/>
+                                <constraint firstAttribute="height" constant="35" id="29o-bb-50g"/>
+                                <constraint firstAttribute="width" constant="175" id="65e-mZ-MIV"/>
                             </constraints>
                             <state key="normal" title="Place Order">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

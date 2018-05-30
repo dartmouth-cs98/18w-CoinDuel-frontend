@@ -52,6 +52,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tradePriceLabel: UILabel!
     @IBOutlet weak var currentHoldingsLabel: UILabel!
     
+    @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var tradeAvailableCCLabel: UILabel!
     @IBOutlet weak var tradeBottomView: UIView!
     @IBOutlet weak var buyButton: UIButton!
@@ -93,12 +94,12 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Stepper styling, see here https://cocoapods.org/pods/GMStepper
-
         // Button styling
         self.buyButton.layer.masksToBounds = true
         self.buyButton.layer.cornerRadius = 15
         self.buyButton.alpha = 1.0
+        self.placeOrderButton.layer.masksToBounds = true
+        self.placeOrderButton.layer.cornerRadius = 15
         
         // Retrieve news
         self.tableView.delegate = self
@@ -516,7 +517,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
         self.view.addSubview(self.popOverView)
         self.popOverView.center = self.view.center
-
+        self.popOverView.frame.origin.y -= 30
 
         self.popOverView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.popOverView.alpha = 0.0;
@@ -653,5 +654,5 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         downArrow.setBackgroundImage(nil, for: UIControlState.normal)
         coinDescription.numberOfLines = 0;
     }
-    
+
 }
