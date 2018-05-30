@@ -17,18 +17,6 @@ class EntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // sign in
-        signinButton.layer.borderWidth = 0.75
-        signinButton.layer.masksToBounds = true
-        signinButton.layer.cornerRadius = 3
-        signinButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
-        
-        // sign up
-        signupButton.layer.masksToBounds = true
-        signupButton.layer.cornerRadius = 3
-        signupButton.layer.borderColor = UIColor(red:1, green:1, blue:1, alpha:0.8).cgColor
-        signupButton.layer.borderWidth = 0.75
         
         // Do any additional setup after loading the view.
     }

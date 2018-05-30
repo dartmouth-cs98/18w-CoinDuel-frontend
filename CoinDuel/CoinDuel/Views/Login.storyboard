@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PPl-yp-F4w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PPl-yp-F4w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -531,10 +532,10 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Mi-Ha-ueg">
-                                <rect key="frame" x="20" y="605" width="150" height="42"/>
+                                <rect key="frame" x="0.0" y="597" width="187.5" height="70"/>
+                                <color key="backgroundColor" red="0.19607843137254902" green="0.80392156862745101" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="E0g-Xt-tmU"/>
-                                    <constraint firstAttribute="width" constant="150" id="Zxm-tY-m5z"/>
+                                    <constraint firstAttribute="height" constant="70" id="E0g-Xt-tmU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign Up">
@@ -545,10 +546,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5D-39-IGH">
-                                <rect key="frame" x="205" y="605" width="150" height="42"/>
+                                <rect key="frame" x="187.5" y="597" width="187.5" height="70"/>
+                                <color key="backgroundColor" red="0.7403096922013237" green="0.74763949113401007" blue="0.74763949113401007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="KSS-tW-S4R"/>
-                                    <constraint firstAttribute="width" constant="150" id="iD8-hA-6jS"/>
+                                    <constraint firstAttribute="height" constant="70" id="KSS-tW-S4R"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign In">
@@ -562,12 +563,14 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pGa-G5-5Zh" firstAttribute="bottom" secondItem="P0r-yt-Q0m" secondAttribute="bottom" id="2XM-0m-D7h"/>
-                            <constraint firstItem="pGa-G5-5Zh" firstAttribute="trailing" secondItem="v5D-39-IGH" secondAttribute="trailing" constant="20" id="8i1-Pp-FcS"/>
-                            <constraint firstItem="6Mi-Ha-ueg" firstAttribute="leading" secondItem="pGa-G5-5Zh" secondAttribute="leading" constant="20" id="LRf-f6-PPU"/>
+                            <constraint firstItem="pGa-G5-5Zh" firstAttribute="trailing" secondItem="v5D-39-IGH" secondAttribute="trailing" id="8i1-Pp-FcS"/>
+                            <constraint firstItem="v5D-39-IGH" firstAttribute="leading" secondItem="6Mi-Ha-ueg" secondAttribute="trailing" id="EkN-C9-U6v"/>
+                            <constraint firstItem="6Mi-Ha-ueg" firstAttribute="leading" secondItem="pGa-G5-5Zh" secondAttribute="leading" id="LRf-f6-PPU"/>
                             <constraint firstItem="P0r-yt-Q0m" firstAttribute="top" secondItem="Kwt-Ap-bNJ" secondAttribute="top" id="Q1x-MI-Wau"/>
-                            <constraint firstItem="pGa-G5-5Zh" firstAttribute="bottom" secondItem="6Mi-Ha-ueg" secondAttribute="bottom" constant="20" id="cuQ-pG-qIv"/>
+                            <constraint firstItem="v5D-39-IGH" firstAttribute="leading" secondItem="Kwt-Ap-bNJ" secondAttribute="centerX" id="Toj-yC-1Yc"/>
+                            <constraint firstItem="pGa-G5-5Zh" firstAttribute="bottom" secondItem="6Mi-Ha-ueg" secondAttribute="bottom" id="cuQ-pG-qIv"/>
                             <constraint firstItem="P0r-yt-Q0m" firstAttribute="trailing" secondItem="pGa-G5-5Zh" secondAttribute="trailing" id="lLM-6V-JYy"/>
-                            <constraint firstItem="pGa-G5-5Zh" firstAttribute="bottom" secondItem="v5D-39-IGH" secondAttribute="bottom" constant="20" id="mn1-Eu-qXk"/>
+                            <constraint firstItem="pGa-G5-5Zh" firstAttribute="bottom" secondItem="v5D-39-IGH" secondAttribute="bottom" id="mn1-Eu-qXk"/>
                             <constraint firstItem="P0r-yt-Q0m" firstAttribute="leading" secondItem="pGa-G5-5Zh" secondAttribute="leading" id="nsP-CM-eGG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pGa-G5-5Zh"/>
@@ -1420,6 +1423,6 @@
         <segue reference="ItM-AD-zS1"/>
         <segue reference="her-xr-dgh"/>
         <segue reference="Ldl-7e-nVp"/>
-        <segue reference="NXd-ck-skK"/>
+        <segue reference="rqw-u3-dtp"/>
     </inferredMetricsTieBreakers>
 </document>
