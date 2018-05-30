@@ -583,10 +583,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         var requestedAmount = Double(self.amountTextField.text!)
         print("here sis afsdasdf")
         print(requestedAmount)
-        if requestedAmount != nil {
+        if (requestedAmount != nil && requestedAmount != 0) {
             print(self.buySellControl.description)
             var requestedAmountRounded = round(100.0 * requestedAmount!) / 100.0
-            
+//            var requestedAmountRounded = requestedAmount?.truncate(places: 2)
+
             if self.buySellControl.selectedSegmentIndex == 1 {
                 print("sell order")
                 requestedAmountRounded *= -1.0
@@ -596,7 +597,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
             var oldAllocation = self.game.coins[self.coinIndex].allocation
             self.game.coins[self.coinIndex].allocation += requestedAmountRounded
 
-            if (self.game.coins[self.coinIndex].allocation < 0 || requestedAmountRounded == 0){
+            if (self.game.coins[self.coinIndex].allocation < 0){
                 if self.buySellControl.selectedSegmentIndex == 1 {
                     self.errorMessage("You do not have enough CapCoin in this position to sell " + requestedAmount!.description + "CC")
                 } else {
@@ -616,10 +617,12 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                             msg += "sold "
                         }
                         msg += self.game.coins[self.coinIndex].ticker
+                        self.hideActivityIndicator(uiView: self.view)
                         self.successMessage(msg)
                     } else{
                         print()
                         print("submission error")
+                        self.hideActivityIndicator(uiView: self.view)
                         self.errorMessage("Your order could not be placed. Insufficient Funds ")
                         self.game.coins[self.coinIndex].allocation = oldAllocation
                     }
@@ -627,9 +630,11 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                 })
             }
         } else if ( requestedAmount == nil ){
-            self.errorMessage("Please enter a valid amount to sell or buy!")
+            self.errorMessage("Please enter a valid amount to buy or sell!")
+            self.hideActivityIndicator(uiView: self.view)
         } else {
-            self.errorMessage("Please enter a non-zero amount to sell or buy!")
+            self.errorMessage("Please enter a non-zero amount to buy or sel!")
+            self.hideActivityIndicator(uiView: self.view)
         }
 //        let roundedRequestedAmount = requestedAmount
 //        print(requestedAmount)
@@ -660,8 +665,9 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Order Filled", message: msg, preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-            self.hideActivityIndicator(uiView: self.view)
             self.dismissPopup()
+            self.showActivityIndicator(uiView: self.view)
+
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -673,7 +679,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         let alert = UIAlertController(title: "Order Failed", message: msg, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-            self.hideActivityIndicator(uiView: self.view)
+//            self.showActivityIndicator(uiView: self.view)
 //            self.dismissPopup()
         }))
 
