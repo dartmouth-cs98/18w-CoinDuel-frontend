@@ -52,6 +52,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tradePriceLabel: UILabel!
     @IBOutlet weak var currentHoldingsLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var tradeAvailableCCLabel: UILabel!
     @IBOutlet weak var tradeBottomView: UIView!
@@ -84,6 +85,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     var user: User = User(username: UserDefaults.standard.string(forKey: "username")!, coinBalance: 0.0, rank: 0, profilePicture: "profile")
     var isTradeViewEnabled = false
     let numberFormatter = NumberFormatter()
+    let refreshControl = UIRefreshControl()
 
 
     override func viewDidLayoutSubviews(){
@@ -93,46 +95,34 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Refresh
+        // From https://cocoacasts.com/how-to-add-pull-to-refresh-to-a-table-view-or-collection-view
+        if #available(iOS 10.0, *) {
+            refreshControl.tintColor = UIColor.black
+            self.scrollView.refreshControl = refreshControl
+        } else {
+            self.scrollView.addSubview(refreshControl)
+        }
+        
+        // Add refresh control function
+        refreshControl.addTarget(self, action: #selector(self.startup), for: .valueChanged)
 
-        // Button styling
-        self.buyButton.layer.masksToBounds = true
-        self.buyButton.layer.cornerRadius = 15
-        self.buyButton.alpha = 1.0
-        self.placeOrderButton.layer.masksToBounds = true
-        self.placeOrderButton.layer.cornerRadius = 15
-        
-        // Number format
-        numberFormatter.numberStyle = NumberFormatter.Style.decimal
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
-        
         // Start with labels hidden
-        self.nameHeaderLabel.isHidden = true
         self.coinPriceLabel.isHidden = true
         self.coinPercentChangeLabel.isHidden = true
         self.activeChartButtons.isHidden = true
         self.inactiveChartButtons.isHidden = true
-        
+        self.nameHeaderLabel.isHidden = true
+
         // Bottom trading area
         self.allocationAbilityLabel.text = ""
         self.availableCCLabel.text = ""
-        self.chartView.isHidden = true
+        self.coinPercentChangeLabel.text = ""
         
-        // Retrieve news
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.reloadData()
+        self.chartView.isHidden = true
 
         self.startup()
-
-        self.buyButton.isEnabled = true
-        
-        self.amountTextField.becomeFirstResponder()
-        self.amountTextField.delegate = self
-
-        //round popover edges
-        self.popOverView.layer.masksToBounds = true
-        self.popOverView.layer.cornerRadius = 10
     }
 
     
@@ -182,7 +172,35 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func startup() {
+    @objc func startup() {
+        // Button styling
+        self.buyButton.layer.masksToBounds = true
+        self.buyButton.layer.cornerRadius = 15
+        self.buyButton.alpha = 1.0
+        self.placeOrderButton.layer.masksToBounds = true
+        self.placeOrderButton.layer.cornerRadius = 15
+        
+        // Number format
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        
+        // Retrieve news
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        DispatchQueue.main.async() {
+            self.tableView.reloadData()
+        }
+        
+        self.buyButton.isEnabled = true
+        
+        self.amountTextField.becomeFirstResponder()
+        self.amountTextField.delegate = self
+        
+        //round popover edges
+        self.popOverView.layer.masksToBounds = true
+        self.popOverView.layer.cornerRadius = 10
+        
         // Retrieve user balance
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
@@ -209,13 +227,15 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                         }
                                         self.activeChartButtons.isHidden = true
                                         self.inactiveChartButtons.isHidden = false
-                                        self.coinPercentChangeLabel.text = ""
                                         self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
                                         self.buyButton.isEnabled = false
                                         self.buyButton.alpha = 0.3
                                         self.allocationAbilityLabel.text = "Trading Closed"
                                         self.availableCCLabel.text = "Game preview mode"
-                                        self.chart()
+                                        DispatchQueue.main.async() {
+                                            self.chart()
+                                            self.refreshControl.endRefreshing()
+                                        }
                                     } else {
                                         self.dismiss(animated: true, completion: nil)
                                     }
@@ -244,7 +264,6 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             } else {
                                                 self.capCoinAllocationLabel.text = ""
                                             }
-                                            self.coinPercentChangeLabel.text = ""
                                             self.coinPriceLabel.text = "$" + self.currentCoinPrice.description
                                             
                                             self.availableCCLabel.text = self.numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
@@ -253,7 +272,10 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
                                             self.buyButton.alpha = 1.0
                                             self.activeChartButtons.isHidden = false
                                             self.inactiveChartButtons.isHidden = true
-                                            self.chart()
+                                            DispatchQueue.main.async() {
+                                                self.chart()
+                                                self.refreshControl.endRefreshing()
+                                            }
                                         } else {
                                             self.dismiss(animated: true, completion: nil)
                                         }

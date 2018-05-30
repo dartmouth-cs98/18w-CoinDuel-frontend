@@ -210,7 +210,7 @@ class Game {
                         self.coins.append(Coin(ticker, initialPrice, currentPrice, allocation, capCoin, percent))
                     }
                     
-                    self.coins.sort(by: {$0.percentReturn > $1.percentReturn})
+//                    self.coins.sort(by: {$0.percentReturn > $1.percentReturn})
                     self.coins.sort(by: {$0.allocation > $1.allocation})
 
                 

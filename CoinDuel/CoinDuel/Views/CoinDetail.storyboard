@@ -335,7 +335,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjC-vT-7eo">
-                                                            <rect key="frame" x="0.0" y="15" width="335" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="15" width="365" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="Fsn-4F-5wA"/>
                                                             </constraints>
@@ -514,6 +514,7 @@
                         <outlet property="nameHeaderLabel" destination="ntR-V5-bE0" id="lqZ-ca-VeY"/>
                         <outlet property="placeOrderButton" destination="ymt-YF-xv5" id="gR3-Ol-ezX"/>
                         <outlet property="popOverView" destination="zJm-2B-Qz9" id="GNM-QU-0jd"/>
+                        <outlet property="scrollView" destination="afL-Wf-bWE" id="pHy-PY-RAc"/>
                         <outlet property="tableView" destination="vzh-cX-e9d" id="Y1D-nl-10j"/>
                         <outlet property="tradeAvailableCCLabel" destination="FYM-qi-9zR" id="6PO-BF-g2i"/>
                         <outlet property="tradeBottomView" destination="62R-lx-xWl" id="lE6-xr-Fm0"/>
