@@ -12,7 +12,6 @@ import UIKit
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var gameReturnLabel: UILabel!
     @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var nextGameLabel: UILabel!
     @IBOutlet weak var gameTimeLabel: UILabel!
@@ -76,7 +75,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.submitIndicator.isHidden = true
         
         // format text
-        self.gameTimeLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+//        self.gameTimeLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         self.startup()
     }
@@ -195,7 +194,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         nextGameLabel.isHidden = false
         gameTimeLabel.isHidden = false
 
-        gameReturnLabel.isHidden = true
         gameStatusLabel.isHidden = true
         
         nextGameLabel.text = "Game Preview"
@@ -211,7 +209,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.updateGameModeLabels()
         
-        gameReturnLabel.isHidden = true
         gameStatusLabel.isHidden = false
         
         nextGameLabel.isHidden = true
@@ -240,9 +237,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.present(alert, animated: true, completion: nil)
     }
     
-    func updateGameModeLabels() {
-        gameReturnLabel.text = numberFormatter.string(from: NSNumber(value: self.game.totalPercentageReturn()))! + "%"
-        
+    func updateGameModeLabels() {        
         if (self.game.totalPercentageReturn() > 0) {
             gameStatusLabel.text = "↑ " + numberFormatter.string(from: NSNumber(value: self.game.coinBalance))! + " CapCoin"
             gameStatusLabel.textColor = UIColor.white
@@ -257,7 +252,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         gameTimeLabel.text = "Game ends " + self.game.finishDate
         
         self.unallocatedCCLabel.isHidden = false
-        self.unallocatedCCLabel.text = numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC Available"
+        self.unallocatedCCLabel.text = "Available to Invest: " + numberFormatter.string(from: NSNumber(value: self.game.unusedCoinBalance))! + " CC"
         
         // hide spinner
         self.submitIndicator.isHidden = true
