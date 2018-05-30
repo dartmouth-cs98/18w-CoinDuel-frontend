@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME COMPLETE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMi-RI-5oy">
-                                <rect key="frame" x="82" y="70" width="212" height="30"/>
+                                <rect key="frame" x="82.5" y="70" width="211.5" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -64,12 +64,19 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Kjp-SR-sf9">
                                 <rect key="frame" x="177" y="201" width="20" height="20"/>
                             </activityIndicatorView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5kv-Jv-Z6A">
+                                <rect key="frame" x="83" y="100" width="210" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="BbS-Jx-QCH"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="DHE-TR-Cim" firstAttribute="top" secondItem="BMi-RI-5oy" secondAttribute="bottom" constant="70" id="6J9-hj-jfU"/>
                             <constraint firstItem="rqB-tI-Y2S" firstAttribute="centerY" secondItem="Jcm-tf-shl" secondAttribute="centerY" id="8XO-V4-nSd"/>
                             <constraint firstItem="BMi-RI-5oy" firstAttribute="top" secondItem="7Nu-v8-1DJ" secondAttribute="top" constant="50" id="9fL-ZI-cfA"/>
                             <constraint firstItem="Kjp-SR-sf9" firstAttribute="centerX" secondItem="Jcm-tf-shl" secondAttribute="centerX" id="Ari-mp-ob6"/>
+                            <constraint firstItem="5kv-Jv-Z6A" firstAttribute="top" secondItem="BMi-RI-5oy" secondAttribute="bottom" id="IzA-z7-yua"/>
                             <constraint firstAttribute="trailing" secondItem="dqb-PR-k5Q" secondAttribute="trailing" id="Nz4-AS-tBt"/>
                             <constraint firstItem="8NS-Z9-o2d" firstAttribute="trailing" secondItem="7Nu-v8-1DJ" secondAttribute="trailing" id="QDL-Eb-fU4"/>
                             <constraint firstItem="Lsi-mF-zLQ" firstAttribute="top" secondItem="DHE-TR-Cim" secondAttribute="bottom" constant="10" id="T1C-6m-1wA"/>
@@ -81,6 +88,7 @@
                             <constraint firstItem="rqB-tI-Y2S" firstAttribute="centerX" secondItem="Jcm-tf-shl" secondAttribute="centerX" id="jQn-g8-rZC"/>
                             <constraint firstItem="8NS-Z9-o2d" firstAttribute="top" secondItem="Jcm-tf-shl" secondAttribute="top" id="npj-Qi-lmc"/>
                             <constraint firstItem="Kjp-SR-sf9" firstAttribute="top" secondItem="DHE-TR-Cim" secondAttribute="bottom" constant="10" id="tjO-Jy-Cbt"/>
+                            <constraint firstItem="5kv-Jv-Z6A" firstAttribute="centerX" secondItem="Jcm-tf-shl" secondAttribute="centerX" id="uHs-wA-SeE"/>
                             <constraint firstItem="dqb-PR-k5Q" firstAttribute="leading" secondItem="Jcm-tf-shl" secondAttribute="leading" id="w1h-V1-I3Q"/>
                             <constraint firstItem="BMi-RI-5oy" firstAttribute="centerX" secondItem="Jcm-tf-shl" secondAttribute="centerX" id="xeD-h6-Sf8"/>
                         </constraints>
@@ -89,6 +97,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="8NS-Z9-o2d" id="fOH-eE-p1i"/>
                         <outlet property="capcoinResultLabel" destination="DHE-TR-Cim" id="m2p-y8-qLp"/>
+                        <outlet property="miningProgressView" destination="5kv-Jv-Z6A" id="vFA-41-Zbw"/>
                         <outlet property="pageTitle" destination="BMi-RI-5oy" id="KyT-2h-u4O"/>
                         <outlet property="placeActivityIndicator" destination="Kjp-SR-sf9" id="Cn1-tk-ckd"/>
                         <outlet property="resultsText" destination="Lsi-mF-zLQ" id="Chl-9B-Aqp"/>
