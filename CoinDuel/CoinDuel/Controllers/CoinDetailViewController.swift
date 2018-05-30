@@ -63,6 +63,7 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tradeStepper: GMStepper!
     @IBOutlet weak var coinDescription: UILabel!
     @IBOutlet weak var downArrow: UIButton!
+    @IBOutlet weak var aboutLabel: UILabel!
     
     var game: Game = Game()
     var gameId: String = ""
@@ -156,10 +157,18 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
 
                 //self.coinDescription.attributedText = attrStr
-                self.coinDescription.text = attrStr.string
+                var description = attrStr.string
+                while (description.first == "\n") {
+                    description.remove(at: description.startIndex)
+                }
+                while let rangeToReplace = description.range(of: "\n") {
+                    description.replaceSubrange(rangeToReplace, with: " ")
+                }
+                self.coinDescription.text = description
 
 //                self.webViewForInfo.loadHTMLString(json["description"].stringValue, baseURL: nil)
                 self.coinName.text = json["name"].stringValue + " News"
+                self.aboutLabel.text = "About " + json["name"].stringValue
                 self.nameHeaderLabel.text = json["name"].stringValue
                 for i in 0 ..< newsArray.count {
                     self.newsHeaders.append(newsArray[i]["title"].stringValue)
