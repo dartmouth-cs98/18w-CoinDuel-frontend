@@ -84,10 +84,18 @@ class User {
             if let statusCode = response.response?.statusCode {
                 if (statusCode == 200){
                     do{
+
                         var json = try JSON(data: response.data!)
+                        print("hehrhasdf")
+                        print(json)
+
                         if let coinBalance = json["coinBalance"].double {
                             self.coinBalance = coinBalance
                         }
+                        if let lastId = json["lastGameId"].string {
+                            self.lastGameId = lastId
+                        }
+
                         
                         // store profile picture for leaderboard
                         self.profilePicture = json["profile_url"].string!
@@ -104,7 +112,9 @@ class User {
     // function to set users latest gameID to use for displaying results later.
     func storeGameID (completion: @escaping (_ success: Bool) -> Void) {
         let params = ["username": self.username]
-        let apiUrl = URL(string: Constants.API + "user/" + self.lastGameId + "/" + UserDefaults.standard.string(forKey: "userId")!)
+        print(self.lastGameId)
+        print(UserDefaults.standard.string(forKey: "id"))
+        let apiUrl = URL(string: Constants.API + "user/" + self.lastGameId + "/" + UserDefaults.standard.string(forKey: "id")!)
 
         Alamofire.request(apiUrl!, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
 
@@ -112,12 +122,13 @@ class User {
                 if (statusCode == 200){
                     do{
                         var json = try JSON(data: response.data!)
-                        if let coinBalance = json["coinBalance"].double {
-                            self.coinBalance = coinBalance
-                        }
-
-                        // store profile picture for leaderboard
-                        self.profilePicture = json["profile_url"].string!
+                        print(json)
+//                        if let coinBalance = json["coinBalance"].double {
+//                            self.coinBalance = coinBalance
+//                        }
+//
+//                        // store profile picture for leaderboard
+//                        self.profilePicture = json["profile_url"].string!
                         completion(true)
                     } catch{
                         print("error loading json")
