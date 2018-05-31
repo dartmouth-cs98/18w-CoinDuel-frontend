@@ -18,6 +18,8 @@ class ResultsViewController: UIViewController {
     let numberFormatter = NumberFormatter()
     var leaderboard: Leaderboard = Leaderboard()
     var place: Int = 0
+    var user: User = User()
+
     @IBOutlet weak var capcoinResultLabel: UILabel!
     @IBOutlet weak var resultsText: UILabel!
     @IBOutlet weak var pageTitle: UILabel!
@@ -142,10 +144,17 @@ class ResultsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func nextButtonClicked(_ sender: Any) {
-        self.dismiss(animated: true) {
-            print("leaving Results VC")
-            UserDefaults.standard.set(nil, forKey: "gameId")
-        }
+        self.user.lastGameId = "nogame"
+        self.user.storeGameID(completion: { (success) in
+            print(success)
+            DispatchQueue.main.async() {
+                self.dismiss(animated: true) {
+                    print("leaving Results VC")
+                    UserDefaults.standard.set(nil, forKey: "gameId")
+
+                }
+            }
+        })
     }
 }
 

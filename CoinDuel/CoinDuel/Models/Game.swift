@@ -173,6 +173,8 @@ class Game {
                 // check for insufficient funds
                 if (json["error"].exists() && json["error"] == "insufficient funds") {
                     completion(false)
+                    print("heheehehehe")
+                    print (json["error"])
                     return
                 }
                 

@@ -16,6 +16,7 @@ class User {
     var rank: Int
     var otherUsers: Int
     var profilePicture: String
+    var lastGameId: String
 
     init() {
         self.username = ""
@@ -23,6 +24,7 @@ class User {
         self.rank = 0
         self.profilePicture = ""
         self.otherUsers = 0
+        self.lastGameId = ""
     }
     
     init(username: String?, coinBalance: Double, rank: Int, profilePicture: String) {
@@ -31,6 +33,8 @@ class User {
         self.rank = rank
         self.profilePicture = profilePicture
         self.otherUsers = 0
+        self.lastGameId = ""
+
     }
     
     // retrieves user's all time rank
@@ -80,13 +84,55 @@ class User {
             if let statusCode = response.response?.statusCode {
                 if (statusCode == 200){
                     do{
+
                         var json = try JSON(data: response.data!)
+                        print("hehrhasdf")
+                        print(json)
+
                         if let coinBalance = json["coinBalance"].double {
                             self.coinBalance = coinBalance
                         }
+                        if let lastId = json["lastGameId"].string {
+                            self.lastGameId = lastId
+                        }
+
                         
                         // store profile picture for leaderboard
                         self.profilePicture = json["profile_url"].string!
+                        completion(true)
+                    } catch{
+                        print("error loading json")
+                        completion(false)
+                    }
+                }
+            }
+        })
+    }
+
+    // function to set users latest gameID to use for displaying results later.
+    func storeGameID (completion: @escaping (_ success: Bool) -> Void) {
+        let params = ["username": self.username]
+
+        var apiUrl = URL(string: Constants.API + "user/" + self.lastGameId + "/" + UserDefaults.standard.string(forKey: "id")!)
+        if (self.lastGameId == " "){
+            print("update")
+            apiUrl = URL(string: Constants.API + "user/nogame/" + UserDefaults.standard.string(forKey: "id")!)
+        }
+        print(self.lastGameId, UserDefaults.standard.string(forKey: "id")!)
+        print(apiUrl?.absoluteString)
+        Alamofire.request(apiUrl!, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
+
+            if let statusCode = response.response?.statusCode {
+                if (statusCode == 200){
+                    do{
+                        var json = try JSON(data: response.data!)
+                        print(json)
+                        if let lastId = json["lastGameId"].string {
+                            self.lastGameId = lastId
+                        }
+//
+//                        // store profile picture for leaderboard
+//                        self.profilePicture = json["profile_url"].string!
                         completion(true)
                     } catch{
                         print("error loading json")
