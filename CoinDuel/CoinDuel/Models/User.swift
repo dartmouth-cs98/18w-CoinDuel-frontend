@@ -104,7 +104,7 @@ class User {
     // function to set users latest gameID to use for displaying results later.
     func storeGameID (completion: @escaping (_ success: Bool) -> Void) {
         let params = ["username": self.username]
-        let apiUrl = URL(string: Constants.API + "user" + )
+        let apiUrl = URL(string: Constants.API + "user/" + self.lastGameId + "/" + UserDefaults.standard.string(forKey: "userId")!)
 
         Alamofire.request(apiUrl!, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
 

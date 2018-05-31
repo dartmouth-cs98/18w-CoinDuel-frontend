@@ -147,6 +147,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         self.game.submitEntry() { (success) -> Void in
                                             if success {
                                                 self.startup()
+                                                self.user.lastGameId = self.game.id
+                                                // Store the current game ID (for showing results later)
+                                                UserDefaults.standard.set(self.game.id, forKey: "gameId")
+
+                                                self.user.storeGameID(completion: { (success) in
+                                                    print(success)
+                                                })
                                             } else {
                                                 self.networkError("Unable to submit empty entry")
                                             }
@@ -156,10 +163,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         // Update prices
                                         self.game.updateCoinPricesAndReturns() { (coinSuccess) -> Void in
                                             if coinSuccess {
-                                                // Store the current game ID (for showing results later)
-                                                let defaults = UserDefaults.standard
-                                                defaults.set(self.game.id, forKey: "gameId")
-
                                                 // Show game mode (with prices/returns for coins)
                                                 self.displayGameMode()
                                                 DispatchQueue.main.async() {
