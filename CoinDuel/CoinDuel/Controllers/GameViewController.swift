@@ -91,13 +91,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.user.updateCoinBalance() { (completion) -> Void in
             if completion {
                 // Retrieve gameId (if we already have it)
-//                let storedGameId = UserDefaults.standard.string(forKey: "gameId")
+                let storedGameId = UserDefaults.standard.string(forKey: "gameId")
+                print("hererererererasdf")
+                print(storedGameId)
 
                 // Try and get the current game from the database
                 self.game.getCurrentGame() { (success) -> Void in
                     if success {
                         // See if we need to display results
-                        if (self.user.lastGameId != "" && self.game.id != self.user.lastGameId) {
+                        print (self.user.lastGameId, self.game.id)
+                        if (self.user.lastGameId != "nogame" && self.game.id != self.user.lastGameId) {
                             print("Should display results popup")
                             let resultsGame = Game()
                             resultsGame.id = self.user.lastGameId
@@ -111,13 +114,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     let storyboard = UIStoryboard(name: "Results", bundle: nil)
                                     let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
                                     resultsVC.game = resultsGame
+                                    resultsVC.user = self.user
                                     self.present(resultsVC, animated: true, completion: nil)
 
                                 } else {
                                     // Could not get results for this game
                                     print("No results available")
                                     self.networkError("Could not retrieve game results")
-                                    self.user.lastGameId = ""
+                                    self.user.lastGameId = "nogame"
                                     UserDefaults.standard.set(nil, forKey: "gameId")
                                     self.user.storeGameID(completion: { (success) in
                                         print(success)
@@ -554,7 +558,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func unwindResultsView(unwindSegue: UIStoryboardSegue) {
         print("Unwind")
-        self.user.lastGameId = ""
+        self.user.lastGameId = "nogame"
         UserDefaults.standard.set(nil, forKey: "gameId")
         self.user.storeGameID(completion: { (success) in
             print(success)

@@ -92,63 +92,49 @@ class LandingPageViewController: UIViewController {
         self.user.updateCoinBalance { (success) in
             if (success){
                 self.capCoinBalanceLabel.text = self.numberFormatter.string(from: NSNumber(value: self.user.coinBalance))! + " CC"
+
+                // set game views
+                self.game.getCurrentGame { (success) in
+                    if (success){
+                        print("got game")
+
+                        if self.user.lastGameId != "nogame" && self.game.id != self.user.lastGameId {
+                            // Display results pop up if the user had an entry
+                            let resultsGame = Game()
+                            resultsGame.id = self.user.lastGameId
+                            resultsGame.getEntry() { (entryStatus) -> Void in
+                                if entryStatus == "entry" {
+
+                                    // display results view
+                                    let storyboard = UIStoryboard(name: "Results", bundle: nil)
+                                    let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
+                                    resultsVC.game = resultsGame
+                                    resultsVC.user = self.user
+                                    self.present(resultsVC, animated: true, completion: nil)
+
+                                } else {
+                                    // Could not get results for this game
+                                    print("No results available")
+                                }
+                            }
+                        }
+
+                        //check if game is in progress or has finished
+                        if (self.game.isActive && !self.game.hasFinished){
+                            self.displayActiveGameMode()
+                        } else if (self.game.hasFinished) {
+                            self.displayActiveGameMode()
+                        } else {
+                            self.displayUpcomingGameMode()
+                        }
+                    } else {
+                        self.displayNoGameMode()
+                    }
+                }
             }
             self.balanceActivityIndicator.isHidden = true
         }
-        
-        // set game views
-        self.game.getCurrentGame { (success) in
-            if (success){
-                print("got game")
 
-                if storedGameId != nil && self.game.id != storedGameId {
-                    // Display results pop up if the user had an entry
-                    let resultsGame = Game()
-                    resultsGame.id = storedGameId!
-                    resultsGame.getEntry() { (entryStatus) -> Void in
-                        if entryStatus == "entry" {
-                            
-                            // display results view
-                            let storyboard = UIStoryboard(name: "Results", bundle: nil)
-                            let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
-                            resultsVC.game = resultsGame
-                            self.present(resultsVC, animated: true, completion: nil)
-
-                        } else {
-                            // Could not get results for this game
-                            print("No results available")
-                        }
-                    }
-                }
-
-                //check if game is in progress or has finished
-                if (self.game.isActive && !self.game.hasFinished){
-                    self.displayActiveGameMode()
-                } else if (self.game.hasFinished) {
-                    self.displayActiveGameMode()
-                } else {
-                    self.displayUpcomingGameMode()
-                }
-            } else {
-//                // TODO: DELETE AFTER TESTING – FOR DEBUG
-//                // Display results pop up if the user had an entry
-//                let resultsGame = Game()
-//                resultsGame.id = "5a99b4944ca7a11092a9e971"
-//                resultsGame.getEntry() { (entryStatus) -> Void in
-//                    if entryStatus == "entry" {
-//
-//                        // display results view
-//                        let storyboard = UIStoryboard(name: "Results", bundle: nil)
-//                        let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
-//                        resultsVC.game = resultsGame
-//                        self.present(resultsVC, animated: true, completion: nil)
-//                    }
-//                }
-
-                // No games are scheduled
-                self.displayNoGameMode()
-            }
-        }
     }
 
     func displayActiveGameMode (){
@@ -249,7 +235,7 @@ class LandingPageViewController: UIViewController {
     }
     
     @IBAction func unwindGameView(unwindSegue: UIStoryboardSegue) {
-        print("Unwind")
+        print("Unwinding HERHEHHEHEHRHE")
         self.viewDidLoad()
     }
 
