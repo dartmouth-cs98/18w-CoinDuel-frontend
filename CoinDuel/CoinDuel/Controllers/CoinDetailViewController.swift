@@ -154,11 +154,19 @@ class CoinDetailViewController: UIViewController, UITableViewDataSource, UITable
 
                 //self.coinDescription.attributedText = attrStr
                 var description = attrStr.string
-                while (description.first == "\n") {
-                    description.remove(at: description.startIndex)
-                }
+                description = description.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
                 while let rangeToReplace = description.range(of: "\n") {
                     description.replaceSubrange(rangeToReplace, with: " ")
+                }
+                
+                // truncates string to reasonable length, not in middle of word
+                if (description.count > 800) {
+                    description = String(description.prefix(800))
+                    while (description.last != " ") {
+                        description = String(description.dropLast())
+                    }
+                    description = String(description.dropLast())
+                    description += "..."
                 }
                 self.coinDescription.text = description
 
