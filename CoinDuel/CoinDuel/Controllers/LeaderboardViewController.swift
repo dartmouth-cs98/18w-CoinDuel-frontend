@@ -250,35 +250,35 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     // first place profile picture
                     if users.count > 0 {
-                        users[0].updateCoinBalance(gameId: self.game.id) { (success) in
-                            if (success){
-                                self.firstPlaceImage.image = UIImage(named: users[0].profilePicture)
-                                self.firstPlaceImage.isHidden = false
-                                self.firstNumberLabel.isHidden = false
+                        for user in self.leaderboard.allTimeUsers {
+                            if (user.username == users[0].username) {
+                                self.firstPlaceImage.image = UIImage(named: user.profilePicture)
                             }
                         }
+                        self.firstPlaceImage.isHidden = false
+                        self.firstNumberLabel.isHidden = false
                     }
                     
                     // second place profile picture
                     if users.count > 1 {
-                        users[1].updateCoinBalance(gameId: self.game.id) { (success) in
-                            if (success){
-                                self.secondPlaceImage.image = UIImage(named: users[1].profilePicture)
-                                self.secondPlaceImage.isHidden = false
-                                self.secondNumberLabel.isHidden = false
+                        for user in self.leaderboard.allTimeUsers {
+                            if (user.username == users[1].username) {
+                                self.firstPlaceImage.image = UIImage(named: user.profilePicture)
                             }
                         }
+                        self.secondPlaceImage.isHidden = false
+                        self.secondNumberLabel.isHidden = false
                     }
                     
                     // third place profile picture
                     if users.count > 2 {
-                        users[2].updateCoinBalance(gameId: self.game.id) { (success) in
-                            if (success){
-                                self.thirdPlaceImage.image = UIImage(named: users[2].profilePicture)
-                                self.thirdPlaceImage.isHidden = false
-                                self.thirdNumberLabel.isHidden = false
+                        for user in self.leaderboard.allTimeUsers {
+                            if (user.username == users[2].username) {
+                                self.firstPlaceImage.image = UIImage(named: user.profilePicture)
                             }
                         }
+                        self.thirdPlaceImage.isHidden = false
+                        self.thirdNumberLabel.isHidden = false
                     }
                     
                 // add profile pictures to place images if all time rankings
