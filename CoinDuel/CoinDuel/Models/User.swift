@@ -107,35 +107,6 @@ class User {
             }
         })
     }
-    
-    // Retrieves the user's coin balance
-    func updateCoinBalance(gameId: String, completion: @escaping (_ success: Bool) -> Void) {
-        
-        let params = ["username": self.username]
-        let apiUrl = URL(string: Constants.API + "user")
-        
-        Alamofire.request(apiUrl!, method: HTTPMethod.post, parameters: params, encoding: JSONEncoding.default).responseJSON(completionHandler: { (response) in
-            
-            if let statusCode = response.response?.statusCode {
-                if (statusCode == 200){
-                    do{
-                        var json = try JSON(data: response.data!)
-
-                        if let lastId = json["lastGameId"].string {
-                            self.lastGameId = lastId
-                        }
-                        
-                        // store profile picture for leaderboard
-                        self.profilePicture = json["profile_url"].string!
-                        completion(true)
-                    } catch{
-                        print("error loading json")
-                        completion(false)
-                    }
-                }
-            }
-        })
-    }
 
     // function to set users latest gameID to use for displaying results later.
     func storeGameID (completion: @escaping (_ success: Bool) -> Void) {
