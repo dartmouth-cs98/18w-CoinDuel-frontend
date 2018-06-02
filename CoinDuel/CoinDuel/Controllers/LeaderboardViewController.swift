@@ -250,7 +250,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     // first place profile picture
                     if users.count > 0 {
-                        users[0].updateCoinBalance { (success) in
+                        users[0].updateCoinBalance(gameId: self.game.id) { (success) in
                             if (success){
                                 self.firstPlaceImage.image = UIImage(named: users[0].profilePicture)
                                 self.firstPlaceImage.isHidden = false
@@ -261,7 +261,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     // second place profile picture
                     if users.count > 1 {
-                        users[1].updateCoinBalance { (success) in
+                        users[1].updateCoinBalance(gameId: self.game.id) { (success) in
                             if (success){
                                 self.secondPlaceImage.image = UIImage(named: users[1].profilePicture)
                                 self.secondPlaceImage.isHidden = false
@@ -272,7 +272,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     // third place profile picture
                     if users.count > 2 {
-                        users[2].updateCoinBalance { (success) in
+                        users[2].updateCoinBalance(gameId: self.game.id) { (success) in
                             if (success){
                                 self.thirdPlaceImage.image = UIImage(named: users[2].profilePicture)
                                 self.thirdPlaceImage.isHidden = false
