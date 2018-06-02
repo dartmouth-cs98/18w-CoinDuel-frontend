@@ -178,9 +178,9 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             allTimeButton.layer.borderWidth = 0.0;
             currentButton.layer.borderWidth = 0.5;
             self.leaderboard.getAllTimeLeaderboard() { (success) -> Void in
+                self.isCurrent = false
                 self.getLeaderBoardHelper(success: success)
             }
-            self.isCurrent = false
         }
     }
     
@@ -197,9 +197,9 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             allTimeButton.layer.borderWidth = 0.5;
             currentButton.layer.borderWidth = 0.0;
             self.leaderboard.getCurrentLeaderboard() { (success) -> Void in
+                self.isCurrent = true
                 self.getLeaderBoardHelper(success: success)
             }
-            self.isCurrent = true
         }
     }
 
