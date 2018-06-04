@@ -27,17 +27,26 @@ The above runs the simulator for the application
 
 ## GIFs of App in Action
 
-Signing up and entering the app
+Logging out, signing up and entering the app
 
-![Mockup](img/CoinDuel.gif)
+![Mockup](img/CoinDuelGif5.gif)
 
-Entering the game by selecting how to allocate your ten CapCoins for that particular game: you cannot submit an entry until allocating all the CapCoins
+Entering the game and selecting how to allocate your capcoin using the new trade view
 
-![Mockup](img/CoinDuel2.gif)
+![Mockup](img/CoinDuelGif1.gif)
 
-Below is the CoinDetail view, which shows a price chart for the chosen cryptocurrency
+Showing the all time and current game leaderboard views
 
-![Mockup](img/Chart.gif)
+![Mockup](img/CoinDuelGif2.gif)
+
+Showing the refresh and in game view
+
+![Mockup](img/CoinDuelGif3.gif)
+
+Showing the CoinDetail and informational view
+
+![Mockup](img/CoinDuelGif4.gif)
+
 
 ## Authors
 
