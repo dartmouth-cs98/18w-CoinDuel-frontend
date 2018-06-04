@@ -50,18 +50,34 @@ We think it would also be helpful to work with COSC 98 section 1 for a few class
 
 ## What worked this term / didn't work
 
-We really enjoyed the design and pitch process at the beginning of the term, that got us thinking about what our project ideas might look like. The checkpoints were also helpful in keeping us on track.
+This term, the bug hunts as well as the time we spent brainstorming ideas to advance the app and come up with a good division of labor really helped us to solidify our vision for the project. We spent time mocking up how trades and blockchain could be implemented and seamlessly integrated into the app and the frontloading of time dedicated to design helped us a great deal.
+
+I can't really think of much that did not work well this term. I think it would be good to have a few more bug hunts throughout the term and it might have been good to have a workshop or two for rigorous UI testing of each others' products. Perhaps if two groups were paired and had a weekly checkin to stress test each others apps it could yield good results for the teams. 
 
 ## Potential Next Steps
 
-We hope to enhance the existing user experience with several additional features next term (see Wiki page for more detail on user feedback and testing)
+If we could take this app further we would do a few things to further the project (see Wiki page for more detail on user feedback and testing)
+
+1. We would add an interactive coaching tab to help people optimize their investment strategy, as well as help them to have information beyond news articles. Something more interactive like videos and live graphs and stats would be cool.
+
+2. We want to expand Capcoin so that it is tradeable or can be exchanged in some way for US dollars or another cryptocurrency so that we can build out our rewards system. This could also help us create and monetize a reward for game winners and attract more users
+
+3. We also want to incorporate a live trades view so that users can view their trade history and a record of all the trades that everyone has made in the game.
+
+These were our term goals for the last term as well as our comments on how they panned out.
 
 1. Access to more information in the form of the basic news and articles, as well as more advanced analysis and links to research and price trends over time, to help novice investors learn more about the currencies they are investing in
 
-2. A buy-in option so that groups of friends can play among one another and win $$ for picking the optimal portfolio
+We built out an informational aspect to the Coin Detail view so that users could have access to further links and information about coins.
 
 3. Improved design and charts
 
+We spent a great deal of time improving the design and fully implementing and incorporating the charts and we think it looks great.
+
 4. Algorithmic or basic systematic trading, in the image of how Quantopian does this for stocks
 
+We didn't implement systematic trading but we did implement the more important element of trading which was the ability to trade in order to enter or exit positions in game
+
 5. Blockchain incorporation, so that CapCoin balances can be accessed in a decentralized manner
+
+We did successfully implement blockchain with a full proof of work algorithm!
