@@ -45,14 +45,21 @@ Kooshul Jhaveri, Anish Chadalavada, Mitchell Revers, Rajiv Ramaiah, Henry Wilson
 
 ## What would make this a better experience?
 
-The experience with building this application this term was a wholly positive experience! I think it would be cool to maybe push up the MVP deadline by just a few days so everyone in the class could download/use everyone else's project for a few days and provide some feedback based on day to day use, and log what they liked/didn't liked
-We think it would also be helpful to work with COSC 98 section 1 for a few class periods to hear their thoughts and recommendations on projects, and what to work on for an MVP, and what is best left to second term enhancements. Apart from that, everything was great!
+The experience with building this application this term was a wholly positive experience! Again, I think it would be cool to maybe push up the deadline by just a few days so everyone in the class could download/use everyone else's project for a few days and provide some feedback based on day to day use, and log what they liked/didn't liked
+
+See below for more on what could have been better.
+
+The experience overall was a really positive one and we really enjoyed working on it!
+
+## User Feedback / Conclusions
+
+We got really positive feedback from users at the Technigala, as we incorporated all of the suggested changes from the user feedback we received during the first term. They particularly enjoyed the ability to trade in game, and one or two of our testers indicated that it would be very interesting to see a trade history or live in game trading view of all trades that had taken place in the game, similar to an exchange. Users also really enjoyed the UI and the charts as well as the informational aspect of the app, so we are very proud of what we accomplished this term. Based on this user feedback, we can probably incorporate a more interactive/robust informational screen as well a more robust trade history view. Users also indicated that the onboarding view at the beginning was helpful.
 
 ## What worked this term / didn't work
 
 This term, the bug hunts as well as the time we spent brainstorming ideas to advance the app and come up with a good division of labor really helped us to solidify our vision for the project. We spent time mocking up how trades and blockchain could be implemented and seamlessly integrated into the app and the frontloading of time dedicated to design helped us a great deal.
 
-I can't really think of much that did not work well this term. I think it would be good to have a few more bug hunts throughout the term and it might have been good to have a workshop or two for rigorous UI testing of each others' products. Perhaps if two groups were paired and had a weekly checkin to stress test each others apps it could yield good results for the teams. 
+I can't really think of much that did not work well this term. I think it would be good to have a few more bug hunts throughout the term and it might have been good to have a workshop or two for rigorous UI testing of each others' products. Perhaps if two groups were paired and had a weekly checkin to stress test each others apps it could yield good results for the teams.
 
 ## Potential Next Steps
 
