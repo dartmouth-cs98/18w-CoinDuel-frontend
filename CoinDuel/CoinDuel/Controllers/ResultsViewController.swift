@@ -49,6 +49,7 @@ class ResultsViewController: UIViewController {
         self.capcoinResultLabel.text = ""
         
         // preload gif
+        // gif source: https://thumbs.gfycat.com/DismalIdioticBrownbutterfly-size_restricted.gif
         if let asset = NSDataAsset(name: "mining") {
             shakeGif.image = UIImage.gif(data: asset.data)
             shakeGif.layer.cornerRadius = 6.0
