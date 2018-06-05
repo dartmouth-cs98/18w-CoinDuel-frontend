@@ -86,7 +86,7 @@ These were our term goals for the last term as well as our comments on how they 
 
 We built out an informational aspect to the Coin Detail view so that users could have access to further links and information about coins.
 
-3. Improved design and charts
+2. Improved design and charts
 
 We spent a great deal of time improving the design and fully implementing and incorporating the charts and we think it looks great.
 
